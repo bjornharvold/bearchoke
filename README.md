@@ -7,6 +7,7 @@ Key frameworks that I've leveraged to make this work are:
 * Spring
 * Spring Integration
 * Spring AMQP
+* Redis
 * Axon CQRS Framework
 * Rabbit MQ
 * Web Socket
