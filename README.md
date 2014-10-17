@@ -44,17 +44,16 @@ Below, I will cover what is required to get up and running using all the goodies
 * [Bootstrap](http://getbootstrap.com/) (Responsive web framework)
 
 ## Version Control
-* [Bitbucket](http://www.bitbucket.com) [https://bjornharvold@bitbucket.org/bjornharvold/bearchoke-platform.git](https://bjornharvold@bitbucket.org/bjornharvold/bearchoke-platform.git)
+* [Github](https://www.github.com) [https://github.com/bjornharvold/bearchoke](https://github.com/bjornharvold/bearchoke)
 
 ## IDE, Build & Deployment Tools
 * [JetBrains IntelliJ IDEA](http://www.jetbrains.com/idea/) (Integrated Development Environment IDE)
 * [Maven](http://maven.apache.org) (Dependency management)
-* [Atlassian Bamboo](https://www.atlassian.com/software/bamboo) (Continuous integration)
 * [Pivotal Cloud Foundry](http://www.pivotal.io/platform-as-a-service/pivotal-cf) (Scalable Platform as a Service PaaS)
 
 ## Project Management Tools
-* [Atlassian Jira](https://www.atlassian.com/software/jira) (Issue tracking)
-* [Atlassian Confluence](https://www.atlassian.com/software/confluence) (Enterprise wiki)
+* [Github](https://github.com/bjornharvold/bearchoke/issues) (Issue tracking)
+* [Github](https://github.com/bjornharvold/bearchoke/wiki) (Wiki)
 
 ## Requirements
 * Maven v3.2.3+
@@ -62,8 +61,8 @@ Below, I will cover what is required to get up and running using all the goodies
 * RabbitMQ v3.3.4+
 * MongoDb v2.6.4+
 * JetBrains IntelliJ v13+
-* Lineman
-* Grunt
+* Lineman (latest)
+* Grunt (latest)
 
 ## Project Directory Structure
 * **bearchoke-frontend**
