@@ -1,0 +1,79 @@
+<!--
+  ~ Copyright 2014 the original author or authors.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>Bearchoke Tempest</h1>
+        <p>Explore the features available to you in this code base</p>
+        <p><a class="btn btn-primary btn-lg" role="button" ui-sref="about">Learn more about the tech stack before you get started »</a></p>
+    </div>
+</div>
+<div class="container">
+    <div class="row alert alert-info">
+        <div class="col-md-12">
+            <p>I wrote this demo for 2 reasons:</p>
+            <ul>
+                <li>1. To write a PoC of the necessary technologies I would need for my next startup and</li>
+                <li>2. Because I love Spring and the guides they have on their website. It's the best way to learn how to use frameworks.</li>
+            </ul>
+            <p>To those of you who are familiar with the guides on Spring's website or their Sagan reference implementation, this sample is slightly different. The focus is on writing a code base for a real-world scenario:</p>
+            <ul>
+                <li>More code than just the code required to demo one feature. As coders we need to integrate with many different persistence stores, message queues, frameworks, versions and more.</li>
+                <li>More samples showcasing the push towards Single Page Applications (SPAs) while talking to a complex back-end. (<a href="https://twitter.com/ghillert" target="_blank">Gunnar Hillert of Spring</a> has another sample on <a href="https://github.com/ghillert/botanic-ng" target="_blank">Github</a>)</li>
+                <li>Different examples on how to persist and query data from different types of DBs</li>
+                <li>Showcasing a Spring Security setup with different AuthenticationManagers based on different persistence stores and URL patterns that can act as a good start for any new application.</li>
+                <li>Showcasing the beauty of Spring's Java Config support alongside Spring Profiles and the Servlet 3 spec.</li>
+                <li>Moving towards truly scalable, event-driven software by leveraging Command Query Responsibility Segregation (CQRS) through the awesome Axon Framework and its great Spring support as well as Spring's own support for the WebSocket protocol.</li>
+                <li>Finally, because this application is hosted on the fantastic Cloud Foundry PaaS, you can see what's required of your application to easily deploy to CF.</li>
+            </ul>
+            <p>You can log in with: harrymitchell / harry</p>
+            <p>Hope the reader of this gains some insight and has fun with the samples. I will use this as a "dumping ground" for new features I want to try out. Not everything is showcased in the UI. You'll have to go to <a href="https://github.com/bjornharvold/bearchoke" target="_blank">my project on Github</a> and download the source to see how it was all put together.</p>
+            <p><em>#happycoding</em></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h3><i class="fa fa-wechat"></i> Chat over WebSocket</h3>
+            <p>See how the protocol can work together with Spring Security, Spring Session and AngularJS to make your AngularJS UI completely event driven.</p>
+            <p><a class="btn btn-default" ui-sref="chat" role="button">View details »</a></p>
+        </div>
+        <div class="col-md-4">
+            <h3><i class="fa fa-ticket"></i> Stock Ticker over WebSocket</h3>
+            <p>A read-only example of how you can listen to events over WebSocket using AngularJS and STOMP.</p>
+            <p><a class="btn btn-default" ui-sref="quotes" role="button">View details »</a></p>
+        </div>
+        <div class="col-md-4">
+            <h3><i class="fa fa-flag"></i> Localization</h3>
+            <p>See how to localize your AngularJS app without having to retrieve information from the server and using JSON files as i18n / l10n resources.</p>
+            <p><a class="btn btn-default" ui-sref="localization" role="button">View details »</a></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3><i class="fa fa-cloud-download"></i> REST with Security & Versioning</h3>
+            <p>Leverage Restangular, a resource service for AngularJS, with the power of Spring Security, Spring Session and URL versioning.</p>
+            <p><a class="btn btn-default" ui-sref="rest" role="button">View details »</a></p>
+        </div>
+        <div class="col-md-6">
+            <h3><i class="fa fa-edit"></i> ToDos with CQRS over WebSocket</h3>
+            <p>See how using Spring, WebSocket, STOMP, AngularJS and the Axon CQRS framework makes the front and the back-end completely event driven. <em>(Please log in first as we also showcase stateless user sessions over websocket)</em></p>
+            <p><a class="btn btn-default" ui-sref="todo" role="button" ng-disabled="!hasRole('ROLE_USER')">View details »</a></p>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+</div>

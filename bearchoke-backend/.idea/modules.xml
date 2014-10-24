@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-api/bearchoke-api.iml" filepath="$PROJECT_DIR$/bearchoke-api/bearchoke-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-backend.iml" filepath="$PROJECT_DIR$/bearchoke-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-inmemory-security/bearchoke-inmemory-security.iml" filepath="$PROJECT_DIR$/bearchoke-inmemory-security/bearchoke-inmemory-security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-jpa-core/bearchoke-jpa-core.iml" filepath="$PROJECT_DIR$/bearchoke-jpa-core/bearchoke-jpa-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-jpa-domain/bearchoke-jpa-domain.iml" filepath="$PROJECT_DIR$/bearchoke-jpa-domain/bearchoke-jpa-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-jpa-repository/bearchoke-jpa-repository.iml" filepath="$PROJECT_DIR$/bearchoke-jpa-repository/bearchoke-jpa-repository.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-jpa-security/bearchoke-jpa-security.iml" filepath="$PROJECT_DIR$/bearchoke-jpa-security/bearchoke-jpa-security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-mongo-core/bearchoke-mongo-core.iml" filepath="$PROJECT_DIR$/bearchoke-mongo-core/bearchoke-mongo-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-mongo-domain/bearchoke-mongo-domain.iml" filepath="$PROJECT_DIR$/bearchoke-mongo-domain/bearchoke-mongo-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-mongo-repository/bearchoke-mongo-repository.iml" filepath="$PROJECT_DIR$/bearchoke-mongo-repository/bearchoke-mongo-repository.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-mongo-security/bearchoke-mongo-security.iml" filepath="$PROJECT_DIR$/bearchoke-mongo-security/bearchoke-mongo-security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-platform-base/bearchoke-platform-base.iml" filepath="$PROJECT_DIR$/bearchoke-platform-base/bearchoke-platform-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-server/bearchoke-server.iml" filepath="$PROJECT_DIR$/bearchoke-server/bearchoke-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-todo/bearchoke-todo.iml" filepath="$PROJECT_DIR$/bearchoke-todo/bearchoke-todo.iml" />
+    </modules>
+  </component>
+</project>
+

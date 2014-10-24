@@ -1,0 +1,58 @@
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/2b98fe");
+
+  
+@font-face {font-family: 'GloberBlack';src: url('../fonts/2B98FE_0_0.eot');src: url('../fonts/2B98FE_0_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2B98FE_0_0.woff') format('woff'),url('../fonts/2B98FE_0_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'GloberBook';src: url('../fonts/2B98FE_1_0.eot');src: url('../fonts/2B98FE_1_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2B98FE_1_0.woff') format('woff'),url('../fonts/2B98FE_1_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'GloberBold';src: url('../fonts/2B98FE_2_0.eot');src: url('../fonts/2B98FE_2_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2B98FE_2_0.woff') format('woff'),url('../fonts/2B98FE_2_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'GloberBoldItalic';src: url('../fonts/2B98FE_3_0.eot');src: url('../fonts/2B98FE_3_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2B98FE_3_0.woff') format('woff'),url('../fonts/2B98FE_3_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'GloberBlackItalic';src: url('../fonts/2B98FE_4_0.eot');src: url('../fonts/2B98FE_4_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2B98FE_4_0.woff') format('woff'),url('../fonts/2B98FE_4_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'GloberBookItalic';src: url('../fonts/2B98FE_5_0.eot');src: url('../fonts/2B98FE_5_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2B98FE_5_0.woff') format('woff'),url('../fonts/2B98FE_5_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'GloberHeavy';src: url('../fonts/2B98FE_6_0.eot');src: url('../fonts/2B98FE_6_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2B98FE_6_0.woff') format('woff'),url('../fonts/2B98FE_6_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'GloberHeavyItalic';src: url('../fonts/2B98FE_7_0.eot');src: url('../fonts/2B98FE_7_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2B98FE_7_0.woff') format('woff'),url('../fonts/2B98FE_7_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'GloberLight';src: url('../fonts/2B98FE_8_0.eot');src: url('../fonts/2B98FE_8_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2B98FE_8_0.woff') format('woff'),url('../fonts/2B98FE_8_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'GloberRegular';src: url('../fonts/2B98FE_9_0.eot');src: url('../fonts/2B98FE_9_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2B98FE_9_0.woff') format('woff'),url('../fonts/2B98FE_9_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'GloberLightItalic';src: url('../fonts/2B98FE_A_0.eot');src: url('../fonts/2B98FE_A_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2B98FE_A_0.woff') format('woff'),url('../fonts/2B98FE_A_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'GloberRegularItalic';src: url('../fonts/2B98FE_B_0.eot');src: url('../fonts/2B98FE_B_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2B98FE_B_0.woff') format('woff'),url('../fonts/2B98FE_B_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'GloberSemiBold';src: url('../fonts/2B98FE_C_0.eot');src: url('../fonts/2B98FE_C_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2B98FE_C_0.woff') format('woff'),url('../fonts/2B98FE_C_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'GloberSemiBoldItalic';src: url('../fonts/2B98FE_D_0.eot');src: url('../fonts/2B98FE_D_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2B98FE_D_0.woff') format('woff'),url('../fonts/2B98FE_D_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'GloberThin';src: url('../fonts/2B98FE_E_0.eot');src: url('../fonts/2B98FE_E_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2B98FE_E_0.woff') format('woff'),url('../fonts/2B98FE_E_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'GloberThinItalic';src: url('../fonts/2B98FE_F_0.eot');src: url('../fonts/2B98FE_F_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2B98FE_F_0.woff') format('woff'),url('../fonts/2B98FE_F_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'GloberxBoldItalic';src: url('../fonts/2B98FE_10_0.eot');src: url('../fonts/2B98FE_10_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2B98FE_10_0.woff') format('woff'),url('../fonts/2B98FE_10_0.ttf') format('truetype');}
+ 
+  
+@font-face {font-family: 'GloberxBold';src: url('../fonts/2B98FE_11_0.eot');src: url('../fonts/2B98FE_11_0.eot?#iefix') format('embedded-opentype'),url('../fonts/2B98FE_11_0.woff') format('woff'),url('../fonts/2B98FE_11_0.ttf') format('truetype');}
+ 

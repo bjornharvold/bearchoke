@@ -1,6 +1,8 @@
 ## Bearchoke Tempest ##
 
-Welcome to the Bearchoke Tempest. This platform aims to be a best practices framework using the latest Java based frameworks, Enterprise Integration Patterns (EIP) and specifically focusing on using an asynchronous, message based, event driven approach to creating web-based software. The current push in the user interface space is SPA/SPI (Single Page Applications / Single Page Interface). The samples will leverage AngularJS to showcase this. Bearchoke Tempest was created to show how an SPA can interface with the Spring server world as well as leverage other SPA modular goodies. 
+Welcome to Bearchoke Tempest. This platform aims to be a best practices framework using the latest Java based frameworks, Enterprise Integration Patterns (EIP) and specifically focusing on using an asynchronous, message based, event driven approach to creating web-based software. The current push in the user interface space is SPA/SPI (Single Page Applications / Single Page Interface). The samples will leverage AngularJS to showcase this. Bearchoke Tempest was created to show how an SPA can interface with the Spring server world as well as leverage other SPA modular goodies. 
+
+If you just want to check out the demo, you can check out the Cloud Foundry hosted instance here: [www.bearchoke.com](http://www.bearchoke.com).
 
 Key frameworks that I've leveraged to make this work are:
 
@@ -99,11 +101,11 @@ Download RabbitMQ from here: [http://www.rabbitmq.com/download.html](http://www.
 
 	$ cd sbin
 	$ ./rabbitmq-plugins enable rabbitmq_stomp
-	
+
 Then you can start RabbitMQ by typing:
 
-	$ ./rabbitmq-server start
-	
+	$ ./rabbitmq-server start	
+
 ## MongoDb (required for 'mongodb' spring profile)
 [MongoDb](http://www.mongodb.org) is a NoSQL database, more specifically known as a "document store". Install MongoDb and add it to your PATH. I suggest creating a 'data' directory on the same level as bearchoke-backend and bearchoke-frontend and then starting MongoDb up by typing:
 
@@ -117,8 +119,8 @@ Jpa is the standard Java Persistence API. To showcase the framework's Jpa suppor
 ## Lineman
 In order to install Lineman, you also need to install the latest version of [Node.JS](http://www.nodejs.org/). Once Node.JS is installed, you can install Lineman by typing this in your Terminal / Command Prompt:
 
-	$ sudo npm install -g lineman
-	
+	$ sudo npm install -g lineman	
+
 The last requirement for Lineman is that you have [PhantomJS](http://phantomjs.org/download.html) installed and on your PATH.
 
 ## Grunt
@@ -127,28 +129,30 @@ Once you have installed Lineman, Grunt is next. This one is simple. Just type th
 	$ npm install -g grunt-cli	
 
 ## Getting Up and Running
-To see a basic web application that showcases the technologies mentioned above, you need to start the bearchoke-server web app and start the bearchoke-frontend app. To do this without and IDE, first make sure you have already run the command I mentioned before:
+To see a basic web application that showcases the technologies mentioned above, you need to start the bearchoke-server web app and start the bearchoke-frontend app. 
 
-	$ cd bearchoke-backend
-	$ mvn clean install -Dmaven.test.skip=true
-	
-Then type the following into your Terminal / Command Prompt:
+The server part was configured for Tomcat 8+. There is no embedded Maven plugin for Tomcat 8 so this app cannot be run from the command line unfortuantely. You will have to create an IntelliJ 'run configuration' where you deploy the bearchoke-server webapp. Set the active profiles for Spring in your environment variables section of your run configuration:
 
-	$ cd bearchoke-server
-	$ mvn tomcat7:run -Dspring.profiles.active=embedded
-	
-Alternatively, if you want the sample app to run in the Jetty application server you can type:
+	$ -Dspring.profiles.active=in-memory,redis-local,rabbit-local	
 
-	$ mvn jetty:run -Dspring.profiles.active=embedded
-	
-You can verify that the web application is running by going to http://localhost:8080 in your browser.
+Valid local profiles are: in-memory, jpa, mongodb. I won't cover everything it takes to run the different profiles but here are the active spring profiles necessary to run the different local profiles. Follow the different profile names to see what configurations are necessary.
+
+MongoDb
+
+	$ -Dspring.profiles.active=mongodb,mongodb-local,redis-local,rabbit-local	
+
+JPA
+ 
+	$ -Dspring.profiles.active=jpa,jpa-local,redis-local,rabbit-local	
+
+Finally, the app has been configured to use a custom domain. Please edit your /etc/hosts file and add dev.bearchoke.com. You can verify that the bearchoke-server web application is running by going to http://dev.bearchoke.com:8080 in your browser.
 
 Next, you have to start the bearchoke-frontend application. Type the following in a new Terminal / Command Prompt window:
 
 	$ cd bearchoke-frontend
-	$ lineman run
-	
-You can verify that it's running by going to http://localhost:8000 in your browser. This is the sample app. Enjoy!
+	$ lineman run	
+
+You can verify that it's running by going to http://dev.bearchoke.com:8000 in your browser. This is the sample app. Enjoy!
 
 ## What the Framework Gives You
 There are a few things the Bearchoke Tempest gives you out of the box. 
@@ -192,5 +196,6 @@ This framework is for me a way to prove that the technologies can co-exist toget
 * MixPanel integration
 * File upload example
 * Charting and reporting
+* Tests, tests and tests
 
 If you would like to commit to this project you are more than welcome to do so. You can message me on Twitter at @bjornharvold or on Github.

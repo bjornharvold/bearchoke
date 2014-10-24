@@ -1,0 +1,21 @@
+{
+  "name": "Loading...",
+  "description": "An HTML/JS/CSS app",
+  "version": "0.0.1",
+  "private": true,
+  "author": "Bjorn Harvold",
+  "dependencies": {
+      "grunt-angular-templates": "~0.5.7",
+	  "grunt-ng-annotate": "~0.4.0",
+	  "grunt-replace": "~0.7.9"
+  },
+  "devDependencies": {
+    "lineman": "^0.34.1",
+    "lineman-less": "^0.1.0",
+    "lineman-angular": "^0.3.0"
+  },
+  "scripts": {
+    "start": "lineman run",
+    "test": "lineman spec-ci"
+  }
+}

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~ Copyright 2014 the original author or authors.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration>
+    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{ISO8601} %-5p %C.%M():%L %x%m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="TRACE"/>
+            <param name="LevelMax" value="INFO"/>
+        </filter>
+    </appender>
+    <appender name="CUSTOMSTDOUT" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{ISO8601} %-5p %C{1}.%M():%L %x%m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="TRACE"/>
+            <param name="LevelMax" value="INFO"/>
+        </filter>
+    </appender>
+    <appender name="STDERR" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.err"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{ISO8601} %-5p %C.%M():%L %x%m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="WARN"/>
+            <param name="LevelMax" value="FATAL"/>
+        </filter>
+    </appender>
+    <appender name="CUSTOMSTDERR" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.err"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{ISO8601} %-5p %C{1}.%M():%L %x%m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="WARN"/>
+            <param name="LevelMax" value="FATAL"/>
+        </filter>
+    </appender>
+
+    <logger name="com.bearchoke" additivity="false">
+        <level value="debug"/>
+        <appender-ref ref="CUSTOMSTDOUT"/>
+        <appender-ref ref="CUSTOMSTDERR"/>
+    </logger>
+
+    <logger name="org.axonframework" additivity="false">
+        <level value="trace"/>
+        <appender-ref ref="CUSTOMSTDOUT"/>
+        <appender-ref ref="CUSTOMSTDERR"/>
+    </logger>
+
+    <logger name="org.springframework" additivity="false">
+        <level value="info"/>
+        <appender-ref ref="CUSTOMSTDOUT"/>
+        <appender-ref ref="CUSTOMSTDERR"/>
+    </logger>
+
+    <logger name="org.springframework.messaging" additivity="false">
+        <level value="info"/>
+        <appender-ref ref="CUSTOMSTDOUT"/>
+        <appender-ref ref="CUSTOMSTDERR"/>
+    </logger>
+
+    <logger name="org.springframework.web.socket" additivity="false">
+        <level value="info"/>
+        <appender-ref ref="CUSTOMSTDOUT"/>
+        <appender-ref ref="CUSTOMSTDERR"/>
+    </logger>
+
+    <logger name="org.springframework.security" additivity="false">
+        <level value="info"/>
+        <appender-ref ref="CUSTOMSTDOUT"/>
+        <appender-ref ref="CUSTOMSTDERR"/>
+    </logger>
+
+    <!--                           -->
+    <!-- setup log4j's root logger -->
+    <!--                           -->
+    <root>
+        <level value="info"/>
+        <appender-ref ref="CUSTOMSTDOUT"/>
+        <appender-ref ref="CUSTOMSTDERR"/>
+        <!--<appender-ref ref="TEXT"/>-->
+    </root>
+
+</log4j:configuration>

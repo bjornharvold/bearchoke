@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-controller="HomeController">
+<head>
+    <meta charset="UTF-8">
+    <base href="/">
+    <title update-title><%= pkg.name %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page based meta tags -->
+    <meta ng-repeat="(name, value) in page.meta" name="{{name}}" value="{{value}}">
+    <link rel="icon" href="/img/bear.ico">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=GFS+Didot' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/css/app.css?ver=[[mvn:buildNumber]]" media="all"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body cg-busy="appBusy">
+
+<div id="view-container" ui-view></div>
+
+<script type="text/javascript" src="/js/app.js?ver=[[mvn:buildNumber]]"></script>
+
+</body>
+</html>

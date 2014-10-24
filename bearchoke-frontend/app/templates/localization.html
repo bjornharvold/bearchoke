@@ -1,0 +1,34 @@
+<!--
+  ~ Copyright 2014 the original author or authors.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<div class="jumbotron">
+    <div class="container">
+        <h2><i class="fa fa-flag"></i> Localization Examples</h2>
+
+        <button class="btn btn-default" ng-click="changeLanguage('de')">Deutsch</button>
+        <button class="btn btn-default" ng-click="changeLanguage('en')">English</button>
+    </div>
+</div>
+<div class="container">
+    <div class="row alert alert-info">
+        <p>Localization is handled entirely on the front-end using resource bundles located in external json files.</p>
+
+        <p>Localization is made possible by the <a href="http://angular-translate.github.io">angular-translate framework</a>. Please see their excellent documentation for details.</p>
+    </div>
+    <h1 translate>TITLE</h1>
+
+    <p translate>FOO</p>
+</div>

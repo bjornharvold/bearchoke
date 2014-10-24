@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <option name="DEFAULT_COMPILER" value="Javac" />
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="bearchoke-api" />
+        <module name="bearchoke-inmemory-security" />
+        <module name="bearchoke-jpa-core" />
+        <module name="bearchoke-jpa-domain" />
+        <module name="bearchoke-jpa-repository" />
+        <module name="bearchoke-jpa-security" />
+        <module name="bearchoke-mongo-core" />
+        <module name="bearchoke-mongo-domain" />
+        <module name="bearchoke-mongo-repository" />
+        <module name="bearchoke-mongo-security" />
+        <module name="bearchoke-platform-base" />
+        <module name="bearchoke-server" />
+        <module name="bearchoke-todo" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="bearchoke-api" target="1.8" />
+      <module name="bearchoke-backend" target="1.8" />
+      <module name="bearchoke-cqrs" target="1.8" />
+      <module name="bearchoke-embedded-security" target="1.8" />
+      <module name="bearchoke-embedded-social" target="1.8" />
+      <module name="bearchoke-inmemory-security" target="1.8" />
+      <module name="bearchoke-jpa-core" target="1.8" />
+      <module name="bearchoke-jpa-domain" target="1.8" />
+      <module name="bearchoke-jpa-repository" target="1.8" />
+      <module name="bearchoke-jpa-security" target="1.8" />
+      <module name="bearchoke-jpa-social" target="1.8" />
+      <module name="bearchoke-mongo-core" target="1.8" />
+      <module name="bearchoke-mongo-domain" target="1.8" />
+      <module name="bearchoke-mongo-repository" target="1.8" />
+      <module name="bearchoke-mongo-security" target="1.8" />
+      <module name="bearchoke-mongo-social" target="1.8" />
+      <module name="bearchoke-platform-base" target="1.8" />
+      <module name="bearchoke-server" target="1.8" />
+      <module name="bearchoke-todo" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
+

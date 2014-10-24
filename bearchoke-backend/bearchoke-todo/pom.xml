@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2014 the original author or authors.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<groupId>com.bearchoke</groupId>
+        <artifactId>bearchoke-backend</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+	</parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.bearchoke</groupId>
+    <artifactId>bearchoke-todo</artifactId>
+    <packaging>jar</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>Bearchoke ToDo (JAR)</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.bearchoke</groupId>
+            <artifactId>bearchoke-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.bearchoke</groupId>
+            <artifactId>bearchoke-platform-base</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Axon CQRS Framework -->
+        <!--<dependency>-->
+            <!--<groupId>org.axonframework</groupId>-->
+            <!--<artifactId>axon-core</artifactId>-->
+            <!--<version>${axon.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.axonframework</groupId>-->
+            <!--<artifactId>axon-springmessaging</artifactId>-->
+            <!--<version>${axon.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.axonframework</groupId>-->
+            <!--<artifactId>axon-amqp</artifactId>-->
+            <!--<version>${axon.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.axonframework</groupId>-->
+            <!--<artifactId>axon-mongo</artifactId>-->
+            <!--<version>${axon.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.axonframework</groupId>-->
+            <!--<artifactId>axon-test</artifactId>-->
+            <!--<version>${axon.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.axonframework</groupId>-->
+            <!--<artifactId>axon-distributed-commandbus</artifactId>-->
+            <!--<version>${axon.version}</version>-->
+        <!--</dependency>-->
+
+        <!--&lt;!&ndash; JPA api &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.hibernate.javax.persistence</groupId>-->
+            <!--<artifactId>hibernate-jpa-2.0-api</artifactId>-->
+            <!--<version>${hibernate.jpa.api.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>javax.validation</groupId>-->
+            <!--<artifactId>validation-api</artifactId>-->
+            <!--<version>${javax.validation.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.hibernate</groupId>-->
+            <!--<artifactId>hibernate-validator</artifactId>-->
+            <!--<version>${hibernate.validator.version}</version>-->
+        <!--</dependency>-->
+
+        <!--&lt;!&ndash; Spring &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-context</artifactId>-->
+            <!--<exclusions>-->
+                <!--&lt;!&ndash; Exclude Commons Logging in favor of SLF4j &ndash;&gt;-->
+                <!--<exclusion>-->
+                    <!--<groupId>commons-logging</groupId>-->
+                    <!--<artifactId>commons-logging</artifactId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-test</artifactId>-->
+        <!--</dependency>-->
+
+        <!--&lt;!&ndash; Spring Integration &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.integration</groupId>-->
+            <!--<artifactId>spring-integration-amqp</artifactId>-->
+            <!--<version>${spring.integration.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.integration</groupId>-->
+            <!--<artifactId>spring-integration-core</artifactId>-->
+            <!--<version>${spring.integration.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.integration</groupId>-->
+            <!--<artifactId>spring-integration-event</artifactId>-->
+            <!--<version>${spring.integration.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.integration</groupId>-->
+            <!--<artifactId>spring-integration-websocket</artifactId>-->
+            <!--<version>${spring.integration.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.integration</groupId>-->
+            <!--<artifactId>spring-integration-security</artifactId>-->
+            <!--<version>${spring.integration.version}</version>-->
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<groupId>org.springframework.security</groupId>-->
+                    <!--<artifactId>spring-security-config</artifactId>-->
+                <!--</exclusion>-->
+                <!--<exclusion>-->
+                    <!--<groupId>org.springframework.security</groupId>-->
+                    <!--<artifactId>spring-security-core</artifactId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.integration</groupId>-->
+            <!--<artifactId>spring-integration-xml</artifactId>-->
+            <!--<version>${spring.integration.version}</version>-->
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<groupId>commons-logging</groupId>-->
+                    <!--<artifactId>commons-logging</artifactId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.integration</groupId>-->
+            <!--<artifactId>spring-integration-mongodb</artifactId>-->
+            <!--<version>${spring.integration.version}</version>-->
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<groupId>org.springframework.data</groupId>-->
+                    <!--<artifactId>spring-data-mongodb</artifactId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
+
+        <!--&lt;!&ndash; Spring Data Mongo &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.data</groupId>-->
+            <!--<artifactId>spring-data-mongodb</artifactId>-->
+            <!--<version>${spring.data.mongo.version}</version>-->
+        <!--</dependency>-->
+
+        <!--&lt;!&ndash; Spring Security &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.security</groupId>-->
+            <!--<artifactId>spring-security-core</artifactId>-->
+            <!--<version>${spring.security.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.security</groupId>-->
+            <!--<artifactId>spring-security-config</artifactId>-->
+            <!--<version>${spring.security.version}</version>-->
+        <!--</dependency>-->
+
+        <!--&lt;!&ndash; xom &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>com.io7m.xom</groupId>-->
+            <!--<artifactId>xom</artifactId>-->
+            <!--<version>${xom.version}</version>-->
+        <!--</dependency>-->
+
+        <!--&lt;!&ndash; dom4j &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>dom4j</groupId>-->
+            <!--<artifactId>dom4j</artifactId>-->
+            <!--<version>20040902.021138</version>-->
+        <!--</dependency>-->
+
+        <!--&lt;!&ndash; Boon JSON transformer &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>io.fastjson</groupId>-->
+            <!--<artifactId>boon</artifactId>-->
+            <!--<version>${boon.version}</version>-->
+        <!--</dependency>-->
+    </dependencies>
+</project>
