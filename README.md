@@ -150,6 +150,7 @@ Finally, the app has been configured to use a custom domain. Please edit your /e
 Next, you have to start the bearchoke-frontend application. Type the following in a new Terminal / Command Prompt window:
 
 	$ cd bearchoke-frontend
+	$ npm install (will install all dependencies located in package.json)
 	$ lineman run	
 
 You can verify that it's running by going to http://dev.bearchoke.com:8000 in your browser. This is the sample app. Enjoy!
