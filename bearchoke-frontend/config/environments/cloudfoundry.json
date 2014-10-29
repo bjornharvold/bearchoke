@@ -4,7 +4,7 @@
     "mixpanelApiToken": "0fb20d2a30780336c9f1ef999eddcce8",
     "serverHostName": "bearchoke-server.cfapps.io",
     "serverProtocol": "http",
-    "serverPort": "8080",
+    "serverPort": "",
     "serverContext": "/api",
     "serverWebSocketContext": "/ws",
     "baseUrl": "http://bearchoke-server.cfapps.io/api",
