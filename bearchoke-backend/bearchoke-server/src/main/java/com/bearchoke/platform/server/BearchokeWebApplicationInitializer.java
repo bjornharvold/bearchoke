@@ -108,11 +108,24 @@ public class BearchokeWebApplicationInitializer implements WebApplicationInitial
         configClasses.add(SpringIntegrationConfig.class);
         configClasses.add(WebSecurityConfig.class);
 
+        // let's determine if this is a cloud based server
+        Cloud cloud = getCloud();
+
         String activeProfiles = System.getProperty(SPRING_PROFILES_ACTIVE);
+
+        if (StringUtils.isEmpty(activeProfiles)) {
+            if (cloud == null) {
+                // if no active profiles are specified, we default to in-memory
+                activeProfiles = INMEMORY + "," + REDIS_LOCAL + "," + RABBIT_LOCAL;
+            } else {
+                activeProfiles = INMEMORY + "," + REDIS_CLOUD + "," + RABBIT_CLOUD;
+            }
+        }
+
+        log.info("Active spring profiles: " + activeProfiles);
 
         String[] profiles = activeProfiles.split(",");
 
-        log.info("Active spring profiles: " + activeProfiles);
 
         for (String profile : profiles) {
 
@@ -129,9 +142,6 @@ public class BearchokeWebApplicationInitializer implements WebApplicationInitial
             }
 
         }
-
-        // let's determine if this is a cloud based server
-        Cloud cloud = getCloud();
 
         // load local or cloud based configs
         if (cloud != null) {
