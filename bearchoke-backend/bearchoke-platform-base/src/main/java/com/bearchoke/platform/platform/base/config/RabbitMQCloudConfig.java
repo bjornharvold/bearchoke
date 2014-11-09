@@ -16,19 +16,38 @@
 
 package com.bearchoke.platform.platform.base.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.cloud.config.java.AbstractCloudConfig;
+import org.springframework.cloud.service.messaging.RabbitConnectionFactoryConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
 @Profile("rabbit-cloud")
+@Slf4j
 public class RabbitMQCloudConfig extends AbstractCloudConfig {
 
     @Bean
     public ConnectionFactory rabbitConnectionFactory() {
-        return connectionFactory().rabbitConnectionFactory();
+        if (log.isInfoEnabled()) {
+            log.info("Attempting to retrieve RabbitMQ instance from Cloud Foundry...");
+        }
+
+        ConnectionFactory factory = connectionFactory().rabbitConnectionFactory();
+
+        if (factory != null) {
+            if (log.isInfoEnabled()) {
+                log.info("Retrieved RabbitMQ service successfully: " + factory.toString());
+            }
+        } else {
+            if (log.isErrorEnabled()) {
+                log.error("Could not find RabbitMQ service");
+            }
+        }
+
+        return factory;
     }
 
 }

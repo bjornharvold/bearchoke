@@ -16,6 +16,7 @@
 
 package com.bearchoke.platform.platform.base.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.config.java.AbstractCloudConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,11 +25,28 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 
 @Configuration
 @Profile("redis-cloud")
+@Slf4j
 public class RedisCloudConfig extends AbstractCloudConfig {
 
     @Bean
     public RedisConnectionFactory redisConnectionFactory() {
-        return connectionFactory().redisConnectionFactory();
+        if (log.isInfoEnabled()) {
+            log.info("Attempting to retrieve Redis instance from Cloud Foundry...");
+        }
+
+        RedisConnectionFactory factory = connectionFactory().redisConnectionFactory();
+
+        if (factory != null) {
+            if (log.isInfoEnabled()) {
+                log.info("Retrieved Redis service successfully: " + factory.toString());
+            }
+        } else {
+            if (log.isErrorEnabled()) {
+                log.error("Could not find Redis service");
+            }
+        }
+
+        return factory;
     }
 
 }

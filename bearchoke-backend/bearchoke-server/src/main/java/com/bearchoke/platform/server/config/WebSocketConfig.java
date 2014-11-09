@@ -93,7 +93,6 @@ public class WebSocketConfig extends AbstractSecurityWebSocketMessageBrokerConfi
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws").setHandshakeHandler(new SecureHandshakeHandler(preAuthenticationManager))
                 .withSockJS()
-                .setClientLibraryUrl("http://dev.bearchoke.com:8000/js/app.js")
                 .setStreamBytesLimit(512 * 1024)
                 .setHttpMessageCacheSize(1000)
                 .setDisconnectDelay(30 * 1000)
@@ -137,7 +136,9 @@ public class WebSocketConfig extends AbstractSecurityWebSocketMessageBrokerConfi
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
         config.setApplicationDestinationPrefixes("/app");
-        config.enableStompBrokerRelay("/queue/", "/topic/");
+        config.enableSimpleBroker("/queue/", "/topic/");
+
+//        config.enableStompBrokerRelay("/queue/", "/topic/");
 
         // only if we want to use . instead of / for path separator e.g. /app/user.chat
 //        config.setPathMatcher(new AntPathMatcher("."));
