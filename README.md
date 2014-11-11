@@ -2,7 +2,7 @@
 
 Welcome to Bearchoke Tempest. This platform aims to be a best practices framework using the latest Java based frameworks, Enterprise Integration Patterns (EIP) and specifically focusing on using an asynchronous, message based, event driven approach to creating web-based software. The current push in the user interface space is SPA/SPI (Single Page Applications / Single Page Interface). The samples will leverage AngularJS to showcase this. Bearchoke Tempest was created to show how an SPA can interface with the Spring server world as well as leverage other SPA modular goodies. 
 
-If you just want to check out the demo, you can check out the Cloud Foundry hosted instance here: [www.bearchoke.com](http://www.bearchoke.com).
+If you just want to check out the demo, you can check out the Cloud Foundry hosted instance here: [bearchoke-frontend.cfapps.io](https://bearchoke-frontend.cfapps.io).
 
 Key frameworks that I've leveraged to make this work are:
 
