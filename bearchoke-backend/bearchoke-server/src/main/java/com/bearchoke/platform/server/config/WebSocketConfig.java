@@ -136,9 +136,8 @@ public class WebSocketConfig extends AbstractSecurityWebSocketMessageBrokerConfi
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
         config.setApplicationDestinationPrefixes("/app");
-        config.enableSimpleBroker("/queue/", "/topic/");
-
-//        config.enableStompBrokerRelay("/queue/", "/topic/");
+//        config.enableSimpleBroker("/queue/", "/topic/");
+        config.enableStompBrokerRelay("/queue/", "/topic/");
 
         // only if we want to use . instead of / for path separator e.g. /app/user.chat
 //        config.setPathMatcher(new AntPathMatcher("."));
