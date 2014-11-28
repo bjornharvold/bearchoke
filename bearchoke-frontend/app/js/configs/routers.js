@@ -136,20 +136,6 @@ angular.module("app").config(function ($stateProvider, $locationProvider, $urlRo
         //
         // STATIC CONTENT
         //
-            .state('about', {
-                parent: "static-content-layout",
-                url: '/ui/about',
-                templateUrl: 'static/about.html',
-                data: {
-                    auth: false,
-                    title: "TECHSTACK",
-                    meta: {
-                        'description': 'About the software framework',
-                        'author': 'Bjorn Harvold',
-                        'keywords': 'tech stack'
-                    }
-                }
-            })
             .state('faq', {
                 parent: "static-content-layout",
                 url: '/ui/faq',

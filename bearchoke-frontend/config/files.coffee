@@ -10,14 +10,14 @@ module.exports = (lineman) ->
   #Override file patterns here
   js: 
     vendor: [
-      "vendor/js/jquery-2.1.1/jquery-2.1.1.min.js"
-      "vendor/js/angular-1.3.0-rc.4/angular.js"
-      "vendor/js/**/stomp.min.js"
-      "vendor/js/**/messageformat.js"
-      "vendor/js/**/angular-translate.min.js"
+      "vendor/js/jquery-2.1.1/jquery-2.1.1.min.js",
+      "vendor/js/angular-1.3.4/angular.js",
+      "vendor/js/**/stomp.min.js",
+      "vendor/js/**/messageformat.js",
+      "vendor/js/**/angular-translate.min.js",
       "vendor/js/**/*.js"
-    ]
+    ],
 	  app: [
-      "app/js/app.js"
+      "app/js/app.js",
       "app/js/**/*.js"
 	  ]

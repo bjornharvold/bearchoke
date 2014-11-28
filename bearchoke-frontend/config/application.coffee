@@ -28,6 +28,18 @@ module.exports = (lineman) ->
 
   # have to copy over environment config file before actually copying resources
   appTasks:
+    common: [
+      "coffee",
+      "jshint",
+      "handlebars",
+      "jst",
+      "replace:development",
+      "concat_sourcemap",
+      "copy:dev",
+      "images:dev",
+      "webfonts:dev",
+      "pages:dev"
+    ],
     dist: [
       "replace:dist",
       "uglify",

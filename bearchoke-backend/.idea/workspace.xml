@@ -38,98 +38,7 @@
     <favorites_list name="bearchoke-backend" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="BearchokeWebApplicationInitializer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/BearchokeWebApplicationInitializer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="840" max-vertical-offset="3210">
-              <caret line="120" column="82" selection-start-line="120" selection-start-column="82" selection-end-line="120" selection-end-column="82" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ToDoController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/websocket/controller/ToDoController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1305">
-              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RabbitMQCloudConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bearchoke-platform-base/src/main/java/com/bearchoke/platform/platform/base/config/RabbitMQCloudConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="585">
-              <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="49" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RedisCloudConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bearchoke-platform-base/src/main/java/com/bearchoke/platform/platform/base/config/RedisCloudConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
-              <caret line="48" column="23" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.64143425" vertical-offset="3717" max-vertical-offset="4470">
-              <caret line="280" column="49" selection-start-line="280" selection-start-column="49" selection-end-line="280" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RabbitMQLocalConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bearchoke-platform-base/src/main/java/com/bearchoke/platform/platform/base/config/RabbitMQLocalConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="645">
-              <caret line="53" column="19" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WebSocketConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/config/WebSocketConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1140" max-vertical-offset="3150">
-              <caret line="140" column="0" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ToDoCommandHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bearchoke-todo/src/main/java/com/bearchoke/platform/todo/ToDoCommandHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="780">
-              <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ToDoEventListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bearchoke-todo/src/main/java/com/bearchoke/platform/todo/ToDoEventListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="795" max-vertical-offset="945">
-              <caret line="77" column="87" selection-start-line="77" selection-start-column="87" selection-end-line="77" selection-end-column="87" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -994,12 +903,12 @@
       <workItem from="1414739797065" duration="2473000" />
       <workItem from="1415513926992" duration="1523000" />
       <workItem from="1417166343620" duration="677000" />
-      <workItem from="1417177843971" duration="834000" />
+      <workItem from="1417177843971" duration="1693000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="380117000" />
+    <option name="totallyTimeSpent" value="380976000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -1390,22 +1299,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/BearchokeWebApplicationInitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1373" max-vertical-offset="3960">
-          <caret line="120" column="82" selection-start-line="120" selection-start-column="82" selection-end-line="120" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/websocket/controller/ToDoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="1305">
-          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bearchoke-todo/src/main/java/com/bearchoke/platform/todo/ToDoCommandHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="233" max-vertical-offset="780">
@@ -1438,26 +1331,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-platform-base/src/main/java/com/bearchoke/platform/platform/base/config/RabbitMQCloudConfig.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
-          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="49" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.64143425" vertical-offset="3717" max-vertical-offset="4470">
+          <caret line="280" column="49" selection-start-line="280" selection-start-column="49" selection-end-line="280" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bearchoke-platform-base/src/main/java/com/bearchoke/platform/platform/base/config/RedisCloudConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
+        <state vertical-scroll-proportion="0.57768923" vertical-offset="0" max-vertical-offset="753">
           <caret line="48" column="23" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/bearchoke-platform-base/src/main/java/com/bearchoke/platform/platform/base/config/RabbitMQCloudConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64143425" vertical-offset="3717" max-vertical-offset="4470">
-          <caret line="280" column="49" selection-start-line="280" selection-start-column="49" selection-end-line="280" selection-end-column="49" />
+        <state vertical-scroll-proportion="0.25896415" vertical-offset="0" max-vertical-offset="753">
+          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="49" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/websocket/controller/ToDoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="1305">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/BearchokeWebApplicationInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1373" max-vertical-offset="3960">
+          <caret line="120" column="82" selection-start-line="120" selection-start-column="82" selection-end-line="120" selection-end-column="82" />
           <folding />
         </state>
       </provider>

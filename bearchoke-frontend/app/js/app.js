@@ -15,7 +15,7 @@
  */
 
 // Create the Application module
-angular.module("app", ["ngResource", "ngMessages", "ngSanitize", "ngTouch", "ngLodash", "ui.router", "ui.bootstrap", "restangular", "ngStorage", "pascalprecht.translate"])
+angular.module("app", ["ngResource", "ngMessages", "ngSanitize", "ngTouch", "ngLodash", "ui.router", "ui.bootstrap", "restangular", "ngStorage", "pascalprecht.translate", "ezfb"])
         .run(function ($rootScope, $state, $stateParams, $modal, $log, $timeout, AuthenticationFactory, ApplicationContext) {
             // for login form in header.html
             $rootScope.credentials = {};
