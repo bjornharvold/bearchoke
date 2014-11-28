@@ -25,16 +25,25 @@ module.exports = (lineman) ->
   # html5push state simulation
   server:
     pushState: true
-  
+
+  # have to copy over environment config file before actually copying resources
+  appTasks:
+    dist: [
+      "replace:dist",
+      "uglify",
+      "cssmin",
+      "copy:dist",
+      "images:dist",
+      "webfonts:dist",
+      "pages:dist"
+    ]
+
   removeTasks:
     common: ["handlebars", "jst"]
 
   appendTasks:
     dev: [
       "replace:development"
-    ]
-    dist: [
-      "replace:dist"
     ]
 
   copy:
