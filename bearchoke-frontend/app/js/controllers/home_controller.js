@@ -15,5 +15,5 @@
  */
 
 angular.module("app").controller('HomeController', function ($rootScope, $scope, $state, $q, $timeout, $log, ApplicationContext) {
-
+    $log.info('HomeController');
 });

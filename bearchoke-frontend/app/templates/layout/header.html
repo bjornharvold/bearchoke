@@ -48,7 +48,7 @@
                     </ul>
                 </li>
             </ul>
-            <div class="navbar-right">
+            <div ng-controller="LoginController" class="navbar-right">
                 <div id="loginForm" ng-hide="isLoggedIn">
                     <form class="navbar-form" role="form">
                         <div class="form-group">
@@ -57,8 +57,16 @@
                         <div class="form-group">
                             <input placeholder="Password" class="form-control" type="password" name="password" ng-model="credentials.password"/>
                         </div>
-                        <button type="submit" class="btn btn-success" ng-click="login()">Sign in</button>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success" ng-click="login()">Sign in</button>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="navbar-facebook btn btn-social btn-facebook">
+                                <i class="fa fa-facebook"></i> Sign in with Facebook
+                            </button>
+                        </div>
                     </form>
+
                 </div>
                 <div class="logged-in" ng-show="isLoggedIn">
                     <ul class="nav navbar-nav">

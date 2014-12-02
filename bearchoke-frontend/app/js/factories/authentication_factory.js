@@ -20,6 +20,8 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
 
         login: function (username, password, success, error) {
 
+            $log.debug('Attempting to authenticate...');
+
             // authenticate with the server
             AuthRestangular.one('authenticate').customPOST({username: username, password: password}).then(function(data) {
 
@@ -81,7 +83,7 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
 
             AuthRestangular.one('secured/user').get().then(function (data) {
                 $log.debug('Retrieved user successfully');
-//                $log.debug(data);
+                //$log.debug(data);
                 ApplicationContext.setUser({username: data.username, roles: data.roles});
 
                 if (success) {

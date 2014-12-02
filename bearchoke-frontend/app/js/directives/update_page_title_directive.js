@@ -61,7 +61,7 @@ angular.module("app").directive('updateTitle', function ($rootScope, $timeout, $
             $rootScope.$on('$stateChangeSuccess', listener);
 
             // this event listens to language changes and updates the title accordingly
-            // NOTE: It is assumed that the page change listener has already been called and the raw page name has been retrieved from routers.js
+            // NOTE: It is assumed that the page change listener has already been called and the raw page name has been retrieved from router_config.js
             $rootScope.$on('$translateChangeSuccess', translateListener);
 
         }

@@ -14,7 +14,7 @@ module.exports = (lineman) ->
       "vendor/js/angular-1.3.4/angular.js",
       "vendor/js/**/stomp.min.js",
       "vendor/js/**/messageformat.js",
-      "vendor/js/**/angular-translate.min.js",
+      "vendor/js/angular-translate-2.2.0/angular-translate.min.js",
       "vendor/js/**/*.js"
     ],
 	  app: [
