@@ -26,22 +26,42 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
             AuthRestangular.one('authenticate').customPOST({username: username, password: password}).then(function(data) {
 
                 // fire off successful login event
-                $rootScope.$emit(eventConstants.authentication, {action: 'Logged in'});
+                $rootScope.$emit(eventConstants.authentication, {username: username});
 
                 self.getUser(success, error);
             }, function() {
                 $log.info("auth failure");
                 self.clearAuth();
 
-                if (error) {
-                    error("Could not verify email and password.  Please try again");
-                }
+                $rootScope.error("Could not verify email and password.  Please try again");
             });
 
         },
 
+        register: function (user) {
+            $log.debug('Registering new user....');
+
+            // authenticate with the server
+            AuthRestangular.one('register').customPOST(user).then(function(data) {
+
+                // fire off successful login event
+                $rootScope.$emit(eventConstants.registration, {username: user.username});
+
+                self.getUser(success, error);
+            }, function() {
+                $log.info("registration failure");
+
+                $rootScope.error("There was a problem with registration. Please try again later.");
+            });
+        },
+
+        facebookLogin: function () {
+            // this is a promise-based login
+            ezfb.login(null, {scope: 'email'});
+        },
+
         logout: function (success) {
-            $log.info("logout");
+            $log.debug("logging out user");
             var promise = AuthRestangular.one('logout').get();
 
             promise.then(function(data) {

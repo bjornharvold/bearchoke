@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-angular.module("app").controller('LoginController', function ($rootScope, $scope, $state, $q, $timeout, $log, ApplicationContext, AuthenticationFactory) {
+angular.module("app").controller('LoginController', function ($rootScope, $scope, $state, $q, $timeout, $log, ApplicationContext, AuthenticationFactory, ezfb) {
     $log.debug('LoginController');
 
     // for login form in header.html
@@ -54,9 +54,11 @@ angular.module("app").controller('LoginController', function ($rootScope, $scope
         });
     };
 
-    $scope.facebookLoginClick = function() {
+    $scope.facebookLogin = function() {
+        $log.debug('Logging in with Facebook...');
         $rootScope.error = null;
-        FacebookService.login().then(onLoginSuccess, onLoginFailure);
+
+
     };
 
     $scope.forgotPasswordClick = function() {
@@ -72,6 +74,25 @@ angular.module("app").controller('LoginController', function ($rootScope, $scope
         $log.debug(message);
     };
 
+    /**
+     * Update loginStatus result
+     */
+    function updateLoginStatus (more) {
+        ezfb.getLoginStatus(function (res) {
+            $scope.loginStatus = res;
+
+            (more || angular.noop)();
+        });
+    }
+
+    /**
+     * Update api('/me') result
+     */
+    function updateApiMe () {
+        ezfb.api('/me', function (res) {
+            swal(res);
+        });
+    }
 
 //            $log.info("Is logged in: " + $rootScope.isLoggedIn);
 

@@ -26,9 +26,9 @@ angular.module("app").config(function ($stateProvider, $locationProvider, $urlRo
 
     $httpProvider.defaults.withCredentials = true;
 
+    // Un-matched URLs redirect to /
     $urlRouterProvider.otherwise("/");
 
-    // Un-matched URLs redirect to /
     $stateProvider
         //
         // Top-level Layouts
@@ -130,6 +130,21 @@ angular.module("app").config(function ($stateProvider, $locationProvider, $urlRo
                         'description': 'Test description',
                         'author': 'Bjorn Harvold',
                         'keywords': 'test,cool,bearchoke'
+                    }
+                }
+            })
+            .state('register', {
+                parent: "static-content-layout",
+                url: "/ui/register",
+                templateUrl: "registration.html",
+                controller: 'RegistrationController',
+                data: {
+                    auth: false,
+                    title: "REGISTER",
+                    meta: {
+                        'description': 'Site registration',
+                        'author': 'Bjorn Harvold',
+                        'keywords': 'registration,bearchoke'
                     }
                 }
             })

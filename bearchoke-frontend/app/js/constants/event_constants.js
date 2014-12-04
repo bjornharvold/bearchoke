@@ -16,7 +16,7 @@
 
 angular.module('app').constant('eventConstants', {
     authentication: 'authentication',
-    registration: 'registeration',
+    registration: 'registration',
     identify: 'identify',
     logout: 'logout'
 

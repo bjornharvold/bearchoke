@@ -7,6 +7,7 @@
     "QUOTES": "Stock Ticker over Web Sockets",
     "CHAT": "Chat over Web Sockets",
     "REST": "Rest",
+    "REGISTER": "Register",
     "TODO": "To Do",
     "TITLE": "Hello",
     "FOO": "This is a paragraph",

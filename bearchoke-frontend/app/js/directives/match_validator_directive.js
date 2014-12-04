@@ -14,17 +14,14 @@
  * limitations under the License.
  */
 
-/**
- * Created with IntelliJ IDEA.
- * User: Bjorn
- * Date: 11/15/13
- * Time: 2:21 PM
- */
-angular.module("app").config(function (ezfbProvider, configuration) {
-
-    ezfbProvider.setInitParams({
-        appId: configuration.facebookApiToken,
-        version: 'v2.2'
-    });
-
+angular.module("app").directive('matchValidator', function () {
+    return {
+        require: 'ngModel',
+        link : function(scope, element, attrs, ngModel) {
+            ngModel.$parsers.push(function(value) {
+                ngModel.$setValidity('match', value === scope.$eval(attrs.matchValidator));
+                return value;
+            });
+        }
+    };
 });

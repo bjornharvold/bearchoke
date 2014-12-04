@@ -41,7 +41,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Legal <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li ng-class="{ active: $state.is('contact') }"><a ui-sref="contact"><i class="fa fa-envelope"></i> Contact Us</a></li>
                         <li ng-class="{ active: $state.is('faq') }"><a ui-sref="faq"><i class="fa fa-support"></i> FAQ</a></li>
@@ -61,7 +61,10 @@
                             <button type="submit" class="btn btn-success" ng-click="login()">Sign in</button>
                         </div>
                         <div class="form-group">
-                            <button type="button" class="navbar-facebook btn btn-social btn-facebook">
+                            <button type="button" class="btn btn-default" ui-sref="register">Register</button>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="navbar-facebook btn btn-social btn-facebook" ng-click="facebookLogin()">
                                 <i class="fa fa-facebook"></i> Sign in with Facebook
                             </button>
                         </div>
