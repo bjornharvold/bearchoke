@@ -195,6 +195,7 @@ This framework is for me a way to prove that the technologies can co-exist toget
 
 * Facebook integration
 * MixPanel integration
+* MailChimp integration
 * File upload example
 * Charting and reporting
 * Tests, tests and tests

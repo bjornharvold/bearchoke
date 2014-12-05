@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-angular.module("app").controller('RegistrationController', function ($scope, $state, $log) {
+angular.module("app").controller('RegistrationController', function ($scope, $state, $log, SweetAlert) {
     $log.info('RegistrationController');
 
     $scope.user = {};
@@ -22,6 +22,11 @@ angular.module("app").controller('RegistrationController', function ($scope, $st
     $scope.submitted = false;
     $scope.submit = function() {
         $scope.submitted = true;
+
+        if ($scope.userForm.$valid) {
+            $log.info($scope.user.captcha);
+            SweetAlert.success("Great job!", "Form is valid");
+        }
     };
 
     $scope.interacted = function(field) {

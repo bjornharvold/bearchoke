@@ -15,7 +15,20 @@
  */
 
 // Create the Application module
-angular.module("app", ["ngResource", "ngMessages", "ngSanitize", "ngTouch", "ngLodash", "ui.router", "ui.bootstrap", "restangular", "ngStorage", "pascalprecht.translate", "ezfb"])
+angular.module("app", [
+    "ngResource",
+    "ngMessages",
+    "ngSanitize",
+    "ngTouch",
+    "ngLodash",
+    "ui.router",
+    "ui.bootstrap",
+    "restangular",
+    "ngStorage",
+    "pascalprecht.translate",
+    "ezfb",
+    "oitozero.ngSweetAlert"
+])
         .run(function ($rootScope, $state, $stateParams, $modal, $log, $timeout, ApplicationContext) {
 
             $rootScope.alert = function (thing) {

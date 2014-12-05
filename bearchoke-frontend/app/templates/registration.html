@@ -21,14 +21,46 @@
 </div>
 <div id="registration" class="container">
     <div class="row alert alert-info">
-        <p>Create an account with the system</p>
+        <p>Create an account with Bearchoke Tempest.</p>
 
-        <p>This feature makes use of Angular's new ngMessages (v1.3+) extension and visualCaptcha</p>
+        <p>This feature makes use of Angular's new <a href="https://docs.angularjs.org/api/ngMessages/directive/ngMessages" target="_blank">ngMessages (v1.3+) extension</a> for validation and <a href="https://github.com/mllrsohn/angular-re-captcha" target="_blank">angular-recaptcha</a></p>
     </div>
     <div class="row">
         <form name="userForm" ng-submit="submit()" novalidate>
             <div class="control-group">
-                <label for="username">Username: </label>
+                <label for="firstname"><i class="fa fa-asterisk red normal"></i> First name: </label>
+
+                <div class="form-group">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input id="firstname" type="text" class="form-control" placeholder="First name" name="firstname"
+                               ng-model="user.firstname" required>
+                    </div>
+                    <div class="error-messages" ng-if="interacted(userForm.firstname)" ng-messages="userForm.firstname.$error">
+                        <div class="ng-scope" ng-message="required">
+                            You forgot to enter your first name...
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="lastname"><i class="fa fa-asterisk red"></i> Last name:</label>
+
+                <div class="form-group">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input id="lastname" type="text" class="form-control" placeholder="Last name" name="lastname"
+                               ng-model="user.lastname" required>
+                    </div>
+                    <div class="error-messages" ng-if="interacted(userForm.lastname)" ng-messages="userForm.lastname.$error">
+                        <div class="ng-scope" ng-message="required">
+                            You forgot to enter your last name...
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="username"><i class="fa fa-asterisk red"></i> Username:</label>
 
                 <div class="form-group">
                     <div class="input-group input-group-lg">
@@ -48,7 +80,7 @@
                 </div>
             </div>
             <div class="control-group">
-                <label for="username">Email: </label>
+                <label for="username"><i class="fa fa-asterisk red"></i> Email:</label>
 
                 <div class="form-group">
                     <div class="input-group input-group-lg">
@@ -71,7 +103,7 @@
                 </div>
             </div>
             <div class="control-group">
-                <label for="username">Password: </label>
+                <label for="username"><i class="fa fa-asterisk red"></i> Password:</label>
 
                 <div class="form-group">
                     <div class="input-group input-group-lg">
@@ -98,7 +130,7 @@
                 </div>
             </div>
             <div class="control-group">
-                <label for="username">Verify password: </label>
+                <label for="username"><i class="fa fa-asterisk red"></i> Verify password:</label>
 
                 <div class="form-group">
                     <div class="input-group input-group-lg">
