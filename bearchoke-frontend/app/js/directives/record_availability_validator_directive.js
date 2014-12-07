@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-angular.module("app").directive('recordAvailabilityValidator', function ($http) {
+angular.module("app").directive('recordAvailabilityValidator', function ($http, configuration) {
 
     return {
         require: 'ngModel',
         link: function (scope, element, attrs, ngModel) {
-            var apiUrl = attrs.recordAvailabilityValidator;
+            var apiUrl = configuration.baseUrl + attrs.recordAvailabilityValidator;
 
             function setAsLoading(bool) {
                 ngModel.$setValidity('recordLoading', !bool);
@@ -37,10 +37,16 @@ angular.module("app").directive('recordAvailabilityValidator', function ($http) 
                 setAsLoading(true);
                 setAsAvailable(false);
 
-                $http.get(apiUrl, {v: value})
-                        .success(function () {
+                $http.get(apiUrl, {
+                    params: {key: value}
+                })
+                        .success(function (data, status, headers, config) {
                             setAsLoading(false);
-                            setAsAvailable(true);
+                            if (data.unique) {
+                                setAsAvailable(true);
+                            } else {
+                                setAsAvailable(false);
+                            }
                         })
                         .error(function () {
                             setAsLoading(false);

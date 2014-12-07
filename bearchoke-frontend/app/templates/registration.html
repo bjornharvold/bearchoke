@@ -67,15 +67,17 @@
                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
                         <input id="username" type="text" class="form-control" placeholder="Username" name="username"
                                ng-model="user.username"
-                               record-availability-validator="/api/usernameAvailability"
+                               ng-minlength="4"
+                               ng-maxlength="50"
+                               record-availability-validator="/user/uniqueusername"
                                required>
                     </div>
                     <div class="error-messages" ng-if="interacted(userForm.username)" ng-messages="userForm.username.$error">
                         <div class="ng-scope" ng-message="required">
                             You forgot to enter your username...
                         </div>
-                        <div ng-message="record-loading">Validating username...</div>
-                        <div ng-message="record-available">Username is taken</div>
+                        <div ng-message="recordLoading">Validating username...</div>
+                        <div ng-message="recordAvailable">Username is taken</div>
                     </div>
                 </div>
             </div>
@@ -87,7 +89,7 @@
                         <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
                         <input id="email" type="email" class="form-control" placeholder="E-mail" name="email"
                                ng-model="user.email"
-                               record-availability-validator="/api/emailAvailability"
+                               record-availability-validator="/user/uniqueemail"
                                required>
                     </div>
                     <div class="error-messages" ng-if="interacted(userForm.email)"  ng-messages="userForm.email.$error">
@@ -97,8 +99,8 @@
                         <div ng-message="email">
                             You did not enter your email address correctly...
                         </div>
-                        <div ng-message="record-loading">Validating email...</div>
-                        <div ng-message="record-available">Email is taken</div>
+                        <div ng-message="recordLoading">Validating email...</div>
+                        <div ng-message="recordAvailable">Email is taken</div>
                     </div>
                 </div>
             </div>

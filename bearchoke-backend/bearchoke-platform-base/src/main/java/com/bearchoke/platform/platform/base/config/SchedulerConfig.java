@@ -41,7 +41,7 @@ public class SchedulerConfig implements SchedulingConfigurer {
         registrar.setTaskScheduler(taskScheduler());
     }
 
-    @Bean(name = "taskExecutor", destroyMethod = "shutdown")
+    @Bean(name = "taskExecutor")
     public ThreadPoolTaskExecutor taskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setMaxPoolSize(5);
@@ -52,7 +52,7 @@ public class SchedulerConfig implements SchedulingConfigurer {
         return executor;
     }
 
-    @Bean(name = "taskScheduler", destroyMethod = "destroy")
+    @Bean(name = "taskScheduler")
     public ThreadPoolTaskScheduler taskScheduler() {
         ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
         scheduler.setPoolSize(5);

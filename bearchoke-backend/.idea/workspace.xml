@@ -39,43 +39,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/web/api/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
-              <caret line="55" column="72" selection-start-line="55" selection-start-column="72" selection-end-line="55" selection-end-column="72" />
+            <state vertical-scroll-proportion="0.45816734" vertical-offset="0" max-vertical-offset="753">
+              <caret line="45" column="64" selection-start-line="45" selection-start-column="64" selection-end-line="45" selection-end-column="64" />
               <folding>
                 <element signature="e#1423#1424#0" expanded="true" />
                 <element signature="e#1499#1500#0" expanded="true" />
-                <element signature="e#1869#1870#0" expanded="true" />
-                <element signature="e#1953#1954#0" expanded="true" />
-                <element signature="e#2343#2344#0" expanded="true" />
-                <element signature="e#2429#2430#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ExtendedInMemoryUserDetailsManagerImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bearchoke-inmemory-security/src/main/java/com/bearchoke/platform/inmemory/security/service/impl/ExtendedInMemoryUserDetailsManagerImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
-              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SchedulerConfig.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bearchoke-platform-base/src/main/java/com/bearchoke/platform/platform/base/config/SchedulerConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.89461356" vertical-offset="128" max-vertical-offset="735">
-              <caret line="55" column="52" selection-start-line="55" selection-start-column="52" selection-end-line="55" selection-end-column="52" />
-              <folding>
-                <element signature="e#1459#1460#0" expanded="true" />
-                <element signature="e#1518#1519#0" expanded="true" />
+                <element signature="e#1867#1868#0" expanded="true" />
+                <element signature="e#1951#1952#0" expanded="true" />
+                <element signature="e#2336#2337#0" expanded="true" />
+                <element signature="e#2422#2423#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -84,8 +59,8 @@
       <file leaf-file-name="QuoteServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/websocket/service/impl/QuoteServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="173" max-vertical-offset="1275">
-              <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="113" max-vertical-offset="1275">
+              <caret line="60" column="24" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -115,7 +90,6 @@
         <option value="$PROJECT_DIR$/bearchoke-inmemory-security/pom.xml" />
         <option value="$PROJECT_DIR$/bearchoke-inmemory-security/src/main/java/com/bearchoke/platform/inmemory/security/service/impl/ExtendedInMemoryUserDetailsManagerImpl.java" />
         <option value="$PROJECT_DIR$/bearchoke-api/src/main/java/com/bearchoke/platform/api/user/dto/UniqueResult.java" />
-        <option value="$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/web/api/UserController.java" />
         <option value="$PROJECT_DIR$/bearchoke-inmemory-security/src/main/java/com/bearchoke/platform/inmemory/security/config/EmbeddedSecurityConfig.java" />
         <option value="$PROJECT_DIR$/bearchoke-server/src/test/java/com/bearchoke/platform/server/web/api/GreetingControllerTest.java" />
         <option value="$PROJECT_DIR$/bearchoke-platform-base/src/test/java/com/bearchoke/platform/platform/base/config/MockSessionConfig.java" />
@@ -123,6 +97,8 @@
         <option value="$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/config/WebSocketConfig.java" />
         <option value="$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/config/AppConfig.java" />
         <option value="$PROJECT_DIR$/bearchoke-platform-base/src/main/java/com/bearchoke/platform/platform/base/config/SchedulerConfig.java" />
+        <option value="$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/websocket/service/impl/QuoteServiceImpl.java" />
+        <option value="$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/web/api/UserController.java" />
       </list>
     </option>
   </component>
@@ -1296,12 +1272,12 @@
       <workItem from="1417591312862" duration="490000" />
       <workItem from="1417678146693" duration="597000" />
       <workItem from="1417752527104" duration="736000" />
-      <workItem from="1417851707615" duration="8692000" />
+      <workItem from="1417851707615" duration="11760000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="393578000" />
+    <option name="totallyTimeSpent" value="396646000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -1324,7 +1300,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41741356" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41741356" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28969958" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1380,13 +1356,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bearchoke-jpa-core/src/main/java/com/bearchoke/platform/jpa/config/JpaCloudConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28767124" vertical-offset="0" max-vertical-offset="730">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bearchoke-jpa-core/src/main/java/com/bearchoke/platform/jpa/config/JpaLocalConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.28767124" vertical-offset="0" max-vertical-offset="730">
@@ -1536,7 +1505,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
           <caret line="56" column="30" selection-start-line="56" selection-start-column="30" selection-end-line="56" selection-end-column="30" />
           <folding>
-            <element signature="e#1968#1969#0" expanded="true" />
+            <element signature="e#1968#1969#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1628,8 +1597,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
           <caret line="32" column="29" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
           <folding>
-            <element signature="e#883#884#0" expanded="true" />
-            <element signature="e#919#920#0" expanded="true" />
+            <element signature="e#883#884#0" expanded="false" />
+            <element signature="e#919#920#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1646,14 +1615,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="4" max-vertical-offset="1335">
           <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/web/api/AuthenticationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="137" max-vertical-offset="855">
-          <caret line="75" column="31" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -1722,31 +1683,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/web/api/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
-          <caret line="55" column="72" selection-start-line="55" selection-start-column="72" selection-end-line="55" selection-end-column="72" />
-          <folding>
-            <element signature="e#1423#1424#0" expanded="true" />
-            <element signature="e#1499#1500#0" expanded="true" />
-            <element signature="e#1869#1870#0" expanded="true" />
-            <element signature="e#1953#1954#0" expanded="true" />
-            <element signature="e#2343#2344#0" expanded="true" />
-            <element signature="e#2429#2430#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-inmemory-security/src/main/java/com/bearchoke/platform/inmemory/security/service/impl/ExtendedInMemoryUserDetailsManagerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bearchoke-server/src/test/java/com/bearchoke/platform/server/web/api/UserControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="987" max-vertical-offset="1740">
@@ -1766,14 +1702,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/websocket/service/impl/QuoteServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="173" max-vertical-offset="1275">
-          <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/4.1.1.RELEASE/spring-context-4.1.1.RELEASE.jar!/org/springframework/scheduling/TaskScheduler.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2238806" vertical-offset="0" max-vertical-offset="402">
@@ -1784,11 +1712,60 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bearchoke-platform-base/src/main/java/com/bearchoke/platform/platform/base/config/SchedulerConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.89461356" vertical-offset="128" max-vertical-offset="735">
-          <caret line="55" column="52" selection-start-line="55" selection-start-column="52" selection-end-line="55" selection-end-column="52" />
+        <state vertical-scroll-proportion="0.43824703" vertical-offset="0" max-vertical-offset="753">
+          <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
           <folding>
-            <element signature="e#1459#1460#0" expanded="true" />
-            <element signature="e#1518#1519#0" expanded="true" />
+            <element signature="e#1459#1460#0" expanded="false" />
+            <element signature="e#1518#1519#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-inmemory-security/src/main/java/com/bearchoke/platform/inmemory/security/service/impl/ExtendedInMemoryUserDetailsManagerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3984064" vertical-offset="0" max-vertical-offset="753">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/web/api/AuthenticationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.82071716" vertical-offset="102" max-vertical-offset="855">
+          <caret line="84" column="33" selection-start-line="84" selection-start-column="33" selection-end-line="84" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/service/GreetingServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27888447" vertical-offset="0" max-vertical-offset="753">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/websocket/service/impl/QuoteServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="113" max-vertical-offset="1275">
+          <caret line="60" column="24" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/web/api/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45816734" vertical-offset="0" max-vertical-offset="753">
+          <caret line="45" column="64" selection-start-line="45" selection-start-column="64" selection-end-line="45" selection-end-column="64" />
+          <folding>
+            <element signature="e#1423#1424#0" expanded="true" />
+            <element signature="e#1499#1500#0" expanded="true" />
+            <element signature="e#1867#1868#0" expanded="true" />
+            <element signature="e#1951#1952#0" expanded="true" />
+            <element signature="e#2336#2337#0" expanded="true" />
+            <element signature="e#2422#2423#0" expanded="true" />
           </folding>
         </state>
       </provider>

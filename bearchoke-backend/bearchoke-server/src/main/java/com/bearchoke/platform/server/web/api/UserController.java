@@ -43,7 +43,7 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/api/user/uniqueemail", method = { RequestMethod.GET }, produces = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE)
-	public UniqueResult isEmailUnique(@RequestParam(value = "email", required = true) String email) {
+	public UniqueResult isEmailUnique(@RequestParam(value = "key", required = true) String email) {
         return new UniqueResult(!extendedUserDetailsManager.emailExists(email));
 	}
 
@@ -53,7 +53,7 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/api/user/uniqueusername", method = { RequestMethod.GET }, produces = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE)
-	public UniqueResult isUsernameUnique(@RequestParam(value = "username", required = true)String username) {
+	public UniqueResult isUsernameUnique(@RequestParam(value = "key", required = true)String username) {
         return new UniqueResult(!extendedUserDetailsManager.userExists(username));
 	}
 }
