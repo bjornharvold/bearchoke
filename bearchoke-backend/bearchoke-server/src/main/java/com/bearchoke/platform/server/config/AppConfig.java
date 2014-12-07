@@ -24,6 +24,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.SchedulingConfigurer;
+import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -33,7 +35,6 @@ import org.springframework.stereotype.Controller;
  * Responsibility:
  */
 @Configuration
-@EnableScheduling
 @EnableAsync
 @ComponentScan(basePackages = "com.bearchoke.platform.server", excludeFilters = {
         @ComponentScan.Filter(value = Controller.class, type = FilterType.ANNOTATION),

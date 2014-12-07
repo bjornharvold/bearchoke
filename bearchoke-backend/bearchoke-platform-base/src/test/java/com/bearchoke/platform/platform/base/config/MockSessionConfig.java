@@ -26,6 +26,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.session.ExpiringSession;
 import org.springframework.session.data.redis.RedisOperationsSessionRepository;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.session.web.http.SessionRepositoryFilter;
 import redis.clients.jedis.Protocol;
 import redis.embedded.RedisServer;
@@ -37,6 +38,7 @@ import redis.embedded.RedisServer;
  * Responsibility:
  */
 @Configuration
+@EnableRedisHttpSession
 public class MockSessionConfig {
 
     @Bean
@@ -62,7 +64,6 @@ public class MockSessionConfig {
         }
     }
 
-
     @Bean
     public JedisConnectionFactory connectionFactory() throws Exception {
         return new JedisConnectionFactory();
@@ -75,16 +76,6 @@ public class MockSessionConfig {
         template.setHashKeySerializer(new StringRedisSerializer());
         template.setConnectionFactory(connectionFactory());
         return template;
-    }
-
-    @Bean
-    public RedisOperationsSessionRepository sessionRepository() throws Exception {
-        return new RedisOperationsSessionRepository(redisTemplate());
-    }
-
-    @Bean
-    public SessionRepositoryFilter sessionRepositoryFilter() throws Exception {
-        return new SessionRepositoryFilter(sessionRepository());
     }
 
 }

@@ -36,19 +36,26 @@ import java.util.Collection;
 public final class User extends org.springframework.security.core.userdetails.User implements UserDetailsWithId {
 
     private final String id;
+    private final String email;
 
-    public User(String userId, String username, String password, Collection<? extends GrantedAuthority> authorities) {
+    public User(String userId, String username, String email, String password, Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
         this.id = userId;
+        this.email = email;
     }
 
-    public User(String userId, String username, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities) {
+    public User(String userId, String username, String email, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities) {
         super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
         this.id = userId;
+        this.email = email;
     }
 
     public String getId() {
         return id;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     @Override

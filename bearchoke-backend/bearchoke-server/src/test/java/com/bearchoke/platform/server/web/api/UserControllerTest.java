@@ -20,12 +20,11 @@ package com.bearchoke.platform.server.web.api;
 import com.bearchoke.platform.inmemory.security.config.EmbeddedSecurityConfig;
 import com.bearchoke.platform.platform.base.config.CacheConfig;
 import com.bearchoke.platform.platform.base.config.EncryptionConfig;
+import com.bearchoke.platform.platform.base.config.RedisConfig;
 import com.bearchoke.platform.platform.base.config.RedisLocalConfig;
 import com.bearchoke.platform.server.config.AppConfig;
-import com.bearchoke.platform.server.service.GreetingService;
-import com.bearchoke.platform.platform.base.config.RedisConfig;
-import com.bearchoke.platform.server.config.WebSecurityConfig;
 import com.bearchoke.platform.server.config.WebAppConfig;
+import com.bearchoke.platform.server.config.WebSecurityConfig;
 import com.bearchoke.platform.server.web.ApplicationMediaType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
@@ -43,19 +42,17 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import org.springframework.test.context.web.ServletTestExecutionListener;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.RequestPostProcessor;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import javax.servlet.Filter;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.*;
-import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.*;
-
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 /**
@@ -87,9 +84,13 @@ import static org.springframework.security.test.web.servlet.response.SecurityMoc
         DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class,
         WithSecurityContextTestExecutionListener.class})
-public class GreetingControllerTest {
+public class UserControllerTest {
 
-    private static final String NAME = "Bjorn";
+    private static final String UNIQUE_EMAIL = "harry1@mitchell.com";
+    private static final String EXISTING_EMAIL = "harry@mitchell.com";
+
+    private static final String UNIQUE_USERNAME = "harry1mitchell";
+    private static final String EXISTING_USERNAME = "harrymitchell";
 
     @Autowired
     private WebApplicationContext wac;
@@ -101,59 +102,58 @@ public class GreetingControllerTest {
 
     @Before
     public void setup() {
+
         this.mockMvc = MockMvcBuilders
                 .webAppContextSetup(this.wac)
                 .addFilters(springSecurityFilterChain)
                 .build();
+
     }
 
     @Test
-    public void testVersionedGreeting() throws Exception {
-        log.info("Testing GreetingController.testVersionedGreeting...");
+    public void testIsEmailUnique() throws Exception {
+        log.info("Testing UserController.isEmailUnique...");
 
-        this.mockMvc.perform(get("/api/greeting").param("name", NAME).accept(MediaType.parseMediaType(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE + ";charset=UTF8")))
+        log.info("First we expect a unique email");
+        this.mockMvc.perform(get("/api/user/uniqueemail").param("email", UNIQUE_EMAIL).accept(getMediaType()))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.parseMediaType(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE + ";charset=UTF8")))
-                .andExpect(jsonPath("$.id").value(1))
-                .andExpect(jsonPath("$.content").value("Hello, " + NAME + "!"));
+                .andExpect(content().contentType(getMediaType()))
+                .andExpect(jsonPath("$.unique").value(true));
 
-        log.info("Testing GreetingController.testVersionedGreeting SUCCESSFUL");
-    }
-
-    @Test
-    public void testSecuredGreeting() throws Exception {
-        log.info("Testing GreetingController.testSecuredGreeting...");
-
-        this.mockMvc.perform(get("/api/secured/greeting")
-                .with(csrf())
-                .with(regularUser())
-                .accept(MediaType.parseMediaType(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE + ";charset=UTF8")))
+        log.info("And now we expect email to already exist");
+        this.mockMvc.perform(get("/api/user/uniqueemail").param("email", EXISTING_EMAIL).accept(getMediaType()))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.parseMediaType(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE + ";charset=UTF8")))
-                .andExpect(jsonPath("$.id").value(1))
-                .andExpect(jsonPath("$.content").value("Hello, " + NAME + "!"))
-                .andExpect(authenticated().withRoles("USER"))
-        ;
+                .andExpect(content().contentType(getMediaType()))
+                .andExpect(jsonPath("$.unique").value(false));
 
-        log.info("Testing GreetingController.testSecuredGreeting SUCCESSFUL");
+        log.info("Testing UserController.isEmailUnique SUCCESSFUL");
     }
 
     @Test
-    public void testUnauthenticated() throws Exception {
-        this.mockMvc.perform(get("/api/secured/greeting")
-                .with(csrf()))
-                .andExpect(unauthenticated())
-        ;
+    public void testIsUsernameUnique() throws Exception {
+        log.info("Testing UserController.isUsernameUnique...");
+
+        log.info("First we expect a unique username");
+        this.mockMvc.perform(get("/api/user/uniqueusername").param("username", UNIQUE_USERNAME).accept(getMediaType()))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(getMediaType()))
+                .andExpect(jsonPath("$.unique").value(true));
+
+        log.info("And now we expect username to already exist");
+        this.mockMvc.perform(get("/api/user/uniqueusername").param("username", EXISTING_USERNAME).accept(getMediaType()))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(getMediaType()))
+                .andExpect(jsonPath("$.unique").value(false));
+
+        log.info("Testing UserController.isUsernameUnique SUCCESSFUL");
     }
 
-    private static RequestPostProcessor regularUser() {
-        return user(NAME).password("password").roles("USER");
-    }
-
-    private static RequestPostProcessor adminUser() {
-        return user("admin").password("password").roles("ADMIN");
+    private MediaType getMediaType() {
+        return MediaType.parseMediaType(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE + ";charset=UTF8");
     }
 }
 

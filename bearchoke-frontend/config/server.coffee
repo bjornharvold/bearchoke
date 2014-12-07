@@ -10,8 +10,8 @@
 #  This file can be very useful for rapid prototyping or even organically
 #    defining a spec based on the needs of the client code that emerge.
 # 
-# 
-module.exports = drawRoutes: (app) ->
+#
+#module.exports = drawRoutes: (app) ->
 
 # app.get('/api/greeting/:message', function(req, res){
 #   res.json({ message: "OK, "+req.params.message });

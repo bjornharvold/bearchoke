@@ -36,6 +36,12 @@
             <version>${project.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.bearchoke</groupId>
+            <artifactId>bearchoke-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- spring security -->
         <dependency>
             <groupId>org.springframework.security</groupId>

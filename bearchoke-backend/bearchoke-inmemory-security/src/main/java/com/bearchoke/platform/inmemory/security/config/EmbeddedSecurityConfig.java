@@ -17,6 +17,7 @@
 package com.bearchoke.platform.inmemory.security.config;
 
 import com.bearchoke.platform.inmemory.security.User;
+import com.bearchoke.platform.inmemory.security.service.impl.ExtendedInMemoryUserDetailsManagerImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -28,7 +29,6 @@ import org.springframework.security.config.annotation.method.configuration.Globa
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +54,7 @@ public class EmbeddedSecurityConfig extends GlobalMethodSecurityConfiguration {
     }
 
     @Bean(name = "userDetailsService")
-    public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
+    public ExtendedInMemoryUserDetailsManagerImpl inMemoryUserDetailsManager() {
         List<GrantedAuthority> userRoles = new ArrayList<>();
         userRoles.add(new SimpleGrantedAuthority("ROLE_USER"));
 
@@ -64,10 +64,10 @@ public class EmbeddedSecurityConfig extends GlobalMethodSecurityConfiguration {
 
         List<UserDetails> users = new ArrayList<>();
 
-        users.add(new User("1", "harrymitchell", "harry", userRoles));
-        users.add(new User("2", "sallymalone", "sally", adminRoles));
+        users.add(new User("1", "harrymitchell", "harry@mitchell.com", "harry", userRoles));
+        users.add(new User("2", "sallymalone", "sally@malone.com", "sally", adminRoles));
 
-        return new InMemoryUserDetailsManager(users);
+        return new ExtendedInMemoryUserDetailsManagerImpl(users);
     }
 
     @Bean(name = "authenticationProvider")

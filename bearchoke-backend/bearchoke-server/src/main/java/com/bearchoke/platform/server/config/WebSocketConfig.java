@@ -74,7 +74,6 @@ import java.util.Map;
  */
 @Configuration
 @EnableWebSocketMessageBroker
-@EnableScheduling
 @ComponentScan("com.bearchoke.platform.server.websocket")
 @Slf4j
 public class WebSocketConfig extends AbstractSecurityWebSocketMessageBrokerConfigurer {

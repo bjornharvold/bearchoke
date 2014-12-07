@@ -26,7 +26,7 @@
           <element id="archive" name="bearchoke-platform-base-0.0.1-SNAPSHOT.jar">
             <element id="module-output" name="bearchoke-platform-base" />
           </element>
-          <element id="library" level="project" name="Maven: org.springframework.session:spring-session:1.0.0.BUILD-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: org.springframework.session:spring-session:1.0.0.RC1" />
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-redis:1.4.0.RC1" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.1.1.RELEASE" />
           <element id="library" level="project" name="Maven: redis.clients:jedis:2.5.2" />
@@ -99,11 +99,11 @@
           <element id="archive" name="bearchoke-inmemory-security-0.0.1-SNAPSHOT.jar">
             <element id="module-output" name="bearchoke-inmemory-security" />
           </element>
-          <element id="archive" name="bearchoke-todo-0.0.1-SNAPSHOT.jar">
-            <element id="module-output" name="bearchoke-todo" />
-          </element>
           <element id="archive" name="bearchoke-api-0.0.1-SNAPSHOT.jar">
             <element id="module-output" name="bearchoke-api" />
+          </element>
+          <element id="archive" name="bearchoke-todo-0.0.1-SNAPSHOT.jar">
+            <element id="module-output" name="bearchoke-todo" />
           </element>
           <element id="library" level="project" name="Maven: org.springframework:spring-context:4.1.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.1.1.RELEASE" />
@@ -179,7 +179,6 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.3.0" />
           <element id="library" level="project" name="Maven: org.json:json:20090211" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-joda:2.3.0" />
-          <element id="library" level="project" name="Maven: io.fastjson:boon:0.27" />
           <element id="library" level="project" name="Maven: net.sf.json-lib:json-lib:jdk15:2.4" />
           <element id="library" level="project" name="Maven: net.sf.ezmorph:ezmorph:1.0.6" />
           <element id="library" level="project" name="Maven: javax.validation:validation-api:1.1.0.Final" />

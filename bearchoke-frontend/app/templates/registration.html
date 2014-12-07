@@ -23,7 +23,7 @@
     <div class="row alert alert-info">
         <p>Create an account with Bearchoke Tempest.</p>
 
-        <p>This feature makes use of Angular's new <a href="https://docs.angularjs.org/api/ngMessages/directive/ngMessages" target="_blank">ngMessages (v1.3+) extension</a> for validation and <a href="https://github.com/mllrsohn/angular-re-captcha" target="_blank">angular-recaptcha</a></p>
+        <p>This feature makes use of Angular's new <a href="https://docs.angularjs.org/api/ngMessages/directive/ngMessages" target="_blank">ngMessages (v1.3+) extension</a> for validation</p>
     </div>
     <div class="row">
         <form name="userForm" ng-submit="submit()" novalidate>
@@ -80,12 +80,12 @@
                 </div>
             </div>
             <div class="control-group">
-                <label for="username"><i class="fa fa-asterisk red"></i> Email:</label>
+                <label for="email"><i class="fa fa-asterisk red"></i> Email:</label>
 
                 <div class="form-group">
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
-                        <input type="email" class="form-control" placeholder="E-mail" name="email"
+                        <input id="email" type="email" class="form-control" placeholder="E-mail" name="email"
                                ng-model="user.email"
                                record-availability-validator="/api/emailAvailability"
                                required>
@@ -103,12 +103,12 @@
                 </div>
             </div>
             <div class="control-group">
-                <label for="username"><i class="fa fa-asterisk red"></i> Password:</label>
+                <label for="password"><i class="fa fa-asterisk red"></i> Password:</label>
 
                 <div class="form-group">
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="fa fa-shield"></i></span>
-                        <input type="password" class="form-control" placeholder="Password" name="password"
+                        <input id="password" type="password" class="form-control" placeholder="Password" name="password"
                                ng-model="user.password"
                                ng-minlength="5"
                                ng-maxlength="50"
@@ -130,12 +130,12 @@
                 </div>
             </div>
             <div class="control-group">
-                <label for="username"><i class="fa fa-asterisk red"></i> Verify password:</label>
+                <label for="verifypassword"><i class="fa fa-asterisk red"></i> Verify password:</label>
 
                 <div class="form-group">
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="fa fa-shield"></i></span>
-                        <input type="password" class="form-control" placeholder="Verify password" name="verifypassword"
+                        <input id="verifypassword" type="password" class="form-control" placeholder="Verify password" name="verifypassword"
                                ng-model="user.verifypassword"
                                ng-minlength="5"
                                ng-maxlength="50"
@@ -157,12 +157,6 @@
                             It must also contain at least one special character, a number as well as an uppercase letter.
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="input-group input-group-lg">
-                    <span class="input-group-addon"><input type="checkbox"></span>
-                    <input type="text" class="form-control" placeholder="Sign up for newsletter" readonly>
                 </div>
             </div>
             <div class="form-group">

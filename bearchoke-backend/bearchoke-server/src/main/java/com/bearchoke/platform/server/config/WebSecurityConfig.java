@@ -94,7 +94,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private CustomObjectMapper objectMapper;
 
     @Inject
-    private RedisOperationsSessionRepository sessionRepository;
+    @Qualifier("springSessionRepositoryFilter")
+    private SessionRepositoryFilter sessionRepositoryFilter;
 
     /**
      * Commons url security strategy
@@ -104,8 +105,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        SessionRepositoryFilter sessionRepositoryFilter = new SessionRepositoryFilter(sessionRepository);
-        sessionRepositoryFilter.setHttpSessionStrategy(new HeaderHttpSessionStrategy());
 
         // header details
         configureHeaders(http.headers());

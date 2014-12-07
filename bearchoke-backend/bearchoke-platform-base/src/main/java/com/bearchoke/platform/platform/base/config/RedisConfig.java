@@ -24,6 +24,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.session.ExpiringSession;
 import org.springframework.session.data.redis.RedisOperationsSessionRepository;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 import javax.inject.Inject;
 
@@ -34,6 +35,7 @@ import javax.inject.Inject;
  * Responsibility:
  */
 @Configuration
+@EnableRedisHttpSession
 public class RedisConfig {
 
     @Inject
@@ -52,11 +54,5 @@ public class RedisConfig {
         template.setConnectionFactory(redisConnectionFactory);
         return template;
     }
-
-    @Bean
-    public RedisOperationsSessionRepository sessionRepository() throws Exception {
-        return new RedisOperationsSessionRepository(redisTemplate());
-    }
-
 
 }

@@ -37,7 +37,7 @@
     <orderEntry type="library" name="Maven: org.springframework.social:spring-social-core:1.1.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: javax.validation:validation-api:1.1.0.Final" level="project" />
     <orderEntry type="module" module-name="bearchoke-platform-base" />
-    <orderEntry type="library" name="Maven: org.springframework.session:spring-session:1.0.0.BUILD-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.session:spring-session:1.0.0.RC1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-redis:1.4.0.RC1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context-support:4.1.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: redis.clients:jedis:2.5.2" level="project" />
@@ -88,7 +88,6 @@
     <orderEntry type="library" name="Maven: xerces:xercesImpl:2.8.0" level="project" />
     <orderEntry type="library" name="Maven: xalan:xalan:2.7.0" level="project" />
     <orderEntry type="library" name="Maven: dom4j:dom4j:20040902.021138" level="project" />
-    <orderEntry type="library" name="Maven: io.fastjson:boon:0.27" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-mongodb:1.5.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:4.1.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.1.1.RELEASE" level="project" />
