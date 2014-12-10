@@ -2,17 +2,11 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/bearchoke-api" vcs="" />
-    <mapping directory="$PROJECT_DIR$/bearchoke-inmemory-security" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/bearchoke-jpa-core" vcs="" />
-    <mapping directory="$PROJECT_DIR$/bearchoke-jpa-domain" vcs="" />
-    <mapping directory="$PROJECT_DIR$/bearchoke-jpa-repository" vcs="" />
-    <mapping directory="$PROJECT_DIR$/bearchoke-jpa-security" vcs="" />
     <mapping directory="$PROJECT_DIR$/bearchoke-mongo-core" vcs="" />
-    <mapping directory="$PROJECT_DIR$/bearchoke-mongo-domain" vcs="" />
-    <mapping directory="$PROJECT_DIR$/bearchoke-mongo-repository" vcs="" />
-    <mapping directory="$PROJECT_DIR$/bearchoke-mongo-security" vcs="" />
     <mapping directory="$PROJECT_DIR$/bearchoke-platform-base" vcs="" />
+    <mapping directory="$PROJECT_DIR$/bearchoke-query" vcs="svn" />
     <mapping directory="$PROJECT_DIR$/bearchoke-todo" vcs="" />
+    <mapping directory="$PROJECT_DIR$/bearchoke-user" vcs="svn" />
   </component>
 </project>
-

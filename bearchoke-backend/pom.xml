@@ -26,17 +26,11 @@
     <modules>
 		<module>bearchoke-api</module>
 		<module>bearchoke-todo</module>
+		<module>bearchoke-user</module>
         <module>bearchoke-server</module>
         <module>bearchoke-platform-base</module>
         <module>bearchoke-mongo-core</module>
-        <module>bearchoke-mongo-repository</module>
-        <module>bearchoke-mongo-domain</module>
-        <module>bearchoke-mongo-security</module>
-        <module>bearchoke-jpa-domain</module>
         <module>bearchoke-jpa-core</module>
-        <module>bearchoke-jpa-repository</module>
-        <module>bearchoke-jpa-security</module>
-        <module>bearchoke-inmemory-security</module>
     </modules>
 
     <build>
@@ -273,9 +267,9 @@
         <slf4j.version>1.7.7</slf4j.version>
         <reactor.net.version>1.1.4.RELEASE</reactor.net.version>
         <spring.cloud.connector>1.0.0.RELEASE</spring.cloud.connector>
-        <spring.data.mongo.version>1.5.1.RELEASE</spring.data.mongo.version>
-        <spring.data.redis.version>1.4.0.RC1</spring.data.redis.version>
-        <spring.data.jpa.version>1.5.1.RELEASE</spring.data.jpa.version>
+        <spring.data.mongo.version>1.6.1.RELEASE</spring.data.mongo.version>
+        <spring.data.redis.version>1.4.1.RELEASE</spring.data.redis.version>
+        <spring.data.jpa.version>1.7.1.RELEASE</spring.data.jpa.version>
         <spring.hateoas.version>0.15.0.RELEASE</spring.hateoas.version>
         <spring.integration.version>4.1.0.RELEASE</spring.integration.version>
         <spring.mobile.version>1.1.2.RELEASE</spring.mobile.version>
@@ -283,7 +277,7 @@
         <!--<spring.security.version>3.2.5.RELEASE</spring.security.version>-->
         <spring.session.version>1.0.0.RC1</spring.session.version>
         <spring.social.version>1.1.0.RELEASE</spring.social.version>
-        <spring.version>4.1.1.RELEASE</spring.version>
+        <spring.version>4.1.3.RELEASE</spring.version>
         <tiles.version>3.0.4</tiles.version>
         <tomcat.maven.plugin.version>2.2</tomcat.maven.plugin.version>
         <xom.version>1.2.10</xom.version>

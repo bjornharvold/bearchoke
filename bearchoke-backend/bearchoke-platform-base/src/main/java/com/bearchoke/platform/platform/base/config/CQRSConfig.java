@@ -23,31 +23,23 @@ import org.axonframework.commandhandling.SimpleCommandBus;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.commandhandling.gateway.CommandGatewayFactoryBean;
 import org.axonframework.commandhandling.interceptors.BeanValidationInterceptor;
-import org.axonframework.contextsupport.spring.AnnotationDriven;
-import org.axonframework.eventsourcing.AggregateSnapshotter;
 import org.axonframework.eventsourcing.Snapshotter;
 import org.axonframework.eventsourcing.SpringAggregateSnapshotter;
-import org.axonframework.eventstore.fs.FileSystemEventStore;
-import org.axonframework.eventstore.fs.SimpleEventFileResolver;
 import org.axonframework.eventstore.mongo.DefaultMongoTemplate;
 import org.axonframework.eventstore.mongo.MongoEventStore;
 import org.axonframework.eventstore.mongo.MongoTemplate;
 import org.axonframework.saga.SagaRepository;
-import org.axonframework.saga.repository.inmemory.InMemorySagaRepository;
 import org.axonframework.saga.repository.mongo.MongoSagaRepository;
 import org.axonframework.saga.spring.SpringResourceInjector;
 import org.axonframework.springmessaging.eventbus.SpringMessagingEventBus;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.messaging.SubscribableChannel;
 
 import javax.inject.Inject;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,6 +56,13 @@ public class CQRSConfig {
     private Environment environment;
 
     @Inject
+    @Qualifier("taskExecutor")
+    private TaskExecutor taskExecutor;
+
+    @Inject
+    private Mongo mongo;
+
+    @Inject
     @Qualifier("webSocketInputChannel")
     private SubscribableChannel webSocketInputChannel;
 
@@ -77,7 +76,6 @@ public class CQRSConfig {
 
         return commandBus;
     }
-
 
     @Bean
     public CommandGateway commandGateway() {
@@ -97,7 +95,6 @@ public class CQRSConfig {
         return commandGateway;
     }
 
-
     @Bean
     public SpringMessagingEventBus eventBus() {
         SpringMessagingEventBus eventBus = new SpringMessagingEventBus();
@@ -106,102 +103,38 @@ public class CQRSConfig {
         return eventBus;
     }
 
-    /**
-     * Properties to support the 'embedded' / default mode of operation.
-     * Standard mode uses in-memory databases and doesn't need any configuration to get started
-     */
-    @Configuration
-    @Profile("in-memory")
-    static class Embedded {
-
-        @Inject
-        @Qualifier("taskExecutor")
-        private TaskExecutor taskExecutor;
-
-        @Bean
-        public FileSystemEventStore eventStore() {
-            FileSystemEventStore eventStore = new FileSystemEventStore(new SimpleEventFileResolver(new File("./target/events")));
-
-            return eventStore;
-        }
-
-        @Bean
-        public InMemorySagaRepository sagaRepository() {
-            InMemorySagaRepository sagaRepository = new InMemorySagaRepository();
-
-            return sagaRepository;
-        }
-
-        /* Waiting on response for: http://issues.axonframework.org/youtrack/issue/AXON-274
-        @Bean(name = "snapshotter")
-        public Snapshotter snapshotter() {
-            AggregateSnapshotter sas = new AggregateSnapshotter();
-            sas.setEventStore(eventStore());
-            sas.setExecutor(taskExecutor);
-
-            return sas;
-        }
-        */
-
-//        @Bean
-//        public SimpleEventBus eventBus() {
-//            SimpleEventBus eventBus = new SimpleEventBus();
-//            return eventBus;
-//        }
+    @Bean
+    public MongoTemplate mongoTemplate() {
+        return new DefaultMongoTemplate(mongo);
     }
 
-    /**
-     * Properties to support the 'mongodb' mode of operation.
-     * This mode uses MongoDb databases and basic documents for user persistence and assumes a MongoDb instance is available
-     */
-    @Configuration
-    @Profile("mongodb")
-    static class MongoDb {
+    @Bean
+    public org.axonframework.saga.repository.mongo.MongoTemplate mongoSagaTemplate() {
+        return new org.axonframework.saga.repository.mongo.DefaultMongoTemplate(mongo);
+    }
 
-        @Inject
-        @Qualifier("taskExecutor")
-        private TaskExecutor taskExecutor;
+    @Bean
+    public MongoEventStore eventStore() {
+        MongoEventStore eventStore = new MongoEventStore(mongoTemplate());
 
-        @Inject
-        private Mongo mongo;
+        return eventStore;
+    }
 
-        @Bean
-        public MongoTemplate mongoTemplate() {
-            return new DefaultMongoTemplate(mongo);
-        }
+    @Bean
+    public SagaRepository sagaRepository() {
+        MongoSagaRepository sagaRepository = new MongoSagaRepository(mongoSagaTemplate());
+        sagaRepository.setResourceInjector(new SpringResourceInjector());
 
-        @Bean
-        public org.axonframework.saga.repository.mongo.MongoTemplate mongoSagaTemplate() {
-            return new org.axonframework.saga.repository.mongo.DefaultMongoTemplate(mongo);
-        }
+        return sagaRepository;
+    }
 
-        @Bean
-        public MongoEventStore eventStore() {
-            MongoEventStore eventStore = new MongoEventStore(mongoTemplate());
+    @Bean(name = "snapshotter")
+    public Snapshotter snapshotter() {
+        SpringAggregateSnapshotter sas = new SpringAggregateSnapshotter();
+        sas.setEventStore(eventStore());
+        sas.setExecutor(taskExecutor);
 
-            return eventStore;
-        }
-
-        @Bean
-        public SagaRepository sagaRepository() {
-            MongoSagaRepository sagaRepository = new MongoSagaRepository(mongoSagaTemplate());
-            sagaRepository.setResourceInjector(new SpringResourceInjector());
-
-            return sagaRepository;
-        }
-
-        /*
-        @Bean(name = "snapshotter")
-        public Snapshotter snapshotter() {
-            SpringAggregateSnapshotter sas = new SpringAggregateSnapshotter();
-            sas.setEventStore(eventStore());
-            sas.setExecutor(taskExecutor);
-
-            return sas;
-        }
-        */
-
-
+        return sas;
     }
 
 }

@@ -37,7 +37,7 @@ public class ToDoItemTest {
 
     @Before
     public void setUp() throws Exception {
-        fixture = Fixtures.newGivenWhenThenFixture(ToDoItem.class);
+        fixture = Fixtures.newGivenWhenThenFixture(ToDoItemAggregate.class);
     }
 
     @Test

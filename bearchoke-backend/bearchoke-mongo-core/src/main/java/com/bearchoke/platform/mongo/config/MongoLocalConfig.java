@@ -64,12 +64,7 @@ public class MongoLocalConfig {
 
     @Bean
     public SimpleMongoDbFactory mongoDbFactory() throws Exception {
-        UserCredentials userCredentials = new UserCredentials(
-                environment.getProperty("mongodb.username"),
-                environment.getProperty("mongodb.password")
-        );
-
-        return new SimpleMongoDbFactory(mongo(), environment.getProperty("mongodb.database"), userCredentials);
+        return new SimpleMongoDbFactory(mongo(), environment.getProperty("mongodb.database"));
     }
 
 

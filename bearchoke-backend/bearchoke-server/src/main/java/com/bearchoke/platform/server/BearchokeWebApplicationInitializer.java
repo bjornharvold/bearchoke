@@ -17,17 +17,14 @@
 package com.bearchoke.platform.server;
 
 import com.bearchoke.platform.jpa.config.JpaCloudConfig;
+import com.bearchoke.platform.jpa.config.JpaCoreConfig;
 import com.bearchoke.platform.jpa.config.JpaLocalConfig;
 import com.bearchoke.platform.mongo.config.MongoCloudConfig;
 import com.bearchoke.platform.mongo.config.MongoLocalConfig;
 import com.bearchoke.platform.platform.base.config.CQRSConfig;
 import com.bearchoke.platform.platform.base.config.RabbitMQCloudConfig;
 import com.bearchoke.platform.platform.base.config.RabbitMQLocalConfig;
-import com.bearchoke.platform.inmemory.security.config.EmbeddedSecurityConfig;
-import com.bearchoke.platform.jpa.config.JpaCoreConfig;
-import com.bearchoke.platform.jpa.security.config.JpaSecurityConfig;
 import com.bearchoke.platform.mongo.config.MongoCoreConfig;
-import com.bearchoke.platform.mongo.security.config.MongoSecurityConfig;
 import com.bearchoke.platform.platform.base.config.CacheConfig;
 import com.bearchoke.platform.platform.base.config.EncryptionConfig;
 import com.bearchoke.platform.platform.base.config.RedisCloudConfig;
@@ -43,6 +40,8 @@ import com.bearchoke.platform.server.web.filter.SimpleCORSFilter;
 import com.bearchoke.platform.server.config.WebAppConfig;
 import com.bearchoke.platform.todo.config.ToDoCQRSConfig;
 
+import com.bearchoke.platform.user.config.SecurityConfig;
+import com.bearchoke.platform.user.config.UserCQRSConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.cloud.Cloud;
@@ -72,8 +71,6 @@ import java.util.List;
 public class BearchokeWebApplicationInitializer implements WebApplicationInitializer {
 
     private static final String SPRING_PROFILES_ACTIVE = "spring.profiles.active";
-    private static final String INMEMORY = "in-memory";
-    private static final String MONGODB = "mongodb";
     private static final String MONGODB_LOCAL = "mongodb-local";
     private static final String MONGODB_CLOUD = "mongodb-cloud";
     private static final String JPA = "jpa";
@@ -115,10 +112,10 @@ public class BearchokeWebApplicationInitializer implements WebApplicationInitial
 
         if (StringUtils.isEmpty(activeProfiles)) {
             if (cloud == null) {
-                // if no active profiles are specified, we default to in-memory
-                activeProfiles = INMEMORY + "," + REDIS_LOCAL + "," + RABBIT_LOCAL;
+                // if no active profiles are specified, we default to these profiles
+                activeProfiles = MONGODB_LOCAL + "," + REDIS_LOCAL + "," + RABBIT_LOCAL;
             } else {
-                activeProfiles = INMEMORY + "," + REDIS_CLOUD + "," + RABBIT_CLOUD;
+                activeProfiles = MONGODB_CLOUD + "," + REDIS_CLOUD + "," + RABBIT_CLOUD;
             }
         }
 
@@ -129,15 +126,11 @@ public class BearchokeWebApplicationInitializer implements WebApplicationInitial
 
         for (String profile : profiles) {
 
-            if (StringUtils.equals(profile, INMEMORY)) {
-                configClasses.add(EmbeddedSecurityConfig.class);
-            }
             if (StringUtils.equals(profile, MONGODB)) {
-                configClasses.add(MongoSecurityConfig.class);
+                configClasses.add(SecurityConfig.class);
                 configClasses.add(MongoCoreConfig.class);
             }
             if (StringUtils.equals(profile, JPA)) {
-                configClasses.add(JpaSecurityConfig.class);
                 configClasses.add(JpaCoreConfig.class);
             }
 
@@ -195,7 +188,13 @@ public class BearchokeWebApplicationInitializer implements WebApplicationInitial
         log.info("Creating Spring Servlet started");
 
         AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
-        appContext.register(WebAppConfig.class, WebSocketConfig.class, CQRSConfig.class, ToDoCQRSConfig.class);
+        appContext.register(
+                WebAppConfig.class,
+                WebSocketConfig.class,
+                CQRSConfig.class,
+                ToDoCQRSConfig.class,
+                UserCQRSConfig.class
+        );
 
         DispatcherServlet sc = new DispatcherServlet(appContext);
 

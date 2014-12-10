@@ -43,11 +43,6 @@
             <artifactId>joda-time</artifactId>
             <version>${joda.time.version}</version>
         </dependency>
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time-hibernate</artifactId>
-            <version>${joda.time.hibernate.version}</version>
-        </dependency>
 
         <!-- JUG -->
         <dependency>

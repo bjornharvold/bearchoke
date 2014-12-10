@@ -27,6 +27,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.authentication.UserCredentials;
+import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
@@ -43,12 +44,14 @@ import java.net.UnknownHostException;
  * Responsibility:
  */
 @Configuration
-@Profile("mongodb")
-@EnableMongoRepositories("com.bearchoke.platform.mongo.repository")
+@EnableMongoRepositories("com.bearchoke.platform")
 public class MongoCoreConfig extends AbstractMongoConfiguration {
 
     @Inject
     private Environment environment;
+
+    @Inject
+    private MongoDbFactory mongoDbFactory;
 
     @Override
     protected String getDatabaseName() {
@@ -56,40 +59,18 @@ public class MongoCoreConfig extends AbstractMongoConfiguration {
     }
 
     @Override
+    public Mongo mongo() throws Exception {
+        return mongoDbFactory.getDb().getMongo();
+    }
+
+    @Override
     protected String getMappingBasePackage() {
-        return "com.bearchoke.platform.domain.document";
-    }
-
-    @Bean
-    public Mongo mongo() throws UnknownHostException {
-        // location of db
-        ServerAddress sa = new ServerAddress(
-                environment.getProperty("mongodb.host"),
-                environment.getProperty("mongodb.port", Integer.class));
-
-        // set optional default parameters here
-        MongoClientOptions.Builder builder = MongoClientOptions.builder();
-
-        // none yet
-
-        MongoClientOptions options = builder.build();
-
-        return new MongoClient(sa, options);
-    }
-
-    @Bean
-    public SimpleMongoDbFactory mongoDbFactory() throws Exception {
-        UserCredentials userCredentials = new UserCredentials(
-                environment.getProperty("mongodb.username"),
-                environment.getProperty("mongodb.password")
-        );
-
-        return new SimpleMongoDbFactory(mongo(), environment.getProperty("mongodb.database"), userCredentials);
+        return "com.bearchoke.platform";
     }
 
     @Bean
     public MongoTemplate mongoTemplate() throws Exception {
-        return new MongoTemplate(mongoDbFactory());
+        return new MongoTemplate(mongoDbFactory);
     }
 
     @Bean
@@ -102,9 +83,5 @@ public class MongoCoreConfig extends AbstractMongoConfiguration {
         return new DateCreatorMongoEventListener();
     }
 
-    @Bean
-    public ConnectionMetrics connectionMetrics() throws UnknownHostException {
-        return new ConnectionMetrics(mongo());
-    }
 
 }

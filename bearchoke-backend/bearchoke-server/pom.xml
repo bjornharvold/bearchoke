@@ -69,47 +69,28 @@
 
     <dependencies>
 
-        <!--
-        <dependency>
-            <groupId>com.bearchoke</groupId>
-            <artifactId>bearchoke-mongo-social</artifactId>
-            <version>${bearchoke.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.bearchoke</groupId>
-            <artifactId>bearchoke-jpa-social</artifactId>
-            <version>${bearchoke.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.bearchoke</groupId>
-            <artifactId>bearchoke-embedded-social</artifactId>
-            <version>${bearchoke.version}</version>
-        </dependency>
-        -->
-
-        <dependency>
-            <groupId>com.bearchoke</groupId>
-            <artifactId>bearchoke-mongo-security</artifactId>
-            <version>${bearchoke.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.bearchoke</groupId>
-            <artifactId>bearchoke-jpa-security</artifactId>
-            <version>${bearchoke.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.bearchoke</groupId>
-            <artifactId>bearchoke-inmemory-security</artifactId>
-            <version>${bearchoke.version}</version>
-        </dependency>
-
+        <!-- home rolled libraries -->
         <dependency>
             <groupId>com.bearchoke</groupId>
             <artifactId>bearchoke-todo</artifactId>
+            <version>${bearchoke.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.bearchoke</groupId>
+            <artifactId>bearchoke-user</artifactId>
+            <version>${bearchoke.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.bearchoke</groupId>
+            <artifactId>bearchoke-mongo-core</artifactId>
+            <version>${bearchoke.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.bearchoke</groupId>
+            <artifactId>bearchoke-jpa-core</artifactId>
             <version>${bearchoke.version}</version>
         </dependency>
 

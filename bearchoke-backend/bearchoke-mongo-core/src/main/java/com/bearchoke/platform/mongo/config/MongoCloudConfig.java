@@ -17,6 +17,7 @@
 package com.bearchoke.platform.mongo.config;
 
 import org.springframework.cloud.config.java.AbstractCloudConfig;
+import org.springframework.cloud.service.document.MongoDbFactoryConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -34,8 +35,8 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 public class MongoCloudConfig extends AbstractCloudConfig {
 
     @Bean
-    public MongoTemplate mongoTemplate(MongoDbFactory mongoDbFactory) {
-        return new MongoTemplate(mongoDbFactory);
+    public MongoDbFactory mongoDbFactory() {
+        return connectionFactory().mongoDbFactory();
     }
 
 }

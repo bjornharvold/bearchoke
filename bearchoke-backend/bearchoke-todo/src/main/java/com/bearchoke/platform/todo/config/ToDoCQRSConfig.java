@@ -16,7 +16,7 @@
 
 package com.bearchoke.platform.todo.config;
 
-import com.bearchoke.platform.todo.ToDoItem;
+import com.bearchoke.platform.todo.ToDoItemAggregate;
 import org.axonframework.contextsupport.spring.AnnotationDriven;
 import org.axonframework.eventhandling.EventBus;
 import org.axonframework.eventsourcing.EventSourcingRepository;
@@ -25,7 +25,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
-import org.springframework.stereotype.Controller;
 
 import javax.inject.Inject;
 
@@ -48,8 +47,8 @@ public class ToDoCQRSConfig {
     private EventBus eventBus;
 
     @Bean(name = "toDoItemRepository")
-    public EventSourcingRepository<ToDoItem> toDoItemRepository() {
-        EventSourcingRepository repository = new EventSourcingRepository<>(ToDoItem.class, eventStore);
+    public EventSourcingRepository<ToDoItemAggregate> toDoItemRepository() {
+        EventSourcingRepository repository = new EventSourcingRepository<>(ToDoItemAggregate.class, eventStore);
         repository.setEventBus(eventBus);
 
         return repository;

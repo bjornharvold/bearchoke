@@ -36,17 +36,17 @@ import org.springframework.stereotype.Component;
 public class ToDoCommandHandler {
 
     @Qualifier("toDoItemRepository")
-    private final Repository<ToDoItem> repository;
+    private final Repository<ToDoItemAggregate> repository;
 
     @Autowired
-    public ToDoCommandHandler(Repository<ToDoItem> repository) {
+    public ToDoCommandHandler(Repository<ToDoItemAggregate> repository) {
         this.repository = repository;
     }
 
     @CommandHandler
     public ToDoIdentifier handleCreateToDoItem(CreateToDoItemCommand command) {
         ToDoIdentifier id = command.getTodoId();
-        ToDoItem tdi = new ToDoItem(id, command.getDescription(), command.getUsername());
+        ToDoItemAggregate tdi = new ToDoItemAggregate(id, command.getDescription(), command.getUsername());
         repository.add(tdi);
 
         return id;
@@ -54,19 +54,19 @@ public class ToDoCommandHandler {
 
     @CommandHandler
     public void markCompleted(MarkToDoItemAsCompleteCommand command) {
-        ToDoItem tdi = onToDoItem(command.getTodoId());
+        ToDoItemAggregate tdi = onToDoItem(command.getTodoId());
 
         tdi.markAsCompleted(command.getTodoId(), command.getUsername());
     }
 
     @CommandHandler
     public void handleDeleteToDoItem(DeleteToDoItemCommand command) {
-        ToDoItem tdi = onToDoItem(command.getTodoId());
+        ToDoItemAggregate tdi = onToDoItem(command.getTodoId());
 
         tdi.remove(command.getTodoId(), command.getUsername());
     }
 
-    private ToDoItem onToDoItem(ToDoIdentifier toDoIdentifier) {
+    private ToDoItemAggregate onToDoItem(ToDoIdentifier toDoIdentifier) {
         return repository.load(toDoIdentifier);
     }
 }

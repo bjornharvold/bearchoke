@@ -28,7 +28,9 @@ import java.io.Serializable;
  * Responsibility:
  */
 public class ToDoIdentifier implements Serializable {
+    private static final long serialVersionUID = -925210535511442453L;
     private String identifier;
+
 
     public ToDoIdentifier() {
         this.identifier = IdentifierFactory.getInstance().generateIdentifier();

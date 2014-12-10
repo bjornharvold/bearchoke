@@ -43,7 +43,7 @@ import java.util.Properties;
  */
 @Configuration
 @Profile("jpa")
-@EnableJpaRepositories("com.bearchoke.platform.jpa.repository")
+@EnableJpaRepositories("com.bearchoke.platform.jpa")
 @EnableTransactionManagement
 public class JpaCoreConfig {
 

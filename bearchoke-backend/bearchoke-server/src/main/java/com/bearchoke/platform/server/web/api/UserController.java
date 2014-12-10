@@ -17,23 +17,33 @@
 package com.bearchoke.platform.server.web.api;
 
 import com.bearchoke.platform.api.user.ExtendedUserDetailsManager;
+import com.bearchoke.platform.api.user.RegisterUserCommand;
+import com.bearchoke.platform.api.user.UserIdentifier;
+import com.bearchoke.platform.api.user.dto.RegisterUserDto;
 import com.bearchoke.platform.api.user.dto.UniqueResult;
 import com.bearchoke.platform.server.web.ApplicationMediaType;
 import lombok.extern.slf4j.Slf4j;
+import org.axonframework.commandhandling.CommandBus;
+import org.axonframework.commandhandling.GenericCommandMessage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 @RestController
 @Slf4j
 public class UserController {
-
+    private final CommandBus commandBus;
     private final ExtendedUserDetailsManager extendedUserDetailsManager;
 
     @Autowired
-    public UserController(ExtendedUserDetailsManager extendedUserDetailsManager) {
+    public UserController(CommandBus commandBus, ExtendedUserDetailsManager extendedUserDetailsManager) {
+        this.commandBus = commandBus;
         this.extendedUserDetailsManager = extendedUserDetailsManager;
     }
 
@@ -56,4 +66,19 @@ public class UserController {
 	public UniqueResult isUsernameUnique(@RequestParam(value = "key", required = true)String username) {
         return new UniqueResult(!extendedUserDetailsManager.userExists(username));
 	}
+
+    /**
+     * Register a user with the system
+     * @param user user
+     * @return
+     */
+    @RequestMapping(value = "/api/user/register", method = { RequestMethod.POST }, produces = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+	public void register(@Valid RegisterUserDto user) {
+        commandBus.dispatch(new GenericCommandMessage<>(
+                new RegisterUserCommand(new UserIdentifier(), user))
+        );
+	}
+
+
 }

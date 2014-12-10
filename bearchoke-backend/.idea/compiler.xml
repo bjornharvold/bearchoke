@@ -23,18 +23,13 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="bearchoke-api" />
-        <module name="bearchoke-inmemory-security" />
         <module name="bearchoke-jpa-core" />
-        <module name="bearchoke-jpa-domain" />
-        <module name="bearchoke-jpa-repository" />
-        <module name="bearchoke-jpa-security" />
         <module name="bearchoke-mongo-core" />
-        <module name="bearchoke-mongo-domain" />
-        <module name="bearchoke-mongo-repository" />
-        <module name="bearchoke-mongo-security" />
         <module name="bearchoke-platform-base" />
+        <module name="bearchoke-query" />
         <module name="bearchoke-server" />
         <module name="bearchoke-todo" />
+        <module name="bearchoke-user" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -50,9 +45,10 @@
       <module name="bearchoke-mongo-repository" target="1.8" />
       <module name="bearchoke-mongo-security" target="1.8" />
       <module name="bearchoke-platform-base" target="1.8" />
+      <module name="bearchoke-query" target="1.8" />
       <module name="bearchoke-server" target="1.8" />
       <module name="bearchoke-todo" target="1.8" />
+      <module name="bearchoke-user" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
-
