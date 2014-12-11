@@ -4,13 +4,8 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bearchoke-api" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bearchoke-domain-base" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bearchoke-inmemory-security" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bearchoke-jpa-core" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bearchoke-jpa-domain" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bearchoke-jpa-repository" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bearchoke-jpa-security" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bearchoke-mongo-core" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/bearchoke-mongo-security" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bearchoke-platform-base" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bearchoke-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bearchoke-todo" charset="UTF-8" />

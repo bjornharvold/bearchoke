@@ -15,3 +15,8 @@ cd ../erts-5.10.3/bin
 
 echo "Stopping Redis server..."
 kill -9 $(ps aux | grep '[r]edis-server' | awk '{print $2}')
+
+sleep 3
+
+echo "Stopping MongoDb server..."
+kill $(ps aux | grep '[m]ongod' | awk '{print $2}')

@@ -78,13 +78,6 @@
             <version>${spring.security.version}</version>
         </dependency>
 
-        <!-- Spring Social -->
-        <dependency>
-            <groupId>org.springframework.social</groupId>
-            <artifactId>spring-social-facebook</artifactId>
-            <version>${spring.social.version}</version>
-        </dependency>
-
         <!-- JSR 303 with Hibernate Validator -->
         <dependency>
             <groupId>javax.validation</groupId>

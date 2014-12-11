@@ -17,6 +17,7 @@
 package com.bearchoke.platform.user.config;
 
 import com.bearchoke.platform.user.repositories.UserRepository;
+import com.bearchoke.platform.user.repositories.impl.UserRepositoryImpl;
 import com.bearchoke.platform.user.security.UserAuthenticationProvider;
 import com.bearchoke.platform.user.security.UserDetailsServiceImpl;
 import org.axonframework.commandhandling.CommandBus;
@@ -44,10 +45,10 @@ import javax.inject.Inject;
 public class SecurityConfig extends GlobalMethodSecurityConfiguration {
 
     @Inject
-    private UserRepository userRepository;
+    private CommandBus commandBus;
 
     @Inject
-    private CommandBus commandBus;
+    private UserRepository userRepository;
 
     @Bean(name = "userDetailsService")
     public UserDetailsServiceImpl userDetailsService() {

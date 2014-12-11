@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.user.config;
+package com.bearchoke.platform.todo.config;
 
-import com.bearchoke.platform.user.UserAggregate;
+import com.bearchoke.platform.todo.ToDoItemAggregate;
 import org.axonframework.contextsupport.spring.AnnotationDriven;
 import org.axonframework.eventhandling.EventBus;
 import org.axonframework.eventsourcing.EventSourcingRepository;
@@ -35,20 +35,20 @@ import javax.inject.Inject;
  * Responsibility:
  */
 @Configuration
-@ComponentScan(basePackages = "com.bearchoke.platform.user", excludeFilters = {
+@ComponentScan(basePackages = "com.bearchoke.platform.todo", excludeFilters = {
         @ComponentScan.Filter(value = Configuration.class, type = FilterType.ANNOTATION)
 })
-@AnnotationDriven
-public class UserCQRSConfig {
+@AnnotationDriven(commandBus = "commandBus", eventBus = "eventBus", unsubscribeOnShutdown = true)
+public class ToDoConfig {
     @Inject
     private EventStore eventStore;
 
     @Inject
     private EventBus eventBus;
 
-    @Bean(name = "userRepository")
-    public EventSourcingRepository<UserAggregate> userRepository() {
-        EventSourcingRepository repository = new EventSourcingRepository<>(UserAggregate.class, eventStore);
+    @Bean(name = "toDoItemRepository")
+    public EventSourcingRepository<ToDoItemAggregate> toDoItemRepository() {
+        EventSourcingRepository repository = new EventSourcingRepository<>(ToDoItemAggregate.class, eventStore);
         repository.setEventBus(eventBus);
 
         return repository;

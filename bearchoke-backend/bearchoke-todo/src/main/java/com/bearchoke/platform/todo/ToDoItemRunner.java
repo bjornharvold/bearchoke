@@ -20,7 +20,7 @@ import com.bearchoke.platform.api.todo.CreateToDoItemCommand;
 import com.bearchoke.platform.api.todo.MarkToDoItemAsCompleteCommand;
 import com.bearchoke.platform.api.todo.ToDoIdentifier;
 import com.bearchoke.platform.platform.base.config.CQRSConfig;
-import com.bearchoke.platform.todo.config.ToDoCQRSConfig;
+import com.bearchoke.platform.todo.config.ToDoConfig;
 import com.bearchoke.platform.platform.base.config.RabbitMQLocalConfig;
 import com.bearchoke.platform.platform.base.config.SchedulerConfig;
 import org.axonframework.commandhandling.CommandBus;
@@ -42,7 +42,7 @@ public class ToDoItemRunner {
                 SchedulerConfig.class,
                 RabbitMQLocalConfig.class,
                 CQRSConfig.class,
-                ToDoCQRSConfig.class
+                ToDoConfig.class
         );
 
         try {

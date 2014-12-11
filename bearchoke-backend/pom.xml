@@ -86,13 +86,6 @@
             <version>${commons.lang.version}</version>
         </dependency>
 
-        <!-- Cloud Foundry -->
-        <dependency>
-            <groupId>org.cloudfoundry</groupId>
-            <artifactId>cloudfoundry-runtime</artifactId>
-            <version>${cloudfoundry.version}</version>
-        </dependency>
-
         <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -230,7 +223,6 @@
         <commons.io.version>2.4</commons.io.version>
         <commons.lang.version>3.2.1</commons.lang.version>
         <commons.pool2.version>2.2</commons.pool2.version>
-        <cloudfoundry.version>0.8.1</cloudfoundry.version>
         <derby.version>10.10.1.1</derby.version>
         <embedded.redis.version>0.2</embedded.redis.version>
         <glassfish.jstl.impl>1.2</glassfish.jstl.impl>
@@ -278,7 +270,6 @@
         <spring.session.version>1.0.0.RC1</spring.session.version>
         <spring.social.version>1.1.0.RELEASE</spring.social.version>
         <spring.version>4.1.3.RELEASE</spring.version>
-        <tiles.version>3.0.4</tiles.version>
         <tomcat.maven.plugin.version>2.2</tomcat.maven.plugin.version>
         <xom.version>1.2.10</xom.version>
     </properties>

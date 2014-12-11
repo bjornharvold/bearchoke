@@ -30,12 +30,14 @@ import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 @Slf4j
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class SimpleCORSFilter extends OncePerRequestFilter {
 
     private static final String ORIGIN_FILTER_PATTERN = "[^0-9a-zA-Z$-_.+!*'()$&+,/:;=?@]";

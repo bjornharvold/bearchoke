@@ -44,29 +44,10 @@ import java.net.UnknownHostException;
  * Responsibility:
  */
 @Configuration
-@EnableMongoRepositories("com.bearchoke.platform")
-public class MongoCoreConfig extends AbstractMongoConfiguration {
-
-    @Inject
-    private Environment environment;
+public class MongoCoreConfig {
 
     @Inject
     private MongoDbFactory mongoDbFactory;
-
-    @Override
-    protected String getDatabaseName() {
-        return environment.getProperty("mongodb.database");
-    }
-
-    @Override
-    public Mongo mongo() throws Exception {
-        return mongoDbFactory.getDb().getMongo();
-    }
-
-    @Override
-    protected String getMappingBasePackage() {
-        return "com.bearchoke.platform";
-    }
 
     @Bean
     public MongoTemplate mongoTemplate() throws Exception {

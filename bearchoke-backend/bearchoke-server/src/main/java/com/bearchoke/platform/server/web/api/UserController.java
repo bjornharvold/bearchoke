@@ -16,12 +16,12 @@
 
 package com.bearchoke.platform.server.web.api;
 
-import com.bearchoke.platform.api.user.ExtendedUserDetailsManager;
 import com.bearchoke.platform.api.user.RegisterUserCommand;
 import com.bearchoke.platform.api.user.UserIdentifier;
 import com.bearchoke.platform.api.user.dto.RegisterUserDto;
 import com.bearchoke.platform.api.user.dto.UniqueResult;
 import com.bearchoke.platform.server.web.ApplicationMediaType;
+import com.bearchoke.platform.user.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.commandhandling.GenericCommandMessage;
@@ -39,12 +39,12 @@ import javax.validation.Valid;
 @Slf4j
 public class UserController {
     private final CommandBus commandBus;
-    private final ExtendedUserDetailsManager extendedUserDetailsManager;
+    private final UserRepository userRepository;
 
     @Autowired
-    public UserController(CommandBus commandBus, ExtendedUserDetailsManager extendedUserDetailsManager) {
+    public UserController(CommandBus commandBus, UserRepository userRepository) {
         this.commandBus = commandBus;
-        this.extendedUserDetailsManager = extendedUserDetailsManager;
+        this.userRepository = userRepository;
     }
 
     /**
@@ -54,7 +54,7 @@ public class UserController {
      */
     @RequestMapping(value = "/api/user/uniqueemail", method = { RequestMethod.GET }, produces = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE)
 	public UniqueResult isEmailUnique(@RequestParam(value = "key", required = true) String email) {
-        return new UniqueResult(!extendedUserDetailsManager.emailExists(email));
+        return new UniqueResult(!userRepository.isEmailUnique(email));
 	}
 
     /**
@@ -64,7 +64,7 @@ public class UserController {
      */
     @RequestMapping(value = "/api/user/uniqueusername", method = { RequestMethod.GET }, produces = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE)
 	public UniqueResult isUsernameUnique(@RequestParam(value = "key", required = true)String username) {
-        return new UniqueResult(!extendedUserDetailsManager.userExists(username));
+        return new UniqueResult(!userRepository.isUsernameUnique(username));
 	}
 
     /**

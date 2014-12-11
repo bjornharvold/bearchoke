@@ -153,11 +153,6 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-taglibs</artifactId>
-            <version>${spring.security.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <version>${spring.security.version}</version>
         </dependency>
@@ -194,6 +189,8 @@
             <version>${javax.websocket.api.version}</version>
             <scope>provided</scope>
         </dependency>
+
+        <!--
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>javax.servlet.jsp-api</artifactId>
@@ -210,13 +207,7 @@
             <artifactId>jstl-impl</artifactId>
             <version>${glassfish.jstl.impl}</version>
         </dependency>
-
-        <!-- Tiles -->
-        <dependency>
-            <groupId>org.apache.tiles</groupId>
-            <artifactId>tiles-extras</artifactId>
-            <version>${tiles.version}</version>
-        </dependency>
+        -->
 
         <!-- Jackson JSON Processor -->
         <dependency>

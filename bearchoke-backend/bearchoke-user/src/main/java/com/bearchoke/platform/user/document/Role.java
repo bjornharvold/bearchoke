@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.user;
+package com.bearchoke.platform.user.document;
 
 //~--- non-JDK imports --------------------------------------------------------
 

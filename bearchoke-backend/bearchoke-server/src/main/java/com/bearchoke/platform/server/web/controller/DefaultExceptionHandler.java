@@ -17,7 +17,6 @@
 package com.bearchoke.platform.server.web.controller;
 
 import com.bearchoke.platform.server.web.ApplicationMediaType;
-import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
@@ -34,6 +33,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -62,7 +62,7 @@ public class DefaultExceptionHandler {
     @ResponseStatus(value = HttpStatus.UNSUPPORTED_MEDIA_TYPE)
     public @ResponseBody Map<String, Object> handleUnsupportedMediaTypeException(HttpMediaTypeNotSupportedException ex) throws IOException {
         log.error(ex.getMessage(), ex);
-        Map<String, Object>  map = Maps.newHashMap();
+        Map<String, Object>  map = new HashMap<>(3);
         map.put("error", "Unsupported Media Type");
         map.put("cause", ex.getLocalizedMessage());
         map.put("supported", ex.getSupportedMediaTypes());
@@ -74,7 +74,7 @@ public class DefaultExceptionHandler {
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     public @ResponseBody
     Map<String, Object> handleUncaughtException(Exception ex) throws IOException {
-        Map<String, Object> map = Maps.newHashMap();
+        Map<String, Object> map = new HashMap<>(2);
         map.put("error", "Unknown Error");
         if (ex.getCause() != null) {
             map.put("cause", ex.getCause().getMessage());

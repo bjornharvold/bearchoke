@@ -32,19 +32,19 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class UserCommandHandler {
-    @Qualifier("userRepository")
-    private final Repository<UserAggregate> repository;
+    @Qualifier("userAggregateRepository")
+    private final Repository<UserAggregate> userAggregateRepository;
 
     @Autowired
     public UserCommandHandler(Repository<UserAggregate> repository) {
-        this.repository = repository;
+        this.userAggregateRepository = repository;
     }
 
     @CommandHandler
     public UserIdentifier handleRegisterUserAggregate(RegisterUserCommand command) {
         UserIdentifier id = command.getUserId();
         UserAggregate u = new UserAggregate(id, command.getUsername(), command.getPassword(), command.getEmail(), command.getFirstName(), command.getLastName());
-        repository.add(u);
+        userAggregateRepository.add(u);
 
         return id;
     }

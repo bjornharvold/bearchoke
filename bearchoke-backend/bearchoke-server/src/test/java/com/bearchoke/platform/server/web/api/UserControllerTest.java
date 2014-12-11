@@ -17,7 +17,6 @@
 package com.bearchoke.platform.server.web.api;
 
 
-import com.bearchoke.platform.inmemory.security.config.EmbeddedSecurityConfig;
 import com.bearchoke.platform.platform.base.config.CacheConfig;
 import com.bearchoke.platform.platform.base.config.EncryptionConfig;
 import com.bearchoke.platform.platform.base.config.RedisConfig;
@@ -74,7 +73,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
                 RedisLocalConfig.class,
                 EncryptionConfig.class,
                 CacheConfig.class,
-                EmbeddedSecurityConfig.class,
                 WebSecurityConfig.class,
                 WebAppConfig.class
         }

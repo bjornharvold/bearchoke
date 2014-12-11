@@ -17,6 +17,7 @@
 package com.bearchoke.platform.server.service.chat;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 
@@ -27,6 +28,7 @@ import java.util.Date;
  * Responsibility:
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class OutputMessage extends Message {
     private Date time;
 

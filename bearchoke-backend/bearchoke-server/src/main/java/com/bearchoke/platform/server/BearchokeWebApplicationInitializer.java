@@ -38,10 +38,10 @@ import com.bearchoke.platform.server.config.WebSocketConfig;
 import com.bearchoke.platform.server.web.filter.JsonHttpRequestFilter;
 import com.bearchoke.platform.server.web.filter.SimpleCORSFilter;
 import com.bearchoke.platform.server.config.WebAppConfig;
-import com.bearchoke.platform.todo.config.ToDoCQRSConfig;
+import com.bearchoke.platform.todo.config.ToDoConfig;
 
 import com.bearchoke.platform.user.config.SecurityConfig;
-import com.bearchoke.platform.user.config.UserCQRSConfig;
+import com.bearchoke.platform.user.config.UserConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.cloud.Cloud;
@@ -99,11 +99,11 @@ public class BearchokeWebApplicationInitializer implements WebApplicationInitial
         List<Class> configClasses = new ArrayList<>();
         configClasses.add(AppConfig.class);
         configClasses.add(RedisConfig.class);
+        configClasses.add(MongoCoreConfig.class);
         configClasses.add(SchedulerConfig.class);
         configClasses.add(EncryptionConfig.class);
         configClasses.add(CacheConfig.class);
         configClasses.add(SpringIntegrationConfig.class);
-        configClasses.add(WebSecurityConfig.class);
 
         // let's determine if this is a cloud based server
         Cloud cloud = getCloud();
@@ -126,10 +126,6 @@ public class BearchokeWebApplicationInitializer implements WebApplicationInitial
 
         for (String profile : profiles) {
 
-            if (StringUtils.equals(profile, MONGODB)) {
-                configClasses.add(SecurityConfig.class);
-                configClasses.add(MongoCoreConfig.class);
-            }
             if (StringUtils.equals(profile, JPA)) {
                 configClasses.add(JpaCoreConfig.class);
             }
@@ -192,8 +188,10 @@ public class BearchokeWebApplicationInitializer implements WebApplicationInitial
                 WebAppConfig.class,
                 WebSocketConfig.class,
                 CQRSConfig.class,
-                ToDoCQRSConfig.class,
-                UserCQRSConfig.class
+                ToDoConfig.class,
+                UserConfig.class,
+                SecurityConfig.class,
+                WebSecurityConfig.class
         );
 
         DispatcherServlet sc = new DispatcherServlet(appContext);
@@ -220,20 +218,20 @@ public class BearchokeWebApplicationInitializer implements WebApplicationInitial
         corsFilter.setCorsExposeHeaders("content-type, cookie, x-requested-with, origin, accept, username, password, x-app-type, x-app-version, x-auth-token");
         corsFilter.setCorsMaxAge("3600");
 
-        ctx.addFilter("SimpleCorsFilter", corsFilter).addMappingForUrlPatterns(
-                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
-        ctx.addFilter("JsonHttpRequestFilter", new JsonHttpRequestFilter()).addMappingForUrlPatterns(
-                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, "/api/authenticate");
-        ctx.addFilter("springSecurityFilterChain", DelegatingFilterProxy.class).addMappingForUrlPatterns(
-                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
-        ctx.addFilter("CharacterEncodingFilter", characterEncodingFilter).addMappingForUrlPatterns(
-                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
-        ctx.addFilter("HiddenHttpMethodFilter", new HiddenHttpMethodFilter()).addMappingForUrlPatterns(
-                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
-        ctx.addFilter("HttpPutFormContentFilter", new HttpPutFormContentFilter()).addMappingForUrlPatterns(
-                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
-        ctx.addFilter("ShallowEtagHeaderFilter", new ShallowEtagHeaderFilter()).addMappingForUrlPatterns(
-                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
+//        ctx.addFilter("SimpleCorsFilter", corsFilter).addMappingForUrlPatterns(
+//                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
+//        ctx.addFilter("JsonHttpRequestFilter", new JsonHttpRequestFilter()).addMappingForUrlPatterns(
+//                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, "/api/authenticate");
+//        ctx.addFilter("springSecurityFilterChain", DelegatingFilterProxy.class).addMappingForUrlPatterns(
+//                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
+//        ctx.addFilter("CharacterEncodingFilter", characterEncodingFilter).addMappingForUrlPatterns(
+//                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
+//        ctx.addFilter("HiddenHttpMethodFilter", new HiddenHttpMethodFilter()).addMappingForUrlPatterns(
+//                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
+//        ctx.addFilter("HttpPutFormContentFilter", new HttpPutFormContentFilter()).addMappingForUrlPatterns(
+//                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
+//        ctx.addFilter("ShallowEtagHeaderFilter", new ShallowEtagHeaderFilter()).addMappingForUrlPatterns(
+//                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
 
     }
 

@@ -16,7 +16,7 @@
 
 package com.bearchoke.platform.user.repositories;
 
-import com.bearchoke.platform.user.User;
+import com.bearchoke.platform.user.document.User;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
@@ -27,16 +27,11 @@ import org.springframework.data.mongodb.repository.Query;
  * Time: 8:03 PM
  * Responsibility:
  */
-public interface UserRepository extends MongoRepository<User, ObjectId>, UserRepositoryCustom {
-
-    @Query("{ 'id' : ?0 }")
-    User findUserById(ObjectId userId);
-
+public interface UserRepository extends MongoRepository<User, ObjectId> {
     @Query("{ 'username' : ?0 }")
     User findUserByUsername(String username);
 
-    @Query("{ 'email' : ?0 }")
-    User findUserByEmail(String email);
+    boolean isUsernameUnique(String username);
 
-
+    boolean isEmailUnique(String email);
 }

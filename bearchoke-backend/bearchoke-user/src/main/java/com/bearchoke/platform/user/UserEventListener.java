@@ -17,6 +17,7 @@
 package com.bearchoke.platform.user;
 
 import com.bearchoke.platform.api.user.UserCreatedEvent;
+import com.bearchoke.platform.user.document.User;
 import com.bearchoke.platform.user.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.eventhandling.annotation.EventHandler;

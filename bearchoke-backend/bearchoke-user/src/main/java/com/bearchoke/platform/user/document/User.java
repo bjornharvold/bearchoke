@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.user;
+package com.bearchoke.platform.user.document;
 
 //~--- non-JDK imports --------------------------------------------------------
 
@@ -27,7 +27,6 @@ import com.fasterxml.uuid.impl.TimeBasedGenerator;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;

@@ -35,7 +35,6 @@ import org.axonframework.springmessaging.eventbus.SpringMessagingEventBus;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.messaging.SubscribableChannel;
 
@@ -53,9 +52,6 @@ import java.util.List;
 public class CQRSConfig {
 
     @Inject
-    private Environment environment;
-
-    @Inject
     @Qualifier("taskExecutor")
     private TaskExecutor taskExecutor;
 
@@ -66,7 +62,7 @@ public class CQRSConfig {
     @Qualifier("webSocketInputChannel")
     private SubscribableChannel webSocketInputChannel;
 
-    @Bean
+    @Bean(name = "commandBus")
     public CommandBus commandBus() {
         SimpleCommandBus commandBus = new SimpleCommandBus();
 
@@ -77,7 +73,7 @@ public class CQRSConfig {
         return commandBus;
     }
 
-    @Bean
+    @Bean(name = "commandGateway")
     public CommandGateway commandGateway() {
         CommandGateway commandGateway = null;
         CommandGatewayFactoryBean factory = new CommandGatewayFactoryBean();
@@ -95,7 +91,7 @@ public class CQRSConfig {
         return commandGateway;
     }
 
-    @Bean
+    @Bean(name = "eventBus")
     public SpringMessagingEventBus eventBus() {
         SpringMessagingEventBus eventBus = new SpringMessagingEventBus();
         eventBus.setChannel(webSocketInputChannel);
@@ -113,14 +109,14 @@ public class CQRSConfig {
         return new org.axonframework.saga.repository.mongo.DefaultMongoTemplate(mongo);
     }
 
-    @Bean
+    @Bean(name = "eventStore")
     public MongoEventStore eventStore() {
         MongoEventStore eventStore = new MongoEventStore(mongoTemplate());
 
         return eventStore;
     }
 
-    @Bean
+    @Bean(name = "sagaRepository")
     public SagaRepository sagaRepository() {
         MongoSagaRepository sagaRepository = new MongoSagaRepository(mongoSagaTemplate());
         sagaRepository.setResourceInjector(new SpringResourceInjector());
