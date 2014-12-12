@@ -38,7 +38,7 @@ import javax.inject.Inject;
 @ComponentScan(basePackages = "com.bearchoke.platform.todo", excludeFilters = {
         @ComponentScan.Filter(value = Configuration.class, type = FilterType.ANNOTATION)
 })
-@AnnotationDriven(commandBus = "commandBus", eventBus = "eventBus", unsubscribeOnShutdown = true)
+@AnnotationDriven(commandBus = "commandBus", eventBus = "eventBus", unsubscribeOnShutdown = false)
 public class ToDoConfig {
     @Inject
     private EventStore eventStore;

@@ -4,8 +4,8 @@
     <facet type="Spring" name="Spring">
       <configuration>
         <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/src/main/java/com/bearchoke/platform/user/config/UserCQRSConfig.java</file>
           <file>file://$MODULE_DIR$/src/main/java/com/bearchoke/platform/user/config/SecurityConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/bearchoke/platform/user/config/UserConfig.java</file>
         </fileset>
       </configuration>
     </facet>
@@ -35,7 +35,7 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.3.2" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.json:json:20090211" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:4.0.0.M2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:4.0.0.RC1" level="project" />
     <orderEntry type="module" module-name="bearchoke-platform-base" />
     <orderEntry type="library" name="Maven: org.jasypt:jasypt:1.9.2" level="project" />
     <orderEntry type="library" name="Maven: org.jasypt:jasypt-springsecurity3:1.9.2" level="project" />
@@ -96,7 +96,7 @@
     <orderEntry type="library" name="Maven: joda-time:joda-time:2.3" level="project" />
     <orderEntry type="library" name="Maven: joda-time:joda-time-hibernate:1.3" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.uuid:java-uuid-generator:3.1.3" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:4.0.0.M2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:4.0.0.RC1" level="project" />
     <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.1.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: javax.validation:validation-api:1.1.0.Final" level="project" />

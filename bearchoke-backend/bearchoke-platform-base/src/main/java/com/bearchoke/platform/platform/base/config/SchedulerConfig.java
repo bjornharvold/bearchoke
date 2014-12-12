@@ -41,8 +41,8 @@ public class SchedulerConfig implements SchedulingConfigurer {
         registrar.setTaskScheduler(taskScheduler());
     }
 
-    @Bean(name = "taskExecutor")
-    public ThreadPoolTaskExecutor taskExecutor() {
+    @Bean(name = "threadPoolTaskExecutor")
+    public ThreadPoolTaskExecutor threadPoolTaskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setMaxPoolSize(5);
         executor.setCorePoolSize(2);

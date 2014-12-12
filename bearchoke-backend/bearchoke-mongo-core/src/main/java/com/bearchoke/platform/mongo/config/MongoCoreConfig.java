@@ -49,7 +49,7 @@ public class MongoCoreConfig {
     @Inject
     private MongoDbFactory mongoDbFactory;
 
-    @Bean
+    @Bean(name = "mongoTemplate")
     public MongoTemplate mongoTemplate() throws Exception {
         return new MongoTemplate(mongoDbFactory);
     }

@@ -19,8 +19,10 @@ package com.bearchoke.platform.server.config;
 import com.bearchoke.platform.platform.base.security.SpringSecurityHelper;
 import com.bearchoke.platform.server.ServerConstants;
 import com.bearchoke.platform.server.jackson.CustomObjectMapper;
-import com.bearchoke.platform.server.security.ApiPreAuthenticatedTokenCacheService;
-import com.bearchoke.platform.server.web.ApplicationMediaType;
+import com.bearchoke.platform.server.websocket.WebSocketConnectHandler;
+import com.bearchoke.platform.server.websocket.WebSocketDisconnectHandler;
+import com.bearchoke.platform.user.repositories.ActiveWebSocketUserRepository;
+import com.bearchoke.platform.user.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -28,30 +30,24 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
-import org.springframework.messaging.MessageHeaders;
-import org.springframework.messaging.converter.ContentTypeResolver;
-import org.springframework.messaging.converter.DefaultContentTypeResolver;
 import org.springframework.messaging.converter.MappingJackson2MessageConverter;
 import org.springframework.messaging.converter.MessageConverter;
+import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.messaging.simp.config.ChannelRegistration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.messaging.simp.stomp.StompCommand;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.messaging.support.ChannelInterceptorAdapter;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.web.messaging.MessageSecurityMetadataSourceRegistry;
-import org.springframework.security.config.annotation.web.socket.AbstractSecurityWebSocketMessageBrokerConfigurer;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
-import org.springframework.util.MimeType;
+import org.springframework.session.ExpiringSession;
+import org.springframework.session.web.socket.config.annotation.AbstractSessionWebSocketMessageBrokerConfigurer;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
@@ -62,7 +58,6 @@ import org.springframework.web.socket.server.support.DefaultHandshakeHandler;
 
 import javax.inject.Inject;
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -76,20 +71,17 @@ import java.util.Map;
 @EnableWebSocketMessageBroker
 @ComponentScan("com.bearchoke.platform.server.websocket")
 @Slf4j
-public class WebSocketConfig extends AbstractSecurityWebSocketMessageBrokerConfigurer {
+public class WebSocketConfig<S extends ExpiringSession> extends AbstractSessionWebSocketMessageBrokerConfigurer<S> {
 
     @Inject
     private CustomObjectMapper objectMapper;
-
-    @Inject
-    private ApiPreAuthenticatedTokenCacheService apiPreAuthenticatedTokenCacheService;
 
     @Inject
     @Qualifier("preAuthenticationManager")
     private AuthenticationManager preAuthenticationManager;
 
     @Override
-    public void registerStompEndpoints(StompEndpointRegistry registry) {
+    public void configureStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws").setHandshakeHandler(new SecureHandshakeHandler(preAuthenticationManager))
                 .withSockJS()
                 .setStreamBytesLimit(512 * 1024)
@@ -115,15 +107,6 @@ public class WebSocketConfig extends AbstractSecurityWebSocketMessageBrokerConfi
     }
 
     @Override
-    protected void configure(MessageSecurityMetadataSourceRegistry registry) {
-        registry
-                .destinationMatchers("/user/queue/errors").permitAll()
-                .destinationMatchers("/user/*").hasRole("USER")
-                .destinationMatchers("/app/user/*").hasRole("USER")
-                .destinationMatchers("/*").permitAll();
-    }
-
-    @Override
     public boolean configureMessageConverters(List<MessageConverter> converters) {
         MappingJackson2MessageConverter jacksonConverter = new MappingJackson2MessageConverter();
         jacksonConverter.setObjectMapper(objectMapper);
@@ -135,11 +118,20 @@ public class WebSocketConfig extends AbstractSecurityWebSocketMessageBrokerConfi
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
         config.setApplicationDestinationPrefixes("/app");
-//        config.enableSimpleBroker("/queue/", "/topic/");
         config.enableStompBrokerRelay("/queue/", "/topic/");
 
         // only if we want to use . instead of / for path separator e.g. /app/user.chat
 //        config.setPathMatcher(new AntPathMatcher("."));
+    }
+
+    @Bean
+    public WebSocketConnectHandler<S> webSocketConnectHandler(SimpMessageSendingOperations messagingTemplate, ActiveWebSocketUserRepository repository) {
+        return new WebSocketConnectHandler<>(messagingTemplate, repository);
+    }
+
+    @Bean
+    public WebSocketDisconnectHandler<S> webSocketDisconnectHandler(SimpMessageSendingOperations messagingTemplate, ActiveWebSocketUserRepository repository) {
+        return new WebSocketDisconnectHandler<S>(messagingTemplate, repository);
     }
 
     /**

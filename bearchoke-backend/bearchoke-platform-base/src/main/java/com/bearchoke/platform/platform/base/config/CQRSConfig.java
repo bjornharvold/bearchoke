@@ -32,12 +32,15 @@ import org.axonframework.saga.SagaRepository;
 import org.axonframework.saga.repository.mongo.MongoSagaRepository;
 import org.axonframework.saga.spring.SpringResourceInjector;
 import org.axonframework.springmessaging.eventbus.SpringMessagingEventBus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.messaging.SubscribableChannel;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +55,7 @@ import java.util.List;
 public class CQRSConfig {
 
     @Inject
-    @Qualifier("taskExecutor")
+    @Qualifier("threadPoolTaskExecutor")
     private TaskExecutor taskExecutor;
 
     @Inject
@@ -99,8 +102,8 @@ public class CQRSConfig {
         return eventBus;
     }
 
-    @Bean
-    public MongoTemplate mongoTemplate() {
+    @Bean(name = "axonMongoTemplate")
+    public MongoTemplate axonMongoTemplate() {
         return new DefaultMongoTemplate(mongo);
     }
 
@@ -111,7 +114,7 @@ public class CQRSConfig {
 
     @Bean(name = "eventStore")
     public MongoEventStore eventStore() {
-        MongoEventStore eventStore = new MongoEventStore(mongoTemplate());
+        MongoEventStore eventStore = new MongoEventStore(axonMongoTemplate());
 
         return eventStore;
     }
@@ -124,6 +127,8 @@ public class CQRSConfig {
         return sagaRepository;
     }
 
+    /*
+    Waiting for axon v2.4
     @Bean(name = "snapshotter")
     public Snapshotter snapshotter() {
         SpringAggregateSnapshotter sas = new SpringAggregateSnapshotter();
@@ -132,5 +137,6 @@ public class CQRSConfig {
 
         return sas;
     }
+    */
 
 }

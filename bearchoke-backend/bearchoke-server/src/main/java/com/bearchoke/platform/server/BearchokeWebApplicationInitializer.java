@@ -35,6 +35,7 @@ import com.bearchoke.platform.server.config.AppConfig;
 import com.bearchoke.platform.platform.base.config.RedisConfig;
 import com.bearchoke.platform.server.config.WebSecurityConfig;
 import com.bearchoke.platform.server.config.WebSocketConfig;
+import com.bearchoke.platform.server.config.WebSocketSecurityConfig;
 import com.bearchoke.platform.server.web.filter.JsonHttpRequestFilter;
 import com.bearchoke.platform.server.web.filter.SimpleCORSFilter;
 import com.bearchoke.platform.server.config.WebAppConfig;
@@ -99,7 +100,6 @@ public class BearchokeWebApplicationInitializer implements WebApplicationInitial
         List<Class> configClasses = new ArrayList<>();
         configClasses.add(AppConfig.class);
         configClasses.add(RedisConfig.class);
-        configClasses.add(MongoCoreConfig.class);
         configClasses.add(SchedulerConfig.class);
         configClasses.add(EncryptionConfig.class);
         configClasses.add(CacheConfig.class);
@@ -187,11 +187,13 @@ public class BearchokeWebApplicationInitializer implements WebApplicationInitial
         appContext.register(
                 WebAppConfig.class,
                 WebSocketConfig.class,
+                WebSocketSecurityConfig.class,
                 CQRSConfig.class,
                 ToDoConfig.class,
                 UserConfig.class,
                 SecurityConfig.class,
-                WebSecurityConfig.class
+                WebSecurityConfig.class,
+                MongoCoreConfig.class
         );
 
         DispatcherServlet sc = new DispatcherServlet(appContext);
