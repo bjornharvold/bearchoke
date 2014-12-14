@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.server.websocket.controller;
+package com.bearchoke.platform.server.web.controller;
 
-import com.bearchoke.platform.platform.base.security.SpringSecurityHelper;
+import com.bearchoke.platform.platform.base.SpringSecurityHelper;
 import com.bearchoke.platform.server.ServerConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
@@ -37,7 +38,8 @@ public abstract class AbstractAuthenticatedController {
     private final static Logger log = LoggerFactory.getLogger(AbstractAuthenticatedController.class);
 
     @Autowired
-    public AuthenticationManager preAuthenticationManager;
+    @Qualifier("preAuthAuthenticationManager")
+    public AuthenticationManager preAuthAuthenticationManager;
 
     protected void authenticate(StompHeaderAccessor accessor) {
         String authToken = accessor.getFirstNativeHeader(ServerConstants.X_AUTH_TOKEN);
@@ -49,7 +51,7 @@ public abstract class AbstractAuthenticatedController {
         if (StringUtils.isNotBlank(authToken)) {
 
             // set cached authenticated user back in the spring security context
-            Authentication authentication = preAuthenticationManager.authenticate(new PreAuthenticatedAuthenticationToken(authToken, "N/A"));
+            Authentication authentication = preAuthAuthenticationManager.authenticate(new PreAuthenticatedAuthenticationToken(authToken, "N/A"));
 
             if (log.isDebugEnabled()) {
                 log.debug("Adding Authentication to SecurityContext for WebSocket call: " + authentication);

@@ -16,17 +16,14 @@
 
 package com.bearchoke.platform.server.config;
 
+import com.bearchoke.platform.user.config.SecurityConfig;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
-import org.springframework.context.annotation.Profile;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.annotation.PropertySources;
+import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.SchedulingConfigurer;
-import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by Bjorn Harvold
@@ -36,11 +33,8 @@ import org.springframework.stereotype.Controller;
  */
 @Configuration
 @EnableAsync
-@ComponentScan(basePackages = "com.bearchoke.platform.server", excludeFilters = {
-        @ComponentScan.Filter(value = Controller.class, type = FilterType.ANNOTATION),
-        @ComponentScan.Filter(pattern = "com.bearchoke.platform.server.web.*", type = FilterType.REGEX),
-        @ComponentScan.Filter(pattern = "com.bearchoke.platform.server.websocket.*", type = FilterType.REGEX),
-        @ComponentScan.Filter(value = Configuration.class, type = FilterType.ANNOTATION)
+@ComponentScan(basePackages = "com.bearchoke.platform", excludeFilters = {
+        @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Controller.class)
 })
 public class AppConfig {
 

@@ -36,9 +36,6 @@ import javax.inject.Inject;
  * Responsibility:
  */
 @Configuration
-@ComponentScan(basePackages = "com.bearchoke.platform.user", excludeFilters = {
-        @ComponentScan.Filter(value = Configuration.class, type = FilterType.ANNOTATION)
-})
 @AnnotationDriven(commandBus = "commandBus", eventBus = "eventBus", unsubscribeOnShutdown = false)
 public class UserConfig {
     @Inject

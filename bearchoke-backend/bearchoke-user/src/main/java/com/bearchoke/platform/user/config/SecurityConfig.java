@@ -18,16 +18,23 @@ package com.bearchoke.platform.user.config;
 
 import com.bearchoke.platform.user.repositories.UserRepository;
 import com.bearchoke.platform.user.repositories.impl.UserRepositoryImpl;
+import com.bearchoke.platform.user.security.PreAuthUserDetailsService;
 import com.bearchoke.platform.user.security.UserAuthenticationProvider;
 import com.bearchoke.platform.user.security.UserDetailsServiceImpl;
 import org.axonframework.commandhandling.CommandBus;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration;
+import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Bjorn Harvold
@@ -50,6 +57,9 @@ public class SecurityConfig extends GlobalMethodSecurityConfiguration {
     @Inject
     private UserRepository userRepository;
 
+    @Inject
+    private PreAuthUserDetailsService apiPreAuthUserDetailsService;
+
     @Bean(name = "userDetailsService")
     public UserDetailsServiceImpl userDetailsService() {
         return new UserDetailsServiceImpl(userRepository);
@@ -65,4 +75,14 @@ public class SecurityConfig extends GlobalMethodSecurityConfiguration {
         builder.authenticationProvider(authenticationProvider());
     }
 
+    @Bean(name = "preAuthAuthenticationManager")
+    public AuthenticationManager preAuthAuthenticationManager() {
+        PreAuthenticatedAuthenticationProvider preAuthProvider = new PreAuthenticatedAuthenticationProvider();
+        preAuthProvider.setPreAuthenticatedUserDetailsService(apiPreAuthUserDetailsService);
+
+        List<AuthenticationProvider> providers = new ArrayList<AuthenticationProvider>();
+        providers.add(preAuthProvider);
+
+        return new ProviderManager(providers);
+    }
 }

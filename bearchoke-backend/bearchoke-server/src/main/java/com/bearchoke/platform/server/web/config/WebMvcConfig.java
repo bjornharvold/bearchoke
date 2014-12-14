@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.server.config;
+package com.bearchoke.platform.server.web.config;
 
 
 import com.bearchoke.platform.server.web.argumentresolver.DateTimeZoneHandlerMethodArgumentResolver;
@@ -23,13 +23,13 @@ import com.bearchoke.platform.server.web.interceptor.DateTimeZoneHandlerIntercep
 import com.bearchoke.platform.server.web.interceptor.UserLocationHandlerInterceptor;
 import com.bearchoke.platform.server.web.ApplicationMediaType;
 import com.bearchoke.platform.server.jackson.CustomObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.core.env.Environment;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -59,10 +59,8 @@ import java.util.List;
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.bearchoke.platform.server.web")
-public class WebAppConfig extends WebMvcConfigurerAdapter {
-
-    @Inject
-    private Environment environment;
+@Slf4j
+public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     @Inject
     private CustomObjectMapper objectMapper;
@@ -75,19 +73,19 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
     /**
      * Messages to support internationalization/localization.
      */
-    @Bean
+    @Bean(name = "messageSource")
     public MessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
         messageSource.setBasename("/WEB-INF/i18n/messages");
         messageSource.setUseCodeAsDefaultMessage(true);
-        if (environment.acceptsProfiles("in-memory")) {
-            messageSource.setCacheSeconds(0);
-        }
+        messageSource.setCacheSeconds(30);
+
         return messageSource;
     }
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        log.info("Configuring http message converters...");
         MappingJackson2HttpMessageConverter jacksonConverter = new MappingJackson2HttpMessageConverter();
         List<MediaType> types = new ArrayList<>(1);
         types.add(ApplicationMediaType.APPLICATION_JSON);
@@ -98,7 +96,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
         converters.add(jacksonConverter);
     }
 
-    @Bean
+    @Bean(name = "methodValidationPostProcessor")
     public MethodValidationPostProcessor methodValidationPostProcessor() {
         MethodValidationPostProcessor methodValidationPostProcessor = new MethodValidationPostProcessor();
         methodValidationPostProcessor.setValidator(localValidatorFactoryBean());
@@ -106,7 +104,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
         return methodValidationPostProcessor;
     }
 
-    @Bean
+    @Bean(name = "localValidatorFactoryBean")
     public LocalValidatorFactoryBean localValidatorFactoryBean() {
         LocalValidatorFactoryBean localValidatorFactoryBean = new LocalValidatorFactoryBean();
         localValidatorFactoryBean.setMessageInterpolator(
@@ -120,12 +118,14 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        log.info("Adding interceptors...");
         registry.addInterceptor(new DateTimeZoneHandlerInterceptor());
         registry.addInterceptor(new UserLocationHandlerInterceptor());
     }
 
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
+        log.info("Adding argument resolvers...");
         argumentResolvers.add(new DateTimeZoneHandlerMethodArgumentResolver());
         argumentResolvers.add(new LocationHandlerMethodArgumentResolver());
     }

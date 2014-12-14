@@ -16,33 +16,11 @@
 
 package com.bearchoke.platform.server;
 
-import com.bearchoke.platform.jpa.config.JpaCloudConfig;
-import com.bearchoke.platform.jpa.config.JpaCoreConfig;
-import com.bearchoke.platform.jpa.config.JpaLocalConfig;
-import com.bearchoke.platform.mongo.config.MongoCloudConfig;
-import com.bearchoke.platform.mongo.config.MongoLocalConfig;
-import com.bearchoke.platform.platform.base.config.CQRSConfig;
-import com.bearchoke.platform.platform.base.config.RabbitMQCloudConfig;
-import com.bearchoke.platform.platform.base.config.RabbitMQLocalConfig;
-import com.bearchoke.platform.mongo.config.MongoCoreConfig;
-import com.bearchoke.platform.platform.base.config.CacheConfig;
-import com.bearchoke.platform.platform.base.config.EncryptionConfig;
-import com.bearchoke.platform.platform.base.config.RedisCloudConfig;
-import com.bearchoke.platform.platform.base.config.RedisLocalConfig;
-import com.bearchoke.platform.platform.base.config.SchedulerConfig;
-import com.bearchoke.platform.platform.base.config.SpringIntegrationConfig;
 import com.bearchoke.platform.server.config.AppConfig;
-import com.bearchoke.platform.platform.base.config.RedisConfig;
-import com.bearchoke.platform.server.config.WebSecurityConfig;
-import com.bearchoke.platform.server.config.WebSocketConfig;
-import com.bearchoke.platform.server.config.WebSocketSecurityConfig;
 import com.bearchoke.platform.server.web.filter.JsonHttpRequestFilter;
 import com.bearchoke.platform.server.web.filter.SimpleCORSFilter;
-import com.bearchoke.platform.server.config.WebAppConfig;
-import com.bearchoke.platform.todo.config.ToDoConfig;
+import com.bearchoke.platform.server.web.config.WebMvcConfig;
 
-import com.bearchoke.platform.user.config.SecurityConfig;
-import com.bearchoke.platform.user.config.UserConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.cloud.Cloud;
@@ -90,8 +68,8 @@ public class BearchokeWebApplicationInitializer implements WebApplicationInitial
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         createWebApplicationContext(servletContext);
-        createFilters(servletContext);
         createSpringServlet(servletContext);
+        createFilters(servletContext);
     }
 
     private void createWebApplicationContext(ServletContext servletContext) {
@@ -99,11 +77,6 @@ public class BearchokeWebApplicationInitializer implements WebApplicationInitial
 
         List<Class> configClasses = new ArrayList<>();
         configClasses.add(AppConfig.class);
-        configClasses.add(RedisConfig.class);
-        configClasses.add(SchedulerConfig.class);
-        configClasses.add(EncryptionConfig.class);
-        configClasses.add(CacheConfig.class);
-        configClasses.add(SpringIntegrationConfig.class);
 
         // let's determine if this is a cloud based server
         Cloud cloud = getCloud();
@@ -121,54 +94,12 @@ public class BearchokeWebApplicationInitializer implements WebApplicationInitial
 
         log.info("Active spring profiles: " + activeProfiles);
 
-        String[] profiles = activeProfiles.split(",");
-
-
-        for (String profile : profiles) {
-
-            if (StringUtils.equals(profile, JPA)) {
-                configClasses.add(JpaCoreConfig.class);
-            }
-
-        }
-
         // load local or cloud based configs
         if (cloud != null) {
 
             // list available service - fail servlet initializing if we are missing one that we require below
             printAvailableCloudServices(cloud.getServiceInfos());
 
-            for (String profile : profiles) {
-
-                if (StringUtils.equals(profile, REDIS_CLOUD) && isCloudServiceAvailable(cloud, REDIS_SERVICE_ID)) {
-                    configClasses.add(RedisCloudConfig.class);
-                }
-                if (StringUtils.equals(profile, RABBIT_CLOUD) && isCloudServiceAvailable(cloud, RABBIT_SERVICE_ID)) {
-                    configClasses.add(RabbitMQCloudConfig.class);
-                }
-                if (StringUtils.equals(profile, MONGODB_CLOUD) && isCloudServiceAvailable(cloud, MONGODB_SERVICE_ID)) {
-                    configClasses.add(MongoCloudConfig.class);
-                }
-                if (StringUtils.equals(profile, JPA_CLOUD) && isCloudServiceAvailable(cloud, JPA_SERVICE_ID)) {
-                    configClasses.add(JpaCloudConfig.class);
-                }
-            }
-        } else {
-            for (String profile : profiles) {
-
-                if (StringUtils.equals(profile, REDIS_LOCAL)) {
-                    configClasses.add(RedisLocalConfig.class);
-                }
-                if (StringUtils.equals(profile, RABBIT_LOCAL)) {
-                    configClasses.add(RabbitMQLocalConfig.class);
-                }
-                if (StringUtils.equals(profile, MONGODB_LOCAL)) {
-                    configClasses.add(MongoLocalConfig.class);
-                }
-                if (StringUtils.equals(profile, JPA_LOCAL)) {
-                    configClasses.add(JpaLocalConfig.class);
-                }
-            }
         }
 
         AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
@@ -181,19 +112,11 @@ public class BearchokeWebApplicationInitializer implements WebApplicationInitial
     }
 
     private void createSpringServlet(ServletContext servletContext) {
-        log.info("Creating Spring Servlet started");
+        log.info("Creating Spring Servlet started....");
 
         AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
         appContext.register(
-                WebAppConfig.class,
-                WebSocketConfig.class,
-                WebSocketSecurityConfig.class,
-                CQRSConfig.class,
-                ToDoConfig.class,
-                UserConfig.class,
-                SecurityConfig.class,
-                WebSecurityConfig.class,
-                MongoCoreConfig.class
+                WebMvcConfig.class
         );
 
         DispatcherServlet sc = new DispatcherServlet(appContext);
@@ -220,20 +143,20 @@ public class BearchokeWebApplicationInitializer implements WebApplicationInitial
         corsFilter.setCorsExposeHeaders("content-type, cookie, x-requested-with, origin, accept, username, password, x-app-type, x-app-version, x-auth-token");
         corsFilter.setCorsMaxAge("3600");
 
-//        ctx.addFilter("SimpleCorsFilter", corsFilter).addMappingForUrlPatterns(
-//                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
-//        ctx.addFilter("JsonHttpRequestFilter", new JsonHttpRequestFilter()).addMappingForUrlPatterns(
-//                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, "/api/authenticate");
-//        ctx.addFilter("springSecurityFilterChain", DelegatingFilterProxy.class).addMappingForUrlPatterns(
-//                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
-//        ctx.addFilter("CharacterEncodingFilter", characterEncodingFilter).addMappingForUrlPatterns(
-//                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
-//        ctx.addFilter("HiddenHttpMethodFilter", new HiddenHttpMethodFilter()).addMappingForUrlPatterns(
-//                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
-//        ctx.addFilter("HttpPutFormContentFilter", new HttpPutFormContentFilter()).addMappingForUrlPatterns(
-//                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
-//        ctx.addFilter("ShallowEtagHeaderFilter", new ShallowEtagHeaderFilter()).addMappingForUrlPatterns(
-//                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
+        ctx.addFilter("SimpleCorsFilter", corsFilter).addMappingForUrlPatterns(
+                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
+        ctx.addFilter("JsonHttpRequestFilter", new JsonHttpRequestFilter()).addMappingForUrlPatterns(
+                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, "/api/authenticate");
+        ctx.addFilter("springSecurityFilterChain", DelegatingFilterProxy.class).addMappingForUrlPatterns(
+                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
+        ctx.addFilter("CharacterEncodingFilter", characterEncodingFilter).addMappingForUrlPatterns(
+                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
+        ctx.addFilter("HiddenHttpMethodFilter", new HiddenHttpMethodFilter()).addMappingForUrlPatterns(
+                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
+        ctx.addFilter("HttpPutFormContentFilter", new HttpPutFormContentFilter()).addMappingForUrlPatterns(
+                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
+        ctx.addFilter("ShallowEtagHeaderFilter", new ShallowEtagHeaderFilter()).addMappingForUrlPatterns(
+                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
 
     }
 

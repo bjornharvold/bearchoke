@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.server.websocket.controller;
+package com.bearchoke.platform.server.web.controller;
 
 import com.bearchoke.platform.server.service.chat.Message;
 import com.bearchoke.platform.server.service.chat.OutputMessage;

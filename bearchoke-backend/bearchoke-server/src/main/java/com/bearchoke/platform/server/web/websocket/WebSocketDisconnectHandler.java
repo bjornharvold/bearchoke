@@ -13,39 +13,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.bearchoke.platform.server.websocket;
-
-import java.security.Principal;
-import java.util.Arrays;
-import java.util.Calendar;
+package com.bearchoke.platform.server.web.websocket;
 
 import com.bearchoke.platform.user.document.ActiveWebSocketUser;
 import com.bearchoke.platform.user.repositories.ActiveWebSocketUserRepository;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationListener;
-import org.springframework.messaging.MessageHeaders;
-import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
-import org.springframework.web.socket.messaging.SessionConnectEvent;
+import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
-public class WebSocketConnectHandler<S> implements ApplicationListener<SessionConnectEvent> {
+public class WebSocketDisconnectHandler<S> implements ApplicationListener<SessionDisconnectEvent> {
     private ActiveWebSocketUserRepository repository;
     private SimpMessageSendingOperations messagingTemplate;
 
-    public WebSocketConnectHandler(SimpMessageSendingOperations messagingTemplate, ActiveWebSocketUserRepository repository) {
+    public WebSocketDisconnectHandler(SimpMessageSendingOperations messagingTemplate, ActiveWebSocketUserRepository repository) {
         super();
         this.messagingTemplate = messagingTemplate;
         this.repository = repository;
     }
 
     @Override
-    public void onApplicationEvent(SessionConnectEvent event) {
-        MessageHeaders headers = event.getMessage().getHeaders();
-        Principal user = SimpMessageHeaderAccessor.getUser(headers);
+    public void onApplicationEvent(SessionDisconnectEvent event) {
+        String idS = event.getSessionId();
+        if(StringUtils.isBlank(idS)) {
+            return;
+        }
+
+        ActiveWebSocketUser user = repository.findUserBySessionId(idS);
         if(user == null) {
             return;
         }
-        String id = SimpMessageHeaderAccessor.getSessionId(headers);
-        repository.save(new ActiveWebSocketUser(id, user.getName(), Calendar.getInstance()));
-//        messagingTemplate.convertAndSend("/topic/friends/signin", Arrays.asList(user.getName()));
+
+        repository.delete(user);
+
+//        messagingTemplate.convertAndSend("/topic/friends/signout", Arrays.asList(user.getUsername()));
     }
 }

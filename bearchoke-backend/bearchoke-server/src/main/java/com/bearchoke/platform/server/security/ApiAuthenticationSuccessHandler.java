@@ -17,6 +17,7 @@
 package com.bearchoke.platform.server.security;
 
 import com.bearchoke.platform.server.ServerConstants;
+import com.bearchoke.platform.user.security.PreAuthenticatedTokenCacheService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -33,7 +34,7 @@ import java.util.UUID;
 public class ApiAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
 	@Inject
-	private ApiPreAuthenticatedTokenCacheService apiPreAuthenticatedTokenCacheService;
+	private PreAuthenticatedTokenCacheService preAuthenticatedTokenCacheService;
 
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
@@ -43,7 +44,7 @@ public class ApiAuthenticationSuccessHandler implements AuthenticationSuccessHan
         User user = (User) authentication.getPrincipal();
 		String xAuthToken = UUID.randomUUID().toString();
 
-		apiPreAuthenticatedTokenCacheService.putInCache(xAuthToken, user);
+		preAuthenticatedTokenCacheService.putInCache(xAuthToken, user);
 
         // set the result in the request header
 		response.setHeader(ServerConstants.X_AUTH_TOKEN, xAuthToken);

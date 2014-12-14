@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.server.web.controller.dto;
+package com.bearchoke.platform.api.user;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

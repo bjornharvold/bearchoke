@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.server.web.api;
+package com.bearchoke.platform.server.web.controller;
 
 import com.bearchoke.platform.api.user.RegisterUserCommand;
 import com.bearchoke.platform.api.user.UserIdentifier;

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.bearchoke.platform.server.websocket.service;
+package com.bearchoke.platform.server.web.websocket.service;
 
 import lombok.Data;
 

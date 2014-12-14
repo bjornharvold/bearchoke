@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.server.websocket.controller;
+package com.bearchoke.platform.server.web.controller;
 
 import com.bearchoke.platform.api.todo.CreateToDoItemCommand;
 import com.bearchoke.platform.api.todo.DeleteToDoItemCommand;
 import com.bearchoke.platform.api.todo.MarkToDoItemAsCompleteCommand;
 import com.bearchoke.platform.api.todo.ToDoIdentifier;
-import com.bearchoke.platform.platform.base.security.SpringSecurityHelper;
+import com.bearchoke.platform.platform.base.SpringSecurityHelper;
 import com.bearchoke.platform.api.todo.dto.ToDoDto;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.CommandBus;

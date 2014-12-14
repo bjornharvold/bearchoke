@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.server.websocket.service;
+package com.bearchoke.platform.server.web.websocket.service;
 
 /**
  * Created by Bjorn Harvold

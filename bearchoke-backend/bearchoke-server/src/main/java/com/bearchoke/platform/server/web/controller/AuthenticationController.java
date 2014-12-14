@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.server.web.api;
+package com.bearchoke.platform.server.web.controller;
 
 import com.bearchoke.platform.server.ServerConstants;
-import com.bearchoke.platform.server.security.ApiPreAuthenticatedTokenCacheService;
+import com.bearchoke.platform.user.security.PreAuthenticatedTokenCacheService;
 import com.bearchoke.platform.server.web.ApplicationMediaType;
-import com.bearchoke.platform.server.web.controller.dto.AuthenticationToken;
+import com.bearchoke.platform.api.user.AuthenticationToken;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -50,11 +50,11 @@ import java.util.Map;
 @Slf4j
 public class AuthenticationController {
 
-    private final ApiPreAuthenticatedTokenCacheService apiPreAuthenticatedTokenCacheService;
+    private final PreAuthenticatedTokenCacheService preAuthenticatedTokenCacheService;
 
     @Autowired
-    public AuthenticationController(ApiPreAuthenticatedTokenCacheService apiPreAuthenticatedTokenCacheService) {
-        this.apiPreAuthenticatedTokenCacheService = apiPreAuthenticatedTokenCacheService;
+    public AuthenticationController(PreAuthenticatedTokenCacheService preAuthenticatedTokenCacheService) {
+        this.preAuthenticatedTokenCacheService = preAuthenticatedTokenCacheService;
     }
 
     /**
@@ -84,6 +84,6 @@ public class AuthenticationController {
 	@RequestMapping(value = "/api/logout", method = { RequestMethod.GET })
     @ResponseStatus(HttpStatus.OK)
 	public void logoutUser(@RequestHeader(value = ServerConstants.X_AUTH_TOKEN, required = true) String authToken, HttpServletResponse response) {
-        apiPreAuthenticatedTokenCacheService.deleteExistingSessions(Collections.singletonList(authToken));
+        preAuthenticatedTokenCacheService.deleteExistingSessions(Collections.singletonList(authToken));
 	}
 }

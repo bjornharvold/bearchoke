@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.server.security;
+package com.bearchoke.platform.user.security;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.AuthenticationUserDetailsService;
@@ -28,15 +28,15 @@ import javax.inject.Inject;
 
 @Service
 @Slf4j
-public class ApiPreAuthUserDetailsService implements AuthenticationUserDetailsService<PreAuthenticatedAuthenticationToken> {
+public class PreAuthUserDetailsService implements AuthenticationUserDetailsService<PreAuthenticatedAuthenticationToken> {
 
 	@Inject
-	private ApiPreAuthenticatedTokenCacheService apiPreAuthenticatedTokenCacheService;
+	private PreAuthenticatedTokenCacheService preAuthenticatedTokenCacheService;
 	
 	@Override
 	public UserDetails loadUserDetails(PreAuthenticatedAuthenticationToken token) throws UsernameNotFoundException {
 		String xAuthToken = (String) token.getPrincipal();
-		User user = apiPreAuthenticatedTokenCacheService.getFromCache(xAuthToken);
+		User user = preAuthenticatedTokenCacheService.getFromCache(xAuthToken);
 
 		if (user == null) {
             throw new UsernameNotFoundException("Pre authenticated token not found : " + xAuthToken);
@@ -46,7 +46,7 @@ public class ApiPreAuthUserDetailsService implements AuthenticationUserDetailsSe
             }
 
             // we want to update the expiration date on this key because the user is actively using it
-            apiPreAuthenticatedTokenCacheService.updateExpiration(xAuthToken);
+            preAuthenticatedTokenCacheService.updateExpiration(xAuthToken);
         }
 
 		return user;

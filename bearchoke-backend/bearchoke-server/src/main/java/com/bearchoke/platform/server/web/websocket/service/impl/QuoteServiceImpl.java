@@ -13,16 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.bearchoke.platform.server.websocket.service.impl;
+package com.bearchoke.platform.server.web.websocket.service.impl;
 
-import com.bearchoke.platform.server.websocket.service.Quote;
-import com.bearchoke.platform.server.websocket.service.QuoteService;
+import com.bearchoke.platform.server.web.websocket.service.Quote;
+import com.bearchoke.platform.server.web.websocket.service.QuoteService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.messaging.core.MessageSendingOperations;
 import org.springframework.messaging.simp.broker.BrokerAvailabilityEvent;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;

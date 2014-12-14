@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.server.web.api;
+package com.bearchoke.platform.server.web.controller;
 
 
 import com.bearchoke.platform.platform.base.config.CacheConfig;
@@ -22,8 +22,8 @@ import com.bearchoke.platform.platform.base.config.EncryptionConfig;
 import com.bearchoke.platform.platform.base.config.RedisConfig;
 import com.bearchoke.platform.platform.base.config.RedisLocalConfig;
 import com.bearchoke.platform.server.config.AppConfig;
-import com.bearchoke.platform.server.config.WebAppConfig;
-import com.bearchoke.platform.server.config.WebSecurityConfig;
+import com.bearchoke.platform.server.web.config.WebMvcConfig;
+import com.bearchoke.platform.server.web.config.WebSecurityConfig;
 import com.bearchoke.platform.server.web.ApplicationMediaType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
@@ -74,7 +74,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
                 EncryptionConfig.class,
                 CacheConfig.class,
                 WebSecurityConfig.class,
-                WebAppConfig.class
+                WebMvcConfig.class
         }
 )
 @TestExecutionListeners(listeners={ServletTestExecutionListener.class,

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.server.web.api;
+package com.bearchoke.platform.server.web.controller;
 
 import com.bearchoke.platform.server.service.Greeting;
 import com.bearchoke.platform.server.service.GreetingService;

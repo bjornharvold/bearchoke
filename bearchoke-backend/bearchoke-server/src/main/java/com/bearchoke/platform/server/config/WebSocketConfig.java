@@ -16,18 +16,16 @@
 
 package com.bearchoke.platform.server.config;
 
-import com.bearchoke.platform.platform.base.security.SpringSecurityHelper;
+import com.bearchoke.platform.platform.base.SpringSecurityHelper;
 import com.bearchoke.platform.server.ServerConstants;
 import com.bearchoke.platform.server.jackson.CustomObjectMapper;
-import com.bearchoke.platform.server.websocket.WebSocketConnectHandler;
-import com.bearchoke.platform.server.websocket.WebSocketDisconnectHandler;
+import com.bearchoke.platform.server.web.websocket.WebSocketConnectHandler;
+import com.bearchoke.platform.server.web.websocket.WebSocketDisconnectHandler;
 import com.bearchoke.platform.user.repositories.ActiveWebSocketUserRepository;
-import com.bearchoke.platform.user.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.ServerHttpRequest;
@@ -69,7 +67,6 @@ import java.util.Map;
  */
 @Configuration
 @EnableWebSocketMessageBroker
-@ComponentScan("com.bearchoke.platform.server.websocket")
 @Slf4j
 public class WebSocketConfig<S extends ExpiringSession> extends AbstractSessionWebSocketMessageBrokerConfigurer<S> {
 
@@ -77,12 +74,12 @@ public class WebSocketConfig<S extends ExpiringSession> extends AbstractSessionW
     private CustomObjectMapper objectMapper;
 
     @Inject
-    @Qualifier("preAuthenticationManager")
-    private AuthenticationManager preAuthenticationManager;
+    @Qualifier("preAuthAuthenticationManager")
+    private AuthenticationManager preAuthAuthenticationManager;
 
     @Override
     public void configureStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/ws").setHandshakeHandler(new SecureHandshakeHandler(preAuthenticationManager))
+        registry.addEndpoint("/ws").setHandshakeHandler(new SecureHandshakeHandler(preAuthAuthenticationManager))
                 .withSockJS()
                 .setStreamBytesLimit(512 * 1024)
                 .setHttpMessageCacheSize(1000)
@@ -168,7 +165,7 @@ public class WebSocketConfig<S extends ExpiringSession> extends AbstractSessionW
                 if (StringUtils.isNotBlank(authToken)) {
 
                     // set cached authenticated user back in the spring security context
-                    Authentication authentication = preAuthenticationManager.authenticate(new PreAuthenticatedAuthenticationToken(authToken, "N/A"));
+                    Authentication authentication = preAuthAuthenticationManager.authenticate(new PreAuthenticatedAuthenticationToken(authToken, "N/A"));
 
                     if (log.isDebugEnabled()) {
                         log.debug("Adding Authentication to SecurityContext for WebSocket call: " + authentication);

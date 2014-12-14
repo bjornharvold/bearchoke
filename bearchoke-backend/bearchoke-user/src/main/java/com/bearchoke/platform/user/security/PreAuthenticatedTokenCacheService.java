@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.server.security;
+package com.bearchoke.platform.user.security;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.CacheManager;
@@ -31,7 +31,7 @@ import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Service
-public class ApiPreAuthenticatedTokenCacheService {
+public class PreAuthenticatedTokenCacheService {
 
     @Inject
     private Environment environment;

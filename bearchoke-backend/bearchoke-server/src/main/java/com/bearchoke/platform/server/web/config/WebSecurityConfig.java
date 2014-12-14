@@ -14,23 +14,23 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.server.config;
+package com.bearchoke.platform.server.web.config;
 
 import com.bearchoke.platform.server.jackson.CustomObjectMapper;
 import com.bearchoke.platform.server.security.ApiAuthenticationFailureHandler;
 import com.bearchoke.platform.server.security.ApiAuthenticationSuccessHandler;
-import com.bearchoke.platform.server.security.ApiPreAuthUserDetailsService;
 import com.bearchoke.platform.server.security.ApiRequestHeaderAuthenticationFilter;
 import com.bearchoke.platform.server.security.UnauthorizedEntryPoint;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
@@ -38,15 +38,12 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider;
 import org.springframework.security.web.header.writers.HstsHeaderWriter;
 import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 import org.springframework.security.web.util.matcher.AndRequestMatcher;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.AnyRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
-import org.springframework.session.data.redis.RedisOperationsSessionRepository;
-import org.springframework.session.web.http.HeaderHttpSessionStrategy;
 import org.springframework.session.web.http.SessionRepositoryFilter;
 
 import javax.inject.Inject;
@@ -73,8 +70,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String API_LOGIN_URL = "/api/authenticate";
     private static final String API_PUBLIC_URL = "/*";
 
-    @Inject
-    private ApiPreAuthUserDetailsService apiPreAuthUserDetailsService;
+
 
     @Inject
     private ApiAuthenticationSuccessHandler apiAuthenticationSuccessHandler;
@@ -91,6 +87,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private AuthenticationProvider authenticationProvider;
 
     @Inject
+    @Qualifier("preAuthAuthenticationManager")
+    private AuthenticationManager preAuthAuthenticationManager;
+
+    @Inject
     private CustomObjectMapper objectMapper;
 
     @Inject
@@ -105,6 +105,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        log.info("Configuring springSecurityFilterChain...");
 
         // header details
         configureHeaders(http.headers());
@@ -123,17 +124,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         ;
 
         // filter details
-
         http
                 .addFilterBefore(sessionRepositoryFilter, ChannelProcessingFilter.class)
-                .addFilterAfter(apiAuthFilter(), ApiRequestHeaderAuthenticationFilter.class)
+                .addFilterAfter(authFilter(), ApiRequestHeaderAuthenticationFilter.class)
                 .addFilter(preAuthFilter())
                 .csrf().disable();
         http
                 .csrf().disable();
-//
+
         http
                 .exceptionHandling().authenticationEntryPoint(new UnauthorizedEntryPoint(objectMapper));
+    }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring()
+                .antMatchers(HttpMethod.GET, "/resources/*");
     }
 
     /**
@@ -168,8 +174,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
-    @Bean
-    public Filter apiAuthFilter() throws Exception {
+    @Bean(name = "authFilter")
+    public Filter authFilter() throws Exception {
+        log.info("Creating authFilter...");
+
         RequestMatcher antReqMatch = new AntPathRequestMatcher(API_LOGIN_URL);
 
         List<RequestMatcher> reqMatches = new ArrayList<>();
@@ -188,23 +196,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return filter;
     }
 
-    @Bean
+    @Bean(name = "preAuthFilter")
     public Filter preAuthFilter() {
+        log.info("Creating preAuthFilter...");
         ApiRequestHeaderAuthenticationFilter filter = new ApiRequestHeaderAuthenticationFilter();
-        filter.setAuthenticationManager(preAuthAuthenticationManager());
+        filter.setAuthenticationManager(preAuthAuthenticationManager);
         return filter;
     }
 
-    @Bean(name = "preAuthenticationManager")
-    public AuthenticationManager preAuthAuthenticationManager() {
-        PreAuthenticatedAuthenticationProvider preAuthProvider = new PreAuthenticatedAuthenticationProvider();
-        preAuthProvider.setPreAuthenticatedUserDetailsService(apiPreAuthUserDetailsService);
 
-        List<AuthenticationProvider> providers = new  ArrayList<AuthenticationProvider>();
-        providers.add(preAuthProvider);
-
-        return new ProviderManager(providers);
-    }
 //
 //    @Bean
 //    public AccessDecisionManager accessDecisionManager() {
