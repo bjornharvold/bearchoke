@@ -16,14 +16,11 @@
 
 package com.bearchoke.platform.server.config;
 
-import com.bearchoke.platform.user.config.SecurityConfig;
+import com.bearchoke.platform.server.web.config.WebMvcConfig;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
-import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by Bjorn Harvold
@@ -33,8 +30,8 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Configuration
 @EnableAsync
-@ComponentScan(basePackages = "com.bearchoke.platform", excludeFilters = {
-        @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Controller.class)
+@ComponentScan(basePackages = {"com.bearchoke.platform"}, excludeFilters = {
+        @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = WebMvcConfig.class)
 })
 public class AppConfig {
 

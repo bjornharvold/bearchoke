@@ -52,7 +52,7 @@
         </entry>
       </file>
       <file leaf-file-name="WebSecurityConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/web/config/WebSecurityConfig.java">
+        <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/config/WebSecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="1737" max-vertical-offset="3210">
               <caret line="140" column="12" selection-start-line="140" selection-start-column="12" selection-end-line="140" selection-end-column="12" />
@@ -63,20 +63,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppConfig.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AppConfig.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/config/AppConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
-              <caret line="36" column="85" selection-start-line="36" selection-start-column="85" selection-end-line="36" selection-end-column="85" />
+            <state vertical-scroll-proportion="0.52693206" vertical-offset="0" max-vertical-offset="427">
+              <caret line="33" column="92" selection-start-line="33" selection-start-column="92" selection-end-line="33" selection-end-column="92" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebMvcConfig.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WebMvcConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/web/config/WebMvcConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.75697213" vertical-offset="120" max-vertical-offset="1860">
+            <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="1860">
               <caret line="60" column="49" selection-start-line="60" selection-start-column="49" selection-end-line="60" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -144,8 +144,8 @@
         <option value="$PROJECT_DIR$/bearchoke-platform-base/src/main/resources/log4j.xml" />
         <option value="$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/BearchokeWebApplicationInitializer.java" />
         <option value="$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/web/config/WebSecurityConfig.java" />
-        <option value="$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/config/AppConfig.java" />
         <option value="$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/web/config/WebMvcConfig.java" />
+        <option value="$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/config/AppConfig.java" />
       </list>
     </option>
   </component>
@@ -1172,16 +1172,16 @@
       <workItem from="1418372454808" duration="4373000" />
       <workItem from="1418396859228" duration="2081000" />
       <workItem from="1418524520012" duration="4241000" />
-      <workItem from="1418531254109" duration="8032000" />
+      <workItem from="1418531254109" duration="8496000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="452205000" />
+    <option name="totallyTimeSpent" value="452669000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1194,7 +1194,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41741356" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41741356" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1635,7 +1635,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/web/config/WebSecurityConfig.java">
+    <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/config/WebSecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1737" max-vertical-offset="3210">
           <caret line="140" column="12" selection-start-line="140" selection-start-column="12" selection-end-line="140" selection-end-column="12" />
@@ -1661,21 +1661,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/config/AppConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
-          <caret line="36" column="85" selection-start-line="36" selection-start-column="85" selection-end-line="36" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/web/config/WebMvcConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75697213" vertical-offset="120" max-vertical-offset="1860">
+        <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="1860">
           <caret line="60" column="49" selection-start-line="60" selection-start-column="49" selection-end-line="60" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-server/src/main/java/com/bearchoke/platform/server/config/AppConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.52693206" vertical-offset="0" max-vertical-offset="427">
+          <caret line="33" column="92" selection-start-line="33" selection-start-column="92" selection-end-line="33" selection-end-column="92" />
+          <folding />
         </state>
       </provider>
     </entry>

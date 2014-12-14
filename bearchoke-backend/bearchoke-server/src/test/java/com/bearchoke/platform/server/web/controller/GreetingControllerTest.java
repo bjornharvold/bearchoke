@@ -22,7 +22,7 @@ import com.bearchoke.platform.platform.base.config.EncryptionConfig;
 import com.bearchoke.platform.platform.base.config.RedisLocalConfig;
 import com.bearchoke.platform.server.config.AppConfig;
 import com.bearchoke.platform.platform.base.config.RedisConfig;
-import com.bearchoke.platform.server.web.config.WebSecurityConfig;
+import com.bearchoke.platform.server.config.WebSecurityConfig;
 import com.bearchoke.platform.server.web.config.WebMvcConfig;
 import com.bearchoke.platform.server.web.ApplicationMediaType;
 import com.bearchoke.platform.user.config.SecurityConfig;

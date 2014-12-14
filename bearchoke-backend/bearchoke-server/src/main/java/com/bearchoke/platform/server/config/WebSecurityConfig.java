@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.server.web.config;
+package com.bearchoke.platform.server.config;
 
 import com.bearchoke.platform.server.jackson.CustomObjectMapper;
 import com.bearchoke.platform.server.security.ApiAuthenticationFailureHandler;
