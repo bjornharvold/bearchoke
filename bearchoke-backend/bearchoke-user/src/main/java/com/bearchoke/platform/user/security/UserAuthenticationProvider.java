@@ -18,6 +18,7 @@ package com.bearchoke.platform.user.security;
 
 import com.bearchoke.platform.api.user.AuthenticateUserCommand;
 import com.bearchoke.platform.api.user.UserAccount;
+import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.commandhandling.GenericCommandMessage;
 import org.axonframework.commandhandling.StructuralCommandValidationFailedException;
@@ -29,6 +30,8 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -40,6 +43,7 @@ import java.util.concurrent.ExecutionException;
  *
  * @author Bjorn Harvold
  */
+@Slf4j
 public class UserAuthenticationProvider implements AuthenticationProvider {
 
     private final CommandBus commandBus;
@@ -59,13 +63,14 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
         String username = token.getName();
         String password = String.valueOf(token.getCredentials());
         FutureCallback<UserAccount> accountCallback = new FutureCallback<>();
-        AuthenticateUserCommand command = new AuthenticateUserCommand(username, password.toCharArray());
+        AuthenticateUserCommand command = new AuthenticateUserCommand(username, password);
 
         try {
             commandBus.dispatch(new GenericCommandMessage<>(command), accountCallback);
             // the bean validating interceptor is defined as a dispatch interceptor, meaning it is executed before
             // the command is dispatched.
         } catch (StructuralCommandValidationFailedException e) {
+            log.error(e.getMessage(), e);
             return null;
         }
 
@@ -73,12 +78,16 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
 
         try {
             account = accountCallback.get();
+
             if (account == null) {
-                throw new BadCredentialsException("Invalid username and/or password");
+                throw new UsernameNotFoundException("Could not locate user record for username: " + username);
             }
+
         } catch (InterruptedException e) {
+            log.error(e.getMessage(), e);
             throw new AuthenticationServiceException("Credentials could not be verified", e);
         } catch (ExecutionException e) {
+            log.error(e.getMessage(), e);
             throw new AuthenticationServiceException("Credentials could not be verified", e);
         }
 

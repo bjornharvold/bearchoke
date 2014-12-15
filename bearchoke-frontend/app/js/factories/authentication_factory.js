@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-angular.module("app").factory('AuthenticationFactory', function ($rootScope, $state, $log, AuthRestangular, $localStorage, ApplicationContext, eventConstants) {
+angular.module("app").factory('AuthenticationFactory', function ($rootScope, $state, $log, AuthRestangular, $localStorage, ApplicationContext, eventConstants, SweetAlert) {
 
     var self = {
 
@@ -29,16 +29,18 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
                 $rootScope.$emit(eventConstants.authentication, {username: username});
 
                 self.getUser(success, error);
-            }, function() {
-                $log.info("auth failure");
+            }, function(data) {
+                $log.error("Authentication failure: " + data.statusText);
                 self.clearAuth();
 
-                $rootScope.error("Could not verify email and password.  Please try again");
+                if (error) {
+                    error("Could not verify email and password.\nPlease try again.");
+                }
             });
 
         },
 
-        register: function (user) {
+        register: function (user, success, error) {
             $log.debug('Registering new user....');
 
             // authenticate with the server
@@ -48,10 +50,12 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
                 $rootScope.$emit(eventConstants.registration, {username: user.username});
 
                 self.getUser(success, error);
-            }, function() {
-                $log.info("registration failure");
+            }, function(data) {
+                $log.error("Registration failure: " + data.statusText);
 
-                $rootScope.error("There was a problem with registration. Please try again later.");
+                if (error) {
+                    error("There was a problem with registration. Please try again later.");
+                }
             });
         },
 
@@ -114,7 +118,7 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
                     success(data);
                 }
             }, function (err) {
-                $log.info("get user auth failure");
+                $log.error("getUser() failure: " + err.statusText);
                 if (err.status === 401) {
                    $log.debug("Clearing out old auth token");
                     self.clearAuth();
@@ -141,9 +145,10 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
     // EVENTS
     //
     $rootScope.$on("event.login.unauthorized", function() {
-        $log.info("Caught unauthorized event, redirect to login");
+        $log.warn("Caught unauthorized event, redirect to login");
         self.clearAuth();
         $state.go("home");
+        SweetAlert.error("Incorrect credentials", "Could not verify email and password.\nPlease try again.");
     });
 
     return self;

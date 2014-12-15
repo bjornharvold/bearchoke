@@ -17,6 +17,7 @@
 package com.bearchoke.platform.user.security;
 
 import com.bearchoke.platform.user.repositories.UserRepository;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -37,6 +38,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findUserByUsername(username);
+        UserDetails ud = userRepository.findUserByUsername(username);
+
+        if (ud == null) {
+            throw new UsernameNotFoundException("Could not locate user record for username: " + username);
+        }
+
+        return ud;
     }
 }

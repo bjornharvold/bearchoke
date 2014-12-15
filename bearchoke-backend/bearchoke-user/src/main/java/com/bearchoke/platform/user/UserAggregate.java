@@ -16,6 +16,7 @@
 
 package com.bearchoke.platform.user;
 
+import com.bearchoke.platform.api.user.UserAuthenticatedEvent;
 import com.bearchoke.platform.api.user.UserCreatedEvent;
 import com.bearchoke.platform.api.user.UserIdentifier;
 import org.axonframework.eventhandling.annotation.EventHandler;
@@ -57,6 +58,14 @@ public class UserAggregate extends AbstractAnnotatedAggregateRoot {
                 firstName,
                 lastName
         ));
+    }
+
+    public boolean authenticate(String password) {
+        boolean success = passwordEncryptor.checkPassword(password, this.password);
+        if (success) {
+            apply(new UserAuthenticatedEvent(this.id));
+        }
+        return success;
     }
 
     @EventHandler

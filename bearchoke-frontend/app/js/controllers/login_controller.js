@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-angular.module("app").controller('LoginController', function ($rootScope, $scope, $state, $q, $timeout, $log, ApplicationContext, AuthenticationFactory, ezfb) {
+angular.module("app").controller('LoginController', function ($scope, $state, $q, $timeout, $log, ApplicationContext, AuthenticationFactory, ezfb, SweetAlert) {
     $log.debug('LoginController');
 
     // for login form in header.html
@@ -23,7 +23,6 @@ angular.module("app").controller('LoginController', function ($rootScope, $scope
     //===========================LOGIN=========================
     $scope.login = function() {
         $log.debug('Logging in with username: ' + $scope.credentials.username + ', password: ' + $scope.credentials.password);
-        $rootScope.error = null;
         AuthenticationFactory.login($scope.credentials.username, $scope.credentials.password, onLoginSuccess, onLoginFailure);
     };
 
@@ -56,7 +55,6 @@ angular.module("app").controller('LoginController', function ($rootScope, $scope
 
     $scope.facebookLogin = function() {
         $log.debug('Logging in with Facebook...');
-        $rootScope.error = null;
 
 
     };
@@ -67,7 +65,7 @@ angular.module("app").controller('LoginController', function ($rootScope, $scope
     };
 
     var onLoginFailure = function(message) {
-        $rootScope.error = message;
+        SweetAlert.error("Incorrect credentials", message);
     };
 
     var onRememberMeFailure = function(message) {
@@ -90,7 +88,7 @@ angular.module("app").controller('LoginController', function ($rootScope, $scope
      */
     function updateApiMe () {
         ezfb.api('/me', function (res) {
-            swal(res);
+            SweetAlert.swal(res);
         });
     }
 

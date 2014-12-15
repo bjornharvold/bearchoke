@@ -16,26 +16,20 @@
 
 package com.bearchoke.platform.api.user;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+/**
+ * Created by Bjorn Harvold
+ * Date: 12/15/14
+ * Time: 3:12 PM
+ * Responsibility:
+ */
+public class UserAuthenticatedEvent {
+    private final UserIdentifier userId;
 
-public class AuthenticateUserCommand {
-
-    private final String username;
-    @NotNull
-    @Size(min = 3)
-    private final String password;
-
-    public AuthenticateUserCommand(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public UserAuthenticatedEvent(UserIdentifier userId) {
+        this.userId = userId;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
+    public UserIdentifier getUserId() {
+        return this.userId;
     }
 }

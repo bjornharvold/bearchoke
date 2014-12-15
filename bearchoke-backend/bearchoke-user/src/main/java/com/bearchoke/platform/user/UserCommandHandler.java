@@ -16,8 +16,12 @@
 
 package com.bearchoke.platform.user;
 
+import com.bearchoke.platform.api.user.AuthenticateUserCommand;
 import com.bearchoke.platform.api.user.RegisterUserCommand;
+import com.bearchoke.platform.api.user.UserAccount;
 import com.bearchoke.platform.api.user.UserIdentifier;
+import com.bearchoke.platform.user.document.User;
+import com.bearchoke.platform.user.repositories.UserRepository;
 import org.axonframework.commandhandling.annotation.CommandHandler;
 import org.axonframework.repository.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,9 +39,13 @@ public class UserCommandHandler {
     @Qualifier("userAggregateRepository")
     private final Repository<UserAggregate> userAggregateRepository;
 
+    @Qualifier("userRepository")
+    private final UserRepository userRepository;
+
     @Autowired
-    public UserCommandHandler(Repository<UserAggregate> repository) {
+    public UserCommandHandler(Repository<UserAggregate> repository, UserRepository userRepository) {
         this.userAggregateRepository = repository;
+        this.userRepository = userRepository;
     }
 
     @CommandHandler
@@ -47,5 +55,21 @@ public class UserCommandHandler {
         userAggregateRepository.add(u);
 
         return id;
+    }
+
+    @CommandHandler
+    public UserAccount handleAuthenticateUser(AuthenticateUserCommand command) {
+        UserAccount account = userRepository.findUserByUsername(command.getUsername());
+
+        if (account == null) {
+            return null;
+        }
+
+        boolean success = onUser(account.getIdAsString()).authenticate(command.getPassword());
+        return success ? account : null;
+    }
+
+    private UserAggregate onUser(String userId) {
+        return userAggregateRepository.load(new UserIdentifier(userId));
     }
 }
