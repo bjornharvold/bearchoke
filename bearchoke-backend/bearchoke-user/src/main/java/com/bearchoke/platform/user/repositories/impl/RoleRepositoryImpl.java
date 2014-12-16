@@ -16,8 +16,8 @@
 
 package com.bearchoke.platform.user.repositories.impl;
 
-import com.bearchoke.platform.user.document.User;
-import com.bearchoke.platform.user.repositories.UserRepository;
+import com.bearchoke.platform.user.document.Role;
+import com.bearchoke.platform.user.repositories.RoleRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -39,34 +39,22 @@ import static org.springframework.data.mongodb.core.query.Query.query;
  * Time: 8:05 PM
  * Responsibility:
  */
-@Repository("userRepository")
-public class UserRepositoryImpl extends SimpleMongoRepository<User, ObjectId> implements UserRepository {
+@Repository("roleRepository")
+public class RoleRepositoryImpl extends SimpleMongoRepository<Role, ObjectId> implements RoleRepository {
 
     @Autowired
-    public UserRepositoryImpl(MongoTemplate mongoTemplate) {
-        super(new MappingMongoEntityInformation<>(new BasicMongoPersistentEntity<>(ClassTypeInformation.from(User.class))), mongoTemplate);
+    public RoleRepositoryImpl(MongoTemplate mongoTemplate) {
+        super(new MappingMongoEntityInformation<>(new BasicMongoPersistentEntity<>(ClassTypeInformation.from(Role.class))), mongoTemplate);
 
     }
 
-    public boolean isEmailUnique(String email) {
-        Query q = query(where("email").exists(true));
+    @Override
+    public Role findByName(String name) {
+        Role result = null;
 
-        return getMongoOperations().exists(q, User.class);
-    }
+        Query q = query(where("name").is(name));
 
-    public boolean isUsernameUnique(String email) {
-
-        Query q = query(where("username").exists(true));
-
-        return getMongoOperations().exists(q, User.class);
-    }
-
-    public User findUserByUsername(String username) {
-        User result = null;
-
-        Query q = query(where("username").is(username));
-
-        List<User> list = getMongoOperations().find(q, User.class);
+        List<Role> list = getMongoOperations().find(q, Role.class);
 
         if (list != null && !list.isEmpty()) {
             result = list.get(0);

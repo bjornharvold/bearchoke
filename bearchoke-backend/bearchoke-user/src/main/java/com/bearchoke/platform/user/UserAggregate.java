@@ -19,12 +19,18 @@ package com.bearchoke.platform.user;
 import com.bearchoke.platform.api.user.UserAuthenticatedEvent;
 import com.bearchoke.platform.api.user.UserCreatedEvent;
 import com.bearchoke.platform.api.user.UserIdentifier;
+import com.bearchoke.platform.user.document.Role;
+import lombok.extern.slf4j.Slf4j;
 import org.axonframework.eventhandling.annotation.EventHandler;
 import org.axonframework.eventsourcing.annotation.AbstractAnnotatedAggregateRoot;
 import org.axonframework.eventsourcing.annotation.AggregateIdentifier;
 import org.jasypt.util.password.PasswordEncryptor;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Bjorn Harvold
@@ -33,7 +39,9 @@ import org.springframework.stereotype.Component;
  * Responsibility:
  */
 @Component
+@Slf4j
 public class UserAggregate extends AbstractAnnotatedAggregateRoot {
+    private PasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
 
     @AggregateIdentifier
     private UserIdentifier id;
@@ -42,21 +50,20 @@ public class UserAggregate extends AbstractAnnotatedAggregateRoot {
     private String email;
     private String firstName;
     private String lastName;
-
-    @Autowired
-    private PasswordEncryptor passwordEncryptor;
+    private String[] roles;
 
     public UserAggregate() {
     }
 
-    public UserAggregate(UserIdentifier id, String username, String password, String email, String firstName, String lastName) {
+    public UserAggregate(UserIdentifier id, String username, String password, String email, String firstName, String lastName, String[] roles) {
         apply(new UserCreatedEvent(
                 id,
                 username.toLowerCase(),
                 passwordEncryptor.encryptPassword(password),
                 email.toLowerCase(),
                 firstName,
-                lastName
+                lastName,
+                roles
         ));
     }
 
@@ -70,12 +77,17 @@ public class UserAggregate extends AbstractAnnotatedAggregateRoot {
 
     @EventHandler
     public void onUserCreated(UserCreatedEvent event) {
+        if (log.isDebugEnabled()) {
+            log.debug("Caught: " + event.getClass().getSimpleName());
+        }
+
         this.id = event.getUserId();
         this.username = event.getUsername();
         this.password = event.getPassword();
         this.email = event.getEmail();
         this.firstName = event.getFirstName();
         this.lastName = event.getLastName();
+        this.roles = event.getRoles();
     }
 
 }

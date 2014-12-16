@@ -16,11 +16,9 @@
 
 package com.bearchoke.platform.user;
 
-import com.bearchoke.platform.api.user.UserCreatedEvent;
+import com.bearchoke.platform.api.user.RoleCreatedEvent;
 import com.bearchoke.platform.user.document.Role;
-import com.bearchoke.platform.user.document.User;
 import com.bearchoke.platform.user.repositories.RoleRepository;
-import com.bearchoke.platform.user.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.eventhandling.annotation.EventHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,38 +32,24 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-public class UserEventListener {
-
-    private final UserRepository userRepository;
+public class RoleEventListener {
     private final RoleRepository roleRepository;
 
     @Autowired
-    public UserEventListener(UserRepository userRepository, RoleRepository roleRepository) {
-        this.userRepository = userRepository;
+    public RoleEventListener(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
     }
 
     @EventHandler
-    public void handleCreateUser(UserCreatedEvent event) {
+    public void handleCreateRole(RoleCreatedEvent event) {
         if (log.isDebugEnabled()) {
             log.debug("Caught: " + event.getClass().getSimpleName());
         }
-
-        User user = new User(event);
-        if (event.getRoles() != null && event.getRoles().length > 0) {
-            for (String roleName : event.getRoles()) {
-                Role role = roleRepository.findByName(roleName);
-
-                if (role != null) {
-                    user.addRole(role);
-                }
-            }
-        }
-
-        user = userRepository.save(user);
+        
+        Role role = roleRepository.save(new Role(event));
 
         if (log.isDebugEnabled()) {
-            log.debug("Saved user object: " + user.toString());
+            log.debug("Saved role object: " + role.toString());
         }
     }
 

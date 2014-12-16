@@ -14,22 +14,14 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.api.user.dto;
-
-import lombok.Data;
+package com.bearchoke.platform.server.init;
 
 /**
- * Created by Bjorn Harvold
- * Date: 12/8/14
- * Time: 7:03 PM
- * Responsibility:
+ * <p>Initializes the repository with a number of users</p>
  */
-@Data
-public class RegisterUserDto {
-    private String firstName;
-    private String lastName;
-    private String username;
-    private String email;
-    private String password;
-    private String[] roles;
+public interface DBInit {
+
+    void createItems();
+
+    void createItemsIfNoUsersExist();
 }

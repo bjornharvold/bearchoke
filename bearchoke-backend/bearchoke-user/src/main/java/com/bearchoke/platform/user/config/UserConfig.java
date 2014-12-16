@@ -16,6 +16,7 @@
 
 package com.bearchoke.platform.user.config;
 
+import com.bearchoke.platform.user.RoleAggregate;
 import com.bearchoke.platform.user.UserAggregate;
 import org.axonframework.contextsupport.spring.AnnotationDriven;
 import org.axonframework.eventhandling.EventBus;
@@ -36,7 +37,7 @@ import javax.inject.Inject;
  * Responsibility:
  */
 @Configuration
-@AnnotationDriven(commandBus = "commandBus", eventBus = "eventBus", unsubscribeOnShutdown = false)
+@AnnotationDriven
 public class UserConfig {
     @Inject
     private EventStore eventStore;
@@ -47,6 +48,14 @@ public class UserConfig {
     @Bean(name = "userAggregateRepository")
     public EventSourcingRepository<UserAggregate> userAggregateRepository() {
         EventSourcingRepository repository = new EventSourcingRepository<>(UserAggregate.class, eventStore);
+        repository.setEventBus(eventBus);
+
+        return repository;
+    }
+
+    @Bean(name = "roleAggregateRepository")
+    public EventSourcingRepository<RoleAggregate> roleAggregateRepository() {
+        EventSourcingRepository repository = new EventSourcingRepository<>(RoleAggregate.class, eventStore);
         repository.setEventBus(eventBus);
 
         return repository;

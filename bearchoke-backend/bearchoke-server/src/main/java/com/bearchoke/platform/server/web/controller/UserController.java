@@ -75,6 +75,9 @@ public class UserController {
     @RequestMapping(value = "/api/user/register", method = { RequestMethod.POST }, produces = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
 	public void register(@Valid RegisterUserDto user) {
+        // attach default role to user
+        user.setRoles(new String[]{"ROLE_USER"});
+
         commandBus.dispatch(new GenericCommandMessage<>(
                 new RegisterUserCommand(new UserIdentifier(), user))
         );

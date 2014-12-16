@@ -35,7 +35,7 @@ import javax.inject.Inject;
  * Responsibility:
  */
 @Configuration
-@AnnotationDriven(commandBus = "commandBus", eventBus = "eventBus", unsubscribeOnShutdown = false)
+@AnnotationDriven
 public class ToDoConfig {
     @Inject
     private EventStore eventStore;

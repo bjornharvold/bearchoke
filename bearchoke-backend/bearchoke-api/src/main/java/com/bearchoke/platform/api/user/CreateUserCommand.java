@@ -26,9 +26,11 @@ import javax.validation.constraints.NotNull;
  * Created by Bjorn Harvold
  * Date: 8/13/14
  * Time: 5:07 PM
- * Responsibility:
+ * Responsibility: The difference between this and RegisterUserCommand is that we expect the system to use this command when
+ * creating users. That will avoid emails being sent out and other unneccessary tasks being completed. RegisterUserCommand
+ * should only be issued by the user when registering with our site.
  */
-public class RegisterUserCommand {
+public class CreateUserCommand {
 
     @TargetAggregateIdentifier
     private final UserIdentifier userId;
@@ -51,23 +53,22 @@ public class RegisterUserCommand {
     @NotNull
     private final String[] roles;
 
-    public RegisterUserCommand(UserIdentifier userId, RegisterUserDto user) {
+    public CreateUserCommand(UserIdentifier userId, String email, String username, String firstName, String lastName, String password, String[] roles) {
 
-        Assert.notNull(user, "Dto cannot be null");
         Assert.notNull(userId, "Identifier cannot be null");
-        Assert.notNull(user.getEmail(), "Email cannot be null");
-        Assert.notNull(user.getUsername(), "Username cannot be null");
-        Assert.notNull(user.getFirstName(), "First name cannot be null");
-        Assert.notNull(user.getLastName(), "Last name cannot be null");
-        Assert.notNull(user.getPassword(), "Password cannot be null");
+        Assert.notNull(email, "Email cannot be null");
+        Assert.notNull(username, "Username cannot be null");
+        Assert.notNull(firstName, "First name cannot be null");
+        Assert.notNull(lastName, "Last name cannot be null");
+        Assert.notNull(password, "Password cannot be null");
 
         this.userId = userId;
-        this.username = user.getUsername();
-        this.email = user.getEmail();
-        this.firstName = user.getFirstName();
-        this.lastName = user.getLastName();
-        this.password = user.getPassword();
-        this.roles = user.getRoles();
+        this.username = username;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.roles = roles;
     }
 
     public UserIdentifier getUserId() {

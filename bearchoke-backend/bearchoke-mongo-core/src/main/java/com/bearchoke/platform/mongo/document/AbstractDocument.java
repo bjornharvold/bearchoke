@@ -16,6 +16,7 @@
 
 package com.bearchoke.platform.mongo.document;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.bson.types.ObjectId;
 import org.joda.time.DateTime;
 import org.springframework.data.annotation.Id;
@@ -32,10 +33,10 @@ public abstract class AbstractDocument {
     private ObjectId id;
 
     /** Created date */
-    private DateTime cdt;
+    private DateTime createdDate;
 
     /** Last update */
-    private DateTime ldt;
+    private DateTime lastUpdate;
 
     public AbstractDocument() {
 
@@ -43,8 +44,8 @@ public abstract class AbstractDocument {
 
     public AbstractDocument(AbstractDocument doc) {
         id = doc.id;
-        cdt = doc.cdt;
-        ldt = doc.ldt;
+        createdDate = doc.createdDate;
+        lastUpdate = doc.lastUpdate;
     }
 
     public ObjectId getId() {
@@ -55,20 +56,20 @@ public abstract class AbstractDocument {
         this.id = id;
     }
 
-    public DateTime getCdt() {
-        return cdt;
+    public DateTime getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCdt(DateTime cdt) {
-        this.cdt = cdt;
+    public void setCreatedDate(DateTime createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public DateTime getLdt() {
-        return ldt;
+    public DateTime getLastUpdate() {
+        return lastUpdate;
     }
 
-    public void setLdt(DateTime ldt) {
-        this.ldt = ldt;
+    public void setLastUpdate(DateTime lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 
     public String getIdAsString() {
@@ -83,8 +84,10 @@ public abstract class AbstractDocument {
 
     @Override
     public String toString() {
-        return getIdAsString();
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("createdDate", createdDate)
+                .append("lastUpdate", lastUpdate)
+                .toString();
     }
-
-
 }

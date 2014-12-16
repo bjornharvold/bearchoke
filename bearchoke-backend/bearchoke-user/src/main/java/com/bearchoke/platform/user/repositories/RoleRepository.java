@@ -14,22 +14,19 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.api.user.dto;
+package com.bearchoke.platform.user.repositories;
 
-import lombok.Data;
+import com.bearchoke.platform.user.document.Role;
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
  * Created by Bjorn Harvold
- * Date: 12/8/14
- * Time: 7:03 PM
+ * Date: 12/16/14
+ * Time: 8:56 PM
  * Responsibility:
  */
-@Data
-public class RegisterUserDto {
-    private String firstName;
-    private String lastName;
-    private String username;
-    private String email;
-    private String password;
-    private String[] roles;
+public interface RoleRepository extends MongoRepository<Role, ObjectId> {
+
+    Role findByName(String name);
 }

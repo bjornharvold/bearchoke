@@ -14,22 +14,17 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.api.user.dto;
-
-import lombok.Data;
+package com.bearchoke.platform.server.init;
 
 /**
- * Created by Bjorn Harvold
- * Date: 12/8/14
- * Time: 7:03 PM
- * Responsibility:
+ * Exception thrown when having a problem during data initialization
  */
-@Data
-public class RegisterUserDto {
-    private String firstName;
-    private String lastName;
-    private String username;
-    private String email;
-    private String password;
-    private String[] roles;
+public class DBInitException extends RuntimeException {
+    public DBInitException(String message) {
+        super(message);
+    }
+
+    public DBInitException(String message, Throwable cause) {
+        super(message, cause);
+    }
 }

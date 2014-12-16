@@ -17,11 +17,13 @@
 package com.bearchoke.platform.user;
 
 import com.bearchoke.platform.api.user.AuthenticateUserCommand;
+import com.bearchoke.platform.api.user.CreateUserCommand;
 import com.bearchoke.platform.api.user.RegisterUserCommand;
 import com.bearchoke.platform.api.user.UserAccount;
 import com.bearchoke.platform.api.user.UserIdentifier;
 import com.bearchoke.platform.user.document.User;
 import com.bearchoke.platform.user.repositories.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.annotation.CommandHandler;
 import org.axonframework.repository.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,7 @@ import org.springframework.stereotype.Component;
  * Responsibility:
  */
 @Component
+@Slf4j
 public class UserCommandHandler {
     @Qualifier("userAggregateRepository")
     private final Repository<UserAggregate> userAggregateRepository;
@@ -50,8 +53,23 @@ public class UserCommandHandler {
 
     @CommandHandler
     public UserIdentifier handleRegisterUserAggregate(RegisterUserCommand command) {
+        if (log.isDebugEnabled()) {
+            log.debug("Handling: " + command.getClass().getSimpleName());
+        }
         UserIdentifier id = command.getUserId();
-        UserAggregate u = new UserAggregate(id, command.getUsername(), command.getPassword(), command.getEmail(), command.getFirstName(), command.getLastName());
+        UserAggregate u = new UserAggregate(id, command.getUsername(), command.getPassword(), command.getEmail(), command.getFirstName(), command.getLastName(), command.getRoles());
+        userAggregateRepository.add(u);
+
+        return id;
+    }
+
+    @CommandHandler
+    public UserIdentifier handleCreateUserAggregate(CreateUserCommand command) {
+        if (log.isDebugEnabled()) {
+            log.debug("Handling: " + command.getClass().getSimpleName());
+        }
+        UserIdentifier id = command.getUserId();
+        UserAggregate u = new UserAggregate(id, command.getUsername(), command.getPassword(), command.getEmail(), command.getFirstName(), command.getLastName(), command.getRoles());
         userAggregateRepository.add(u);
 
         return id;
@@ -59,6 +77,9 @@ public class UserCommandHandler {
 
     @CommandHandler
     public UserAccount handleAuthenticateUser(AuthenticateUserCommand command) {
+        if (log.isDebugEnabled()) {
+            log.debug("Handling: " + command.getClass().getSimpleName());
+        }
         UserAccount account = userRepository.findUserByUsername(command.getUsername());
 
         if (account == null) {

@@ -31,14 +31,16 @@ public class UserCreatedEvent {
     private String email;
     private String firstName;
     private String lastName;
+    private String[] roles;
 
-    public UserCreatedEvent(UserIdentifier userId, String username, String password, String email, String firstName, String lastName) {
+    public UserCreatedEvent(UserIdentifier userId, String username, String password, String email, String firstName, String lastName, String[] roles) {
         this.userId = userId;
         this.username = username;
         this.password = password;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.roles = roles;
     }
 
     public UserIdentifier getUserId() {
@@ -65,6 +67,10 @@ public class UserCreatedEvent {
         return lastName;
     }
 
+    public String[] getRoles() {
+        return roles;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this)
@@ -74,6 +80,7 @@ public class UserCreatedEvent {
                 .append("email", email)
                 .append("firstName", firstName)
                 .append("lastName", lastName)
+                .append("roles", roles)
                 .toString();
     }
 }

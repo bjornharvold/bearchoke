@@ -31,11 +31,11 @@ public class DateCreatorMongoEventListener extends AbstractMongoEventListener<Ab
     public void onBeforeConvert(AbstractDocument document) {
         DateTime d = new DateTime();
         // set created date if necessary
-        if (document.getCdt() == null) {
-            document.setCdt(d);
+        if (document.getCreatedDate() == null) {
+            document.setCreatedDate(d);
         }
 
         // update last updated date
-        document.setLdt(d);
+        document.setLastUpdate(d);
     }
 }

@@ -18,7 +18,10 @@ package com.bearchoke.platform.user.document;
 
 //~--- non-JDK imports --------------------------------------------------------
 
+import com.bearchoke.platform.api.user.RoleCreatedEvent;
+import com.bearchoke.platform.mongo.document.AbstractDocument;
 import lombok.Data;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -35,7 +38,8 @@ import java.util.List;
  * Responsibility:
  */
 @Data
-public class Role implements Serializable {
+@Document
+public class Role extends AbstractDocument implements Serializable {
 
     /** Field description */
     private static final long serialVersionUID = -3836008580458749250L;
@@ -50,4 +54,10 @@ public class Role implements Serializable {
 
     /** Url name */
     private String urlName;
+
+    public Role(RoleCreatedEvent event) {
+        this.name = event.getName();
+        this.urlName = event.getUrlName();
+        this.rights = event.getRights();
+    }
 }

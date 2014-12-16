@@ -27,6 +27,7 @@ import com.fasterxml.uuid.impl.TimeBasedGenerator;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -230,5 +231,23 @@ public class User extends AbstractDocument implements UserDetails, UserAccount, 
     @Override
     public String getName() {
         return this.firstName + " " + this.lastName;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append(super.toString())
+                .append("nonExpired", nonExpired)
+                .append("nonLocked", nonLocked)
+                .append("enabled", enabled)
+                .append("credentialsNonExpired", credentialsNonExpired)
+                .append("email", email)
+                .append("username", username)
+                .append("password", password)
+                .append("roles", roles)
+                .append("firstName", firstName)
+                .append("lastName", lastName)
+                .append("cd", cd)
+                .toString();
     }
 }
