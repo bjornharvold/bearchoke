@@ -16,6 +16,7 @@
 
 package com.bearchoke.platform.user;
 
+import com.bearchoke.platform.api.user.RoleIdentifier;
 import com.bearchoke.platform.api.user.UserCreatedEvent;
 import com.bearchoke.platform.user.document.Role;
 import com.bearchoke.platform.user.document.User;
@@ -52,9 +53,9 @@ public class UserEventListener {
         }
 
         User user = new User(event);
-        if (event.getRoles() != null && event.getRoles().length > 0) {
-            for (String roleName : event.getRoles()) {
-                Role role = roleRepository.findByName(roleName);
+        if (event.getRoles() != null && event.getRoles().size() > 0) {
+            for (RoleIdentifier roleName : event.getRoles()) {
+                Role role = roleRepository.findByName(roleName.toString());
 
                 if (role != null) {
                     user.addRole(role);

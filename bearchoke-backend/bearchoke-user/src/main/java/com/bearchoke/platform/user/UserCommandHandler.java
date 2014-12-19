@@ -19,8 +19,10 @@ package com.bearchoke.platform.user;
 import com.bearchoke.platform.api.user.AuthenticateUserCommand;
 import com.bearchoke.platform.api.user.CreateUserCommand;
 import com.bearchoke.platform.api.user.RegisterUserCommand;
+import com.bearchoke.platform.api.user.RoleIdentifier;
 import com.bearchoke.platform.api.user.UserAccount;
 import com.bearchoke.platform.api.user.UserIdentifier;
+import com.bearchoke.platform.platform.base.PlatformConstants;
 import com.bearchoke.platform.user.document.User;
 import com.bearchoke.platform.user.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +31,8 @@ import org.axonframework.repository.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
 
 /**
  * Created by Bjorn Harvold
@@ -42,12 +46,16 @@ public class UserCommandHandler {
     @Qualifier("userAggregateRepository")
     private final Repository<UserAggregate> userAggregateRepository;
 
+    @Qualifier("roleAggregateRepository")
+    private final Repository<RoleAggregate> roleAggregateRepository;
+
     @Qualifier("userRepository")
     private final UserRepository userRepository;
 
     @Autowired
-    public UserCommandHandler(Repository<UserAggregate> repository, UserRepository userRepository) {
-        this.userAggregateRepository = repository;
+    public UserCommandHandler(Repository<UserAggregate> userAggregateRepository, Repository<RoleAggregate> roleAggregateRepository, UserRepository userRepository) {
+        this.userAggregateRepository = userAggregateRepository;
+        this.roleAggregateRepository = roleAggregateRepository;
         this.userRepository = userRepository;
     }
 
@@ -56,8 +64,22 @@ public class UserCommandHandler {
         if (log.isDebugEnabled()) {
             log.debug("Handling: " + command.getClass().getSimpleName());
         }
+
+        // assign user default role
+        RoleIdentifier roleIdentifier = new RoleIdentifier(PlatformConstants.DEFAULT_USER_ROLE);
+
         UserIdentifier id = command.getUserId();
-        UserAggregate u = new UserAggregate(id, command.getUsername(), command.getPassword(), command.getEmail(), command.getFirstName(), command.getLastName(), command.getRoles());
+        UserAggregate u = new UserAggregate(
+                id,
+                command.getUsername(),
+                command.getPassword(),
+                command.getEmail(),
+                command.getFirstName(),
+                command.getLastName(),
+                Arrays.asList(roleIdentifier)
+        );
+
+        // persist user aggregate
         userAggregateRepository.add(u);
 
         return id;
@@ -68,8 +90,19 @@ public class UserCommandHandler {
         if (log.isDebugEnabled()) {
             log.debug("Handling: " + command.getClass().getSimpleName());
         }
+
         UserIdentifier id = command.getUserId();
-        UserAggregate u = new UserAggregate(id, command.getUsername(), command.getPassword(), command.getEmail(), command.getFirstName(), command.getLastName(), command.getRoles());
+        UserAggregate u = new UserAggregate(
+                id,
+                command.getUsername(),
+                command.getPassword(),
+                command.getEmail(),
+                command.getFirstName(),
+                command.getLastName(),
+                command.getRoles()
+        );
+
+        // persist user aggregate
         userAggregateRepository.add(u);
 
         return id;
@@ -80,14 +113,14 @@ public class UserCommandHandler {
         if (log.isDebugEnabled()) {
             log.debug("Handling: " + command.getClass().getSimpleName());
         }
-        UserAccount account = userRepository.findUserByUsername(command.getUsername());
+        User user = userRepository.findUserByUsername(command.getUsername());
 
-        if (account == null) {
+        if (user == null) {
             return null;
         }
 
-        boolean success = onUser(account.getIdAsString()).authenticate(command.getPassword());
-        return success ? account : null;
+        boolean success = onUser(user.getUserIdentifier()).authenticate(command.getPassword());
+        return success ? user : null;
     }
 
     private UserAggregate onUser(String userId) {

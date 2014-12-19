@@ -16,6 +16,7 @@
 
 package com.bearchoke.platform.user;
 
+import com.bearchoke.platform.api.user.RoleIdentifier;
 import com.bearchoke.platform.api.user.UserAuthenticatedEvent;
 import com.bearchoke.platform.api.user.UserCreatedEvent;
 import com.bearchoke.platform.api.user.UserIdentifier;
@@ -50,12 +51,12 @@ public class UserAggregate extends AbstractAnnotatedAggregateRoot {
     private String email;
     private String firstName;
     private String lastName;
-    private String[] roles;
+    private List<RoleIdentifier> roles;
 
     public UserAggregate() {
     }
 
-    public UserAggregate(UserIdentifier id, String username, String password, String email, String firstName, String lastName, String[] roles) {
+    public UserAggregate(UserIdentifier id, String username, String password, String email, String firstName, String lastName, List<RoleIdentifier> roles) {
         apply(new UserCreatedEvent(
                 id,
                 username.toLowerCase(),

@@ -23,6 +23,8 @@ package com.bearchoke.platform.platform.base;
  * Responsibility:
  */
 public class PlatformConstants {
-    public final static String FACEBOOK = "facebook";
-    public final static String USER = "user";
+    public final static String DEFAULT_USER_ROLE_URL_NAME = "roleuser";
+    public final static String DEFAULT_USER_ROLE = "ROLE_USER";
+    public final static String DEFAULT_ADMIN_ROLE = "ROLE_ADMIN";
+    public final static String DEFAULT_ADMIN_ROLE_URL_NAME = "roleadmin";
 }

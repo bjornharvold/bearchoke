@@ -21,6 +21,7 @@ import org.axonframework.commandhandling.annotation.TargetAggregateIdentifier;
 import org.axonframework.common.Assert;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * Created by Bjorn Harvold
@@ -48,9 +49,6 @@ public class RegisterUserCommand {
     @NotNull
     private final String password;
 
-    @NotNull
-    private final String[] roles;
-
     public RegisterUserCommand(UserIdentifier userId, RegisterUserDto user) {
 
         Assert.notNull(user, "Dto cannot be null");
@@ -67,7 +65,6 @@ public class RegisterUserCommand {
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.password = user.getPassword();
-        this.roles = user.getRoles();
     }
 
     public UserIdentifier getUserId() {
@@ -92,9 +89,5 @@ public class RegisterUserCommand {
 
     public String getPassword() {
         return password;
-    }
-
-    public String[] getRoles() {
-        return roles;
     }
 }

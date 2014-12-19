@@ -20,6 +20,7 @@ import com.bearchoke.platform.api.user.CreateRoleCommand;
 import com.bearchoke.platform.api.user.CreateUserCommand;
 import com.bearchoke.platform.api.user.RoleIdentifier;
 import com.bearchoke.platform.api.user.UserIdentifier;
+import com.bearchoke.platform.platform.base.PlatformConstants;
 import com.bearchoke.platform.user.document.Role;
 import com.bearchoke.platform.user.document.User;
 import com.bearchoke.platform.user.repositories.RoleRepository;
@@ -74,14 +75,15 @@ public class MongoDBInit implements DBInit {
             createItems();
             logger.info("The database has been created and refreshed with some data.");
         }
-
     }
 
     private void initializeDB() {
+        // clear all of Axon's collections
         systemAxonMongo.domainEventCollection().drop();
         systemAxonMongo.snapshotEventCollection().drop();
         systemAxonSagaMongo.sagaCollection().drop();
 
+        // clear our own collections
         mongoTemplate.dropCollection(User.class);
         mongoTemplate.dropCollection(Role.class);
     }
@@ -94,35 +96,39 @@ public class MongoDBInit implements DBInit {
     public void createItems() {
         initializeDB();
 
-        RoleIdentifier role1 = createRole("ROLE_USER", "roleUser", Arrays.asList("RIGHT_READ_USER"));
-        
-//        UserIdentifier user1 = createUser("harry@mitchell.com", "harrymitchell", "Harry", "Mitchell", "HarryMitchell5!", new String[]{"ROLE_USER"});
+        RoleIdentifier userRole = createRole(PlatformConstants.DEFAULT_USER_ROLE, PlatformConstants.DEFAULT_USER_ROLE_URL_NAME, Arrays.asList("RIGHT_READ_USER"));
+        RoleIdentifier adminRole = createRole(PlatformConstants.DEFAULT_ADMIN_ROLE, PlatformConstants.DEFAULT_ADMIN_ROLE_URL_NAME, Arrays.asList("RIGHT_ADMIN"));
+
+        UserIdentifier user = createUser("harry@mitchell.com", "harrymitchell", "Harry", "Mitchell", "HarryMitchell5!", Arrays.asList(userRole));
+        UserIdentifier admin = createUser("admin@admin.com", "admin", "Admin", "Admin", "AdminAdmin%1", Arrays.asList(adminRole));
 
         additionalDBSteps();
     }
 
     private RoleIdentifier createRole(String name, String urlName, List<String> rights) {
-        RoleIdentifier roleId = null;
         Role role = roleRepository.findByName(name);
 
-        if (role == null) {
-            roleId = new RoleIdentifier();
-            CreateRoleCommand command = new CreateRoleCommand(roleId, name, urlName, rights);
-            commandBus.dispatch(new GenericCommandMessage<>(command));
+        if (role != null) {
+            roleRepository.delete(role);
         }
+
+        RoleIdentifier roleId = new RoleIdentifier(name);
+        CreateRoleCommand command = new CreateRoleCommand(roleId, name, urlName, rights);
+        commandBus.dispatch(new GenericCommandMessage<>(command));
 
         return roleId;
     }
 
-    UserIdentifier createUser(String email, String username, String firstName, String lastName, String password, String[] roles) {
-        UserIdentifier userId = null;
+    UserIdentifier createUser(String email, String username, String firstName, String lastName, String password, List<RoleIdentifier> roles) {
         User user = userRepository.findUserByUsername(username);
 
-        if (user == null) {
-            userId = new UserIdentifier();
-            CreateUserCommand command = new CreateUserCommand(userId, email, username, firstName, lastName, password, roles);
-            commandBus.dispatch(new GenericCommandMessage<>(command));
+        if (user != null) {
+            userRepository.delete(user);
         }
+
+        UserIdentifier userId = new UserIdentifier();
+        CreateUserCommand command = new CreateUserCommand(userId, email, username, firstName, lastName, password, roles);
+        commandBus.dispatch(new GenericCommandMessage<>(command));
 
         return userId;
     }

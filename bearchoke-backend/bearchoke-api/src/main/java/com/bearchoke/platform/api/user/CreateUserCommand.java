@@ -16,11 +16,11 @@
 
 package com.bearchoke.platform.api.user;
 
-import com.bearchoke.platform.api.user.dto.RegisterUserDto;
 import org.axonframework.commandhandling.annotation.TargetAggregateIdentifier;
 import org.axonframework.common.Assert;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * Created by Bjorn Harvold
@@ -51,9 +51,9 @@ public class CreateUserCommand {
     private final String password;
 
     @NotNull
-    private final String[] roles;
+    private final List<RoleIdentifier> roles;
 
-    public CreateUserCommand(UserIdentifier userId, String email, String username, String firstName, String lastName, String password, String[] roles) {
+    public CreateUserCommand(UserIdentifier userId, String email, String username, String firstName, String lastName, String password, List<RoleIdentifier> roles) {
 
         Assert.notNull(userId, "Identifier cannot be null");
         Assert.notNull(email, "Email cannot be null");
@@ -61,6 +61,7 @@ public class CreateUserCommand {
         Assert.notNull(firstName, "First name cannot be null");
         Assert.notNull(lastName, "Last name cannot be null");
         Assert.notNull(password, "Password cannot be null");
+        Assert.notNull(roles, "Roles cannot be null");
 
         this.userId = userId;
         this.username = username;
@@ -95,7 +96,7 @@ public class CreateUserCommand {
         return password;
     }
 
-    public String[] getRoles() {
+    public List<RoleIdentifier> getRoles() {
         return roles;
     }
 }

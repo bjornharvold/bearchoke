@@ -132,9 +132,9 @@ public class User extends AbstractDocument implements UserDetails, UserAccount, 
 
     /**
      * Checksum that we can use to uniquely identify user with using something public like email
-     * This will be overwritten by stored database user.cd
+     * This will be overwritten by stored database user.userIdentifier
      */
-    private String cd = generateUserCode();
+    private String userIdentifier = generateUserCode();
 
     //~--- constructors -------------------------------------------------------
 
@@ -150,7 +150,7 @@ public class User extends AbstractDocument implements UserDetails, UserAccount, 
         this.firstName = event.getFirstName();
         this.lastName = event.getLastName();
         this.password = event.getPassword();
-        this.cd = event.getUserId().toString();
+        this.userIdentifier = event.getUserId().toString();
     }
 
     //~--- methods ------------------------------------------------------------
@@ -247,7 +247,7 @@ public class User extends AbstractDocument implements UserDetails, UserAccount, 
                 .append("roles", roles)
                 .append("firstName", firstName)
                 .append("lastName", lastName)
-                .append("cd", cd)
+                .append("userIdentifier", userIdentifier)
                 .toString();
     }
 }

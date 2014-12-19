@@ -18,6 +18,8 @@ package com.bearchoke.platform.api.user;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import java.util.List;
+
 /**
  * Created by Bjorn Harvold
  * Date: 8/13/14
@@ -31,9 +33,9 @@ public class UserCreatedEvent {
     private String email;
     private String firstName;
     private String lastName;
-    private String[] roles;
+    private List<RoleIdentifier> roles;
 
-    public UserCreatedEvent(UserIdentifier userId, String username, String password, String email, String firstName, String lastName, String[] roles) {
+    public UserCreatedEvent(UserIdentifier userId, String username, String password, String email, String firstName, String lastName, List<RoleIdentifier> roles) {
         this.userId = userId;
         this.username = username;
         this.password = password;
@@ -67,7 +69,7 @@ public class UserCreatedEvent {
         return lastName;
     }
 
-    public String[] getRoles() {
+    public List<RoleIdentifier> getRoles() {
         return roles;
     }
 
