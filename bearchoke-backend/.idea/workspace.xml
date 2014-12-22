@@ -72,48 +72,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserCommandHandler.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserCommandHandler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bearchoke-user/src/main/java/com/bearchoke/platform/user/UserCommandHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1078" max-vertical-offset="1635">
+            <state vertical-scroll-proportion="0.62151396" vertical-offset="882" max-vertical-offset="1635">
               <caret line="120" column="37" selection-start-line="103" selection-start-column="4" selection-end-line="120" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#4381#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SimpleCommandBus.java" pinned="false" current-in-tab="true">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/axonframework/axon-core/2.3.2/axon-core-2.3.2-sources.jar!/org/axonframework/commandhandling/SimpleCommandBus.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.20185924" vertical-offset="1348" max-vertical-offset="3015">
-              <caret line="136" column="28" selection-start-line="136" selection-start-column="8" selection-end-line="136" selection-end-column="28" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ChainedConverter.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/axonframework/axon-core/2.3.2/axon-core-2.3.2-sources.jar!/org/axonframework/serializer/ChainedConverter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2008" max-vertical-offset="3180">
-              <caret line="183" column="13" selection-start-line="171" selection-start-column="12" selection-end-line="183" selection-end-column="13" />
-              <folding>
-                <element signature="e#0#9991#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#6517#6518#0" expanded="false" />
-                <element signature="e#6546#6547#0" expanded="false" />
-                <element signature="e#6596#6597#0" expanded="false" />
-                <element signature="e#6625#6626#0" expanded="false" />
-                <element signature="e#7013#7014#0" expanded="false" />
-                <element signature="e#7106#7107#0" expanded="false" />
-                <element signature="e#9836#9837#0" expanded="false" />
-                <element signature="e#9875#9876#0" expanded="false" />
-                <element signature="e#9930#9931#0" expanded="false" />
-                <element signature="e#9981#9982#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -1333,12 +1297,12 @@
       <workItem from="1418974610976" duration="3557000" />
       <workItem from="1418985067864" duration="3942000" />
       <workItem from="1419072782565" duration="9149000" />
-      <workItem from="1419219857477" duration="596000" />
+      <workItem from="1419219857477" duration="821000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="488989000" />
+    <option name="totallyTimeSpent" value="489214000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -1458,14 +1422,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bearchoke-mongo-core/src/main/java/com/bearchoke/platform/mongo/config/MongoCoreConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23904383" vertical-offset="0" max-vertical-offset="753">
-          <caret line="45" column="14" selection-start-line="45" selection-start-column="14" selection-end-line="45" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bearchoke-user/src/main/java/com/bearchoke/platform/user/repositories/impl/UserRepositoryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23904383" vertical-offset="0" max-vertical-offset="810">
@@ -1501,6 +1457,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
           <caret line="29" column="71" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="71" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1508,6 +1465,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="735">
           <caret line="44" column="19" selection-start-line="44" selection-start-column="19" selection-end-line="44" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1443#1444#0" expanded="false" />
+            <element signature="e#1513#1514#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1551,6 +1513,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.2350597" vertical-offset="0" max-vertical-offset="1050">
           <caret line="91" column="5" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
+          <folding>
+            <element signature="e#2186#2187#0" expanded="false" />
+            <element signature="e#2215#2216#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1558,6 +1524,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1992032" vertical-offset="0" max-vertical-offset="753">
           <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1587,6 +1554,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22177956" vertical-offset="1318" max-vertical-offset="3180">
           <caret line="136" column="33" selection-start-line="136" selection-start-column="33" selection-end-line="136" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1699,6 +1667,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.759519" vertical-offset="322" max-vertical-offset="1320">
           <caret line="98" column="30" selection-start-line="98" selection-start-column="30" selection-end-line="98" selection-end-column="30" />
+          <folding>
+            <element signature="e#2484#2485#0" expanded="true" />
+            <element signature="e#2513#2514#0" expanded="true" />
+            <element signature="e#2548#2549#0" expanded="true" />
+            <element signature="e#2579#2580#0" expanded="true" />
+            <element signature="e#2611#2612#0" expanded="true" />
+            <element signature="e#2639#2640#0" expanded="true" />
+            <element signature="e#2675#2676#0" expanded="true" />
+            <element signature="e#2707#2708#0" expanded="true" />
+            <element signature="e#2742#2743#0" expanded="true" />
+            <element signature="e#2773#2774#0" expanded="true" />
+            <element signature="e#2808#2809#0" expanded="true" />
+            <element signature="e#2839#2840#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1775,6 +1757,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="46918" max-vertical-offset="74805">
           <caret line="3208" column="0" selection-start-line="3208" selection-start-column="0" selection-end-line="3208" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1849,14 +1832,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-user/src/main/java/com/bearchoke/platform/user/UserCommandHandler.java">
+    <entry file="file://$PROJECT_DIR$/bearchoke-platform-base/src/main/java/com/bearchoke/platform/platform/base/config/CQRSConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1078" max-vertical-offset="1635">
-          <caret line="120" column="37" selection-start-line="103" selection-start-column="4" selection-end-line="120" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#4381#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="-0.4249668" vertical-offset="515" max-vertical-offset="1545">
+          <caret line="54" column="13" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1864,6 +1844,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20185924" vertical-offset="1348" max-vertical-offset="3015">
           <caret line="136" column="28" selection-start-line="136" selection-start-column="8" selection-end-line="136" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-user/src/main/java/com/bearchoke/platform/user/UserCommandHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.62151396" vertical-offset="882" max-vertical-offset="1635">
+          <caret line="120" column="37" selection-start-line="103" selection-start-column="4" selection-end-line="120" selection-end-column="37" />
           <folding />
         </state>
       </provider>

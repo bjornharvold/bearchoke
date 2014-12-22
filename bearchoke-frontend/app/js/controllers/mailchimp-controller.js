@@ -23,7 +23,7 @@ angular.module("app").controller('MailChimpController', function ($log, $scope, 
 
         if ($scope.newsletterForm.$valid) {
             $log.debug("Subscribe to newsletter form is valid. Submitting...");
-            SitewideNewsletterService.subcribeToNewsletter(mailchimp, onNewsletterSubscriptionSuccess, onNewsletterSubscriptionFailure);
+            SitewideNewsletterService.subscribeToNewsletter($scope.mailchimp, onNewsletterSubscriptionSuccess, onNewsletterSubscriptionFailure);
         }
     };
 

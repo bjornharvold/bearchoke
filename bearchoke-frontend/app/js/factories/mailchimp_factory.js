@@ -21,73 +21,74 @@ angular.module("app").factory('MailChimpFactory', function ($log, $resource) {
     var u;
     var id;
 
-    var MailChimpFactory = function(username, u, dc, id) {
+    var MailChimpFactory = function (username, u, dc, id) {
+        $log.debug("Creating MailChimpFactory using username: " + username + ", u: " + u + ", dc: " + dc + ", id: " + id);
         this.username = username;
         this.u = u;
         this.dc = dc;
         this.id = id;
     };
 
-    var self = {
+    MailChimpFactory.prototype.subscribeToNewsletter = function (user, success, failure) {
 
-        subscribeToNewsletter: function (user, success, failure) {
-            var url = '//' + username + '.' + dc + '.list-manage.com/subscribe/post-json';
-            var params = {
-                'EMAIL': user.email,
-                'FNAME': user.fname,
-                'LNAME': user.lname,
-                'c': 'JSON_CALLBACK',
-                'u': u,
-                'id': id
-            };
-
-            var actions = {
-                'save': {
-                    method: 'jsonp'
-                }
-            };
-
-            $log.debug('Subscribing user to newsletter...');
-
-            var mailChimpSubscriptionResource = $resource(url, params, actions);
-
-            mailChimpSubscriptionResource.save(
-                    // Successfully sent data to MailChimp.
-                    function (response) {
-
-                        // Store the result from MailChimp
-                        $scope.mailchimp.result = response.result;
-
-                        // Mailchimp returned an error.
-                        if (response.result === 'error') {
-                            if (response.msg) {
-                                // Remove error numbers, if any.
-                                var errorMessageParts = response.msg.split(' - ');
-                                if (errorMessageParts.length > 1) {
-                                    errorMessageParts.shift(); // Remove the error number
-                                }
-                                failure(errorMessageParts.join(' '));
-                            } else {
-                                failure('Sorry! An unknown error occured.');
-                            }
-                        }
-                        // MailChimp returns a success.
-                        else if (response.result === 'success') {
-                            success(response.msg);
-                        }
-                    },
-
-                    // Error sending data to MailChimp
-                    function (error) {
-                        var errorMsg = 'MailChimp Error: %o' + error;
-                        $log.error(errorMsg);
-                        failure(errorMsg);
-                    }
-            );
-
+        if (user.email === 'undefined') {
+            var errorMsg = "Email is required";
+            $log.error(errorMsg);
+            failure(errorMsg);
         }
+
+        var url = '//' + this.username + '.' + this.dc + '.list-manage.com/subscribe/post-json';
+        var params = {
+            'EMAIL': user.email,
+            'FNAME': user.fname,
+            'LNAME': user.lname,
+            'c': 'JSON_CALLBACK',
+            'u': this.u,
+            'id': this.id
+        };
+
+        var actions = {
+            'save': {
+                method: 'jsonp'
+            }
+        };
+
+        $log.debug('Subscribing user to newsletter...');
+
+        var mailChimpSubscriptionResource = $resource(url, params, actions);
+
+        mailChimpSubscriptionResource.save(
+                // Successfully sent data to MailChimp.
+                function (response) {
+
+                    // Mailchimp returned an error.
+                    if (response.result === 'error') {
+                        if (response.msg) {
+                            // Remove error numbers, if any.
+                            var errorMessageParts = response.msg.split(' - ');
+                            if (errorMessageParts.length > 1) {
+                                errorMessageParts.shift(); // Remove the error number
+                            }
+                            failure(errorMessageParts.join(' '));
+                        } else {
+                            failure('Sorry! An unknown error occured.');
+                        }
+                    }
+                    // MailChimp returns a success.
+                    else if (response.result === 'success') {
+                        success(response.msg);
+                    }
+                },
+
+                // Error sending data to MailChimp
+                function (error) {
+                    var errorMsg = 'MailChimp Error: %o' + error;
+                    $log.error(errorMsg);
+                    failure(errorMsg);
+                }
+        );
 
     };
 
-    return self;
+    return MailChimpFactory;
 });

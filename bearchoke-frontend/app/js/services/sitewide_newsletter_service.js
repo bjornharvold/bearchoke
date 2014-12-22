@@ -15,5 +15,10 @@
  */
 
 angular.module("app").service("SitewideNewsletterService", function(MailChimpFactory, configuration) {
-    return new MailChimpFactory(configuration.username, configuration.u, configuration.dc, configuration.id);
+    return new MailChimpFactory(
+            configuration.mailchimpUsername,
+            configuration.mailchimpU,
+            configuration.mailchimpDc,
+            configuration.mailchimpId
+    );
 });

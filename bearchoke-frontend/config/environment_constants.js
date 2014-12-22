@@ -9,5 +9,9 @@ angular.module('app').constant('configuration', {
     serverWebSocketContext: '@@serverWebSocketContext',
     baseUrl: '@@baseUrl',
     websocketBaseUrl: '@@websocketBaseUrl',
-    version: '@@version'
+    version: '@@version',
+    mailchimpUsername: '@@mailchimpUsername',
+    mailchimpU: '@@mailchimpU',
+    mailchimpDc: '@@mailchimpDc',
+    mailchimpId: '@@mailchimpId'
   });
