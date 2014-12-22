@@ -17,3 +17,20 @@
 .red {
   color: @red;
 }
+
+.error-messages.ng-active {
+  background:maroon;
+  color:white;
+  padding:5px;
+  border-radius:5px;
+  margin-top:15px;
+  position:relative;
+}
+.error-messages.ng-active:after {
+  position:absolute;
+  top:-10px;
+  content:"";
+  left:20px;
+  border: 5px solid transparent;
+  border-bottom-color: maroon;
+}

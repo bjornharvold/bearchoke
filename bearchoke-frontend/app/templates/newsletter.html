@@ -16,74 +16,56 @@
 
 <div class="jumbotron">
     <div class="container">
-        <h2><i class="fa fa-plug"></i> Newsletter</h2>
+        <h2><i class="fa fa-envelope-o"></i> MailChimp Integration</h2>
     </div>
 </div>
 <div id="newsletter" class="container">
     <div class="row alert alert-info">
-        <p>Subscribe to our newsletter (demo only).</p>
-
-        <p>Use this <a href="https://github.com/keithio/angular-mailchimp" target="_blank">Angular - MailChimp extension</a> to integrate newsletter functionality for validation and <a href="https://github.com/mllrsohn/angular-re-captcha" target="_blank">angular-recaptcha</a></p>
+        <p>Configurable AngularJS MailChimp subscription service.</p>
     </div>
     <div class="row">
-        <form name="newsletterForm" ng-submit="submit()">
-            <div ng-hide="mailchimp.result === 'success'">
-                <input class="hidden" type="hidden" ng-model="mailchimp.username" ng-init="mailchimp.username='username'">
-                <input class="hidden" type="hidden" ng-model="mailchimp.dc" ng-init="mailchimp.dc='us1'">
-                <input class="hidden" type="hidden" ng-model="mailchimp.u" ng-init="mailchimp.u='a1b2c3d4e5f6g7h8i9j0'">
-                <input class="hidden" type="hidden" ng-model="mailchimp.id" ng-init="mailchimp.id='aabb12'">
-                <div class="control-group">
-                    <label for="firstname"><i class="fa fa-asterisk red normal"></i> First name: </label>
+        <form name="newsletterForm" ng-submit="submit()" novalidate>
+            <div class="control-group">
+                <label for="email"><i class="fa fa-asterisk red"></i> Email:</label>
 
-                    <div class="form-group">
-                        <div class="input-group input-group-lg">
-                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                            <input id="firstname" type="text" class="form-control" placeholder="First name" name="firstname" ng-model="user.fname">
+                <div class="form-group">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+                        <input id="email" type="email" class="form-control" placeholder="E-mail" name="email" ng-model="mailchimp.email" required>
+                    </div>
+                    <div class="error-messages" ng-if="interacted(newsletterForm.email)" ng-messages="newsletterForm.email.$error">
+                        <div ng-message="required">
+                            You forgot to enter your email address...
+                        </div>
+                        <div ng-message="email">
+                            You did not enter your email address correctly...
                         </div>
                     </div>
                 </div>
-                <div class="control-group">
-                    <label for="lastname"><i class="fa fa-asterisk red"></i> Last name:</label>
+            </div>
+            <div class="control-group">
+                <label for="firstname">First name: </label>
 
-                    <div class="form-group">
-                        <div class="input-group input-group-lg">
-                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                            <input id="lastname" type="text" class="form-control" placeholder="Last name" name="lastname" ng-model="mailchimp.lname">
-                        </div>
+                <div class="form-group">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input id="firstname" type="text" class="form-control" placeholder="First name" name="firstname" ng-model="mailchimp.fname">
                     </div>
                 </div>
-                <div class="control-group">
-                    <label for="email"><i class="fa fa-asterisk red"></i> Email:</label>
+            </div>
+            <div class="control-group">
+                <label for="lastname">Last name:</label>
 
-                    <div class="form-group">
-                        <div class="input-group input-group-lg">
-                            <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
-                            <input id="email" type="email" class="form-control" placeholder="E-mail" name="email" ng-model="mailchimp.email" required>
-                        </div>
-                        <div class="error-messages" ng-if="interacted(newsletterForm.email)"  ng-messages="newsletterForm.email.$error">
-                            <div ng-message="required">
-                                You forgot to enter your email address...
-                            </div>
-                            <div ng-message="email">
-                                You did not enter your email address correctly...
-                            </div>
-                        </div>
+                <div class="form-group">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input id="lastname" type="text" class="form-control" placeholder="Last name" name="lastname" ng-model="mailchimp.lname">
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
                 <button type="submit" class="btn btn-success">Subscribe</button>
-            </div>
-
-            <!-- Show error message if MailChimp unsuccessfully added the email to the list. -->
-            <div ng-show="mailchimp.result === 'error'" ng-cloak>
-                <span ng-bind-html="mailchimp.errorMessage"></span>
-            </div>
-
-            <!-- Show success message if MailChimp returned successfully. -->
-            <div ng-show="mailchimp.result === 'success'" ng-cloak>
-                <span ng-bind-html="mailchimp.successMessage"></span>
             </div>
         </form>
     </div>

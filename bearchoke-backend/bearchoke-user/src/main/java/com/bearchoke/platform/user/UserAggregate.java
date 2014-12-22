@@ -51,12 +51,12 @@ public class UserAggregate extends AbstractAnnotatedAggregateRoot {
     private String email;
     private String firstName;
     private String lastName;
-    private List<RoleIdentifier> roles;
+    private List<String> roles;
 
     public UserAggregate() {
     }
 
-    public UserAggregate(UserIdentifier id, String username, String password, String email, String firstName, String lastName, List<RoleIdentifier> roles) {
+    public UserAggregate(UserIdentifier id, String username, String password, String email, String firstName, String lastName, List<String> roles) {
         apply(new UserCreatedEvent(
                 id,
                 username.toLowerCase(),

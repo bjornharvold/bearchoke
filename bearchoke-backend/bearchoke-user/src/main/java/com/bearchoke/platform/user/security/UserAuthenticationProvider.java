@@ -59,6 +59,10 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
             return null;
         }
 
+        if (log.isDebugEnabled()) {
+            log.debug("Authenticating: " + authentication);
+        }
+
         UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) authentication;
         String username = token.getName();
         String password = String.valueOf(token.getCredentials());
@@ -80,7 +84,11 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
             account = accountCallback.get();
 
             if (account == null) {
-                throw new UsernameNotFoundException("Could not locate user record for username: " + username);
+                String error = String.format("Could not locate user record for username: %s", username);
+                if (log.isDebugEnabled()) {
+                    log.debug(error);
+                }
+                throw new UsernameNotFoundException(error);
             }
 
         } catch (InterruptedException e) {
@@ -94,6 +102,10 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
         UsernamePasswordAuthenticationToken result =
                 new UsernamePasswordAuthenticationToken(account, authentication.getCredentials(), account.getAuthorities());
         result.setDetails(authentication.getDetails());
+
+        if (log.isDebugEnabled()) {
+            log.debug("Authentication successful: " + result);
+        }
 
         return result;
     }

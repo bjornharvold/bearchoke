@@ -148,6 +148,21 @@ angular.module("app").config(function ($stateProvider, $locationProvider, $urlRo
                     }
                 }
             })
+            .state('newsletter', {
+                parent: "static-content-layout",
+                url: "/ui/newsletter",
+                templateUrl: "newsletter.html",
+                controller: 'MailChimpController',
+                data: {
+                    auth: false,
+                    title: "NEWSLETTER",
+                    meta: {
+                        'description': 'Subscribe to our newsletter',
+                        'author': 'Bjorn Harvold',
+                        'keywords': 'newsletter,subscription,bearchoke'
+                    }
+                }
+            })
         //
         // STATIC CONTENT
         //

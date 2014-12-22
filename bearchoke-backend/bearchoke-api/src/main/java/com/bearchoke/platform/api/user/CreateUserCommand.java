@@ -51,9 +51,9 @@ public class CreateUserCommand {
     private final String password;
 
     @NotNull
-    private final List<RoleIdentifier> roles;
+    private final List<String> roles;
 
-    public CreateUserCommand(UserIdentifier userId, String email, String username, String firstName, String lastName, String password, List<RoleIdentifier> roles) {
+    public CreateUserCommand(UserIdentifier userId, String email, String username, String firstName, String lastName, String password, List<String> roles) {
 
         Assert.notNull(userId, "Identifier cannot be null");
         Assert.notNull(email, "Email cannot be null");
@@ -96,7 +96,7 @@ public class CreateUserCommand {
         return password;
     }
 
-    public List<RoleIdentifier> getRoles() {
+    public List<String> getRoles() {
         return roles;
     }
 }

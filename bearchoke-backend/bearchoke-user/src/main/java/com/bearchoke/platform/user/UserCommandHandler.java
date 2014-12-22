@@ -46,16 +46,12 @@ public class UserCommandHandler {
     @Qualifier("userAggregateRepository")
     private final Repository<UserAggregate> userAggregateRepository;
 
-    @Qualifier("roleAggregateRepository")
-    private final Repository<RoleAggregate> roleAggregateRepository;
-
     @Qualifier("userRepository")
     private final UserRepository userRepository;
 
     @Autowired
-    public UserCommandHandler(Repository<UserAggregate> userAggregateRepository, Repository<RoleAggregate> roleAggregateRepository, UserRepository userRepository) {
+    public UserCommandHandler(Repository<UserAggregate> userAggregateRepository, UserRepository userRepository) {
         this.userAggregateRepository = userAggregateRepository;
-        this.roleAggregateRepository = roleAggregateRepository;
         this.userRepository = userRepository;
     }
 
@@ -65,9 +61,6 @@ public class UserCommandHandler {
             log.debug("Handling: " + command.getClass().getSimpleName());
         }
 
-        // assign user default role
-        RoleIdentifier roleIdentifier = new RoleIdentifier(PlatformConstants.DEFAULT_USER_ROLE);
-
         UserIdentifier id = command.getUserId();
         UserAggregate u = new UserAggregate(
                 id,
@@ -76,7 +69,7 @@ public class UserCommandHandler {
                 command.getEmail(),
                 command.getFirstName(),
                 command.getLastName(),
-                Arrays.asList(roleIdentifier)
+                Arrays.asList(PlatformConstants.DEFAULT_USER_ROLE)
         );
 
         // persist user aggregate
@@ -120,10 +113,21 @@ public class UserCommandHandler {
         }
 
         boolean success = onUser(user.getUserIdentifier()).authenticate(command.getPassword());
+
+        if (log.isDebugEnabled()) {
+            log.debug("Authentication successful: " + success);
+        }
+
         return success ? user : null;
     }
 
     private UserAggregate onUser(String userId) {
-        return userAggregateRepository.load(new UserIdentifier(userId));
+        UserAggregate ua = userAggregateRepository.load(new UserIdentifier(userId));
+
+        if (log.isDebugEnabled()) {
+            log.debug("Found user aggregate: " + ua);
+        }
+
+        return ua;
     }
 }

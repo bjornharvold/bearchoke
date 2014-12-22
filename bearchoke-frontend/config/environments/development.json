@@ -9,5 +9,9 @@
     "serverWebSocketContext": "/ws",
     "baseUrl": "http://dev.bearchoke.com:8080/api",
     "websocketBaseUrl": "http://dev.bearchoke.com:8080/ws",
-    "version": "application/vnd.bearchoke-v1+json"
+    "version": "application/vnd.bearchoke-v1+json",
+    "mailchimp.username": "",
+    "mailchimp.u": "",
+    "mailchimp.dc": "",
+    "mailchimp.id": ""
 }

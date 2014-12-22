@@ -54,8 +54,8 @@ public class UserEventListener {
 
         User user = new User(event);
         if (event.getRoles() != null && event.getRoles().size() > 0) {
-            for (RoleIdentifier roleName : event.getRoles()) {
-                Role role = roleRepository.findByName(roleName.toString());
+            for (String roleName : event.getRoles()) {
+                Role role = roleRepository.findByName(roleName);
 
                 if (role != null) {
                     user.addRole(role);

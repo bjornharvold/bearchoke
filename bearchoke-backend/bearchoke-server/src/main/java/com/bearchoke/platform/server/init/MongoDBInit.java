@@ -99,8 +99,8 @@ public class MongoDBInit implements DBInit {
         RoleIdentifier userRole = createRole(PlatformConstants.DEFAULT_USER_ROLE, PlatformConstants.DEFAULT_USER_ROLE_URL_NAME, Arrays.asList("RIGHT_READ_USER"));
         RoleIdentifier adminRole = createRole(PlatformConstants.DEFAULT_ADMIN_ROLE, PlatformConstants.DEFAULT_ADMIN_ROLE_URL_NAME, Arrays.asList("RIGHT_ADMIN"));
 
-        UserIdentifier user = createUser("harry@mitchell.com", "harrymitchell", "Harry", "Mitchell", "HarryMitchell5!", Arrays.asList(userRole));
-        UserIdentifier admin = createUser("admin@admin.com", "admin", "Admin", "Admin", "AdminAdmin%1", Arrays.asList(adminRole));
+        UserIdentifier user = createUser("harry@mitchell.com", "harrymitchell", "Harry", "Mitchell", "HarryMitchell5!", Arrays.asList(PlatformConstants.DEFAULT_USER_ROLE));
+        UserIdentifier admin = createUser("admin@admin.com", "admin", "Admin", "Admin", "AdminAdmin%1", Arrays.asList(PlatformConstants.DEFAULT_ADMIN_ROLE));
 
         additionalDBSteps();
     }
@@ -119,7 +119,7 @@ public class MongoDBInit implements DBInit {
         return roleId;
     }
 
-    UserIdentifier createUser(String email, String username, String firstName, String lastName, String password, List<RoleIdentifier> roles) {
+    UserIdentifier createUser(String email, String username, String firstName, String lastName, String password, List<String> roles) {
         User user = userRepository.findUserByUsername(username);
 
         if (user != null) {

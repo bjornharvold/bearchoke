@@ -24,7 +24,6 @@ angular.module("app").controller('RegistrationController', function ($scope, $st
         $scope.submitted = true;
 
         if ($scope.userForm.$valid) {
-            $log.info($scope.user.captcha);
             SweetAlert.success("Great job!", "Form is valid");
         }
     };

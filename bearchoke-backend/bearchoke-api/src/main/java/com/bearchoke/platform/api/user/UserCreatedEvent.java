@@ -33,9 +33,9 @@ public class UserCreatedEvent {
     private String email;
     private String firstName;
     private String lastName;
-    private List<RoleIdentifier> roles;
+    private List<String> roles;
 
-    public UserCreatedEvent(UserIdentifier userId, String username, String password, String email, String firstName, String lastName, List<RoleIdentifier> roles) {
+    public UserCreatedEvent(UserIdentifier userId, String username, String password, String email, String firstName, String lastName, List<String> roles) {
         this.userId = userId;
         this.username = username;
         this.password = password;
@@ -69,7 +69,7 @@ public class UserCreatedEvent {
         return lastName;
     }
 
-    public List<RoleIdentifier> getRoles() {
+    public List<String> getRoles() {
         return roles;
     }
 

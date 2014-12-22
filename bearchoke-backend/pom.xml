@@ -238,8 +238,8 @@
         <derby.version>10.10.1.1</derby.version>
         <embedded.redis.version>0.2</embedded.redis.version>
         <glassfish.jstl.impl>1.2</glassfish.jstl.impl>
-        <hibernate.validator.version>5.0.2.Final</hibernate.validator.version>
-        <hibernate.entitymanager.version>4.3.0.Final</hibernate.entitymanager.version>
+        <hibernate.validator.version>5.1.3.Final</hibernate.validator.version>
+        <hibernate.entitymanager.version>4.3.7.Final</hibernate.entitymanager.version>
         <jackson.version>2.3.2</jackson.version>
         <java.version>1.8</java.version>
         <jasypt.version>1.9.2</jasypt.version>

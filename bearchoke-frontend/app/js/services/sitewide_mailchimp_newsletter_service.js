@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-#registration {
-
-
-
-}
+angular.module("app").service("SitewideNewsletterService", function(MailChimpFactory, configuration) {
+    return new MailChimpFactory(configuration.username, configuration.u, configuration.dc, configuration.id);
+});
