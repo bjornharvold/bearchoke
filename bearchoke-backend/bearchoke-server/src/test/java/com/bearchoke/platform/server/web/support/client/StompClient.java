@@ -14,25 +14,11 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.server.config;
+package com.bearchoke.platform.server.web.support.client;
 
-import com.bearchoke.platform.server.service.GreetingService;
-import com.bearchoke.platform.server.service.GreetingServiceImpl;
-import org.mockito.Mockito;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
-/**
- * Created by Bjorn Harvold
- * Date: 8/13/14
- * Time: 4:48 PM
- * Responsibility:
- */
-@Configuration
-public class MockServicesConfig {
+public interface StompClient {
 
-    @Bean
-    public GreetingService greetingService() {
-        return Mockito.mock(GreetingServiceImpl.class);
-    }
+	void connect(StompMessageHandler messageHandler);
+
 }

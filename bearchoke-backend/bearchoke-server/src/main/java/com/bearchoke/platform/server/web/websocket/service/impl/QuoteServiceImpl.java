@@ -22,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.messaging.core.MessageSendingOperations;
 import org.springframework.messaging.simp.broker.BrokerAvailabilityEvent;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -56,7 +57,7 @@ public class QuoteServiceImpl implements ApplicationListener<BrokerAvailabilityE
 		this.brokerAvailable.set(event.isBrokerAvailable());
 	}
 
-//	@Scheduled(fixedDelay=2000)
+	@Scheduled(fixedDelay=2000)
 	public void sendQuotes() {
 		for (Quote quote : this.quoteGenerator.generateQuotes()) {
 			if (log.isTraceEnabled()) {

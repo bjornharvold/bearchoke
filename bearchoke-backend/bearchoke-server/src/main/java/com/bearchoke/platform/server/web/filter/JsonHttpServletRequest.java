@@ -58,7 +58,15 @@ public class JsonHttpServletRequest extends HttpServletRequestWrapper {
 
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         IOUtils.copy(request.getInputStream(), outputStream);
-        String body = outputStream.toString(request.getCharacterEncoding());
+
+        String charset = request.getCharacterEncoding();
+        if (log.isDebugEnabled()) {
+            log.debug("Charset is: " + charset);
+        }
+        if (StringUtils.isBlank(charset)) {
+            charset = "UTF-8";
+        }
+        String body = outputStream.toString(charset);
 
         if(!StringUtils.isBlank(body)) {
             jsonObject = JSONObject.fromObject(body);

@@ -16,6 +16,7 @@
 
 package com.bearchoke.platform.server.web.filter;
 
+import com.bearchoke.platform.server.web.ApplicationMediaType;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.*;
@@ -35,7 +36,7 @@ public class JsonHttpRequestFilter implements Filter {
     private static final String JSON_CONTENT_TYPE = "application/(.*)json(.*)";
 
     public static void main(String[] args) {
-        String s = "application/vnd.bearchoke-v1+json; charset=UTF-8";
+        String s = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE + "; charset=UTF-8";
         System.out.println(s.matches(JSON_CONTENT_TYPE));
     }
 
@@ -61,6 +62,9 @@ public class JsonHttpRequestFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
         if(request.getContentType().matches(JSON_CONTENT_TYPE) && request instanceof HttpServletRequest) {
             // the content type of the request was JSON - wrap the request in our JSON friendly request wrapper
+            if (log.isDebugEnabled()) {
+                log.debug("Content-Type is JSON");
+            }
             request = new JsonHttpServletRequest((HttpServletRequest)request);
         } else {
             if (log.isDebugEnabled()) {
