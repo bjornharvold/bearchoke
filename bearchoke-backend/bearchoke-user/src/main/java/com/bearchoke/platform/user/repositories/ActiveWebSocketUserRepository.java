@@ -21,6 +21,8 @@ import com.bearchoke.platform.user.document.User;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  * Created by Bjorn Harvold
@@ -28,9 +30,6 @@ import org.springframework.data.mongodb.repository.Query;
  * Time: 8:03 PM
  * Responsibility:
  */
-public interface ActiveWebSocketUserRepository extends MongoRepository<ActiveWebSocketUser, ObjectId> {
+public interface ActiveWebSocketUserRepository extends PagingAndSortingRepository<ActiveWebSocketUser, String>, ActiveWebSocketUserRepositoryCustom {
 
-    ActiveWebSocketUser findUserByUsername(String username);
-
-    ActiveWebSocketUser findUserBySessionId(String sessionId);
 }

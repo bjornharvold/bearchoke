@@ -53,15 +53,16 @@ public class DefaultExceptionHandler {
             ServletRequestBindingException.class
     })
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-    public @ResponseBody ErrorMessage handleRequestException(Exception e) {
-        return new ErrorMessage(new Date(), HttpStatus.BAD_REQUEST.value(), e.getClass().getName(), e.getMessage());
+    public @ResponseBody ErrorMessage handleRequestException(Exception ex) {
+        log.error("Http Status: " + HttpStatus.BAD_REQUEST + " : " + ex.getMessage(), ex);
+        return new ErrorMessage(new Date(), HttpStatus.BAD_REQUEST.value(), ex.getClass().getName(), ex.getMessage());
     }
 
     @RequestMapping(produces = {ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE, ApplicationMediaType.APPLICATION_BEARCHOKE_V2_JSON_VALUE})
     @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
     @ResponseStatus(value = HttpStatus.UNSUPPORTED_MEDIA_TYPE)
     public @ResponseBody Map<String, Object> handleUnsupportedMediaTypeException(HttpMediaTypeNotSupportedException ex) throws IOException {
-        log.error(ex.getMessage(), ex);
+        log.error("Http Status: " + HttpStatus.UNSUPPORTED_MEDIA_TYPE + " : " + ex.getMessage(), ex);
         Map<String, Object>  map = new HashMap<>(3);
         map.put("error", "Unsupported Media Type");
         map.put("cause", ex.getLocalizedMessage());
@@ -74,6 +75,7 @@ public class DefaultExceptionHandler {
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     public @ResponseBody
     Map<String, Object> handleUncaughtException(Exception ex) throws IOException {
+        log.error("Http Status: " + HttpStatus.INTERNAL_SERVER_ERROR + " : " + ex.getMessage(), ex);
         Map<String, Object> map = new HashMap<>(2);
         map.put("error", "Unknown Error");
         if (ex.getCause() != null) {
@@ -87,8 +89,9 @@ public class DefaultExceptionHandler {
     @ExceptionHandler(value = AuthenticationException.class)
     @ResponseStatus(HttpStatus.FORBIDDEN)
     @ResponseBody
-    public ErrorMessage handleAuthenticationException(Exception e) {
-        return new ErrorMessage(new Date(), HttpStatus.FORBIDDEN.value(), e.getClass().getName(), e.getMessage());
+    public ErrorMessage handleAuthenticationException(Exception ex) {
+        log.error("Http Status: " + HttpStatus.FORBIDDEN + " : " + ex.getMessage(), ex);
+        return new ErrorMessage(new Date(), HttpStatus.FORBIDDEN.value(), ex.getClass().getName(), ex.getMessage());
     }
 
 }

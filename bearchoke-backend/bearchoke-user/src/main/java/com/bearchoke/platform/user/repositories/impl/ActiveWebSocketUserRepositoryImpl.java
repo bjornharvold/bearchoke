@@ -18,13 +18,18 @@ package com.bearchoke.platform.user.repositories.impl;
 
 import com.bearchoke.platform.user.document.ActiveWebSocketUser;
 import com.bearchoke.platform.user.repositories.ActiveWebSocketUserRepository;
+import com.bearchoke.platform.user.repositories.ActiveWebSocketUserRepositoryCustom;
 import com.bearchoke.platform.user.repositories.UserRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.MongoDbFactory;
+import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.mapping.BasicMongoPersistentEntity;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.repository.query.MongoEntityInformation;
 import org.springframework.data.mongodb.repository.support.MappingMongoEntityInformation;
+import org.springframework.data.mongodb.repository.support.MongoRepositoryFactory;
 import org.springframework.data.mongodb.repository.support.SimpleMongoRepository;
 import org.springframework.data.util.ClassTypeInformation;
 import org.springframework.stereotype.Repository;
@@ -40,21 +45,22 @@ import static org.springframework.data.mongodb.core.query.Query.query;
  * Time: 8:05 PM
  * Responsibility:
  */
-@Repository
-public class ActiveWebSocketUserRepositoryImpl extends SimpleMongoRepository<ActiveWebSocketUser, ObjectId> implements ActiveWebSocketUserRepository {
+public class ActiveWebSocketUserRepositoryImpl implements ActiveWebSocketUserRepositoryCustom {
+
+    private final MongoOperations operations;
 
     @Autowired
-    public ActiveWebSocketUserRepositoryImpl(MongoTemplate mongoTemplate) {
-        super(new MappingMongoEntityInformation<>(new BasicMongoPersistentEntity<>(ClassTypeInformation.from(ActiveWebSocketUser.class))), mongoTemplate);
-
+    public ActiveWebSocketUserRepositoryImpl(MongoOperations operations) {
+        this.operations = operations;
     }
+
 
     public ActiveWebSocketUser findUserByUsername(String username) {
         ActiveWebSocketUser result = null;
 
         Query q = query(where("username").is(username));
 
-        List<ActiveWebSocketUser> list = getMongoOperations().find(q, ActiveWebSocketUser.class);
+        List<ActiveWebSocketUser> list = operations.find(q, ActiveWebSocketUser.class);
 
         if (list != null && !list.isEmpty()) {
             result = list.get(0);
@@ -69,7 +75,7 @@ public class ActiveWebSocketUserRepositoryImpl extends SimpleMongoRepository<Act
 
         Query q = query(where("sessionId").is(sessionId));
 
-        List<ActiveWebSocketUser> list = getMongoOperations().find(q, ActiveWebSocketUser.class);
+        List<ActiveWebSocketUser> list = operations.find(q, ActiveWebSocketUser.class);
 
         if (list != null && !list.isEmpty()) {
             result = list.get(0);

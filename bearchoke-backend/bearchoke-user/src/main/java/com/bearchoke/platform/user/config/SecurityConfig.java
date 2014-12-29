@@ -16,11 +16,8 @@
 
 package com.bearchoke.platform.user.config;
 
-import com.bearchoke.platform.user.repositories.UserRepository;
-import com.bearchoke.platform.user.repositories.impl.UserRepositoryImpl;
 import com.bearchoke.platform.user.security.PreAuthUserDetailsService;
 import com.bearchoke.platform.user.security.UserAuthenticationProvider;
-import com.bearchoke.platform.user.security.UserDetailsServiceImpl;
 import org.axonframework.commandhandling.CommandBus;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -55,15 +52,7 @@ public class SecurityConfig extends GlobalMethodSecurityConfiguration {
     private CommandBus commandBus;
 
     @Inject
-    private UserRepository userRepository;
-
-    @Inject
     private PreAuthUserDetailsService apiPreAuthUserDetailsService;
-
-    @Bean(name = "userDetailsService")
-    public UserDetailsServiceImpl userDetailsService() {
-        return new UserDetailsServiceImpl(userRepository);
-    }
 
     @Bean(name = "authenticationProvider")
     public UserAuthenticationProvider authenticationProvider() {

@@ -26,7 +26,7 @@ import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 
-@Service
+@Service("preAuthUserDetailsService")
 @Slf4j
 public class PreAuthUserDetailsService implements AuthenticationUserDetailsService<PreAuthenticatedAuthenticationToken> {
 
@@ -36,7 +36,7 @@ public class PreAuthUserDetailsService implements AuthenticationUserDetailsServi
 	@Override
 	public UserDetails loadUserDetails(PreAuthenticatedAuthenticationToken token) throws UsernameNotFoundException {
 		String xAuthToken = (String) token.getPrincipal();
-		User user = preAuthenticatedTokenCacheService.getFromCache(xAuthToken);
+		UserDetails user = preAuthenticatedTokenCacheService.getFromCache(xAuthToken);
 
 		if (user == null) {
             throw new UsernameNotFoundException("Pre authenticated token not found : " + xAuthToken);

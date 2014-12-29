@@ -20,14 +20,11 @@ import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.session.ExpiringSession;
-import org.springframework.session.data.redis.RedisOperationsSessionRepository;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
-import org.springframework.session.web.http.SessionRepositoryFilter;
 import redis.clients.jedis.Protocol;
 import redis.embedded.RedisServer;
 
@@ -37,8 +34,8 @@ import redis.embedded.RedisServer;
  * Time: 11:41 PM
  * Responsibility:
  */
-@Configuration
-@EnableRedisHttpSession
+//@Configuration
+//@EnableRedisHttpSession
 public class MockSessionConfig {
 
     @Bean

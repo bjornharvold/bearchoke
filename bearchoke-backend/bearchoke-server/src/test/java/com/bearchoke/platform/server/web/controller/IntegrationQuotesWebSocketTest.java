@@ -24,6 +24,7 @@ import com.bearchoke.platform.server.web.support.client.StompSession;
 import com.bearchoke.platform.server.web.support.client.WebSocketStompClient;
 import com.bearchoke.platform.server.web.support.server.TomcatWebSocketTestServer;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -37,6 +38,7 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.converter.MappingJackson2MessageConverter;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.test.util.JsonPathExpectationsHelper;
+import org.springframework.test.web.servlet.result.JsonPathResultMatchers;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.util.SocketUtils;
@@ -50,7 +52,6 @@ import org.springframework.web.socket.sockjs.client.SockJsClient;
 import org.springframework.web.socket.sockjs.client.Transport;
 import org.springframework.web.socket.sockjs.client.WebSocketTransport;
 
-import java.io.IOException;
 import java.net.URI;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -72,9 +73,9 @@ public class IntegrationQuotesWebSocketTest {
 
 	private final static WebSocketHttpHeaders headers = new WebSocketHttpHeaders();
 
-
 	@BeforeClass
 	public static void setup() throws Exception {
+		log.info("Setting up Quotes Web Socket Integration test....");
 		port = SocketUtils.findAvailableTcpPort();
 
 		server = new TomcatWebSocketTestServer(port);
@@ -90,10 +91,13 @@ public class IntegrationQuotesWebSocketTest {
 		transports.add(xhrTransport);
 
 		sockJsClient = new SockJsClient(transports);
+		log.info("Setup complete!");
 	}
 
 	private static void loginAndSaveXAuthToken(final String user, final String password,
 											   final HttpHeaders headersToUpdate) {
+
+		log.info("Authenticating user before subscribing to web socket");
 
 		String url = "http://localhost:" + port + "/api/authenticate";
 
@@ -116,6 +120,8 @@ public class IntegrationQuotesWebSocketTest {
 
 	@AfterClass
 	public static void teardown() throws Exception {
+		log.info("Tearing down server after integration test complete");
+
 		if (server != null) {
 			try {
 				server.undeployConfig();
@@ -152,22 +158,22 @@ public class IntegrationQuotesWebSocketTest {
 			public void afterConnected(StompSession stompSession, StompHeaderAccessor headers) {
 				String channel = "/topic/price.stock.*";
 				log.info("Subscribing to channel: " + channel);
-				stompSession.subscribe(channel, null);
+				stompSession.subscribe(channel, RandomStringUtils.randomAlphabetic(10));
 				this.stompSession = stompSession;
 			}
+
 			@Override
 			public void handleMessage(Message<byte[]> message) {
 				StompHeaderAccessor headers = StompHeaderAccessor.wrap(message);
 				if (!headers.getDestination().startsWith("/topic/price.stock.")) {
 					 failure.set(new IllegalStateException("Unexpected message: " + message));
 				}
-				log.debug("Got " + new String(message.getPayload()));
+
+				log.debug("Got \n" + new String(message.getPayload()));
 				try {
 					String json = new String(message.getPayload(), Charset.forName("UTF-8"));
-					new JsonPathExpectationsHelper("$[0].company").assertValue(json, "Citrix Systems, Inc.");
-					new JsonPathExpectationsHelper("$[1].company").assertValue(json, "Dell Inc.");
-					new JsonPathExpectationsHelper("$[2].company").assertValue(json, "Microsoft");
-					new JsonPathExpectationsHelper("$[3].company").assertValue(json, "Oracle");
+					new JsonPathExpectationsHelper("$.company").assertValue(json, "Citrix Systems, Inc.");
+					new JsonPathExpectationsHelper("$.ticker").assertValue(json, "CTXS");
 				}
 				catch (Throwable t) {
 					failure.set(t);

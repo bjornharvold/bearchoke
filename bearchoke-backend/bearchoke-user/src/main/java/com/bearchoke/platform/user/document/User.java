@@ -199,7 +199,10 @@ public class User extends AbstractDocument implements UserDetails, UserAccount, 
             result = new ArrayList<>();
 
             for (Role ur : this.getRoles()) {
+                // add the role
+                result.add(new SimpleGrantedAuthority(ur.getName()));
                 for (String right : ur.getRights()) {
+                    // add the right
                     result.add(new SimpleGrantedAuthority(right));
                 }
             }

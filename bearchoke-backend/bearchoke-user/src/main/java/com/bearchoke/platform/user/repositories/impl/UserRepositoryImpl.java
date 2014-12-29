@@ -18,8 +18,10 @@ package com.bearchoke.platform.user.repositories.impl;
 
 import com.bearchoke.platform.user.document.User;
 import com.bearchoke.platform.user.repositories.UserRepository;
+import com.bearchoke.platform.user.repositories.UserRepositoryCustom;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.mapping.BasicMongoPersistentEntity;
 import org.springframework.data.mongodb.core.query.Query;
@@ -39,26 +41,26 @@ import static org.springframework.data.mongodb.core.query.Query.query;
  * Time: 8:05 PM
  * Responsibility:
  */
-@Repository("userRepository")
-public class UserRepositoryImpl extends SimpleMongoRepository<User, ObjectId> implements UserRepository {
+public class UserRepositoryImpl implements UserRepositoryCustom {
 
+    private final MongoOperations mongoOperations;
+    
     @Autowired
-    public UserRepositoryImpl(MongoTemplate mongoTemplate) {
-        super(new MappingMongoEntityInformation<>(new BasicMongoPersistentEntity<>(ClassTypeInformation.from(User.class))), mongoTemplate);
-
+    public UserRepositoryImpl(MongoOperations mongoOperations) {
+        this.mongoOperations = mongoOperations;
     }
 
     public boolean isEmailUnique(String email) {
         Query q = query(where("email").exists(true));
 
-        return getMongoOperations().exists(q, User.class);
+        return mongoOperations.exists(q, User.class);
     }
 
     public boolean isUsernameUnique(String email) {
 
         Query q = query(where("username").exists(true));
 
-        return getMongoOperations().exists(q, User.class);
+        return mongoOperations.exists(q, User.class);
     }
 
     public User findUserByUsername(String username) {
@@ -66,7 +68,7 @@ public class UserRepositoryImpl extends SimpleMongoRepository<User, ObjectId> im
 
         Query q = query(where("username").is(username));
 
-        List<User> list = getMongoOperations().find(q, User.class);
+        List<User> list = mongoOperations.find(q, User.class);
 
         if (list != null && !list.isEmpty()) {
             result = list.get(0);

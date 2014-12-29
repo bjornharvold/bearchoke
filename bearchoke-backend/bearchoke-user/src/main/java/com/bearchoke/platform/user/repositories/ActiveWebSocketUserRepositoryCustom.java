@@ -16,7 +16,8 @@
 
 package com.bearchoke.platform.user.repositories;
 
-import com.bearchoke.platform.user.document.User;
+import com.bearchoke.platform.user.document.ActiveWebSocketUser;
+import org.bson.types.ObjectId;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
@@ -25,6 +26,9 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * Time: 8:03 PM
  * Responsibility:
  */
-public interface UserRepository extends PagingAndSortingRepository<User, String>, UserRepositoryCustom {
+public interface ActiveWebSocketUserRepositoryCustom {
 
+    ActiveWebSocketUser findUserByUsername(String username);
+
+    ActiveWebSocketUser findUserBySessionId(String sessionId);
 }

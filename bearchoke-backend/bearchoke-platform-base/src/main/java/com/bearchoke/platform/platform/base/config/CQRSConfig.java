@@ -127,8 +127,6 @@ public class CQRSConfig {
         return sagaRepository;
     }
 
-    /*
-    Waiting for axon v2.4
     @Bean(name = "snapshotter")
     public Snapshotter snapshotter() {
         SpringAggregateSnapshotter sas = new SpringAggregateSnapshotter();
@@ -137,6 +135,5 @@ public class CQRSConfig {
 
         return sas;
     }
-    */
 
 }

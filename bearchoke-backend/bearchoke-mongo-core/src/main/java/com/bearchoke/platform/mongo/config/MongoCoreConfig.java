@@ -44,6 +44,7 @@ import java.net.UnknownHostException;
  * Responsibility:
  */
 @Configuration
+@EnableMongoRepositories("com.bearchoke.platform")
 public class MongoCoreConfig {
 
     @Inject

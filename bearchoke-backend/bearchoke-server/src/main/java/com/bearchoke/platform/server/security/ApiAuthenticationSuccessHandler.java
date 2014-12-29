@@ -20,6 +20,7 @@ import com.bearchoke.platform.server.ServerConstants;
 import com.bearchoke.platform.user.security.PreAuthenticatedTokenCacheService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
@@ -41,7 +42,7 @@ public class ApiAuthenticationSuccessHandler implements AuthenticationSuccessHan
 
 		response.setStatus(HttpServletResponse.SC_OK);
 
-        User user = (User) authentication.getPrincipal();
+        UserDetails user = (UserDetails) authentication.getPrincipal();
 		String xAuthToken = UUID.randomUUID().toString();
 
 		preAuthenticatedTokenCacheService.putInCache(xAuthToken, user);

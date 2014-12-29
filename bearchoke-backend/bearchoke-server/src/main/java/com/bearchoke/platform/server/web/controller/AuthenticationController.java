@@ -26,6 +26,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -64,7 +65,7 @@ public class AuthenticationController {
      */
     @RequestMapping(value = "/api/secured/user", method = { RequestMethod.GET }, produces = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE)
 	public AuthenticationToken getUser(Authentication authentication) {
-        User user = (User) authentication.getPrincipal();
+        UserDetails user = (UserDetails) authentication.getPrincipal();
         Collection<GrantedAuthority> credentials = (Collection<GrantedAuthority>) authentication.getAuthorities();
 
 		final Map<String, Boolean> roles = new HashMap<>();

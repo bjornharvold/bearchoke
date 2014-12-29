@@ -17,15 +17,10 @@
 package com.bearchoke.platform.user.repositories.impl;
 
 import com.bearchoke.platform.user.document.Role;
-import com.bearchoke.platform.user.repositories.RoleRepository;
-import org.bson.types.ObjectId;
+import com.bearchoke.platform.user.repositories.RoleRepositoryCustom;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.mapping.BasicMongoPersistentEntity;
+import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.repository.support.MappingMongoEntityInformation;
-import org.springframework.data.mongodb.repository.support.SimpleMongoRepository;
-import org.springframework.data.util.ClassTypeInformation;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -39,13 +34,13 @@ import static org.springframework.data.mongodb.core.query.Query.query;
  * Time: 8:05 PM
  * Responsibility:
  */
-@Repository("roleRepository")
-public class RoleRepositoryImpl extends SimpleMongoRepository<Role, ObjectId> implements RoleRepository {
+public class RoleRepositoryImpl implements RoleRepositoryCustom {
+
+    private final MongoOperations mongoOperations;
 
     @Autowired
-    public RoleRepositoryImpl(MongoTemplate mongoTemplate) {
-        super(new MappingMongoEntityInformation<>(new BasicMongoPersistentEntity<>(ClassTypeInformation.from(Role.class))), mongoTemplate);
-
+    public RoleRepositoryImpl(MongoOperations mongoOperations) {
+        this.mongoOperations = mongoOperations;
     }
 
     @Override
@@ -54,7 +49,7 @@ public class RoleRepositoryImpl extends SimpleMongoRepository<Role, ObjectId> im
 
         Query q = query(where("name").is(name));
 
-        List<Role> list = getMongoOperations().find(q, Role.class);
+        List<Role> list = mongoOperations.find(q, Role.class);
 
         if (list != null && !list.isEmpty()) {
             result = list.get(0);

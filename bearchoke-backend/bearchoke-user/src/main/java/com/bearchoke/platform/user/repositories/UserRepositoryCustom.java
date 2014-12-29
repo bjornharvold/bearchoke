@@ -17,6 +17,7 @@
 package com.bearchoke.platform.user.repositories;
 
 import com.bearchoke.platform.user.document.User;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
@@ -25,6 +26,10 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * Time: 8:03 PM
  * Responsibility:
  */
-public interface UserRepository extends PagingAndSortingRepository<User, String>, UserRepositoryCustom {
+public interface UserRepositoryCustom {
+    User findUserByUsername(String username);
 
+    boolean isUsernameUnique(String username);
+
+    boolean isEmailUnique(String email);
 }

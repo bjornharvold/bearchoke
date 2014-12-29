@@ -17,11 +17,13 @@ package com.bearchoke.platform.server.web.websocket;
 
 import com.bearchoke.platform.user.document.ActiveWebSocketUser;
 import com.bearchoke.platform.user.repositories.ActiveWebSocketUserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationListener;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
+@Slf4j
 public class WebSocketDisconnectHandler<S> implements ApplicationListener<SessionDisconnectEvent> {
     private ActiveWebSocketUserRepository repository;
     private SimpMessageSendingOperations messagingTemplate;
@@ -34,17 +36,26 @@ public class WebSocketDisconnectHandler<S> implements ApplicationListener<Sessio
 
     @Override
     public void onApplicationEvent(SessionDisconnectEvent event) {
-        String idS = event.getSessionId();
-        if(StringUtils.isBlank(idS)) {
+        if (log.isDebugEnabled()) {
+            log.debug("Caught Web Socket disconnect event");
+        }
+
+        String id = event.getSessionId();
+        if (StringUtils.isBlank(id)) {
             return;
         }
 
-        ActiveWebSocketUser user = repository.findUserBySessionId(idS);
-        if(user == null) {
+        if (log.isDebugEnabled()) {
+            log.debug("Current web socket session id: " + id);
+        }
+
+        ActiveWebSocketUser user = repository.findUserBySessionId(id);
+
+        if (user == null) {
             return;
         }
 
-        repository.delete(user);
+        repository.delete(user.getId());
 
 //        messagingTemplate.convertAndSend("/topic/friends/signout", Arrays.asList(user.getUsername()));
     }

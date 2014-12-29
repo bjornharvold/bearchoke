@@ -16,15 +16,16 @@
 
 package com.bearchoke.platform.user.repositories;
 
-import com.bearchoke.platform.user.document.User;
+import com.bearchoke.platform.user.document.Role;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
  * Created by Bjorn Harvold
- * Date: 1/9/14
- * Time: 8:03 PM
+ * Date: 12/16/14
+ * Time: 8:56 PM
  * Responsibility:
  */
-public interface UserRepository extends PagingAndSortingRepository<User, String>, UserRepositoryCustom {
+public interface RoleRepositoryCustom {
 
+    Role findByName(String name);
 }

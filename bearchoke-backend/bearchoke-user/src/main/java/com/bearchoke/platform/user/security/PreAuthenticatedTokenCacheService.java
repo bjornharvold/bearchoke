@@ -21,6 +21,7 @@ import org.springframework.cache.CacheManager;
 import org.springframework.core.env.Environment;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.session.ExpiringSession;
 import org.springframework.stereotype.Service;
 
@@ -42,11 +43,11 @@ public class PreAuthenticatedTokenCacheService {
     @Inject
     private RedisTemplate<String,ExpiringSession> redisTemplate;
 
-	public void putInCache(String xAuthToken, User user) {
+	public void putInCache(String xAuthToken, UserDetails user) {
 		cacheManager.getCache(environment.getProperty("user.session.cache.name")).put(xAuthToken, user);
 	}
 	
-	public User getFromCache(String xAuthToken) {
+	public UserDetails getFromCache(String xAuthToken) {
 		return cacheManager.getCache(environment.getProperty("user.session.cache.name")).get(xAuthToken, User.class);
 	}
 

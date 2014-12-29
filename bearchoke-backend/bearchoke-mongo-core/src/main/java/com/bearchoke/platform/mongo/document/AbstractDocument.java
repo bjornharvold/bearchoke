@@ -17,7 +17,6 @@
 package com.bearchoke.platform.mongo.document;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.bson.types.ObjectId;
 import org.joda.time.DateTime;
 import org.springframework.data.annotation.Id;
 
@@ -30,7 +29,7 @@ import org.springframework.data.annotation.Id;
 public abstract class AbstractDocument {
     /** ID */
     @Id
-    private ObjectId id;
+    private String id;
 
     /** Created date */
     private DateTime createdDate;
@@ -48,11 +47,11 @@ public abstract class AbstractDocument {
         lastUpdate = doc.lastUpdate;
     }
 
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 

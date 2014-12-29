@@ -17,8 +17,7 @@
 package com.bearchoke.platform.user.repositories;
 
 import com.bearchoke.platform.user.document.Role;
-import org.bson.types.ObjectId;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
  * Created by Bjorn Harvold
@@ -26,7 +25,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  * Time: 8:56 PM
  * Responsibility:
  */
-public interface RoleRepository extends MongoRepository<Role, ObjectId> {
+public interface RoleRepository extends PagingAndSortingRepository<Role, String>, RoleRepositoryCustom {
 
-    Role findByName(String name);
 }
