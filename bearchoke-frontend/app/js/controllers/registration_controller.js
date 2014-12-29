@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-angular.module("app").controller('RegistrationController', function ($scope, $state, $log, SweetAlert) {
+angular.module("app").controller('RegistrationController', function ($scope, $state, $log, AuthenticationFactory, SweetAlert) {
     $log.info('RegistrationController');
 
     $scope.user = {};
@@ -24,11 +24,21 @@ angular.module("app").controller('RegistrationController', function ($scope, $st
         $scope.submitted = true;
 
         if ($scope.userForm.$valid) {
-            SweetAlert.success("Great job!", "Form is valid");
+            AuthenticationFactory.register($scope.user, onRegistrationSuccess, onRegistrationFailure);
         }
     };
 
     $scope.interacted = function(field) {
         return $scope.submitted || field.$dirty;
+    };
+
+    var onRegistrationSuccess = function () {
+        $log.debug('Registration success');
+        $state.go('home');
+        SweetAlert.success("Congratulations!", "You can now sign in to your account.");
+    };
+
+    var onRegistrationFailure = function(message) {
+        SweetAlert.error("Failure", message);
     };
 });

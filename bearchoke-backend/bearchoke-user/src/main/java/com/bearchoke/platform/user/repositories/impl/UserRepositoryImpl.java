@@ -19,6 +19,7 @@ package com.bearchoke.platform.user.repositories.impl;
 import com.bearchoke.platform.user.document.User;
 import com.bearchoke.platform.user.repositories.UserRepository;
 import com.bearchoke.platform.user.repositories.UserRepositoryCustom;
+import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -41,6 +42,7 @@ import static org.springframework.data.mongodb.core.query.Query.query;
  * Time: 8:05 PM
  * Responsibility:
  */
+@Slf4j
 public class UserRepositoryImpl implements UserRepositoryCustom {
 
     private final MongoOperations mongoOperations;
@@ -51,16 +53,28 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
     }
 
     public boolean isEmailUnique(String email) {
-        Query q = query(where("email").exists(true));
+        Query q = query(where("email").is(email));
 
-        return mongoOperations.exists(q, User.class);
+        boolean result = !mongoOperations.exists(q, User.class);
+
+        if (log.isDebugEnabled()) {
+            log.debug("Is email unique: " + email + " - " + result);
+        }
+
+        return result;
     }
 
-    public boolean isUsernameUnique(String email) {
+    public boolean isUsernameUnique(String username) {
 
-        Query q = query(where("username").exists(true));
+        Query q = query(where("username").is(username));
 
-        return mongoOperations.exists(q, User.class);
+        boolean result = !mongoOperations.exists(q, User.class);
+
+        if (log.isDebugEnabled()) {
+            log.debug("Is username unique: " + username + " - " + result);
+        }
+
+        return result;
     }
 
     public User findUserByUsername(String username) {

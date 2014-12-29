@@ -34,7 +34,7 @@
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
                         <input id="firstname" type="text" class="form-control" placeholder="First name" name="firstname"
-                               ng-model="user.firstname" required>
+                               ng-model="user.firstName" required>
                     </div>
                     <div class="error-messages" ng-if="interacted(userForm.firstname)" ng-messages="userForm.firstname.$error">
                         <div class="ng-scope" ng-message="required">
@@ -50,7 +50,7 @@
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
                         <input id="lastname" type="text" class="form-control" placeholder="Last name" name="lastname"
-                               ng-model="user.lastname" required>
+                               ng-model="user.lastName" required>
                     </div>
                     <div class="error-messages" ng-if="interacted(userForm.lastname)" ng-messages="userForm.lastname.$error">
                         <div class="ng-scope" ng-message="required">

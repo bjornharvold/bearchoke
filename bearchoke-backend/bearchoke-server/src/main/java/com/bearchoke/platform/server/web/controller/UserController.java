@@ -20,6 +20,7 @@ import com.bearchoke.platform.api.user.RegisterUserCommand;
 import com.bearchoke.platform.api.user.UserIdentifier;
 import com.bearchoke.platform.api.user.dto.RegisterUserDto;
 import com.bearchoke.platform.api.user.dto.UniqueResult;
+import com.bearchoke.platform.platform.base.PlatformConstants;
 import com.bearchoke.platform.server.web.ApplicationMediaType;
 import com.bearchoke.platform.user.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +28,8 @@ import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.commandhandling.GenericCommandMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,7 +57,7 @@ public class UserController {
      */
     @RequestMapping(value = "/api/user/uniqueemail", method = { RequestMethod.GET }, produces = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE)
 	public UniqueResult isEmailUnique(@RequestParam(value = "key", required = true) String email) {
-        return new UniqueResult(!userRepository.isEmailUnique(email));
+        return new UniqueResult(userRepository.isEmailUnique(email));
 	}
 
     /**
@@ -64,7 +67,7 @@ public class UserController {
      */
     @RequestMapping(value = "/api/user/uniqueusername", method = { RequestMethod.GET }, produces = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE)
 	public UniqueResult isUsernameUnique(@RequestParam(value = "key", required = true)String username) {
-        return new UniqueResult(!userRepository.isUsernameUnique(username));
+        return new UniqueResult(userRepository.isUsernameUnique(username));
 	}
 
     /**
@@ -72,11 +75,15 @@ public class UserController {
      * @param user user
      * @return
      */
-    @RequestMapping(value = "/api/user/register", method = { RequestMethod.POST }, produces = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE)
+    @RequestMapping(value = "/api/user/register", method = { RequestMethod.POST }, produces = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE, consumes = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-	public void register(@Valid RegisterUserDto user) {
+	public void register(@RequestBody RegisterUserDto user) {
         // attach default role to user
-        user.setRoles(new String[]{"ROLE_USER"});
+        user.setRoles(new String[]{PlatformConstants.DEFAULT_USER_ROLE});
+
+        if (log.isDebugEnabled()) {
+            log.debug(user.toString());
+        }
 
         commandBus.dispatch(new GenericCommandMessage<>(
                 new RegisterUserCommand(new UserIdentifier(), user))

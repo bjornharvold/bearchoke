@@ -34,7 +34,7 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
                 self.clearAuth();
 
                 if (error) {
-                    error("Could not verify email and password.\nPlease try again.");
+                    error("Could not verify email and password.");
                 }
             });
 
@@ -42,19 +42,21 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
 
         register: function (user, success, error) {
             $log.debug('Registering new user....');
+            $log.debug(user);
 
             // authenticate with the server
-            AuthRestangular.one('register').customPOST(user).then(function(data) {
+            AuthRestangular.one('user/register').customPOST(user).then(function(data) {
 
                 // fire off successful login event
                 $rootScope.$emit(eventConstants.registration, {username: user.username});
 
-                self.getUser(success, error);
+                // fire off success event
+                success();
             }, function(data) {
                 $log.error("Registration failure: " + data.statusText);
 
                 if (error) {
-                    error("There was a problem with registration. Please try again later.");
+                    error("There was a problem with your registration.");
                 }
             });
         },
