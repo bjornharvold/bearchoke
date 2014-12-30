@@ -17,12 +17,29 @@
 package com.bearchoke.platform.server.security;
 
 import com.bearchoke.platform.server.ServerConstants;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter;
 
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+
+@Slf4j
 public class ApiRequestHeaderAuthenticationFilter extends RequestHeaderAuthenticationFilter {
 
 	public ApiRequestHeaderAuthenticationFilter() {
 		super.setPrincipalRequestHeader(ServerConstants.X_AUTH_TOKEN);
 		super.setExceptionIfHeaderMissing(false);
+	}
+
+	@Override
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		if (log.isDebugEnabled()) {
+			log.debug("Authenticating for url: " + ((HttpServletRequest)request).getRequestURL().toString());
+		}
+		super.doFilter(request, response, chain);
 	}
 }

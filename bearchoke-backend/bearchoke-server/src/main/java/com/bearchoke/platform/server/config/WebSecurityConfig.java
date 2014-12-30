@@ -67,6 +67,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String API_ADMINISTRATION_URL = "/api/administration/*";
     private static final String API_MANAGER_URL = "/api/manager/*";
     private static final String API_USER_URL = "/api/secured/*";
+    private static final String WEBSOCKET_URL = "/ws/*";
     private static final String API_LOGIN_URL = "/api/authenticate";
     private static final String API_PUBLIC_URL = "/*";
 

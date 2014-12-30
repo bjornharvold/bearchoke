@@ -79,7 +79,7 @@ angular.module("app").config(function ($stateProvider, $locationProvider, $urlRo
                 templateUrl: "quotes.html",
                 controller: 'QuoteController',
                 data: {
-                    auth: false,
+                    auth: true,
                     title: "QUOTES",
                     meta: {
                         'description': 'Serves up quotes',

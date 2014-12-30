@@ -34,10 +34,10 @@ public class WebSocketSecurityConfig extends AbstractSecurityWebSocketMessageBro
 
     @Override
     protected void configureInbound(MessageSecurityMetadataSourceRegistry messages) {
-        messages
-                .antMatchers(SimpMessageType.MESSAGE, "/user/queue/errors").permitAll()
-                .antMatchers(SimpMessageType.MESSAGE, "/user/*").hasRole("USER")
-                .antMatchers(SimpMessageType.MESSAGE, "/app/user/*").hasRole("USER")
-                .anyMessage().permitAll();
+//        messages
+//                .antMatchers(SimpMessageType.MESSAGE, "/user/queue/errors").permitAll()
+//                .antMatchers(SimpMessageType.MESSAGE, "/user/*").hasRole("USER")
+//                .antMatchers(SimpMessageType.MESSAGE, "/app/user/*").hasRole("USER")
+//                .anyMessage().permitAll();
     }
 }
