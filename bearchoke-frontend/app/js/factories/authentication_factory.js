@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-angular.module("app").factory('AuthenticationFactory', function ($rootScope, $state, $log, AuthRestangular, $localStorage, ApplicationContext, eventConstants, SweetAlert) {
+angular.module("app").factory('AuthenticationFactory', function ($rootScope, $state, $log, AuthRestangular, $localStorage, ApplicationContext, eventConstants, ezfb) {
 
     var self = {
 
@@ -42,7 +42,7 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
 
         register: function (user, success, error) {
             $log.debug('Registering new user....');
-            $log.debug(user);
+            //$log.debug(user);
 
             // authenticate with the server
             AuthRestangular.one('user/register').customPOST(user).then(function(data) {
@@ -59,11 +59,6 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
                     error("There was a problem with your registration.");
                 }
             });
-        },
-
-        facebookLogin: function () {
-            // this is a promise-based login
-            ezfb.login(null, {scope: 'email'});
         },
 
         logout: function (success) {
@@ -140,8 +135,49 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
 
             // Reset the AuthRestangular headers
             AuthRestangular.setDefaultHeaders(ApplicationContext.getHeaders());
+        },
+
+        facebookLogin: function (success, error) {
+            ezfb.login(function(res) {
+                if (res.authResponse) {
+                    updateLoginStatus(updateApiMe, success, error);
+                }
+            }, {scope: 'email'});
         }
     };
+
+    /**
+     * Update loginStatus result
+     */
+    function updateLoginStatus(more, success, error) {
+        ezfb.getLoginStatus(function (res) {
+            $log.debug(res);
+
+            (more || angular.noop)(success, error);
+        });
+    }
+
+    /**
+     * Retrieve facebook user's object and sync it with the server
+     */
+    function updateApiMe(success, error) {
+        ezfb.api('/me', function (res) {
+            // authenticate with the server
+            AuthRestangular.one('facebook').customPOST(res).then(function(data) {
+
+                // fire off successful login event
+                $rootScope.$emit(eventConstants.facebook, {email: res.email});
+
+                self.getUser(success, error);
+            }, function(data) {
+                $log.error("Failure failure: " + data.statusText);
+
+                if (error) {
+                    error("There was a problem with Facebook.");
+                }
+            });
+        });
+    }
 
     //
     // EVENTS
@@ -150,7 +186,6 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
         $log.warn("Caught unauthorized event, redirect to login");
         self.clearAuth();
         $state.go("home");
-        SweetAlert.error("Incorrect credentials", "Could not verify email and password.\nPlease try again.");
     });
 
     return self;

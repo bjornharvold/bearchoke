@@ -17,19 +17,11 @@
 package com.bearchoke.platform.user.repositories.impl;
 
 import com.bearchoke.platform.user.document.User;
-import com.bearchoke.platform.user.repositories.UserRepository;
 import com.bearchoke.platform.user.repositories.UserRepositoryCustom;
 import lombok.extern.slf4j.Slf4j;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.mapping.BasicMongoPersistentEntity;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.repository.support.MappingMongoEntityInformation;
-import org.springframework.data.mongodb.repository.support.SimpleMongoRepository;
-import org.springframework.data.util.ClassTypeInformation;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -81,6 +73,20 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         User result = null;
 
         Query q = query(where("username").is(username));
+
+        List<User> list = mongoOperations.find(q, User.class);
+
+        if (list != null && !list.isEmpty()) {
+            result = list.get(0);
+        }
+
+        return result;
+    }
+
+    public User findUserByEmail(String email) {
+        User result = null;
+
+        Query q = query(where("email").is(email));
 
         List<User> list = mongoOperations.find(q, User.class);
 

@@ -17,6 +17,7 @@
 angular.module('app').constant('eventConstants', {
     authentication: 'authentication',
     registration: 'registration',
+    facebook: 'facebook',
     identify: 'identify',
     logout: 'logout'
 

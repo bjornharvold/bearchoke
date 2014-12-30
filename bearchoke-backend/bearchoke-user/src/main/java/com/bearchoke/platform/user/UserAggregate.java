@@ -16,21 +16,17 @@
 
 package com.bearchoke.platform.user;
 
-import com.bearchoke.platform.api.user.RoleIdentifier;
 import com.bearchoke.platform.api.user.UserAuthenticatedEvent;
 import com.bearchoke.platform.api.user.UserCreatedEvent;
 import com.bearchoke.platform.api.user.UserIdentifier;
-import com.bearchoke.platform.user.document.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.eventhandling.annotation.EventHandler;
 import org.axonframework.eventsourcing.annotation.AbstractAnnotatedAggregateRoot;
 import org.axonframework.eventsourcing.annotation.AggregateIdentifier;
 import org.jasypt.util.password.PasswordEncryptor;
 import org.jasypt.util.password.StrongPasswordEncryptor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -91,4 +87,7 @@ public class UserAggregate extends AbstractAnnotatedAggregateRoot {
         this.roles = event.getRoles();
     }
 
+    public UserIdentifier getId() {
+        return id;
+    }
 }

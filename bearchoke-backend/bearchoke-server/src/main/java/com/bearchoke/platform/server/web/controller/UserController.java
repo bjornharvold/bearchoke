@@ -28,15 +28,12 @@ import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.commandhandling.GenericCommandMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.validation.Valid;
 
 @RestController
 @Slf4j
@@ -45,39 +42,43 @@ public class UserController {
     private final UserRepository userRepository;
 
     @Autowired
-    public UserController(CommandBus commandBus, UserRepository userRepository) {
+    public UserController(CommandBus commandBus,
+                          UserRepository userRepository) {
         this.commandBus = commandBus;
         this.userRepository = userRepository;
     }
 
     /**
      * Checks to see if email already exists in the system
+     *
      * @param email email
      * @return
      */
-    @RequestMapping(value = "/api/user/uniqueemail", method = { RequestMethod.GET }, produces = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE)
-	public UniqueResult isEmailUnique(@RequestParam(value = "key", required = true) String email) {
+    @RequestMapping(value = "/api/user/uniqueemail", method = {RequestMethod.GET}, produces = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE)
+    public UniqueResult isEmailUnique(@RequestParam(value = "key", required = true) String email) {
         return new UniqueResult(userRepository.isEmailUnique(email));
-	}
+    }
 
     /**
      * Checks to see if username already exists in the system
+     *
      * @param username username
      * @return
      */
-    @RequestMapping(value = "/api/user/uniqueusername", method = { RequestMethod.GET }, produces = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE)
-	public UniqueResult isUsernameUnique(@RequestParam(value = "key", required = true)String username) {
+    @RequestMapping(value = "/api/user/uniqueusername", method = {RequestMethod.GET}, produces = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE)
+    public UniqueResult isUsernameUnique(@RequestParam(value = "key", required = true) String username) {
         return new UniqueResult(userRepository.isUsernameUnique(username));
-	}
+    }
 
     /**
      * Register a user with the system
+     *
      * @param user user
      * @return
      */
-    @RequestMapping(value = "/api/user/register", method = { RequestMethod.POST }, produces = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE, consumes = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE)
+    @RequestMapping(value = "/api/user/register", method = {RequestMethod.POST}, produces = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE, consumes = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-	public void register(@RequestBody RegisterUserDto user) {
+    public void register(@RequestBody RegisterUserDto user) {
         // attach default role to user
         user.setRoles(new String[]{PlatformConstants.DEFAULT_USER_ROLE});
 
@@ -86,9 +87,7 @@ public class UserController {
         }
 
         commandBus.dispatch(new GenericCommandMessage<>(
-                new RegisterUserCommand(new UserIdentifier(), user))
+                        new RegisterUserCommand(new UserIdentifier(), user))
         );
-	}
-
-
+    }
 }

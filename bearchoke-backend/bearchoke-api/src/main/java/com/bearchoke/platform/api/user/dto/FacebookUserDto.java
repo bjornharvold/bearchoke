@@ -14,24 +14,28 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.user.repositories;
+package com.bearchoke.platform.api.user.dto;
 
-import com.bearchoke.platform.user.document.User;
-import org.springframework.data.mongodb.repository.Query;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import lombok.Data;
 
 /**
  * Created by Bjorn Harvold
- * Date: 1/9/14
- * Time: 8:03 PM
+ * Date: 12/30/14
+ * Time: 2:59 PM
  * Responsibility:
  */
-public interface UserRepositoryCustom {
-    User findUserByUsername(String username);
-
-    User findUserByEmail(String email);
-
-    boolean isUsernameUnique(String username);
-
-    boolean isEmailUnique(String email);
+@Data
+public class FacebookUserDto {
+    private String email;
+    private String first_name;
+    private String last_name;
+    private String name;
+    private String gender;
+    private String id;
+    private String locale;
+    private String timezone;
+    private Boolean verified;
+    private String link;
+    private String[] roles;
+    private String password;
 }

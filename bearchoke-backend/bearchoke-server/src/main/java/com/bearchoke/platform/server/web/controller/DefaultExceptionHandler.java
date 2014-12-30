@@ -73,8 +73,7 @@ public class DefaultExceptionHandler {
     @RequestMapping(produces = {ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE, ApplicationMediaType.APPLICATION_BEARCHOKE_V2_JSON_VALUE})
     @ExceptionHandler(Exception.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-    public @ResponseBody
-    Map<String, Object> handleUncaughtException(Exception ex) throws IOException {
+    public @ResponseBody Map<String, Object> handleUncaughtException(Exception ex) throws IOException {
         log.error("Http Status: " + HttpStatus.INTERNAL_SERVER_ERROR + " : " + ex.getMessage(), ex);
         Map<String, Object> map = new HashMap<>(2);
         map.put("error", "Unknown Error");

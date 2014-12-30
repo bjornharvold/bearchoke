@@ -34,6 +34,7 @@ public class WebSocketSecurityConfig extends AbstractSecurityWebSocketMessageBro
 
     @Override
     protected void configureInbound(MessageSecurityMetadataSourceRegistry messages) {
+        // Waiting on a response here: https://jira.spring.io/browse/SEC-2802
 //        messages
 //                .antMatchers(SimpMessageType.MESSAGE, "/user/queue/errors").permitAll()
 //                .antMatchers(SimpMessageType.MESSAGE, "/user/*").hasRole("USER")

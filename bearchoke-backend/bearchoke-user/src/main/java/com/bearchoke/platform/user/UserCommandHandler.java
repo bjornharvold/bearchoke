@@ -17,15 +17,16 @@
 package com.bearchoke.platform.user;
 
 import com.bearchoke.platform.api.user.AuthenticateUserCommand;
+import com.bearchoke.platform.api.user.CreateFacebookUserCommand;
 import com.bearchoke.platform.api.user.CreateUserCommand;
 import com.bearchoke.platform.api.user.RegisterUserCommand;
-import com.bearchoke.platform.api.user.RoleIdentifier;
 import com.bearchoke.platform.api.user.UserAccount;
 import com.bearchoke.platform.api.user.UserIdentifier;
 import com.bearchoke.platform.platform.base.PlatformConstants;
 import com.bearchoke.platform.user.document.User;
 import com.bearchoke.platform.user.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.RandomStringUtils;
 import org.axonframework.commandhandling.annotation.CommandHandler;
 import org.axonframework.repository.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by Bjorn Harvold
@@ -102,6 +104,52 @@ public class UserCommandHandler {
     }
 
     @CommandHandler
+    public UserIdentifier handleCreateFacebookUserAggregate(CreateFacebookUserCommand command) {
+        UserIdentifier id = null;
+        UserAggregate u = null;
+
+        if (log.isDebugEnabled()) {
+            log.debug("Handling: " + command.getClass().getSimpleName());
+        }
+
+        // first see if we can retrieve an existing user
+        User user = userRepository.findUserByEmail(command.getEmail());
+
+        if (user == null) {
+            // user does not yet exist - go ahead and create it
+
+            id = command.getUserId();
+
+            u = createUserAggregate(
+                    id,
+                    command.getEmail(),
+                    command.getPassword(),
+                    command.getEmail(),
+                    command.getFirstName(),
+                    command.getLastName(),
+                    Arrays.asList(PlatformConstants.DEFAULT_USER_ROLE));
+        } else {
+            // just update the values
+            UserAggregate ua = onUser(user.getUserIdentifier());
+            u = createUserAggregate(
+                    ua.getId(),
+                    command.getEmail(),
+                    command.getPassword(),
+                    command.getEmail(),
+                    command.getFirstName(),
+                    command.getLastName(),
+                    Arrays.asList(PlatformConstants.DEFAULT_USER_ROLE));
+
+            id = ua.getId();
+        }
+
+        // persist / update user aggregate
+        userAggregateRepository.add(u);
+
+        return id;
+    }
+
+    @CommandHandler
     public UserAccount handleAuthenticateUser(AuthenticateUserCommand command) {
         if (log.isDebugEnabled()) {
             log.debug("Handling: " + command.getClass().getSimpleName());
@@ -129,5 +177,17 @@ public class UserCommandHandler {
         }
 
         return ua;
+    }
+
+    private UserAggregate createUserAggregate(UserIdentifier id, String username, String password, String email, String firstName, String lastName, List<String> roles) {
+        return new UserAggregate(
+                id,
+                username,
+                password,
+                email,
+                firstName,
+                lastName,
+                Arrays.asList(PlatformConstants.DEFAULT_USER_ROLE)
+        );
     }
 }

@@ -14,26 +14,37 @@
  * limitations under the License.
  */
 
-angular.module("app").controller('LoginController', function ($scope, $state, $q, $timeout, $log, ApplicationContext, AuthenticationFactory, ezfb, SweetAlert) {
-    $log.debug('LoginController');
+angular.module("app").controller('LoginController', function ($scope, $state, $q, $timeout, $log, ApplicationContext, AuthenticationFactory, SweetAlert) {
+    //$log.debug('LoginController');
 
     // for login form in header.html
     $scope.credentials = {};
 
     //===========================LOGIN=========================
-    $scope.login = function() {
+    $scope.login = function () {
         $log.debug('Logging in with username: ' + $scope.credentials.username + ', password: ' + $scope.credentials.password);
         AuthenticationFactory.login($scope.credentials.username, $scope.credentials.password, onLoginSuccess, onLoginFailure);
     };
 
-    $scope.logout = function() {
+    $scope.logout = function () {
         AuthenticationFactory.logout($scope.credentials.username, $scope.credentials.password, onLogoutSuccess);
+    };
+
+    $scope.facebookLogin = function () {
+        $log.debug('Logging in with Facebook...');
+
+        AuthenticationFactory.facebookLogin(onLoginSuccess, onLoginFailure);
+    };
+
+    $scope.forgotPasswordClick = function () {
+        $scope.$close();
+        $state.go('forgot-password');
     };
 
     var onLoginSuccess = function () {
         $log.debug('login success');
 
-        $timeout(function() {
+        $timeout(function () {
             // Check for a pre-login state
             var preLoginState = ApplicationContext.getPreLoginState();
             if (preLoginState) {
@@ -48,54 +59,23 @@ angular.module("app").controller('LoginController', function ($scope, $state, $q
     var onLogoutSuccess = function () {
         $log.debug('logout success');
 
-        $timeout(function() {
-            $state.go('home', {}, { reload: true });
+        $timeout(function () {
+            $state.go('home', {}, {reload: true});
         });
     };
 
-    $scope.facebookLogin = function() {
-        $log.debug('Logging in with Facebook...');
-
-
-    };
-
-    $scope.forgotPasswordClick = function() {
-        $scope.$close();
-        $state.go('forgot-password');
-    };
-
-    var onLoginFailure = function(message) {
+    var onLoginFailure = function (message) {
         SweetAlert.error("Incorrect credentials", message);
     };
 
-    var onRememberMeFailure = function(message) {
+    var onRememberMeFailure = function (message) {
         $log.debug(message);
     };
 
-    /**
-     * Update loginStatus result
-     */
-    function updateLoginStatus (more) {
-        ezfb.getLoginStatus(function (res) {
-            $scope.loginStatus = res;
-
-            (more || angular.noop)();
-        });
+    if (!ApplicationContext.isLoggedIn) {
+        // Check for a cookie to login
+        // If the cookie auth token is there, assume logged in while waiting for the getUser call
+        AuthenticationFactory.remember(onLoginSuccess, onRememberMeFailure);
     }
-
-    /**
-     * Update api('/me') result
-     */
-    function updateApiMe () {
-        ezfb.api('/me', function (res) {
-            SweetAlert.swal(res);
-        });
-    }
-
-//            $log.info("Is logged in: " + $rootScope.isLoggedIn);
-
-    // Check for a cookie to login
-    // If the cookie auth token is there, assume logged in while waiting for the getUser call
-    AuthenticationFactory.remember(onLoginSuccess, onRememberMeFailure);
     //===========================END LOGIN=========================
 });
