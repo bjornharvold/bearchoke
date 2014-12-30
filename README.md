@@ -16,7 +16,7 @@ Key frameworks that I've leveraged to make this work are:
 
 Another key focus has been on the separation of front-end and back-end technologies. This was born out of the requirement to "build for mobile first". To the layman, it means that we want to avoid building more than one way of accessing our service endpoints. It should be the same calls being made in the browser as in a native mobile application. 
 
-Below, I will cover what is required to get up and running using all the goodies available on the platform. But first, here is the list of technologies and frameworks the platform uses to get the job done.
+Below, I will cover what is required to get up and running using all the goodies available on the platform. But first, here is the list of technologies and frameworks the platform used to get the job done.
 
 ## Back-end Technologies
 * [Spring Framework](http://projects.spring.io/spring-framework/) (Inversion of Control IoC)
@@ -30,7 +30,7 @@ Below, I will cover what is required to get up and running using all the goodies
 * [Spring Session](https://github.com/spring-projects/spring-session) (for easier persisting session for REST / Web Socket based clients)
 * [Axon Framework](http://www.axonframework.org) (Command Query Responsibility Segmentation CQRS)
 * [Jasypt](http://jasypt.org/) (Encryption)
-* [Boon](https://github.com/RichardHightower/boon) & [Jackson](https://github.com/FasterXML/jackson) (JSON transformation)
+* [Jackson](https://github.com/FasterXML/jackson) (JSON transformation)
 
 ## Databases and Queues
 * [MongoDb](http://www.mongodb.org)
@@ -62,7 +62,8 @@ Below, I will cover what is required to get up and running using all the goodies
 * Redis v2.8.13+
 * RabbitMQ v3.3.4+
 * MongoDb v2.6.4+
-* JetBrains IntelliJ v13+
+* Apache Tomcat v8.0.15+
+* JetBrains IntelliJ v14+
 * Lineman (latest)
 * Grunt (latest)
 
@@ -106,15 +107,15 @@ Then you can start RabbitMQ by typing:
 
 	$ ./rabbitmq-server start	
 
-## MongoDb (required for 'mongodb' spring profile)
+## MongoDb (required for every type of spring profile)
 [MongoDb](http://www.mongodb.org) is a NoSQL database, more specifically known as a "document store". Install MongoDb and add it to your PATH. I suggest creating a 'data' directory on the same level as bearchoke-backend and bearchoke-frontend and then starting MongoDb up by typing:
 
 	$ mongod --dbpath data/ &
 
-Create a database called 'bearchoke' with credentials: bearchoke / beachoke
+Create a database called 'bearchoke'
 
 ## Jpa (required for 'jpa' spring profile)
-Jpa is the standard Java Persistence API. To showcase the framework's Jpa support, we're using an in-memory version of [DerbyDb](http://db.apache.org/derby/). There is no installation necessary.
+Jpa is the standard Java Persistence API. To showcase the framework's Jpa support, we're using an in-memory version of [DerbyDb](http://db.apache.org/derby/). There is no installation necessary. Jpa is currently not leveraged in the showcase.
 
 ## Lineman
 In order to install Lineman, you also need to install the latest version of [Node.JS](http://www.nodejs.org/). Once Node.JS is installed, you can install Lineman by typing this in your Terminal / Command Prompt:
@@ -135,16 +136,16 @@ The server part was configured for Tomcat 8+. There is no embedded Maven plugin 
 
 	$ -Dspring.profiles.active=in-memory,redis-local,rabbit-local	
 
-Valid local profiles are: in-memory, jpa, mongodb. I won't cover everything it takes to run the different profiles but here are the active spring profiles necessary to run the different local profiles. Follow the different profile names to see what configurations are necessary.
+Valid local profiles are: jpa, mongodb-local, redis-local, rabbit-local, jpa-local, mongodb-cloud, redis-cloud, rabbit-cloud, jpa-cloud. I won't cover everything it takes to run the different profiles but below is the profile I use to run the showcase locally.
 
-MongoDb
+Local
 
-	$ -Dspring.profiles.active=mongodb,mongodb-local,redis-local,rabbit-local	
+	$ -Dspring.profiles.active=mongodb-local,redis-local,rabbit-local		
+To deploy the server on Cloud Foundry, the active profiles would be.
 
-JPA
- 
-	$ -Dspring.profiles.active=jpa,jpa-local,redis-local,rabbit-local	
+Cloud Foundry
 
+	$ -Dspring.profiles.active=mongodb-cloud,redis-cloud,rabbit-cloud		
 Finally, the app has been configured to use a custom domain. Please edit your /etc/hosts file and add dev.bearchoke.com. You can verify that the bearchoke-server web application is running by going to http://dev.bearchoke.com:8080 in your browser.
 
 Next, you have to start the bearchoke-frontend application. Type the following in a new Terminal / Command Prompt window:
@@ -160,16 +161,11 @@ There are a few things the Bearchoke Tempest gives you out of the box.
 
 **On the backend, the framework gives you:**
 
-* Spring Security authentication implementations with a device agnostic session manager to help keep state across devices and protocols.
-* Spring Social implementations. Current profiles are embedded, mongodb and jpa.
+* Spring Security [pre-]authentication implementations with a device agnostic session manager to help keep state across devices and protocols.
 * Beans to help you quickly get set up with using Command Query Responsibility Segregation (CQRS) and Enterprise Integration Patterns (EIP).
 * Examples on how to create versioned, REST based, controller request mappings using Spring Web MVC.
 * Examples on how to create Web Socket URL mappings using Spring Web Socket with StompJS.
-* Spring Profiles so you can choose what type of authentication implementation you want to use. Current profiles are embedded, mongodb and jpa.
-	* Embedded is a pure in-memory configuration (except you still need to have Redis and RabbitMQ running)
-	* MongoDb uses MongoDb to store its authentication tokens and user profiles
-	* Jpa uses DerbyDb to store its authentication tokens and user profiles
-You are not restricted to just using one Spring profile at the time, but it is easier if you choose one persistence implementation and run with it. If your project requires a NoSQL database for example, choose the 'mongodb' profile.
+* Spring Profiles for custom deployment configurations.
 
 **On the frontend, the framework gives you:**
 
@@ -183,19 +179,27 @@ You are not restricted to just using one Spring profile at the time, but it is e
 * StompJS client for communication via websocket
 * Lodash and underscore javascript utility libraries
 * Template based views with AngularJS
-* Javascript code separation with Lineman. Controllers, views, css, services and third party libraries are all separated into different directories. Lineman concatenates, minifies, uglyfies etc all the javascript and css into 2 files that are then being used by the application.
-* Existing services handle Facebook authentication, remember me, MixPanel analytics, local storage 
+* Existing services handle Facebook registration
 * [Less CSS](http://lesscss.org/) is a CSS pre-processor that adds new features that allow variables, mixins, functions and many other techniques that allow you to make CSS that is more maintainable, themable and extendable.
 
 ## Current release
-2014-10-16 - 0.0.1 Initial version
+
+* 2015-1-1   - 0.0.2 The Happy New Year release
+* 2014-10-16 - 0.0.1 Initial version
+
+
+## New features in 0.0.2
+
+* Custom MongoDb user provider / authentication implementation using CQRS. 
+* Removed in-memory option
+* Registration using CQRS
+* MailChimp integration
+* Facebook integration with [angular-easyfb](https://github.com/pc035860/angular-easyfb)
 
 ## Next release features
 This framework is for me a way to prove that the technologies can co-exist together [peacefully] and that they work and are testable. As my other projects require new features, I will add these here first as a test bed. Upcoming features I already want to add are:
 
-* Facebook integration
 * MixPanel integration
-* MailChimp integration
 * File upload example
 * Charting and reporting
 * Tests, tests and tests
