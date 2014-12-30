@@ -138,12 +138,12 @@ The server part was configured for Tomcat 8+. There is no embedded Maven plugin 
 
 Valid local profiles are: jpa, mongodb-local, redis-local, rabbit-local, jpa-local, mongodb-cloud, redis-cloud, rabbit-cloud, jpa-cloud. I won't cover everything it takes to run the different profiles but below is the profile I use to run the showcase locally.
 
-Local
+Local:
 
 	$ -Dspring.profiles.active=mongodb-local,redis-local,rabbit-local		
-To deploy the server on Cloud Foundry, the active profiles would be.
+To deploy the server on Cloud Foundry, the active profiles would be. Of course you would have to have mongodb, redis and rabbitmq services bound to your application.
 
-Cloud Foundry
+Cloud Foundry:
 
 	$ -Dspring.profiles.active=mongodb-cloud,redis-cloud,rabbit-cloud		
 Finally, the app has been configured to use a custom domain. Please edit your /etc/hosts file and add dev.bearchoke.com. You can verify that the bearchoke-server web application is running by going to http://dev.bearchoke.com:8080 in your browser.
