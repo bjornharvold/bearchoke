@@ -66,6 +66,7 @@ public class UserCommandHandler {
         UserIdentifier id = command.getUserId();
         UserAggregate u = new UserAggregate(
                 id,
+                UserConstants.SITE_SOURCE,
                 command.getUsername(),
                 command.getPassword(),
                 command.getEmail(),
@@ -89,6 +90,7 @@ public class UserCommandHandler {
         UserIdentifier id = command.getUserId();
         UserAggregate u = new UserAggregate(
                 id,
+                UserConstants.SITE_SOURCE,
                 command.getUsername(),
                 command.getPassword(),
                 command.getEmail(),
@@ -113,15 +115,16 @@ public class UserCommandHandler {
         }
 
         // first see if we can retrieve an existing user
-        User user = userRepository.findUserByEmail(command.getEmail());
+        User user = userRepository.findUserByUserIdentifier(command.getUserId().toString());
 
         if (user == null) {
             // user does not yet exist - go ahead and create it
 
             id = command.getUserId();
 
-            u = createUserAggregate(
+            u = new UserAggregate(
                     id,
+                    UserConstants.FACEBOOK_SOURCE,
                     command.getEmail(),
                     command.getPassword(),
                     command.getEmail(),
@@ -129,10 +132,16 @@ public class UserCommandHandler {
                     command.getLastName(),
                     Arrays.asList(PlatformConstants.DEFAULT_USER_ROLE));
         } else {
+            if (log.isDebugEnabled()) {
+                log.debug("Updating Facebook user......");
+                log.debug("Old user values: " + user.getUsername() + ", " + user.getEmail() + ", " + user.getFirstName() + ", " + user.getLastName());
+                log.debug("New user values: " + command.getEmail() + ", " + command.getEmail() + ", " + command.getFirstName() + ", " + command.getLastName());
+            }
             // just update the values
             UserAggregate ua = onUser(user.getUserIdentifier());
-            u = createUserAggregate(
+            u = new UserAggregate(
                     ua.getId(),
+                    UserConstants.FACEBOOK_SOURCE,
                     command.getEmail(),
                     command.getPassword(),
                     command.getEmail(),
@@ -177,17 +186,5 @@ public class UserCommandHandler {
         }
 
         return ua;
-    }
-
-    private UserAggregate createUserAggregate(UserIdentifier id, String username, String password, String email, String firstName, String lastName, List<String> roles) {
-        return new UserAggregate(
-                id,
-                username,
-                password,
-                email,
-                firstName,
-                lastName,
-                Arrays.asList(PlatformConstants.DEFAULT_USER_ROLE)
-        );
     }
 }

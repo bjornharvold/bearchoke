@@ -34,4 +34,6 @@ public interface UserRepositoryCustom {
     boolean isUsernameUnique(String username);
 
     boolean isEmailUnique(String email);
+
+    User findUserByUserIdentifier(String userIdentifier);
 }

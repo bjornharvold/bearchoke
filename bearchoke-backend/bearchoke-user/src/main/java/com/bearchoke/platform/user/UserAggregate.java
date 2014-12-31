@@ -47,14 +47,16 @@ public class UserAggregate extends AbstractAnnotatedAggregateRoot {
     private String email;
     private String firstName;
     private String lastName;
+    private Integer source;
     private List<String> roles;
 
     public UserAggregate() {
     }
 
-    public UserAggregate(UserIdentifier id, String username, String password, String email, String firstName, String lastName, List<String> roles) {
+    public UserAggregate(UserIdentifier id, Integer source, String username, String password, String email, String firstName, String lastName, List<String> roles) {
         apply(new UserCreatedEvent(
                 id,
+                source,
                 username.toLowerCase(),
                 passwordEncryptor.encryptPassword(password),
                 email.toLowerCase(),
@@ -68,6 +70,10 @@ public class UserAggregate extends AbstractAnnotatedAggregateRoot {
         boolean success = passwordEncryptor.checkPassword(password, this.password);
         if (success) {
             apply(new UserAuthenticatedEvent(this.id));
+        } else {
+            if (log.isDebugEnabled()) {
+                log.debug("Passwords did not match");
+            }
         }
         return success;
     }
@@ -79,6 +85,7 @@ public class UserAggregate extends AbstractAnnotatedAggregateRoot {
         }
 
         this.id = event.getUserId();
+        this.source = event.getSource();
         this.username = event.getUsername();
         this.password = event.getPassword();
         this.email = event.getEmail();

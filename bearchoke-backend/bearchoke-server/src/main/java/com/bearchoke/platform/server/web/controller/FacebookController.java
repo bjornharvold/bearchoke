@@ -36,6 +36,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,17 +56,17 @@ import java.util.concurrent.ExecutionException;
 public class FacebookController {
     private final CommandBus commandBus;
 
-    @Qualifier("authenticationManager")
-    private final AuthenticationManager authenticationManager;
+    @Qualifier("userDetailsService")
+    private final UserDetailsService userDetailsService;
 
     private final ApiAuthenticationSuccessHandler apiAuthenticationSuccessHandler;
 
     @Autowired
     public FacebookController(CommandBus commandBus,
-                              AuthenticationManager authenticationManager,
+                              UserDetailsService userDetailsService,
                               ApiAuthenticationSuccessHandler apiAuthenticationSuccessHandler) {
         this.commandBus = commandBus;
-        this.authenticationManager = authenticationManager;
+        this.userDetailsService = userDetailsService;
         this.apiAuthenticationSuccessHandler = apiAuthenticationSuccessHandler;
     }
 
@@ -88,11 +90,11 @@ public class FacebookController {
 
         // reset the password here so we can authenticate later
         // this means we will set a random password every time we have a facebook user try to log in
-        user.setPassword(RandomStringUtils.randomAscii(15));
+        user.setPassword(RandomStringUtils.randomAlphabetic(15));
 
         try {
             commandBus.dispatch(new GenericCommandMessage<>(
-                            new CreateFacebookUserCommand(new UserIdentifier(), user)), callback
+                            new CreateFacebookUserCommand(new UserIdentifier(user.getId()), user)), callback
             );
         } catch (StructuralCommandValidationFailedException e) {
             log.error(e.getMessage(), e);
@@ -104,16 +106,23 @@ public class FacebookController {
             userIdentifier = callback.get();
 
             if (userIdentifier != null) {
-                Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
+                UserDetails userDetails = userDetailsService.loadUserByUsername(user.getEmail());
 
-                try {
-                    apiAuthenticationSuccessHandler.onAuthenticationSuccess(request, response, authentication);
-                } catch (IOException e) {
-                    log.error(e.getMessage(), e);
-                    throw new AuthenticationServiceException("Could not authenticate user", e);
-                } catch (ServletException e) {
-                    log.error(e.getMessage(), e);
-                    throw new AuthenticationServiceException("Could not authenticate user", e);
+                if (userDetails != null) {
+                    try {
+                        apiAuthenticationSuccessHandler.onAuthenticationSuccess(request, response, new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities()));
+                    } catch (IOException e) {
+                        log.error(e.getMessage(), e);
+                        throw new AuthenticationServiceException("Could not authenticate user", e);
+                    } catch (ServletException e) {
+                        log.error(e.getMessage(), e);
+                        throw new AuthenticationServiceException("Could not authenticate user", e);
+                    }
+                }
+                else {
+                    if (log.isDebugEnabled()) {
+                        log.debug("Could not find Facebook user with username: " + user.getEmail());
+                    }
                 }
             }
 

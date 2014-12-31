@@ -21,7 +21,7 @@ angular.module("app").factory('ApplicationContext', function ($rootScope, $log, 
     // this is the backend api version we want to use
     var initialHeaders = {'Accept': configuration.version, 'Content-Type': configuration.version};
     var httpFields = {withCredentials: true};
-    var headers = initialHeaders;
+    var headers = angular.copy(initialHeaders);
     var xAuthToken = null;
     var preLoginState = null;
 
@@ -41,20 +41,25 @@ angular.module("app").factory('ApplicationContext', function ($rootScope, $log, 
             delete $localStorage.authToken;
             preLoginState = null;
             $rootScope.isLoggedIn = false;
+
+            //$log.debug("Headers have been reset");
+            //$log.debug(headers);
         },
 
         updateHeaders: function(newHeaders) {
-//            $log.debug("Old HTTP headers");
-//            $log.debug(headers);
+            //$log.debug("Old HTTP headers");
+            //$log.debug(headers);
 
             headers = angular.extend(headers, newHeaders);
 
-//            $log.debug("Updated headers");
-//            $log.debug(headers);
+            //$log.debug("Updated headers");
+            //$log.debug(headers);
         },
 
         resetHeaders: function() {
-            headers = initialHeaders;
+            //$log.debug("Reset to initial headers");
+            //$log.debug(initialHeaders);
+            headers = angular.copy(initialHeaders);
         },
 
         setAuthToken: function(authToken) {

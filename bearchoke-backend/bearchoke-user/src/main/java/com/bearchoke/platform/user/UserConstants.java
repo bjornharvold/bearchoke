@@ -1,4 +1,4 @@
-/*
+package com.bearchoke.platform.user;/*
  * Copyright 2014 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.server;
-
 /**
  * Created by Bjorn Harvold
- * Date: 9/27/14
- * Time: 3:15 PM
+ * Date: 12/31/14
+ * Time: 5:02 PM
  * Responsibility:
  */
-public class ServerConstants {
-    public final static String X_AUTH_TOKEN = "X-Auth-Token";;
+public class UserConstants {
+    public final static Integer FACEBOOK_SOURCE = 1;
+    public final static Integer SITE_SOURCE = 0;
 }

@@ -96,4 +96,18 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
 
         return result;
     }
+
+    public User findUserByUserIdentifier(String userIdentifier) {
+        User result = null;
+
+        Query q = query(where("userIdentifier").is(userIdentifier));
+
+        List<User> list = mongoOperations.find(q, User.class);
+
+        if (list != null && !list.isEmpty()) {
+            result = list.get(0);
+        }
+
+        return result;
+    }
 }

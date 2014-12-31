@@ -33,10 +33,12 @@ public class UserCreatedEvent {
     private String email;
     private String firstName;
     private String lastName;
+    private Integer source;
     private List<String> roles;
 
-    public UserCreatedEvent(UserIdentifier userId, String username, String password, String email, String firstName, String lastName, List<String> roles) {
+    public UserCreatedEvent(UserIdentifier userId, Integer source, String username, String password, String email, String firstName, String lastName, List<String> roles) {
         this.userId = userId;
+        this.source = source;
         this.username = username;
         this.password = password;
         this.email = email;
@@ -73,10 +75,15 @@ public class UserCreatedEvent {
         return roles;
     }
 
+    public Integer getSource() {
+        return source;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .append("userId", userId)
+                .append("source", source)
                 .append("username", username)
                 .append("password", password)
                 .append("email", email)

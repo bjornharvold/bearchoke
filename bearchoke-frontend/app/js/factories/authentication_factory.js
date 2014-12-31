@@ -66,9 +66,9 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
             var promise = AuthRestangular.one('logout').get();
 
             promise.then(function(data) {
-                $log.info("server logout success for user");
+                $log.info("User logged out from server successfully");
             }, function() {
-                $log.info("server logout failure");
+                $log.info("Server logout failure");
             });
 
             // clear out everything on the front-end side related to the user session
@@ -116,11 +116,9 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
                 }
             }, function (err) {
                 $log.error("getUser() failure: " + err.statusText);
-                if (err.status === 401) {
-                   $log.debug("Clearing out old auth token");
-                    self.clearAuth();
-                }
+                self.clearAuth();
 
+                // DUBIOUS - probably want to move this into a controller
                 $state.go("home");
 
                 if (error) {
@@ -151,7 +149,7 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
      */
     function updateLoginStatus(more, success, error) {
         ezfb.getLoginStatus(function (res) {
-            $log.debug(res);
+            //$log.debug(res);
 
             (more || angular.noop)(success, error);
         });
@@ -170,7 +168,8 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
 
                 self.getUser(success, error);
             }, function(data) {
-                $log.error("Failure failure: " + data.statusText);
+                $log.error("Failure: " + data.statusText);
+                self.clearAuth();
 
                 if (error) {
                     error("There was a problem with Facebook.");
