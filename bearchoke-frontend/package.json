@@ -5,17 +5,19 @@
   "private": true,
   "author": "Bjorn Harvold",
   "dependencies": {
-      "grunt-angular-templates": "~0.5.7",
-	  "grunt-ng-annotate": "~0.4.0",
-	  "grunt-replace": "~0.7.9",
-	  "stacktrace-js": "~0.6.4",
-      "underscore": "~1.7.0",
-      "underscore.string": "~2.4.0"
+    "grunt-angular-templates": "~0.5.7",
+    "grunt-ng-annotate": "~0.4.0",
+    "grunt-replace": "~0.7.9",
+    "grunt-contrib-uglify": "~0.7.0",
+    "stacktrace-js": "~0.6.4",
+    "underscore": "~1.7.0",
+    "underscore.string": "~2.4.0"
   },
   "devDependencies": {
+    "grunt-contrib-uglify": "^0.7.0",
     "lineman": "^0.34.1",
-    "lineman-less": "^0.1.0",
-    "lineman-angular": "^0.3.0"
+    "lineman-angular": "^0.3.0",
+    "lineman-less": "^0.1.0"
   },
   "scripts": {
     "start": "lineman run",

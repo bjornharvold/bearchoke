@@ -2,7 +2,7 @@
 
 Welcome to Bearchoke Tempest. This platform aims to be a best practices framework using the latest Java based frameworks, Enterprise Integration Patterns (EIP) and specifically focusing on using an asynchronous, message based, event driven approach to creating web-based software. The current push in the user interface space is SPA/SPI (Single Page Applications / Single Page Interface). The samples will leverage AngularJS to showcase this. Bearchoke Tempest was created to show how an SPA can interface with the Spring server world as well as leverage other SPA modular goodies. 
 
-If you just want to check out the demo, you can check out the Cloud Foundry hosted instance here: [bearchoke-frontend.cfapps.io](https://bearchoke-frontend.cfapps.io).
+If you just want to check out the demo, you can check out the Cloud Foundry hosted instance here: [www.bearchoke.com](https://www.bearchoke.com).
 
 Key frameworks that I've leveraged to make this work are:
 
@@ -195,6 +195,12 @@ There are a few things the Bearchoke Tempest gives you out of the box.
 * Registration using CQRS
 * MailChimp integration
 * Facebook integration with [angular-easyfb](https://github.com/pc035860/angular-easyfb)
+
+## Limitations
+
+* Cloud Foundry does not yet support HTML5 push. You cannot go straight to a url unless it's the root url. E.g. https://www.bearchoke.com is ok. https://www.bearchoke.com/ui/chat is not ok.
+* Web socket on Cloud Foundry is not working at the moment. Having CORS issues.
+
 
 ## Next release features
 This framework is for me a way to prove that the technologies can co-exist together [peacefully] and that they work and are testable. As my other projects require new features, I will add these here first as a test bed. Upcoming features I already want to add are:

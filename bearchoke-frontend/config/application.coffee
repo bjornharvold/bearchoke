@@ -16,6 +16,7 @@ module.exports = (lineman) ->
   # configure lineman to load additional angular related npm tasks
   loadNpmTasks: [
     "grunt-contrib-less"
+    "grunt-contrib-uglify"
     "grunt-angular-templates"
     "grunt-replace"
     "grunt-ng-annotate"
@@ -30,18 +31,21 @@ module.exports = (lineman) ->
   appTasks:
     common: [
       "coffee",
-      "jshint",
-      "handlebars",
-      "jst",
+      "jshint"
+    ],
+    dev: [
       "replace:development",
       "concat_sourcemap",
       "copy:dev",
       "images:dev",
       "webfonts:dev",
-      "pages:dev"
+      "pages:dev",
+      "server",
+      "watch"
     ],
     dist: [
       "replace:dist",
+      "concat_sourcemap",
       "uglify",
       "cssmin",
       "copy:dist",
@@ -52,11 +56,6 @@ module.exports = (lineman) ->
 
   removeTasks:
     common: ["handlebars", "jst"]
-
-  appendTasks:
-    dev: [
-      "replace:development"
-    ]
 
   copy:
       dev:
@@ -143,3 +142,7 @@ module.exports = (lineman) ->
     environment:
       files: ["./config/environment_constants.js", "./config/environments/development.json"]
       tasks: "replace:development"
+
+  uglify:
+    options:
+      mangle: false

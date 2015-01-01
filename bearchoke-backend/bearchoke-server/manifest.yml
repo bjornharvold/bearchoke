@@ -6,4 +6,4 @@ applications:
   host: bearchoke-server
   path: target/bearchoke-server-0.0.1-SNAPSHOT.war
   env:
-    SPRING_PROFILES_ACTIVE: in-memory,redis-cloud,rabbit-cloud
+    SPRING_PROFILES_ACTIVE: mongodb-cloud,redis-cloud,rabbit-cloud

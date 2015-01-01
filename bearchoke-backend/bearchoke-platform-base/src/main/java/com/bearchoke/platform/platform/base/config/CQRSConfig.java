@@ -16,7 +16,6 @@
 
 package com.bearchoke.platform.platform.base.config;
 
-import com.mongodb.Mongo;
 import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.commandhandling.CommandDispatchInterceptor;
 import org.axonframework.commandhandling.SimpleCommandBus;
@@ -32,15 +31,13 @@ import org.axonframework.saga.SagaRepository;
 import org.axonframework.saga.repository.mongo.MongoSagaRepository;
 import org.axonframework.saga.spring.SpringResourceInjector;
 import org.axonframework.springmessaging.eventbus.SpringMessagingEventBus;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.TaskExecutor;
+import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.messaging.SubscribableChannel;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
-import javax.annotation.Resource;
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +56,8 @@ public class CQRSConfig {
     private TaskExecutor taskExecutor;
 
     @Inject
-    private Mongo mongo;
+    @Qualifier("axonMongoDbFactory")
+    private MongoDbFactory mongoDbFactory;
 
     @Inject
     @Qualifier("webSocketInputChannel")
@@ -104,12 +102,13 @@ public class CQRSConfig {
 
     @Bean(name = "axonMongoTemplate")
     public MongoTemplate axonMongoTemplate() {
-        return new DefaultMongoTemplate(mongo);
+        // this is not good!! Axon doesn't support just using the mongoDbFactory that is supplied by the cloud connector
+        return new DefaultMongoTemplate(mongoDbFactory.getDb().getMongo(), "CloudFoundry_691iug0t_9kmtciq3", "domainevents", "snapshotevents", "axon", "axon".toCharArray());
     }
 
     @Bean
     public org.axonframework.saga.repository.mongo.MongoTemplate mongoSagaTemplate() {
-        return new org.axonframework.saga.repository.mongo.DefaultMongoTemplate(mongo);
+        return new org.axonframework.saga.repository.mongo.DefaultMongoTemplate(mongoDbFactory.getDb().getMongo(), "CloudFoundry_691iug0t_9kmtciq3", "sagas", "axon", "axon".toCharArray());
     }
 
     @Bean(name = "eventStore")

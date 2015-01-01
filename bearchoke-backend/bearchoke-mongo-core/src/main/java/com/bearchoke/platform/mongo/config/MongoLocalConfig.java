@@ -50,7 +50,8 @@ public class MongoLocalConfig {
         // location of db
         ServerAddress sa = new ServerAddress(
                 environment.getProperty("mongodb.host"),
-                environment.getProperty("mongodb.port", Integer.class));
+                environment.getProperty("mongodb.port", Integer.class)
+        );
 
         // set optional default parameters here
         MongoClientOptions.Builder builder = MongoClientOptions.builder();
