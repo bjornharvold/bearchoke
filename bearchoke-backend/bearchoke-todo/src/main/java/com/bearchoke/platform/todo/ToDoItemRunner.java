@@ -19,7 +19,7 @@ package com.bearchoke.platform.todo;
 import com.bearchoke.platform.api.todo.CreateToDoItemCommand;
 import com.bearchoke.platform.api.todo.MarkToDoItemAsCompleteCommand;
 import com.bearchoke.platform.api.todo.ToDoIdentifier;
-import com.bearchoke.platform.platform.base.config.CQRSConfig;
+import com.bearchoke.platform.platform.base.config.AxonCQRSConfig;
 import com.bearchoke.platform.todo.config.ToDoConfig;
 import com.bearchoke.platform.platform.base.config.RabbitMQLocalConfig;
 import com.bearchoke.platform.platform.base.config.SchedulerConfig;
@@ -41,7 +41,7 @@ public class ToDoItemRunner {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(
                 SchedulerConfig.class,
                 RabbitMQLocalConfig.class,
-                CQRSConfig.class,
+                AxonCQRSConfig.class,
                 ToDoConfig.class
         );
 

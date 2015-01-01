@@ -26,6 +26,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.authentication.UserCredentials;
+import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 
 import javax.inject.Inject;
@@ -63,10 +64,13 @@ public class MongoLocalConfig {
         return new MongoClient(sa, options);
     }
 
-    @Bean
+    @Bean(name = "mongoDbFactory")
     public SimpleMongoDbFactory mongoDbFactory() throws Exception {
         return new SimpleMongoDbFactory(mongo(), environment.getProperty("mongodb.database"));
     }
 
-
+    @Bean(name = "axonMongoDbFactory")
+    public SimpleMongoDbFactory axonMongoDbFactory() throws Exception {
+        return mongoDbFactory();
+    }
 }

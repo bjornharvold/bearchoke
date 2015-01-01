@@ -16,6 +16,7 @@
 
 package com.bearchoke.platform.platform.base.config;
 
+import org.apache.commons.lang3.StringUtils;
 import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.commandhandling.CommandDispatchInterceptor;
 import org.axonframework.commandhandling.SimpleCommandBus;
@@ -34,6 +35,7 @@ import org.axonframework.springmessaging.eventbus.SpringMessagingEventBus;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.messaging.SubscribableChannel;
@@ -49,7 +51,10 @@ import java.util.List;
  * Responsibility:
  */
 @Configuration
-public class CQRSConfig {
+public class AxonCQRSConfig {
+
+    @Inject
+    private Environment environment;
 
     @Inject
     @Qualifier("threadPoolTaskExecutor")
@@ -102,8 +107,27 @@ public class CQRSConfig {
 
     @Bean(name = "axonMongoTemplate")
     public MongoTemplate axonMongoTemplate() {
-        // this is not good!! Axon doesn't support just using the mongoDbFactory that is supplied by the cloud connector
-        return new DefaultMongoTemplate(mongoDbFactory.getDb().getMongo(), "CloudFoundry_691iug0t_9kmtciq3", "domainevents", "snapshotevents", "axon", "axon".toCharArray());
+        MongoTemplate mongoTemplate;
+
+        String username = environment.getProperty("mongodb.axon.username");
+        String password = environment.getProperty("mongodb.axon.password");
+        String database = environment.getProperty("mongodb.axon.database");
+
+        if (StringUtils.isNotBlank(username) && StringUtils.isNotBlank(password) && StringUtils.isNotBlank(database)) {
+            // this is not good!! Axon doesn't support just using the mongoDbFactory that is supplied by the cloud connector
+            mongoTemplate = new DefaultMongoTemplate(
+                    mongoDbFactory.getDb().getMongo(),
+                    database,
+                    "domainevents",
+                    "snapshotevents",
+                    username,
+                    password.toCharArray()
+            );
+        } else {
+            mongoTemplate = new DefaultMongoTemplate(mongoDbFactory.getDb().getMongo());
+        }
+
+        return mongoTemplate;
     }
 
     @Bean
