@@ -17,6 +17,7 @@
 package com.bearchoke.platform.user.security;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.core.env.Environment;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -31,19 +32,21 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
-@Service
+@Service("preAuthenticatedTokenCacheService")
 public class PreAuthenticatedTokenCacheService {
 
-    @Inject
-    private Environment environment;
+    private final Environment environment;
+    private final CacheManager cacheManager;
+    private final RedisTemplate<String,ExpiringSession> redisTemplate;
 
-    @Inject
-    private CacheManager cacheManager;
+    @Autowired
+    public PreAuthenticatedTokenCacheService(Environment environment, CacheManager cacheManager, RedisTemplate<String, ExpiringSession> redisTemplate) {
+        this.environment = environment;
+        this.cacheManager = cacheManager;
+        this.redisTemplate = redisTemplate;
+    }
 
-    @Inject
-    private RedisTemplate<String,ExpiringSession> redisTemplate;
-
-	public void putInCache(String xAuthToken, UserDetails user) {
+    public void putInCache(String xAuthToken, UserDetails user) {
 		cacheManager.getCache(environment.getProperty("user.session.cache.name")).put(xAuthToken, user);
 	}
 	

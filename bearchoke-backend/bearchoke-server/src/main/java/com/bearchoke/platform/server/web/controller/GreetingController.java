@@ -68,28 +68,6 @@ public class GreetingController {
     }
 
     /**
-     * Versioned rest mapping using content-type as the versioned element
-     * @param name
-     * @return
-     */
-//    @RequestMapping(value = "/api/greeting", produces = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE)
-//    @ResponseStatus(HttpStatus.OK)
-//    public Greeting greetingV1ContentType(@RequestParam(value = "name", required = false, defaultValue = "World") String name) {
-//        return greetingService.greet(name, 1.0f);
-//    }
-
-    /**
-     * Versioned rest mapping using content-type as the versioned element
-     * @param name
-     * @return
-     */
-//    @RequestMapping(value = "/api/greeting", produces = ApplicationMediaType.APPLICATION_BEARCHOKE_V2_JSON_VALUE)
-//    @ResponseStatus(HttpStatus.OK)
-//    public Greeting greetingV2ContentType(@RequestParam(value = "name", required = false, defaultValue = "World") String name) {
-//        return greetingService.greet(name, 2.0f);
-//    }
-
-    /**
      * Versioned rest mapping using Accept header as the versioned element
      * @param name
      * @return
@@ -111,5 +89,27 @@ public class GreetingController {
         return greetingService.greet(name, 2.0f);
     }
 
+
+    /**
+     * Versioned rest mapping using content-type as the versioned element
+     * @param name
+     * @return
+     */
+//    @RequestMapping(value = "/api/greeting", produces = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE)
+//    @ResponseStatus(HttpStatus.OK)
+//    public Greeting greetingV1ContentType(@RequestParam(value = "name", required = false, defaultValue = "World") String name) {
+//        return greetingService.greet(name, 1.0f);
+//    }
+
+    /**
+     * Versioned rest mapping using content-type as the versioned element
+     * @param name
+     * @return
+     */
+//    @RequestMapping(value = "/api/greeting", produces = ApplicationMediaType.APPLICATION_BEARCHOKE_V2_JSON_VALUE)
+//    @ResponseStatus(HttpStatus.OK)
+//    public Greeting greetingV2ContentType(@RequestParam(value = "name", required = false, defaultValue = "World") String name) {
+//        return greetingService.greet(name, 2.0f);
+//    }
 }
 

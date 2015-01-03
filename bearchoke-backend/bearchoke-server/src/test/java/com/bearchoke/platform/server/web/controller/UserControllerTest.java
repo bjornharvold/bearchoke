@@ -16,9 +16,12 @@
 
 package com.bearchoke.platform.server.web.controller;
 
+import com.bearchoke.platform.api.user.dto.UniqueResult;
 import com.bearchoke.platform.server.config.AppConfig;
+import com.bearchoke.platform.server.web.config.MockAppConfig;
 import com.bearchoke.platform.server.web.config.WebMvcConfig;
 import com.bearchoke.platform.server.web.ApplicationMediaType;
+import com.bearchoke.platform.user.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
@@ -40,6 +43,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import javax.servlet.Filter;
 
+import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -61,7 +65,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebAppConfiguration
 @ContextConfiguration(classes =
         {
-                AppConfig.class,
+                MockAppConfig.class,
                 WebMvcConfig.class
         }
 )
@@ -84,6 +88,9 @@ public class UserControllerTest {
     @Autowired
     private Filter springSecurityFilterChain;
 
+    @Autowired
+    private UserRepository userRepository;
+
     private MockMvc mockMvc;
 
     @Before
@@ -93,22 +100,25 @@ public class UserControllerTest {
                 .webAppContextSetup(this.wac)
                 .addFilters(springSecurityFilterChain)
                 .build();
-
     }
 
     @Test
     public void testIsEmailUnique() throws Exception {
         log.info("Testing UserController.isEmailUnique...");
 
+        // set up mock object
+        given(userRepository.isEmailUnique(UNIQUE_EMAIL)).willReturn(true);
+        given(userRepository.isEmailUnique(EXISTING_EMAIL)).willReturn(false);
+
         log.info("First we expect a unique email");
-        this.mockMvc.perform(get("/api/user/uniqueemail").param("email", UNIQUE_EMAIL).accept(getMediaType()))
+        this.mockMvc.perform(get("/api/user/uniqueemail").param("key", UNIQUE_EMAIL).accept(getMediaType()))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(getMediaType()))
                 .andExpect(jsonPath("$.unique").value(true));
 
         log.info("And now we expect email to already exist");
-        this.mockMvc.perform(get("/api/user/uniqueemail").param("email", EXISTING_EMAIL).accept(getMediaType()))
+        this.mockMvc.perform(get("/api/user/uniqueemail").param("key", EXISTING_EMAIL).accept(getMediaType()))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(getMediaType()))
@@ -121,15 +131,19 @@ public class UserControllerTest {
     public void testIsUsernameUnique() throws Exception {
         log.info("Testing UserController.isUsernameUnique...");
 
+        // set up mock object
+        given(userRepository.isUsernameUnique(UNIQUE_USERNAME)).willReturn(true);
+        given(userRepository.isUsernameUnique(EXISTING_USERNAME)).willReturn(false);
+
         log.info("First we expect a unique username");
-        this.mockMvc.perform(get("/api/user/uniqueusername").param("username", UNIQUE_USERNAME).accept(getMediaType()))
+        this.mockMvc.perform(get("/api/user/uniqueusername").param("key", UNIQUE_USERNAME).accept(getMediaType()))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(getMediaType()))
                 .andExpect(jsonPath("$.unique").value(true));
 
         log.info("And now we expect username to already exist");
-        this.mockMvc.perform(get("/api/user/uniqueusername").param("username", EXISTING_USERNAME).accept(getMediaType()))
+        this.mockMvc.perform(get("/api/user/uniqueusername").param("key", EXISTING_USERNAME).accept(getMediaType()))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(getMediaType()))

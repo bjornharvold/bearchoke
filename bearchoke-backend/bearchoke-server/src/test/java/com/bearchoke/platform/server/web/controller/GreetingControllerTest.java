@@ -17,8 +17,9 @@
 package com.bearchoke.platform.server.web.controller;
 
 
-import com.bearchoke.platform.server.config.AppConfig;
+import com.bearchoke.platform.server.config.WebSecurityConfig;
 import com.bearchoke.platform.server.web.ApplicationMediaType;
+import com.bearchoke.platform.server.web.config.MockAppConfig;
 import com.bearchoke.platform.server.web.config.WebMvcConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
@@ -42,12 +43,15 @@ import org.springframework.web.context.WebApplicationContext;
 
 import javax.servlet.Filter;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.*;
-import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.*;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
+import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
+import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.unauthenticated;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 
@@ -65,7 +69,8 @@ import static org.springframework.security.test.web.servlet.response.SecurityMoc
 @WebAppConfiguration
 @ContextConfiguration(classes =
         {
-                AppConfig.class,
+                MockAppConfig.class,
+                WebSecurityConfig.class,
                 WebMvcConfig.class
         }
 )
@@ -120,7 +125,7 @@ public class GreetingControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.parseMediaType(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE + ";charset=UTF8")))
                 .andExpect(jsonPath("$.id").value(1))
-                .andExpect(jsonPath("$.content").value("Hello, " + NAME + "!"))
+                .andExpect(jsonPath("$.content").value("Hello, " + NAME + ". You have the role of ROLE_USER!"))
                 .andExpect(authenticated().withRoles("USER"))
         ;
 
@@ -129,10 +134,14 @@ public class GreetingControllerTest {
 
     @Test
     public void testUnauthenticated() throws Exception {
+        log.info("Testing hitting a secured url while unauthenticated...");
+
         this.mockMvc.perform(get("/api/secured/greeting")
                 .with(csrf()))
                 .andExpect(unauthenticated())
         ;
+
+        log.info("Testing hitting a secured url while unauthenticated SUCCESS");
     }
 
     private static RequestPostProcessor regularUser() {

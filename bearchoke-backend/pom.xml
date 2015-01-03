@@ -155,6 +155,19 @@
             <version>${spring.cloud.connector}</version>
         </dependency>
 
+        <!-- mock unit testing -->
+        <dependency>
+            <groupId>org.kubek2k</groupId>
+            <artifactId>springockito-annotations</artifactId>
+            <version>${springockito.annotations-version}</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.mockito</groupId>
+                    <artifactId>mockito-all</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
     </dependencies>
 
@@ -265,7 +278,7 @@
         <maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
         <maven.resource.plugin.version>2.6</maven.resource.plugin.version>
         <maven.war.plugin.version>2.4</maven.war.plugin.version>
-        <mockito.version>1.9.5</mockito.version>
+        <mockito.version>1.10.19</mockito.version>
         <postgresql.version>9.3-1102-jdbc41</postgresql.version>
         <scala.version>2.10.3</scala.version>
         <slf4j.version>1.7.7</slf4j.version>
@@ -282,6 +295,7 @@
         <spring.session.version>1.0.0.RC1</spring.session.version>
         <spring.social.version>1.1.0.RELEASE</spring.social.version>
         <spring.version>4.1.3.RELEASE</spring.version>
+        <springockito.annotations-version>1.0.9</springockito.annotations-version>
         <tomcat.maven.plugin.version>2.2</tomcat.maven.plugin.version>
         <tomcat.embed.version>8.0.15</tomcat.embed.version>
         <xom.version>1.2.10</xom.version>

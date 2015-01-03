@@ -52,7 +52,7 @@ public class SecurityConfig extends GlobalMethodSecurityConfiguration {
     private CommandBus commandBus;
 
     @Inject
-    private PreAuthUserDetailsService apiPreAuthUserDetailsService;
+    private PreAuthUserDetailsService preAuthUserDetailsService;
 
     @Bean(name = "authenticationProvider")
     public UserAuthenticationProvider authenticationProvider() {
@@ -67,7 +67,7 @@ public class SecurityConfig extends GlobalMethodSecurityConfiguration {
     @Bean(name = "preAuthAuthenticationManager")
     public AuthenticationManager preAuthAuthenticationManager() {
         PreAuthenticatedAuthenticationProvider preAuthProvider = new PreAuthenticatedAuthenticationProvider();
-        preAuthProvider.setPreAuthenticatedUserDetailsService(apiPreAuthUserDetailsService);
+        preAuthProvider.setPreAuthenticatedUserDetailsService(preAuthUserDetailsService);
 
         List<AuthenticationProvider> providers = new ArrayList<AuthenticationProvider>();
         providers.add(preAuthProvider);

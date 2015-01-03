@@ -144,6 +144,15 @@ public class User extends AbstractDocument implements UserDetails, UserAccount, 
     public User() {
     }
 
+    public User(String username, String email, String firstName, String lastName, List<Role> roles) {
+        this.username = username;
+        this.userIdentifier = username;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.roles = roles;
+    }
+
     public User(UserCreatedEvent event) {
         this.email = event.getEmail();
         this.username = event.getUsername();

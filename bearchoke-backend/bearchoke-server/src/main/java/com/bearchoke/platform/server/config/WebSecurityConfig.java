@@ -71,8 +71,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String API_LOGIN_URL = "/api/authenticate";
     private static final String API_PUBLIC_URL = "/*";
 
-
-
     @Inject
     private ApiAuthenticationSuccessHandler apiAuthenticationSuccessHandler;
 

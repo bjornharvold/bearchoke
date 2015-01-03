@@ -18,6 +18,7 @@ package com.bearchoke.platform.server.security;
 
 import com.bearchoke.platform.server.ServerConstants;
 import com.bearchoke.platform.user.security.PreAuthenticatedTokenCacheService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -33,9 +34,12 @@ import java.util.UUID;
 
 @Component
 public class ApiAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+	private final PreAuthenticatedTokenCacheService preAuthenticatedTokenCacheService;
 
-	@Inject
-	private PreAuthenticatedTokenCacheService preAuthenticatedTokenCacheService;
+	@Autowired
+	public ApiAuthenticationSuccessHandler(PreAuthenticatedTokenCacheService preAuthenticatedTokenCacheService) {
+		this.preAuthenticatedTokenCacheService = preAuthenticatedTokenCacheService;
+	}
 
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
