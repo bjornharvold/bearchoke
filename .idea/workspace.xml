@@ -605,6 +605,7 @@
     <property name="project.structure.side.proportion" value="0.29088783" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
+    <property name="FullScreen" value="false" />
   </component>
   <component name="RunManager" selected="Tomcat Server.Web">
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -1013,12 +1014,12 @@
       <created>1420366664826</created>
       <option name="number" value="Default" />
       <updated>1420366664826</updated>
-      <workItem from="1420366668028" duration="1936000" />
+      <workItem from="1420366668028" duration="2008000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1936000" />
+    <option name="totallyTimeSpent" value="2008000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
