@@ -106,6 +106,18 @@
                 <groupId>org.cloudfoundry</groupId>
                 <artifactId>cf-maven-plugin</artifactId>
                 <version>${cloudfoundry.maven.plugin.version}</version>
+                <configuration>
+                    <server>cloud-foundry-credentials</server>
+                    <target>http://api.run.pivotal.io</target>
+                    <org>jwatters-org</org>
+                    <space>Bjorn Demo Only</space>
+                    <appname>bearchoke-frontend</appname>
+                    <url>bearchoke-frontend.cfapps.io</url>
+                    <memory>64</memory>
+                    <diskQuota>1024</diskQuota>
+                    <healthCheckTimeout>60</healthCheckTimeout>
+                    <mergeEnv>false</mergeEnv>
+                </configuration>
             </plugin>
         </plugins>
 
