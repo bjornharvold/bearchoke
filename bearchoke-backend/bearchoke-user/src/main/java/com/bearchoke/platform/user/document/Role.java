@@ -52,20 +52,15 @@ public class Role extends AbstractDocument implements Serializable {
     /** Name */
     private String name;
 
-    /** Url name */
-    private String urlName;
-
     public Role() {}
 
-    public Role(String name, String urlName, List<String> rights) {
+    public Role(String name, List<String> rights) {
         this.name = name;
-        this.urlName = urlName;
         this.rights = rights;
     }
 
     public Role(RoleCreatedEvent event) {
         this.name = event.getName();
-        this.urlName = event.getUrlName();
         this.rights = event.getRights();
     }
 }

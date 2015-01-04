@@ -48,7 +48,7 @@ public class RoleCommandHandler {
             log.debug("Handling: " + command.getClass().getSimpleName());
         }
         RoleIdentifier id = command.getRoleId();
-        RoleAggregate u = new RoleAggregate(id, command.getName(), command.getUrlName(), command.getRights());
+        RoleAggregate u = new RoleAggregate(id, command.getName(), command.getRights());
         roleAggregateRepository.add(u);
 
         return id;

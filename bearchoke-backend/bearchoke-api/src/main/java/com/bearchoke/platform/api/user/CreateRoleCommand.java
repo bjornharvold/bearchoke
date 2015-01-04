@@ -37,21 +37,16 @@ public class CreateRoleCommand {
     private final String name;
 
     @NotNull
-    private final String urlName;
-
-    @NotNull
     private final List<String> rights;
 
-    public CreateRoleCommand(RoleIdentifier roleId, String name, String urlName, List<String> rights) {
+    public CreateRoleCommand(RoleIdentifier roleId, String name, List<String> rights) {
 
         Assert.notNull(roleId, "Identifier cannot be null");
         Assert.notNull(name, "Name cannot be null");
-        Assert.notNull(urlName, "urlName cannot be null");
         Assert.notNull(rights, "Rights cannot be null");
 
         this.roleId = roleId;
         this.name = name;
-        this.urlName = urlName;
         this.rights = rights;
     }
 
@@ -61,10 +56,6 @@ public class CreateRoleCommand {
 
     public String getName() {
         return name;
-    }
-
-    public String getUrlName() {
-        return urlName;
     }
 
     public List<String> getRights() {

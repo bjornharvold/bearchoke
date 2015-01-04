@@ -111,7 +111,7 @@ public class MockAppConfig extends GlobalMethodSecurityConfiguration {
     @Bean(name = "userDetailsService")
     public UserDetailsService inMemoryUserDetailsManager() {
         List<UserDetails> users = new ArrayList<>(1);
-        users.add(new User("user", "user@user.com", "User", "User", Arrays.asList(new Role("ROLE_USER", "roleuser", Arrays.asList("RIGHT_AS_USER")))));
+        users.add(new User("user", "user@user.com", "User", "User", Arrays.asList(new Role("ROLE_USER", Arrays.asList("RIGHT_AS_USER")))));
         InMemoryUserDetailsManager m = new InMemoryUserDetailsManager(users);
 
         return m;

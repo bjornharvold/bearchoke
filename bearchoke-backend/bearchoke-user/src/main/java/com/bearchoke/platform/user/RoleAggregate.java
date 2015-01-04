@@ -39,17 +39,15 @@ public class RoleAggregate extends AbstractAnnotatedAggregateRoot {
     @AggregateIdentifier
     private RoleIdentifier id;
     private String name;
-    private String urlName;
     private List<String> rights;
 
     public RoleAggregate() {
     }
 
-    public RoleAggregate(RoleIdentifier id, String name, String urlName, List<String> rights) {
+    public RoleAggregate(RoleIdentifier id, String name, List<String> rights) {
         apply(new RoleCreatedEvent(
                 id,
                 name,
-                urlName,
                 rights
         ));
     }
@@ -62,7 +60,6 @@ public class RoleAggregate extends AbstractAnnotatedAggregateRoot {
 
         this.id = event.getRoleId();
         this.name = event.getName();
-        this.urlName = event.getUrlName();
         this.rights = event.getRights();
     }
 }

@@ -18,7 +18,6 @@ package com.bearchoke.platform.server.web.controller;
 
 
 import com.bearchoke.platform.server.config.WebSecurityConfig;
-import com.bearchoke.platform.server.web.ApplicationMediaType;
 import com.bearchoke.platform.server.web.config.MockAppConfig;
 import com.bearchoke.platform.server.web.config.WebMvcConfig;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +25,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
@@ -37,7 +35,6 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import org.springframework.test.context.web.ServletTestExecutionListener;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.RequestPostProcessor;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -78,9 +75,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class,
         WithSecurityContextTestExecutionListener.class})
-public class AuthenticationControllerTest {
-
-    private static final String NAME = "user";
+public class AuthenticationControllerTest extends AbstractControllerTest {
 
     @Autowired
     private WebApplicationContext wac;
@@ -104,15 +99,15 @@ public class AuthenticationControllerTest {
 
         this.mockMvc.perform(
                 get("/api/secured/user")
-                        .accept(MediaType.parseMediaType(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE + ";charset=UTF8"))
+                        .accept(getBearchokeVersion1MediaType())
                         .with(csrf())
                         .with(regularUser()))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.parseMediaType(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE + ";charset=UTF8")))
-                .andExpect(jsonPath("$.username").value(NAME))
+                .andExpect(content().contentType(getBearchokeVersion1MediaType()))
+                .andExpect(jsonPath("$.username").value("user"))
                 .andExpect(jsonPath("$.roles").exists())
-                .andExpect(authenticated());
+                .andExpect(authenticated().withRoles("USER"));
 
         log.info("Testing AuthenticationController.getUser SUCCESSFUL");
     }
@@ -123,7 +118,7 @@ public class AuthenticationControllerTest {
 
         this.mockMvc.perform(
                 get("/api/secured/user")
-                        .accept(MediaType.parseMediaType(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE + ";charset=UTF8"))
+                        .accept(getBearchokeVersion1MediaType())
                         .with(csrf()))
                 .andDo(print())
                 .andExpect(unauthenticated());
@@ -131,12 +126,5 @@ public class AuthenticationControllerTest {
         log.info("Testing AuthenticationController.getUser while unauthenticated SUCCESSFUL");
     }
 
-    private static RequestPostProcessor regularUser() {
-        return user(NAME).password("password").roles("USER");
-    }
-
-    private static RequestPostProcessor adminUser() {
-        return user("admin").password("password").roles("ADMIN");
-    }
 }
 

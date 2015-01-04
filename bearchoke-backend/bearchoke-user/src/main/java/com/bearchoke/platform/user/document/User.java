@@ -172,7 +172,7 @@ public class User extends AbstractDocument implements UserDetails, UserAccount, 
         boolean dupe = false;
 
         for (Role existingRole : this.roles) {
-            if (StringUtils.equals(existingRole.getUrlName(), role.getUrlName())) {
+            if (StringUtils.equals(existingRole.getName(), role.getName())) {
                 dupe = true;
                 break;
             }
@@ -188,7 +188,7 @@ public class User extends AbstractDocument implements UserDetails, UserAccount, 
             Role toRemove = null;
 
             for (Role existingRole : roles) {
-                if (StringUtils.equals(role.getUrlName(), existingRole.getUrlName())) {
+                if (StringUtils.equals(role.getName(), existingRole.getName())) {
                     toRemove = existingRole;
                     break;
                 }

@@ -29,13 +29,11 @@ import java.util.List;
 public class RoleCreatedEvent {
     private RoleIdentifier roleId;
     private String name;
-    private String urlName;
     private List<String> rights;
 
-    public RoleCreatedEvent(RoleIdentifier roleId, String name, String urlName, List<String> rights) {
+    public RoleCreatedEvent(RoleIdentifier roleId, String name, List<String> rights) {
         this.roleId = roleId;
         this.name = name;
-        this.urlName = urlName;
         this.rights = rights;
     }
 
@@ -47,10 +45,6 @@ public class RoleCreatedEvent {
         return name;
     }
 
-    public String getUrlName() {
-        return urlName;
-    }
-
     public List<String> getRights() {
         return rights;
     }
@@ -60,7 +54,6 @@ public class RoleCreatedEvent {
         return new ToStringBuilder(this)
                 .append("roleId", roleId)
                 .append("name", name)
-                .append("urlName", urlName)
                 .append("rights", rights)
                 .toString();
     }
