@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/bearchoke-backend" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/bearchoke-backend/bearchoke-api" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/bearchoke-backend/bearchoke-jpa-core" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/bearchoke-backend/bearchoke-mongo-core" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/bearchoke-backend/bearchoke-platform-base" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/bearchoke-backend/bearchoke-server" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/bearchoke-backend/bearchoke-user" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/bearchoke-frontend" vcs="svn" />
+  </component>
+</project>

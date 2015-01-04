@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-api/bearchoke-api.iml" filepath="$PROJECT_DIR$/bearchoke-backend/bearchoke-api/bearchoke-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-backend.iml" filepath="$PROJECT_DIR$/bearchoke-backend/bearchoke-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-frontend/bearchoke-frontend.iml" filepath="$PROJECT_DIR$/bearchoke-frontend/bearchoke-frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-jpa-core/bearchoke-jpa-core.iml" filepath="$PROJECT_DIR$/bearchoke-backend/bearchoke-jpa-core/bearchoke-jpa-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-mongo-core/bearchoke-mongo-core.iml" filepath="$PROJECT_DIR$/bearchoke-backend/bearchoke-mongo-core/bearchoke-mongo-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-platform-base/bearchoke-platform-base.iml" filepath="$PROJECT_DIR$/bearchoke-backend/bearchoke-platform-base/bearchoke-platform-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-server/bearchoke-server.iml" filepath="$PROJECT_DIR$/bearchoke-backend/bearchoke-server/bearchoke-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-tempest.iml" filepath="$PROJECT_DIR$/bearchoke-tempest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-todo/bearchoke-todo.iml" filepath="$PROJECT_DIR$/bearchoke-backend/bearchoke-todo/bearchoke-todo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-user/bearchoke-user.iml" filepath="$PROJECT_DIR$/bearchoke-backend/bearchoke-user/bearchoke-user.iml" />
+    </modules>
+  </component>
+</project>

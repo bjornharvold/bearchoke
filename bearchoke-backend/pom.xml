@@ -16,6 +16,11 @@
   -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>com.bearchoke</groupId>
+        <artifactId>bearchoke-tempest</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.bearchoke</groupId>
     <artifactId>bearchoke-backend</artifactId>
@@ -24,9 +29,9 @@
     <name>Bearchoke Backend (POM)</name>
 
     <modules>
-		<module>bearchoke-api</module>
-		<module>bearchoke-todo</module>
-		<module>bearchoke-user</module>
+        <module>bearchoke-api</module>
+        <module>bearchoke-todo</module>
+        <module>bearchoke-user</module>
         <module>bearchoke-server</module>
         <module>bearchoke-platform-base</module>
         <module>bearchoke-mongo-core</module>
@@ -57,6 +62,7 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+
         </plugins>
 
     </build>
@@ -219,18 +225,10 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- Won't work for milestone versions -->
-            <!--<dependency>-->
-                <!--<groupId>org.springframework.integration</groupId>-->
-                <!--<artifactId>spring-integration-bom</artifactId>-->
-                <!--<version>${spring.integration.version}</version>-->
-                <!--<type>pom</type>-->
-                <!--<scope>import</scope>-->
-            <!--</dependency>-->
             <dependency>
-                <groupId>org.glassfish.jersey</groupId>
-                <artifactId>jersey-bom</artifactId>
-                <version>${jersey.version}</version>
+                <groupId>org.springframework.integration</groupId>
+                <artifactId>spring-integration-bom</artifactId>
+                <version>${spring.integration.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -243,6 +241,7 @@
         <axon.version>2.4-SNAPSHOT</axon.version>
         <!--<axon.version>2.3.2</axon.version>-->
         <bouncycastle.version>1.50</bouncycastle.version>
+        <cloudfoundry.maven.plugin.version>1.1.0</cloudfoundry.maven.plugin.version>
         <commons.beanutils.version>1.9.2</commons.beanutils.version>
         <commons.fileupload.version>1.3</commons.fileupload.version>
         <commons.io.version>2.4</commons.io.version>
@@ -276,7 +275,9 @@
         <log4j.version>1.2.17</log4j.version>
         <lombok.version>1.14.4</lombok.version>
         <maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
+        <maven.javadoc.plugin.version>2.10.1</maven.javadoc.plugin.version>
         <maven.resource.plugin.version>2.6</maven.resource.plugin.version>
+        <maven.source.plugin.version>2.4</maven.source.plugin.version>
         <maven.war.plugin.version>2.4</maven.war.plugin.version>
         <mockito.version>1.10.19</mockito.version>
         <postgresql.version>9.3-1102-jdbc41</postgresql.version>
@@ -285,11 +286,10 @@
         <reactor.net.version>1.1.4.RELEASE</reactor.net.version>
         <spring.cloud.connector>1.0.0.RELEASE</spring.cloud.connector>
         <spring.data.mongo.version>1.7.0.M1</spring.data.mongo.version>
-        <!--<spring.data.mongo.version>1.6.1.RELEASE</spring.data.mongo.version>-->
         <spring.data.redis.version>1.4.1.RELEASE</spring.data.redis.version>
         <spring.data.jpa.version>1.7.1.RELEASE</spring.data.jpa.version>
         <spring.hateoas.version>0.15.0.RELEASE</spring.hateoas.version>
-        <spring.integration.version>4.1.0.RELEASE</spring.integration.version>
+        <spring.integration.version>4.1.1.RELEASE</spring.integration.version>
         <spring.mobile.version>1.1.2.RELEASE</spring.mobile.version>
         <spring.security.version>4.0.0.RC1</spring.security.version>
         <spring.session.version>1.0.0.RC1</spring.session.version>

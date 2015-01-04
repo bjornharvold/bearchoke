@@ -7,3 +7,8 @@
 /generated
 
 .sass-cache
+
+dist
+distribution
+generated
+target

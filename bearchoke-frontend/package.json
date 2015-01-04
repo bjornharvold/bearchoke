@@ -14,10 +14,10 @@
     "underscore.string": "~2.4.0"
   },
   "devDependencies": {
-    "grunt-contrib-uglify": "^0.7.0",
     "lineman": "^0.34.1",
     "lineman-angular": "^0.3.0",
-    "lineman-less": "^0.1.0"
+    "lineman-less": "^0.1.0",
+    "grunt-cli": "^0.1.13"
   },
   "scripts": {
     "start": "lineman run",
