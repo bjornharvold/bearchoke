@@ -16,9 +16,9 @@
 
 package com.bearchoke.platform.server.service;
 
-import com.bearchoke.platform.platform.base.config.EncryptionConfig;
+import com.bearchoke.platform.base.config.EncryptionConfig;
 import com.bearchoke.platform.server.config.AppConfig;
-import com.bearchoke.platform.platform.base.config.RedisConfig;
+import com.bearchoke.platform.base.config.RedisConfig;
 import com.bearchoke.platform.server.config.WebSecurityConfig;
 import com.bearchoke.platform.user.config.SecurityConfig;
 import lombok.extern.slf4j.Slf4j;

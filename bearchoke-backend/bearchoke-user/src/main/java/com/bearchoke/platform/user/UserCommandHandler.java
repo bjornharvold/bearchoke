@@ -22,11 +22,10 @@ import com.bearchoke.platform.api.user.CreateUserCommand;
 import com.bearchoke.platform.api.user.RegisterUserCommand;
 import com.bearchoke.platform.api.user.UserAccount;
 import com.bearchoke.platform.api.user.UserIdentifier;
-import com.bearchoke.platform.platform.base.PlatformConstants;
+import com.bearchoke.platform.base.PlatformConstants;
 import com.bearchoke.platform.user.document.User;
 import com.bearchoke.platform.user.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.RandomStringUtils;
 import org.axonframework.commandhandling.annotation.CommandHandler;
 import org.axonframework.repository.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +33,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by Bjorn Harvold

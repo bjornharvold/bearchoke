@@ -15,7 +15,7 @@
  */
 
 
-package com.bearchoke.platform.platform.base;
+package com.bearchoke.platform.base;
 
 //~--- non-JDK imports --------------------------------------------------------
 

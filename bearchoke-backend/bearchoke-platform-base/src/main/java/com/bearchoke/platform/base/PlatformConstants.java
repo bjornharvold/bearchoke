@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.platform.base;
+package com.bearchoke.platform.base;
 
 /**
  * Created by Bjorn Harvold

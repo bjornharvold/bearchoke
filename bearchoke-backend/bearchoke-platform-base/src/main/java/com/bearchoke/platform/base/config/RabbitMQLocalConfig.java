@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.platform.base.config;
+package com.bearchoke.platform.base.config;
 
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;

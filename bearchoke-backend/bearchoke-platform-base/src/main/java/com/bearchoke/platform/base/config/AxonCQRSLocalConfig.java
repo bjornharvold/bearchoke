@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.platform.base.config;
+package com.bearchoke.platform.base.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -27,8 +27,8 @@ import org.springframework.context.annotation.PropertySource;
  * Responsibility:
  */
 @Configuration
-@Profile("mongodb-cloud")
-@PropertySource(value = "classpath:cqrs-cloud.properties")
-public class AxonCQRSCloudConfig {
+@Profile("mongodb-local")
+@PropertySource(value = "classpath:cqrs-local.properties")
+public class AxonCQRSLocalConfig {
 
 }

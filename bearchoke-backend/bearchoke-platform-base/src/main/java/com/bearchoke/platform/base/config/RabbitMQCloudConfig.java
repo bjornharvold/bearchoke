@@ -14,36 +14,35 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.platform.base.config;
+package com.bearchoke.platform.base.config;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.cloud.config.java.AbstractCloudConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 @Configuration
-@Profile("redis-cloud")
+@Profile("rabbit-cloud")
 @Slf4j
-public class RedisCloudConfig extends AbstractCloudConfig {
+public class RabbitMQCloudConfig extends AbstractCloudConfig {
 
     @Bean
-    public RedisConnectionFactory redisConnectionFactory() {
+    public ConnectionFactory rabbitConnectionFactory() {
         if (log.isInfoEnabled()) {
-            log.info("Attempting to retrieve Redis instance from Cloud Foundry...");
+            log.info("Attempting to retrieve RabbitMQ instance from Cloud Foundry...");
         }
 
-        RedisConnectionFactory factory = connectionFactory().redisConnectionFactory();
+        ConnectionFactory factory = connectionFactory().rabbitConnectionFactory();
 
         if (factory != null) {
             if (log.isInfoEnabled()) {
-                log.info("Retrieved Redis service successfully: " + factory.toString());
+                log.info("Retrieved RabbitMQ service successfully: " + factory.toString());
             }
         } else {
             if (log.isErrorEnabled()) {
-                log.error("Could not find Redis service");
+                log.error("Could not find RabbitMQ service");
             }
         }
 

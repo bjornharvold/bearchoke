@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.platform.base.config;
+package com.bearchoke.platform.base.config;
 
-import org.apache.commons.lang3.StringUtils;
+import com.bearchoke.platform.base.axon.AxonSagaMongoTemplate;
 import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.commandhandling.CommandDispatchInterceptor;
 import org.axonframework.commandhandling.SimpleCommandBus;
@@ -25,7 +25,6 @@ import org.axonframework.commandhandling.gateway.CommandGatewayFactoryBean;
 import org.axonframework.commandhandling.interceptors.BeanValidationInterceptor;
 import org.axonframework.eventsourcing.Snapshotter;
 import org.axonframework.eventsourcing.SpringAggregateSnapshotter;
-import org.axonframework.eventstore.mongo.DefaultMongoTemplate;
 import org.axonframework.eventstore.mongo.MongoEventStore;
 import org.axonframework.eventstore.mongo.MongoTemplate;
 import org.axonframework.saga.SagaRepository;
@@ -39,6 +38,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.messaging.SubscribableChannel;
+import com.bearchoke.platform.base.axon.AxonMongoTemplate;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
@@ -107,32 +107,12 @@ public class AxonCQRSConfig {
 
     @Bean(name = "axonMongoTemplate")
     public MongoTemplate axonMongoTemplate() {
-        MongoTemplate mongoTemplate;
-
-        String username = environment.getProperty("mongodb.axon.username");
-        String password = environment.getProperty("mongodb.axon.password");
-        String database = environment.getProperty("mongodb.axon.database");
-
-        if (StringUtils.isNotBlank(username) && StringUtils.isNotBlank(password) && StringUtils.isNotBlank(database)) {
-            // this is not good!! Axon doesn't support just using the mongoDbFactory that is supplied by the cloud connector
-            mongoTemplate = new DefaultMongoTemplate(
-                    mongoDbFactory.getDb().getMongo(),
-                    database,
-                    "domainevents",
-                    "snapshotevents",
-                    username,
-                    password.toCharArray()
-            );
-        } else {
-            mongoTemplate = new DefaultMongoTemplate(mongoDbFactory.getDb().getMongo());
-        }
-
-        return mongoTemplate;
+        return new AxonMongoTemplate(mongoDbFactory);
     }
 
-    @Bean
+    @Bean(name = "axonSagaMongoTemplate")
     public org.axonframework.saga.repository.mongo.MongoTemplate mongoSagaTemplate() {
-        return new org.axonframework.saga.repository.mongo.DefaultMongoTemplate(mongoDbFactory.getDb().getMongo(), "CloudFoundry_691iug0t_9kmtciq3", "sagas", "axon", "axon".toCharArray());
+        return new AxonSagaMongoTemplate(mongoDbFactory);
     }
 
     @Bean(name = "eventStore")

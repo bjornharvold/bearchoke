@@ -20,7 +20,7 @@ import com.bearchoke.platform.api.user.CreateRoleCommand;
 import com.bearchoke.platform.api.user.CreateUserCommand;
 import com.bearchoke.platform.api.user.RoleIdentifier;
 import com.bearchoke.platform.api.user.UserIdentifier;
-import com.bearchoke.platform.platform.base.PlatformConstants;
+import com.bearchoke.platform.base.PlatformConstants;
 import com.bearchoke.platform.user.document.Role;
 import com.bearchoke.platform.user.document.User;
 import com.bearchoke.platform.user.repositories.RoleRepository;

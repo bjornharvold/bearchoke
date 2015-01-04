@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.platform.base.config;
+package com.bearchoke.platform.base.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.CacheManager;
@@ -28,7 +28,6 @@ import org.springframework.session.ExpiringSession;
 
 import javax.inject.Inject;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 

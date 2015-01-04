@@ -16,7 +16,7 @@
 
 package com.bearchoke.platform.server.config;
 
-import com.bearchoke.platform.platform.base.SpringSecurityHelper;
+import com.bearchoke.platform.base.SpringSecurityHelper;
 import com.bearchoke.platform.server.ServerConstants;
 import com.bearchoke.platform.server.jackson.CustomObjectMapper;
 import com.bearchoke.platform.server.web.websocket.WebSocketConnectHandler;
