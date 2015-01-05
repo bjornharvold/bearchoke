@@ -14,27 +14,16 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.api.user;
+angular.module("app").service("AnalyticsEventService", function($rootScope, eventConstants, MixPanelFactory) {
+    // this is a service with no methods - it's only here to catch events and pass them to MixPanel
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+    $rootScope.$on(eventConstants.authentication, function(event, data) {
+        $log.debug("Login event caught");
+        MixPanelFactory.login(data, data.loginType);
+    });
 
-import java.util.Collection;
-
-/**
- * Object used to obtain information about an available UserAccount
- *
- * @author Jettro Coenradie
- */
-public interface UserAccount extends UserDetails {
-
-    String getId();
-
-    String getUsername();
-
-    String getName();
-
-    String getEmail();
-
-    Collection<? extends GrantedAuthority> getAuthorities();
-}
+    $rootScope.$on(eventConstants.registration, function(event, data) {
+        $log.debug("Register event caught");
+        MixPanelFactory.signup(data.user, data.registerType);
+    });
+});

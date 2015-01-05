@@ -26,7 +26,7 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
             AuthRestangular.one('authenticate').customPOST({username: username, password: password}).then(function(data) {
 
                 // fire off successful login event
-                $rootScope.$emit(eventConstants.authentication, {username: username});
+                $rootScope.$emit(eventConstants.authentication, {username: username, loginType: "Manual"});
 
                 self.getUser(success, error);
             }, function(data) {
@@ -48,7 +48,7 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
             AuthRestangular.one('user/register').customPOST(user).then(function(data) {
 
                 // fire off successful login event
-                $rootScope.$emit(eventConstants.registration, {username: user.username});
+                $rootScope.$emit(eventConstants.registration, {username: user.username, registerType: "Manual"});
 
                 // fire off success event
                 success();
@@ -108,9 +108,6 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
                 ApplicationContext.setUser({username: data.username, roles: data.roles});
 
                 if (success) {
-                    // fire off an identify user
-                    $rootScope.$emit(eventConstants.identify, {id: data.username});
-
                     // dispatch login success event
                     success(data);
                 }
@@ -164,7 +161,7 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
             AuthRestangular.one('facebook').customPOST(res).then(function(data) {
 
                 // fire off successful login event
-                $rootScope.$emit(eventConstants.facebook, {email: res.email});
+                $rootScope.$emit(eventConstants.authentication, {username: res.email, loginType: "Facebook" });
 
                 self.getUser(success, error);
             }, function(data) {

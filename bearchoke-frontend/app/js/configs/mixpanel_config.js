@@ -14,27 +14,14 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.api.user;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.Collection;
-
 /**
- * Object used to obtain information about an available UserAccount
- *
- * @author Jettro Coenradie
+ * Created with IntelliJ IDEA.
+ * User: Bjorn
+ * Date: 11/15/13
+ * Time: 2:21 PM
  */
-public interface UserAccount extends UserDetails {
+angular.module("app").config(function (configuration) {
 
-    String getId();
+    mixpanel.init(configuration.mixpanelApiToken);
 
-    String getUsername();
-
-    String getName();
-
-    String getEmail();
-
-    Collection<? extends GrantedAuthority> getAuthorities();
-}
+});

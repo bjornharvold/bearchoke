@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/main/java/com/bearchoke/platform/base/config/AxonCQRSCloudConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/bearchoke/platform/base/config/AxonCQRSConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/bearchoke/platform/base/config/AxonCQRSLocalConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/bearchoke/platform/base/config/CacheConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/bearchoke/platform/base/config/EncryptionConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/bearchoke/platform/base/config/RabbitMQCloudConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/bearchoke/platform/base/config/RabbitMQLocalConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/bearchoke/platform/base/config/RedisCloudConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/bearchoke/platform/base/config/RedisConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/bearchoke/platform/base/config/RedisLocalConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/bearchoke/platform/base/config/SchedulerConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/bearchoke/platform/base/config/SpringIntegrationConfig.java</file>
+        </fileset>
+      </configuration>
+    </facet>
+  </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
