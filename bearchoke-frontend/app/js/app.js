@@ -29,7 +29,7 @@ angular.module("app", [
     "ezfb",
     "oitozero.ngSweetAlert"
 ])
-        .run(function ($rootScope, $state, $stateParams, $modal, $log, $timeout, ApplicationContext) {
+        .run(function ($rootScope, $state, $stateParams, $modal, $log, $timeout, ApplicationContext, AnalyticsEventService) {
 
             $rootScope.alert = function (thing) {
                 alert(thing);

@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-angular.module("app").service("AnalyticsEventService", function($rootScope, eventConstants, MixPanelFactory) {
+angular.module("app").service("AnalyticsEventService", function($rootScope, $log, eventConstants, MixPanelFactory) {
     // this is a service with no methods - it's only here to catch events and pass them to MixPanel
 
     $rootScope.$on(eventConstants.authentication, function(event, data) {
-        $log.debug("Login event caught");
+        $log.debug("Caught authentication success event");
         MixPanelFactory.login(data, data.loginType);
     });
 
     $rootScope.$on(eventConstants.registration, function(event, data) {
-        $log.debug("Register event caught");
+        $log.debug("Caught registration success event");
         MixPanelFactory.signup(data.user, data.registerType);
     });
 });

@@ -28,11 +28,12 @@ angular.module("app").factory('ApplicationContext', function ($rootScope, $log, 
     var self = {
 
         isLoggedIn: function() {
+            //$log.debug("Is user already logged in: " + ($rootScope.user !== undefined));
             return $rootScope.user !== undefined;
         },
 
         clear: function() {
-            $log.info("Clearing out application context");
+            $log.debug("Clearing out user session context");
 
             // Reset the values
             xAuthToken = null;
@@ -63,7 +64,7 @@ angular.module("app").factory('ApplicationContext', function ($rootScope, $log, 
         },
 
         setAuthToken: function(authToken) {
-            $log.info('Received Auth Token: ' + authToken);
+            $log.info('Setting Auth Token for user: ' + authToken);
 
             // Update the Auth headers
             var xauthHeader = {
@@ -81,16 +82,20 @@ angular.module("app").factory('ApplicationContext', function ($rootScope, $log, 
         },
 
         getAuthToken: function() {
+            var result;
+
             if (xAuthToken) {
-                return xAuthToken;
+                result = xAuthToken;
             }
             var localStorageAuthToken = $localStorage.authToken;
             if (localStorageAuthToken) {
                 self.setAuthToken(localStorageAuthToken);
-                return localStorageAuthToken;
+                result = localStorageAuthToken;
             }
 
-            return null;
+            //$log.debug("Auth token: " + result);
+
+            return result;
         },
 
         setUser: function(user) {

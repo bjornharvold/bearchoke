@@ -21,7 +21,7 @@ angular.module("app").factory('AuthRestangular', function($state, $rootScope, Re
 //        RestangularConfigurer.setFullResponse(true);
 
         // something like www.bearchoke.com:8080/api
-        $log.info("Base URL is: " + configuration.baseUrl);
+        //$log.debug("Base URL is: " + configuration.baseUrl);
         RestangularConfigurer.setBaseUrl(configuration.baseUrl);
 
         // we want to tell restangular what version of the backend rest api we want to use
@@ -52,8 +52,9 @@ angular.module("app").factory('AuthRestangular', function($state, $rootScope, Re
         This is the interceptor we go to when we try to call a secured url
          */
         RestangularConfigurer.setErrorInterceptor(function(response, deferred) {
-            if (response.status === 401 && response.config.url.search(/\/login/) === -1) {
-                $log.info("API Request unauthorized from state: " + $state.current.name);
+            //$log.error("Response URL: " + response.config.url);
+            if (response.status === 401 && response.config.url.search(/\/authenticate/) === -1) {
+                $log.error("API Request unauthorized from state: " + $state.current.name);
                 $rootScope.$emit("event.login.unauthorized");
                 return false;
             }

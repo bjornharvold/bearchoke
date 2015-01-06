@@ -27,7 +27,7 @@ angular.module("app").controller('LoginController', function ($scope, $state, $q
     };
 
     $scope.logout = function () {
-        AuthenticationFactory.logout($scope.credentials.username, $scope.credentials.password, onLogoutSuccess);
+        AuthenticationFactory.logout(onLogoutSuccess);
     };
 
     $scope.facebookLogin = function () {
@@ -42,7 +42,7 @@ angular.module("app").controller('LoginController', function ($scope, $state, $q
     };
 
     var onLoginSuccess = function () {
-        $log.debug('login success');
+        $log.debug('Login was successful. Handling success workflow.');
 
         $timeout(function () {
             // Check for a pre-login state
@@ -57,7 +57,7 @@ angular.module("app").controller('LoginController', function ($scope, $state, $q
     };
 
     var onLogoutSuccess = function () {
-        $log.debug('logout success');
+        $log.debug('Logout was successful. Handling success workflow.');
 
         $timeout(function () {
             $state.go('home', {}, {reload: true});
@@ -72,7 +72,8 @@ angular.module("app").controller('LoginController', function ($scope, $state, $q
         $log.debug(message);
     };
 
-    if (!ApplicationContext.isLoggedIn) {
+    if (!ApplicationContext.isLoggedIn()) {
+        //$log.debug("User is not currently logged in. Going to try remember-me to se if user there.");
         // Check for a cookie to login
         // If the cookie auth token is there, assume logged in while waiting for the getUser call
         AuthenticationFactory.remember(onLoginSuccess, onRememberMeFailure);

@@ -26,11 +26,12 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
             AuthRestangular.one('authenticate').customPOST({username: username, password: password}).then(function(data) {
 
                 // fire off successful login event
+                $log.debug("Firing off authentication success event");
                 $rootScope.$emit(eventConstants.authentication, {username: username, loginType: "Manual"});
 
                 self.getUser(success, error);
             }, function(data) {
-                $log.error("Authentication failure: " + data.statusText);
+                $log.warn("Authentication failure: " + data.statusText);
                 self.clearAuth();
 
                 if (error) {
@@ -62,13 +63,12 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
         },
 
         logout: function (success) {
-            $log.debug("logging out user");
-            var promise = AuthRestangular.one('logout').get();
+            $log.debug("Logging out user from session and server...");
 
-            promise.then(function(data) {
-                $log.info("User logged out from server successfully");
+            AuthRestangular.one('logout').get().then(function(data) {
+                $log.debug("User logged out from server successfully");
             }, function() {
-                $log.info("Server logout failure");
+                $log.debug("Server logout failure");
             });
 
             // clear out everything on the front-end side related to the user session
