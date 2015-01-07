@@ -184,6 +184,7 @@ There are a few things the Bearchoke Tempest gives you out of the box.
 
 ## Current release
 
+* 2015-1-7   - 0.0.3 MixPanel integration and more unit tests
 * 2015-1-1   - 0.0.2 The Happy New Year release
 * 2014-10-16 - 0.0.1 Initial version
 
@@ -205,7 +206,6 @@ There are a few things the Bearchoke Tempest gives you out of the box.
 ## Next release features
 This framework is for me a way to prove that the technologies can co-exist together [peacefully] and that they work and are testable. As my other projects require new features, I will add these here first as a test bed. Upcoming features I already want to add are:
 
-* MixPanel integration
 * File upload example
 * Charting and reporting
 * Tests, tests and tests
