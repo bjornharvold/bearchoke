@@ -189,6 +189,11 @@ There are a few things the Bearchoke Tempest gives you out of the box.
 * 2014-10-16 - 0.0.1 Initial version
 
 
+## New features in 0.0.3
+
+* MixPanel integration. If you have a MixPanel account and you set you MixPanel api token in development.json, you will see registration and login events going through.
+* More test on the Java side.
+
 ## New features in 0.0.2
 
 * Custom MongoDb user provider / authentication implementation using CQRS. 
