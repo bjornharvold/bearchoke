@@ -179,7 +179,9 @@ There are a few things the Bearchoke Tempest gives you out of the box.
 * StompJS client for communication via websocket
 * Lodash and underscore javascript utility libraries
 * Template based views with AngularJS
-* Existing services handle Facebook registration
+* Facebook login and registration
+* MixPanel integration
+* MailChimp integration
 * [Less CSS](http://lesscss.org/) is a CSS pre-processor that adds new features that allow variables, mixins, functions and many other techniques that allow you to make CSS that is more maintainable, themable and extendable.
 
 ## Current release
@@ -191,7 +193,7 @@ There are a few things the Bearchoke Tempest gives you out of the box.
 
 ## New features in 0.0.3
 
-* MixPanel integration. If you have a MixPanel account and you set you MixPanel api token in development.json, you will see registration and login events going through.
+* MixPanel integration. If you have a MixPanel account and you set your MixPanel api token in development.json, you will see registration and login events going through.
 * More test on the Java side.
 
 ## New features in 0.0.2
