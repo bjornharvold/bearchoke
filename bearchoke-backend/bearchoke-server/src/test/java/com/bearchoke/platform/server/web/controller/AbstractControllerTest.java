@@ -16,9 +16,14 @@
 
 package com.bearchoke.platform.server.web.controller;
 
+import com.bearchoke.platform.server.jackson.CustomObjectMapper;
 import com.bearchoke.platform.server.web.ApplicationMediaType;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.request.RequestPostProcessor;
+
+import java.io.IOException;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 
@@ -46,5 +51,21 @@ public abstract class AbstractControllerTest {
 
     protected MediaType getBearchokeVersion2MediaType() {
         return MediaType.parseMediaType(ApplicationMediaType.APPLICATION_BEARCHOKE_V2_JSON_VALUE + ";charset=UTF8");
+    }
+
+    protected byte[] convertObjectToJsonBytes(Object object) throws IOException {
+        ObjectMapper mapper = new CustomObjectMapper();
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        return mapper.writeValueAsBytes(object);
+    }
+
+    protected String createStringWithLength(int length) {
+        StringBuilder builder = new StringBuilder();
+
+        for (int index = 0; index < length; index++) {
+            builder.append("a");
+        }
+
+        return builder.toString();
     }
 }

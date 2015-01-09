@@ -78,10 +78,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private ApiAuthenticationFailureHandler apiAuthenticationFailureHandler;
 
     @Inject
-    @Qualifier("userDetailsService")
-    private UserDetailsService userDetailsService;
-
-    @Inject
     @Qualifier("authenticationProvider")
     private AuthenticationProvider authenticationProvider;
 
@@ -155,22 +151,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         headers.addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN));
     }
 
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider);
-        auth.userDetailsService(userDetailsService);
-    }
-
-    @Bean(name = "userDetailsService")
-    @Override
-    public UserDetailsService userDetailsServiceBean() throws Exception {
-        return super.userDetailsServiceBean();
-    }
-
-    @Bean(name = "authenticationManager")
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
     }
 
     @Bean(name = "authFilter")

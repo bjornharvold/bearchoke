@@ -27,8 +27,10 @@ import com.bearchoke.platform.user.document.User;
 import com.bearchoke.platform.user.repositories.UserRepository;
 import com.bearchoke.platform.user.security.PreAuthUserDetailsService;
 import com.bearchoke.platform.user.security.PreAuthenticatedTokenCacheService;
+import com.bearchoke.platform.user.security.UserAuthenticationProvider;
 import com.bearchoke.platform.user.security.UserDetailsServiceImpl;
 import lombok.extern.slf4j.Slf4j;
+import org.aopalliance.intercept.MethodInterceptor;
 import org.axonframework.commandhandling.CommandBus;
 import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Bean;
@@ -111,10 +113,10 @@ public class MockAppConfig extends GlobalMethodSecurityConfiguration {
     @Bean(name = "userDetailsService")
     public UserDetailsService inMemoryUserDetailsManager() {
         List<UserDetails> users = new ArrayList<>(1);
-        users.add(new User("user", "user@user.com", "User", "User", Arrays.asList(new Role("ROLE_USER", Arrays.asList("RIGHT_AS_USER")))));
-        InMemoryUserDetailsManager m = new InMemoryUserDetailsManager(users);
+        users.add(new User("user", "user@user.com", "User", "User", "user", Arrays.asList(new Role("ROLE_USER", Arrays.asList("RIGHT_AS_USER")))));
+        users.add(new User("facebook@user.com", "facebook@user.com", "Facebook", "User", "facebook", Arrays.asList(new Role("ROLE_USER", Arrays.asList("RIGHT_AS_USER")))));
 
-        return m;
+        return new InMemoryUserDetailsManager(users);
     }
 
     @Bean(name = "authenticationProvider")

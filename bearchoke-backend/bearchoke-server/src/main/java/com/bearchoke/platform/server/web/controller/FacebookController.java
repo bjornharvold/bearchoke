@@ -72,7 +72,7 @@ public class FacebookController {
      * @param user user
      * @return
      */
-    @RequestMapping(value = "/api/facebook", method = {RequestMethod.POST}, produces = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE, consumes = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE)
+    @RequestMapping(value = "/api/facebook", method = {RequestMethod.POST}, consumes = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public void updateFacebookUser(@RequestBody FacebookUserDto user, HttpServletRequest request, HttpServletResponse response) {
         // attach default role to user

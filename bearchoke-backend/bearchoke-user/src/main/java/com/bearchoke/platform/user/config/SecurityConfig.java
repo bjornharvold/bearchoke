@@ -55,7 +55,7 @@ public class SecurityConfig extends GlobalMethodSecurityConfiguration {
     private PreAuthUserDetailsService preAuthUserDetailsService;
 
     @Bean(name = "authenticationProvider")
-    public UserAuthenticationProvider authenticationProvider() {
+    public AuthenticationProvider authenticationProvider() {
         return new UserAuthenticationProvider(commandBus);
     }
 
