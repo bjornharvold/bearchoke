@@ -292,7 +292,7 @@
         <spring.integration.version>4.1.1.RELEASE</spring.integration.version>
         <spring.mobile.version>1.1.2.RELEASE</spring.mobile.version>
         <spring.security.version>4.0.0.RC1</spring.security.version>
-        <spring.session.version>1.0.0.RC1</spring.session.version>
+        <spring.session.version>1.0.0.RELEASE</spring.session.version>
         <spring.social.version>1.1.0.RELEASE</spring.social.version>
         <spring.version>4.1.4.RELEASE</spring.version>
         <springockito.annotations-version>1.0.9</springockito.annotations-version>
