@@ -32,12 +32,14 @@ import org.junit.Test;
  * Time: 5:09 PM
  * Responsibility:
  */
-public class ToDoItemTest {
+public class ToDoCommandHandlerTest {
     private FixtureConfiguration fixture;
 
     @Before
     public void setUp() throws Exception {
         fixture = Fixtures.newGivenWhenThenFixture(ToDoItemAggregate.class);
+        ToDoCommandHandler commandHandler = new ToDoCommandHandler(fixture.getRepository());
+        fixture.registerAnnotatedCommandHandler(commandHandler);
     }
 
     @Test
