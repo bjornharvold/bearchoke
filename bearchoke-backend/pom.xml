@@ -175,6 +175,12 @@
             </exclusions>
         </dependency>
 
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <version>${hamcrest.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -250,6 +256,7 @@
         <commons.pool2.version>2.2</commons.pool2.version>
         <derby.version>10.10.1.1</derby.version>
         <embedded.redis.version>0.2</embedded.redis.version>
+        <hamcrest.version>1.3</hamcrest.version>
         <hibernate.validator.version>5.1.3.Final</hibernate.validator.version>
         <hibernate.entitymanager.version>4.3.7.Final</hibernate.entitymanager.version>
         <hibernate.jpa.api.version>1.0.0.Final</hibernate.jpa.api.version>

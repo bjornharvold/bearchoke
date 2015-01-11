@@ -38,7 +38,7 @@ import java.util.List;
 @Component
 @Slf4j
 public class UserAggregate extends AbstractAnnotatedAggregateRoot {
-    private PasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
+    private final PasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
 
     @AggregateIdentifier
     private UserIdentifier id;
