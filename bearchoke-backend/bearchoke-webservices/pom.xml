@@ -22,39 +22,23 @@
         <version>0.0.1-SNAPSHOT</version>
 	</parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>bearchoke-api</artifactId>
+    <artifactId>bearchoke-webservices</artifactId>
     <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Bearchoke API (JAR)</name>
+    <name>Bearchoke Web Services (JAR)</name>
 
     <dependencies>
 
-        <!-- Axon CQRS Framework -->
+        <!-- Apache CXF -->
         <dependency>
-            <groupId>org.axonframework</groupId>
-            <artifactId>axon-core</artifactId>
-            <version>${axon.version}</version>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>${apache.cxf.version}</version>
         </dependency>
-
-        <!-- JPA api -->
         <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>${javax.validation.version}</version>
-        </dependency>
-
-        <!-- Jackson JSON Processor -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-json-org</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-
-        <!-- spring security -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>${spring.security.version}</version>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+            <version>${apache.cxf.version}</version>
         </dependency>
 
     </dependencies>

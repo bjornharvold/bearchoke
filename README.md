@@ -13,6 +13,7 @@ Key frameworks that I've leveraged to make this work are:
 * Axon CQRS Framework
 * Rabbit MQ
 * Web Socket
+* Apache CXF
 
 Another key focus has been on the separation of front-end and back-end technologies. This was born out of the requirement to "build for mobile first". To the layman, it means that we want to avoid building more than one way of accessing our service endpoints. It should be the same calls being made in the browser as in a native mobile application. 
 
@@ -31,6 +32,7 @@ Below, I will cover what is required to get up and running using all the goodies
 * [Axon Framework](http://www.axonframework.org) (Command Query Responsibility Segmentation CQRS)
 * [Jasypt](http://jasypt.org/) (Encryption)
 * [Jackson](https://github.com/FasterXML/jackson) (JSON transformation)
+* [Apache CXF](http://cxf.apache.org) (JAXWS Web Service) 
 
 ## Databases and Queues
 * [MongoDb](http://www.mongodb.org)
@@ -166,6 +168,7 @@ There are a few things the Bearchoke Tempest gives you out of the box.
 * Examples on how to create versioned, REST based, controller request mappings using Spring Web MVC.
 * Examples on how to create Web Socket URL mappings using Spring Web Socket with StompJS.
 * Spring Profiles for custom deployment configurations.
+* Apache CXF integration
 
 **On the frontend, the framework gives you:**
 
@@ -182,14 +185,19 @@ There are a few things the Bearchoke Tempest gives you out of the box.
 * Facebook login and registration
 * MixPanel integration
 * MailChimp integration
+* Apache CXF Javascript sample
 * [Less CSS](http://lesscss.org/) is a CSS pre-processor that adds new features that allow variables, mixins, functions and many other techniques that allow you to make CSS that is more maintainable, themable and extendable.
 
 ## Current release
 
+* 2015-1-11  - 0.0.4 Apache CXF integration with sample wsdl2js Javascript generation
 * 2015-1-7   - 0.0.3 MixPanel integration and more unit tests
 * 2015-1-1   - 0.0.2 The Happy New Year release
 * 2014-10-16 - 0.0.1 Initial version
 
+## New features in 0.0.4
+
+* Added a simple HelloWorldService with Apache CXF and generated Javascript from the wsdl to call service from AngularJS.
 
 ## New features in 0.0.3
 

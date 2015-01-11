@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="2417e8d9-be8e-4ae7-9c02-e65a69132454" activeEnvironment="Default" name="Test" resourceRoot="" soapui-version="5.1.2" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="ab3dd73e-af4a-4ec7-94f2-4c4bc5a7497b" wsaVersion="NONE" name="HelloWorldServiceSoapBinding" type="wsdl" bindingName="{com.bearchoke.platform.webservice}HelloWorldServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://dev.bearchoke.com:8080/services/HelloWorldService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://dev.bearchoke.com:8080/services/HelloWorldService?wsdl"><con:part><con:url>http://dev.bearchoke.com:8080/services/HelloWorldService?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="HelloWorldService" targetNamespace="com.bearchoke.platform.webservice" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="com.bearchoke.platform.webservice" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://www.bearchoke.com/types" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="helloResponse" type="xs:string"/>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="com.bearchoke.platform.webservice" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.bearchoke.com/types">
+      <xs:import namespace="http://www.bearchoke.com/types"/>
+      <xs:element name="hello" type="tns:hello"/>
+      <xs:element name="helloResponse" type="tns:helloResponse"/>
+      <xs:complexType name="hello">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="helloResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns1:helloResponse"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="WebServiceException" type="tns:WebServiceException"/>
+      <xs:complexType name="WebServiceException">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="hello">
+    <wsdl:part element="tns:hello" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="helloResponse">
+    <wsdl:part element="tns:helloResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WebServiceException">
+    <wsdl:part element="tns:WebServiceException" name="WebServiceException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="HelloWorldService">
+    <wsdl:operation name="hello">
+      <wsdl:input message="tns:hello" name="hello"></wsdl:input>
+      <wsdl:output message="tns:helloResponse" name="helloResponse"></wsdl:output>
+      <wsdl:fault message="tns:WebServiceException" name="WebServiceException"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HelloWorldServiceSoapBinding" type="tns:HelloWorldService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="hello">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="hello">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="helloResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WebServiceException">
+        <soap:fault name="WebServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HelloWorldService">
+    <wsdl:port binding="tns:HelloWorldServiceSoapBinding" name="HelloWorldServicePort">
+      <soap:address location="http://dev.bearchoke.com:8080/services/HelloWorldService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://dev.bearchoke.com:8080/services/HelloWorldService</con:endpoint></con:endpoints><con:operation id="e1c3f0c0-014a-42e0-acb8-8b69c1c08a19" isOneWay="false" action="" name="hello" bindingOperationName="hello" type="Request-Response" outputName="helloResponse" inputName="hello" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e702cb5b-b400-48f9-93c4-3ab6631cf761" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://dev.bearchoke.com:8080/services/HelloWorldService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="com.bearchoke.platform.webservice">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <com:hello>
+         <!--Optional:-->
+         
+      <name>Bjorn</name></com:hello>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="com.bearchoke.platform.webservice/HelloWorldService/hello"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="c45de76a-f3d2-4e54-a57b-0f5cb7ed1de5" name="HelloWorldServiceSoapBinding TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="70b16268-df62-4970-a815-46c4ca6f58f2" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="hello TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="31165681-bda7-4a4e-a7a7-03c91b34584d" name="hello"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>HelloWorldServiceSoapBinding</con:interface><con:operation>hello</con:operation><con:request name="hello" id="f83a0abe-194d-4f99-846f-1961c60fc20d"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://dev.bearchoke.com:8080/services/HelloWorldService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:com="com.bearchoke.platform.webservice">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <com:hello>
+         <!--Optional:-->
+         <name>?</name>
+      </com:hello>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="com.bearchoke.platform.webservice/HelloWorldService/hello" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:properties/><con:reportParameters/></con:testSuite><con:properties/><con:wssContainer/><con:databaseConnectionContainer/><con:oAuth2ProfileContainer/></con:soapui-project>

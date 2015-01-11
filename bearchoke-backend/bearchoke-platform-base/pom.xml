@@ -22,7 +22,6 @@
         <version>0.0.1-SNAPSHOT</version>
 	</parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.bearchoke</groupId>
     <artifactId>bearchoke-platform-base</artifactId>
     <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
@@ -222,7 +221,7 @@
         <dependency>
             <groupId>dom4j</groupId>
             <artifactId>dom4j</artifactId>
-            <version>20040902.021138</version>
+            <version>${dom4j.version}</version>
         </dependency>
     </dependencies>
 </project>

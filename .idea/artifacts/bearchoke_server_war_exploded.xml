@@ -84,6 +84,28 @@
           <element id="library" level="project" name="Maven: com.atomikos:transactions-hibernate3:3.9.2" />
           <element id="library" level="project" name="Maven: org.apache.derby:derby:10.10.1.1" />
           <element id="library" level="project" name="Maven: org.postgresql:postgresql:9.3-1102-jdbc41" />
+          <element id="archive" name="bearchoke-webservices-0.0.1-SNAPSHOT.jar">
+            <element id="module-output" name="bearchoke-webservices" />
+          </element>
+          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-frontend-jaxws:3.0.3" />
+          <element id="library" level="project" name="Maven: xml-resolver:xml-resolver:1.2" />
+          <element id="library" level="project" name="Maven: asm:asm:3.3.1" />
+          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-core:3.0.3" />
+          <element id="library" level="project" name="Maven: org.codehaus.woodstox:woodstox-core-asl:4.4.1" />
+          <element id="library" level="project" name="Maven: org.codehaus.woodstox:stax2-api:3.1.4" />
+          <element id="library" level="project" name="Maven: org.apache.ws.xmlschema:xmlschema-core:2.1.0" />
+          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-bindings-soap:3.0.3" />
+          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-wsdl:3.0.3" />
+          <element id="library" level="project" name="Maven: wsdl4j:wsdl4j:1.6.3" />
+          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-databinding-jaxb:3.0.3" />
+          <element id="library" level="project" name="Maven: com.sun.xml.bind:jaxb-impl:2.2.10-b140310.1920" />
+          <element id="library" level="project" name="Maven: com.sun.xml.bind:jaxb-core:2.2.10-b140310.1920" />
+          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-bindings-xml:3.0.3" />
+          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-frontend-simple:3.0.3" />
+          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-ws-addr:3.0.3" />
+          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-ws-policy:3.0.3" />
+          <element id="library" level="project" name="Maven: org.apache.neethi:neethi:3.0.3" />
+          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-transports-http:3.0.3" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context:4.1.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.1.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.1.4.RELEASE" />

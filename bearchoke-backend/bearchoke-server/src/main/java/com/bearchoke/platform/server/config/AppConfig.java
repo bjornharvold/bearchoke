@@ -22,6 +22,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.scheduling.annotation.EnableAsync;
 
+import javax.jws.WebService;
+import javax.xml.ws.WebServiceProvider;
+
 /**
  * Created by Bjorn Harvold
  * Date: 1/3/14
@@ -30,7 +33,10 @@ import org.springframework.scheduling.annotation.EnableAsync;
  */
 @Configuration
 @EnableAsync
-@ComponentScan(basePackages = {"com.bearchoke.platform"}, excludeFilters = {
+@ComponentScan(basePackages = {"com.bearchoke.platform"}, includeFilters = {
+        @ComponentScan.Filter(WebService.class),
+        @ComponentScan.Filter(WebServiceProvider.class)
+}, excludeFilters = {
         @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = WebMvcConfig.class)
 })
 public class AppConfig {

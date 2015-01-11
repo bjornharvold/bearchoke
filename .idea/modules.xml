@@ -12,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/bearchoke-tempest.iml" filepath="$PROJECT_DIR$/bearchoke-tempest.iml" />
       <module fileurl="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-todo/bearchoke-todo.iml" filepath="$PROJECT_DIR$/bearchoke-backend/bearchoke-todo/bearchoke-todo.iml" />
       <module fileurl="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-user/bearchoke-user.iml" filepath="$PROJECT_DIR$/bearchoke-backend/bearchoke-user/bearchoke-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-webservices/bearchoke-webservices.iml" filepath="$PROJECT_DIR$/bearchoke-backend/bearchoke-webservices/bearchoke-webservices.iml" />
     </modules>
   </component>
 </project>

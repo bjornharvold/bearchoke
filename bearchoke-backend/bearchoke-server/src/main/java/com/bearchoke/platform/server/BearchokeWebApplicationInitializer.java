@@ -23,6 +23,7 @@ import com.bearchoke.platform.server.web.config.WebMvcConfig;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.cxf.transport.servlet.CXFServlet;
 import org.springframework.cloud.Cloud;
 import org.springframework.cloud.CloudException;
 import org.springframework.cloud.CloudFactory;
@@ -69,6 +70,7 @@ public class BearchokeWebApplicationInitializer implements WebApplicationInitial
     public void onStartup(ServletContext servletContext) throws ServletException {
         createWebApplicationContext(servletContext);
         createSpringServlet(servletContext);
+        createCXFServlet(servletContext);
         createFilters(servletContext);
     }
 
@@ -130,6 +132,21 @@ public class BearchokeWebApplicationInitializer implements WebApplicationInitial
         appServlet.setAsyncSupported(true);
 
 //        log.info("Creating Spring Servlet completed");
+    }
+
+    private void createCXFServlet(ServletContext servletContext) {
+        log.info("Creating CXF Servlet started....");
+
+        CXFServlet servlet = new CXFServlet();
+
+        ServletRegistration.Dynamic appServlet = servletContext.addServlet("CXFServlet", servlet);
+        appServlet.setLoadOnStartup(1);
+        appServlet.addMapping("/services/*");
+
+        // for serving up asynchronous events in tomcat
+        appServlet.setAsyncSupported(true);
+
+//        log.info("Creating CXF Servlet completed");
     }
 
     private void createFilters(ServletContext ctx) {

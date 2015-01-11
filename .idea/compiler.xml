@@ -29,6 +29,7 @@
         <module name="bearchoke-server" />
         <module name="bearchoke-todo" />
         <module name="bearchoke-user" />
+        <module name="bearchoke-webservices" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -40,6 +41,7 @@
       <module name="bearchoke-server" target="1.8" />
       <module name="bearchoke-todo" target="1.8" />
       <module name="bearchoke-user" target="1.8" />
+      <module name="bearchoke-webservices" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
