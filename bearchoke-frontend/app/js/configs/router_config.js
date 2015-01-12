@@ -163,9 +163,21 @@ angular.module("app").config(function ($stateProvider, $locationProvider, $urlRo
                     }
                 }
             })
-        //
-        // STATIC CONTENT
-        //
+            .state('webservices', {
+                parent: "static-content-layout",
+                url: "/ui/webservices",
+                templateUrl: "webservices.html",
+                controller: 'WebServicesController',
+                data: {
+                    auth: false,
+                    title: "WEBSERVICES",
+                    meta: {
+                        'description': 'Web Services SOAP test',
+                        'author': 'Bjorn Harvold',
+                        'keywords': 'webservices,soap,bearchoke'
+                    }
+                }
+            })
             .state('faq', {
                 parent: "static-content-layout",
                 url: '/ui/faq',

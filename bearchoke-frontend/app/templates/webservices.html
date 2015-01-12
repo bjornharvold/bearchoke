@@ -1,0 +1,53 @@
+<!--
+  ~ Copyright 2014 the original author or authors.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<div class="jumbotron">
+    <div class="container">
+        <h2><i class="fa fa-gears"></i> Web Services</h2>
+    </div>
+</div>
+<div id="registration" class="container">
+    <div class="row alert alert-info">
+        <p>Hello World example using Apache CXF generated Javascript from a WSDL.</p>
+
+        <p>This feature makes use of <a href="http://cxf.apache.org" target="_blank">Apache CXF</a> for web services creation and Javascript generation. It extends CXF by making their cxf-utils.js work with CORS.</p>
+    </div>
+    <div class="row">
+        <form name="helloWorldForm" ng-submit="submit()" novalidate>
+            <div class="control-group">
+                <label for="firstname"><i class="fa fa-asterisk red normal"></i> Enter your first name: </label>
+
+                <div class="form-group">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input id="firstName" type="text" class="form-control" placeholder="First name" name="firstName"
+                               ng-model="firstName" required>
+                    </div>
+                    <div class="error-messages" ng-if="interacted(helloWorldForm.firstName)" ng-messages="helloWorldForm.firstName.$error">
+                        <div class="ng-scope" ng-message="required">
+                            You forgot to enter your first name...
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="reset" class="btn btn-warning">Reset</button>
+                <button type="submit" class="btn btn-success">Send SOAP request</button>
+            </div>
+        </form>
+    </div>
+
+</div>

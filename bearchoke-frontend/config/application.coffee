@@ -146,3 +146,15 @@ module.exports = (lineman) ->
   uglify:
     options:
       mangle: false
+
+  jshint:
+    options:
+      curly: true
+      eqeqeq: true
+      latedef: true
+      newcap: false
+      noarg: true
+      boss: true
+      eqnull: true
+      sub: true
+      browser: true

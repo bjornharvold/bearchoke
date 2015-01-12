@@ -156,8 +156,8 @@ public class BearchokeWebApplicationInitializer implements WebApplicationInitial
         SimpleCORSFilter corsFilter = new SimpleCORSFilter();
         corsFilter.setCorsAllowCredentials("true");
         corsFilter.setCorsAllowMethods("GET, POST, PUT, PATCH, DELETE, OPTIONS");
-        corsFilter.setCorsAllowHeaders("content-type, x-requested-with, origin, accept, authorization, username, password, x-app-type, x-app-version, x-auth-token");
-        corsFilter.setCorsExposeHeaders("content-type, cookie, x-requested-with, origin, accept, username, password, x-app-type, x-app-version, x-auth-token");
+        corsFilter.setCorsAllowHeaders("content-type, x-requested-with, origin, accept, authorization, username, password, x-app-type, x-app-version, x-auth-token, soapaction");
+        corsFilter.setCorsExposeHeaders("content-type, cookie, x-requested-with, origin, accept, username, password, x-app-type, x-app-version, x-auth-token, soapaction");
         corsFilter.setCorsMaxAge("3600");
 
         ctx.addFilter("SimpleCorsFilter", corsFilter).addMappingForUrlPatterns(

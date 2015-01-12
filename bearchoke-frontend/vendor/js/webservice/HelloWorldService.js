@@ -71,7 +71,7 @@ function com_bearchoke_platform_webservice_hello_deserialize (cxfjsutils, elemen
       item = value;
      }
      newobject.setName(item);
-     item = null;
+     var item = null;
      if (curElement != null) {
       curElement = cxfjsutils.getNextElementSibling(curElement);
      }
@@ -150,7 +150,7 @@ function com_bearchoke_platform_webservice_helloResponse_deserialize (cxfjsutils
       item = value;
      }
      newobject.setHelloResponse(item);
-     item = null;
+     var item = null;
      if (curElement != null) {
       curElement = cxfjsutils.getNextElementSibling(curElement);
      }
@@ -229,7 +229,7 @@ function com_bearchoke_platform_webservice_WebServiceException_deserialize (cxfj
       item = value;
      }
      newobject.setMessage(item);
-     item = null;
+     var item = null;
      if (curElement != null) {
       curElement = cxfjsutils.getNextElementSibling(curElement);
      }
@@ -270,12 +270,6 @@ function com_bearchoke_platform_webservice_HelloWorldService () {
     this.globalElementDeserializers['{com.bearchoke.platform.webservice}WebServiceException'] = com_bearchoke_platform_webservice_WebServiceException_deserialize;
 }
 
-function com_bearchoke_platform_webservice_helloResponse_deserializeResponse(cxfjsutils, partElement) {
-    var returnObject = com_bearchoke_platform_webservice_helloResponse_deserialize (cxfjsutils, partElement);
-
-    return returnObject;
-}
-
 function com_bearchoke_platform_webservice_hello_op_onsuccess(client, responseXml) {
     if (client.user_onsuccess) {
      var responseObject = null;
@@ -286,7 +280,7 @@ function com_bearchoke_platform_webservice_hello_op_onsuccess(client, responseXm
      while (!this.jsutils.isNodeNamedNS(element, 'http://schemas.xmlsoap.org/soap/envelope/', 'Body')) {
       element = this.jsutils.getNextElementSibling(element);
       if (element == null) {
-       throw 'No env:Body in message.';
+       throw 'No env:Body in message.'
       }
      }
      element = this.jsutils.getFirstElementChild(element);
@@ -341,6 +335,7 @@ function com_bearchoke_platform_webservice_hello_op(successCallback, errorCallba
 com_bearchoke_platform_webservice_HelloWorldService.prototype.hello = com_bearchoke_platform_webservice_hello_op;
 
 function com_bearchoke_platform_webservice_hello_serializeInput(cxfjsutils, args) {
+
     var xml;
     xml = cxfjsutils.beginSoap11Message("xmlns:jns0='http://www.bearchoke.com/types' xmlns:jns1='com.bearchoke.platform.webservice' ");
     // block for local variables
@@ -353,7 +348,12 @@ function com_bearchoke_platform_webservice_hello_serializeInput(cxfjsutils, args
 
 com_bearchoke_platform_webservice_HelloWorldService.prototype.hello_serializeInput = com_bearchoke_platform_webservice_hello_serializeInput;
 
+function com_bearchoke_platform_webservice_helloResponse_deserializeResponse(cxfjsutils, partElement) {
+    var returnObject = com_bearchoke_platform_webservice_helloResponse_deserialize (cxfjsutils, partElement);
+
+    return returnObject;
+}
 function com_bearchoke_platform_webservice_HelloWorldService_com_bearchoke_platform_webservice_HelloWorldServicePort () {
   this.url = 'http://dev.bearchoke.com:8080/services/HelloWorldService';
 }
-com_bearchoke_platform_webservice_HelloWorldService_com_bearchoke_platform_webservice_HelloWorldServicePort.prototype = new com_bearchoke_platform_webservice_HelloWorldService();
+com_bearchoke_platform_webservice_HelloWorldService_com_bearchoke_platform_webservice_HelloWorldServicePort.prototype = new com_bearchoke_platform_webservice_HelloWorldService;
