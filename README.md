@@ -190,14 +190,14 @@ There are a few things the Bearchoke Tempest gives you out of the box.
 
 ## Current release
 
-* 2015-1-11  - 0.0.4 Apache CXF integration with sample wsdl2js Javascript generation
+* 2015-1-12  - 0.0.4 Apache CXF integration 
 * 2015-1-7   - 0.0.3 MixPanel integration and more unit tests
 * 2015-1-1   - 0.0.2 The Happy New Year release
 * 2014-10-16 - 0.0.1 Initial version
 
 ## New features in 0.0.4
 
-* Added a simple HelloWorldService with Apache CXF and generated Javascript from the wsdl to call service from AngularJS.
+* Added a simple HelloWorldService with Apache CXF and generated Javascript from the wsdl to call service from AngularJS. Extended CXF's js library to make it work with CORS. Added an AngularJS wrapper around the Web Service.
 
 ## New features in 0.0.3
 
