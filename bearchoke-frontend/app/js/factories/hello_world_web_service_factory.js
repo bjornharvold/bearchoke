@@ -1,7 +1,7 @@
-angular.module('app').factory('HelloWorldFactory', function ($timeout) {
+angular.module('app').factory('HelloWorldFactory', function ($timeout, configuration) {
 
 	var hws = new com_bearchoke_platform_webservice_HelloWorldService();
-	hws.url = 'http://dev.bearchoke.com:8080/services/HelloWorldService';
+	hws.url = configuration.webservicesBaseUrl + '/HelloWorldService';
 
 	//public methods
 	var self = {

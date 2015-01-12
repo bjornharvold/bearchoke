@@ -9,6 +9,7 @@
     "serverWebSocketContext": "/ws",
     "baseUrl": "https://api.bearchoke.com/api",
     "websocketBaseUrl": "https://api.bearchoke.com:4443/ws",
+    "webservicesBaseUrl": "http://api.bearchoke.com/services",
     "version": "application/vnd.bearchoke-v1+json",
     "mailchimpUsername": "cfapps",
     "mailchimpU": "6e09b949dd8c5be5b4befdfeb",
