@@ -245,8 +245,7 @@
         <bearchoke.version>0.0.1-SNAPSHOT</bearchoke.version>
         <apache.cxf.version>3.0.3</apache.cxf.version>
         <atomikos.version>3.9.2</atomikos.version>
-        <axon.version>2.4-SNAPSHOT</axon.version>
-        <!--<axon.version>2.3.2</axon.version>-->
+        <axon.version>2.4</axon.version>
         <bouncycastle.version>1.50</bouncycastle.version>
         <cloudfoundry.maven.plugin.version>1.1.0</cloudfoundry.maven.plugin.version>
         <commons.beanutils.version>1.9.2</commons.beanutils.version>

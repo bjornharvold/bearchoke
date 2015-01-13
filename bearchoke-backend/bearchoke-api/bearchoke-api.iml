@@ -9,7 +9,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: org.axonframework:axon-core:2.4-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.axonframework:axon-core:2.4" level="project" />
     <orderEntry type="library" name="Maven: com.lmax:disruptor:3.2.0" level="project" />
     <orderEntry type="library" name="Maven: cglib:cglib-nodep:2.2.2" level="project" />
     <orderEntry type="library" name="Maven: joda-time:joda-time:2.3" level="project" />
