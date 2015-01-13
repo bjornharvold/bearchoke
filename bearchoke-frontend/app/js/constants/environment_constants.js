@@ -1,18 +1,19 @@
 angular.module('app').constant('configuration', {
     siteName: 'Bearchoke Tempest',
     facebookApiToken: '1406544132926146',
-    mixpanelApiToken: 'a96207d97a5b101c5ec844502caba117',
-    serverHostName: 'api.bearchoke.com',
-    serverProtocol: 'https',
-    serverPort: '',
+    mixpanelApiToken: 'af496858fbad6db085f002140fd3c9e1',
+    serverHostName: 'dev.bearchoke.com',
+    serverProtocol: 'http',
+    serverPort: '8080',
     serverContext: '/api',
     serverWebSocketContext: '/ws',
-    baseUrl: 'https://api.bearchoke.com/api',
-    websocketBaseUrl: 'https://api.bearchoke.com:4443/ws',
-    webservicesBaseUrl: 'http://api.bearchoke.com/services',
+    serverWebServicesContext: '/services',
+    baseUrl: 'http://dev.bearchoke.com:8080/api',
+    websocketBaseUrl: 'http://dev.bearchoke.com:8080/ws',
+    webservicesBaseUrl: 'http://dev.bearchoke.com:8080/services',
     version: 'application/vnd.bearchoke-v1+json',
     mailchimpUsername: 'cfapps',
     mailchimpU: '6e09b949dd8c5be5b4befdfeb',
     mailchimpDc: 'us9',
-    mailchimpId: 'cd1b6d791f'
+    mailchimpId: '670f539e60'
   });
