@@ -222,6 +222,38 @@
             <groupId>dom4j</groupId>
             <artifactId>dom4j</artifactId>
             <version>${dom4j.version}</version>
+
+            <exclusions>
+                <exclusion>
+                    <groupId>stax</groupId>
+                    <artifactId>stax</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>stax</groupId>
+                    <artifactId>stax-ri</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>clover</groupId>
+                    <artifactId>clover</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Dom4j deps -->
+        <dependency>
+            <groupId>stax</groupId>
+            <artifactId>stax</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>stax</groupId>
+            <artifactId>stax-ri</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cenqua.clover</groupId>
+            <artifactId>clover</artifactId>
+            <version>1.3.12</version>
         </dependency>
     </dependencies>
 </project>
