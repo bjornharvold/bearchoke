@@ -183,45 +183,6 @@
         </dependency>
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>spring-maven-release</id>
-            <name>Spring Maven Release Repository</name>
-            <url>http://maven.springframework.org/release</url>
-        </repository>
-        <repository>
-            <id>spring-maven-milestone</id>
-            <name>Spring Maven Milestone Repository</name>
-            <url>http://repo.springsource.org/milestone</url>
-        </repository>
-        <repository>
-            <id>clojars.org</id>
-            <url>http://clojars.org/repo</url>
-        </repository>
-        <repository>
-            <id>spring-libs-snapshot</id>
-            <name>Spring Snapshot Repository</name>
-            <url>http://repo.spring.io/libs-snapshot</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>spring-maven-release</id>
-            <name>Spring Maven Release Repository</name>
-            <url>http://maven.springframework.org/release</url>
-        </pluginRepository>
-        <pluginRepository>
-            <id>spring-maven-milestone</id>
-            <name>Spring Maven Milestone Repository</name>
-            <url>http://maven.springframework.org/milestone</url>
-        </pluginRepository>
-        <pluginRepository>
-            <id>spring-roo-repository</id>
-            <name>Spring Roo Repository</name>
-            <url>http://spring-roo-repository.springsource.org/release</url>
-        </pluginRepository>
-    </pluginRepositories>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -241,71 +202,4 @@
         </dependencies>
     </dependencyManagement>
 
-    <properties>
-        <bearchoke.version>0.0.1-SNAPSHOT</bearchoke.version>
-        <apache.cxf.version>3.0.3</apache.cxf.version>
-        <atomikos.version>3.9.2</atomikos.version>
-        <axon.version>2.4</axon.version>
-        <bouncycastle.version>1.50</bouncycastle.version>
-        <cloudfoundry.maven.plugin.version>1.1.0</cloudfoundry.maven.plugin.version>
-        <commons.beanutils.version>1.9.2</commons.beanutils.version>
-        <commons.fileupload.version>1.3</commons.fileupload.version>
-        <commons.io.version>2.4</commons.io.version>
-        <commons.lang3.version>3.2.1</commons.lang3.version>
-        <commons.lang2.version>2.6</commons.lang2.version>
-        <commons.pool2.version>2.2</commons.pool2.version>
-        <derby.version>10.10.1.1</derby.version>
-        <dom4j.version>20040902.021138</dom4j.version>
-        <embedded.redis.version>0.2</embedded.redis.version>
-        <hamcrest.version>1.3</hamcrest.version>
-        <hibernate.validator.version>5.1.3.Final</hibernate.validator.version>
-        <hibernate.entitymanager.version>4.3.7.Final</hibernate.entitymanager.version>
-        <hibernate.jpa.api.version>1.0.0.Final</hibernate.jpa.api.version>
-        <jackson.version>2.3.2</jackson.version>
-        <java.version>1.8</java.version>
-        <jasypt.version>1.9.2</jasypt.version>
-        <javax.inject.version>1</javax.inject.version>
-        <jsonlib.version>2.4</jsonlib.version>
-        <javax.el.api.version>2.2.5</javax.el.api.version>
-        <javax.glassfish.el>2.2.6</javax.glassfish.el>
-        <javax.servlet.api.version>3.1.0</javax.servlet.api.version>
-        <javax.validation.version>1.1.0.Final</javax.validation.version>
-        <javax.websocket.api.version>1.1</javax.websocket.api.version>
-        <jedis.version>2.5.2</jedis.version>
-        <jersey.version>2.11</jersey.version>
-        <joda.time.version>2.3</joda.time.version>
-        <joda.time.hibernate.version>1.3</joda.time.hibernate.version>
-        <joda.jackson.version>2.3.0</joda.jackson.version>
-        <json.path.version>0.9.1</json.path.version>
-        <jsr250.version>1.0</jsr250.version>
-        <jug.version>3.1.3</jug.version>
-        <junit.version>4.11</junit.version>
-        <log4j.version>1.2.17</log4j.version>
-        <lombok.version>1.14.4</lombok.version>
-        <maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
-        <maven.javadoc.plugin.version>2.10.1</maven.javadoc.plugin.version>
-        <maven.resource.plugin.version>2.6</maven.resource.plugin.version>
-        <maven.source.plugin.version>2.4</maven.source.plugin.version>
-        <maven.war.plugin.version>2.4</maven.war.plugin.version>
-        <mockito.version>1.10.19</mockito.version>
-        <postgresql.version>9.3-1102-jdbc41</postgresql.version>
-        <scala.version>2.10.3</scala.version>
-        <slf4j.version>1.7.7</slf4j.version>
-        <reactor.net.version>1.1.4.RELEASE</reactor.net.version>
-        <spring.cloud.connector>1.0.0.RELEASE</spring.cloud.connector>
-        <spring.data.mongo.version>1.7.0.M1</spring.data.mongo.version>
-        <spring.data.redis.version>1.4.1.RELEASE</spring.data.redis.version>
-        <spring.data.jpa.version>1.7.1.RELEASE</spring.data.jpa.version>
-        <spring.hateoas.version>0.15.0.RELEASE</spring.hateoas.version>
-        <spring.integration.version>4.1.1.RELEASE</spring.integration.version>
-        <spring.mobile.version>1.1.2.RELEASE</spring.mobile.version>
-        <spring.security.version>4.0.0.RC1</spring.security.version>
-        <spring.session.version>1.0.0.RELEASE</spring.session.version>
-        <spring.social.version>1.1.0.RELEASE</spring.social.version>
-        <spring.version>4.1.4.RELEASE</spring.version>
-        <springockito.annotations-version>1.0.9</springockito.annotations-version>
-        <tomcat.maven.plugin.version>2.2</tomcat.maven.plugin.version>
-        <tomcat.embed.version>8.0.15</tomcat.embed.version>
-        <xom.version>1.2.10</xom.version>
-    </properties>
 </project>
