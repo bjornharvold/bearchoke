@@ -134,9 +134,7 @@ Once you have installed Lineman, Grunt is next. This one is simple. Just type th
 ## Getting Up and Running
 To see a basic web application that showcases the technologies mentioned above, you need to start the bearchoke-server web app and start the bearchoke-frontend app. 
 
-The server part was configured for Tomcat 8+. There is no embedded Maven plugin for Tomcat 8 so this app cannot be run from the command line unfortuantely. You will have to create an IntelliJ 'run configuration' where you deploy the bearchoke-server webapp. Set the active profiles for Spring in your environment variables section of your run configuration:
-
-	$ -Dspring.profiles.active=in-memory,redis-local,rabbit-local	
+The server part was configured for Tomcat 8+. There is no embedded Maven plugin for Tomcat 8 so this app cannot be run from the command line unfortuantely. You will have to create an IntelliJ 'run configuration' where you deploy the bearchoke-server webapp. Set the active profiles for Spring in your environment variables section of your run configuration.	
 
 Valid local profiles are: jpa, mongodb-local, redis-local, rabbit-local, jpa-local, mongodb-cloud, redis-cloud, rabbit-cloud, jpa-cloud. I won't cover everything it takes to run the different profiles but below is the profile I use to run the showcase locally.
 
