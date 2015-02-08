@@ -1,7 +1,7 @@
 ---
 applications:
 - name: bearchoke-server
-  memory: 1G
+  memory: 2G
   instances: 1
   host: bearchoke-server
   path: target/bearchoke-server-0.0.1-SNAPSHOT.war

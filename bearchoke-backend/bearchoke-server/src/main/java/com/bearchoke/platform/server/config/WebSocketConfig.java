@@ -27,6 +27,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
@@ -38,6 +39,7 @@ import org.springframework.messaging.converter.MessageConverter;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.messaging.simp.config.ChannelRegistration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
+import org.springframework.messaging.simp.config.StompBrokerRelayRegistration;
 import org.springframework.messaging.simp.stomp.StompCommand;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.messaging.support.ChannelInterceptorAdapter;
@@ -69,6 +71,9 @@ import java.util.Map;
 @EnableWebSocketMessageBroker
 @Slf4j
 public class WebSocketConfig<S extends ExpiringSession> extends AbstractSessionWebSocketMessageBrokerConfigurer<S> {
+
+    @Inject
+    private Environment environment;
 
     @Inject
     private CustomObjectMapper objectMapper;
@@ -115,7 +120,15 @@ public class WebSocketConfig<S extends ExpiringSession> extends AbstractSessionW
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
         config.setApplicationDestinationPrefixes("/app");
-        config.enableStompBrokerRelay("/queue/", "/topic/");
+
+        StompBrokerRelayRegistration stompBrokerRelayRegistration = config.enableStompBrokerRelay("/queue/", "/topic/");
+
+        stompBrokerRelayRegistration.setRelayHost(environment.getProperty("rabbitmq.host"));
+        stompBrokerRelayRegistration.setVirtualHost(environment.getProperty("rabbitmq.virtualhost"));
+        stompBrokerRelayRegistration.setClientLogin(environment.getProperty("rabbitmq.username"));
+        stompBrokerRelayRegistration.setSystemLogin(environment.getProperty("rabbitmq.username"));
+        stompBrokerRelayRegistration.setClientPasscode(environment.getProperty("rabbitmq.password"));
+        stompBrokerRelayRegistration.setSystemPasscode(environment.getProperty("rabbitmq.password"));
 
         // only if we want to use . instead of / for path separator e.g. /app/user.chat
 //        config.setPathMatcher(new AntPathMatcher("."));

@@ -247,8 +247,8 @@
         </dependency>
         <dependency>
             <groupId>stax</groupId>
-            <artifactId>stax-ri</artifactId>
-            <version>1.0</version>
+            <artifactId>stax-api</artifactId>
+            <version>1.0.1</version>
         </dependency>
         <dependency>
             <groupId>com.cenqua.clover</groupId>
