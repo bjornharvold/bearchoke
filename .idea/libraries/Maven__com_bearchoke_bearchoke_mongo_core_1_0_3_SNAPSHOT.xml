@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.bearchoke:bearchoke-mongo-core:1.0.3-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/bearchoke-backend/bearchoke-mongo-core/pom.xml!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/bearchoke-backend/bearchoke-mongo-core/bearchoke-mongo-core-1.0.3-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/bearchoke-backend/bearchoke-mongo-core/bearchoke-mongo-core-1.0.3-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
