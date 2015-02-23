@@ -4,11 +4,11 @@
     <parent>
         <groupId>com.bearchoke</groupId>
         <artifactId>bearchoke-tempest</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.3-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>bearchoke-frontend</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>1.0.3-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Bearchoke Frontend (POM)</name>
 

@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="bearchoke-server:war exploded">
-    <output-path>$PROJECT_DIR$/bearchoke-backend/bearchoke-server/target/bearchoke-server-1.0.2-SNAPSHOT</output-path>
+    <output-path>$PROJECT_DIR$/bearchoke-backend/bearchoke-server/target/bearchoke-server-1.0.3-SNAPSHOT</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">

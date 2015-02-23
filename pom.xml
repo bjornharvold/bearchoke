@@ -20,7 +20,7 @@
     <groupId>com.bearchoke</groupId>
     <artifactId>bearchoke-tempest</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.2</version>
+    <version>1.0.3-SNAPSHOT</version>
     <name>Bearchoke Tempest (POM)</name>
     <inceptionYear>2013</inceptionYear>
     <organization>
