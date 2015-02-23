@@ -444,11 +444,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="126" max-vertical-offset="4095">
-              <caret line="22" column="37" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.26029217" vertical-offset="164" max-vertical-offset="4095">
+              <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -457,18 +457,118 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-api/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="1005">
-              <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="1005">
+              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-jpa-core/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="1845">
+              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-mongo-core/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="1005">
+              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-platform-base/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="3975">
+              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-server/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.96015936" vertical-offset="537" max-vertical-offset="4980">
-              <caret line="84" column="4" selection-start-line="84" selection-start-column="4" selection-end-line="84" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="4980">
+              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-todo/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="720">
+              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-user/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="1500">
+              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-webservices/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="840">
+              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bearchoke-backend/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="3165">
+              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bearchoke-frontend/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2250">
+              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="log4j.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-platform-base/src/main/resources/log4j.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1026" max-vertical-offset="1695">
+              <caret line="86" column="27" selection-start-line="86" selection-start-column="27" selection-end-line="86" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="server-cloud.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-server/src/main/resources/server-cloud.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
+              <caret line="0" column="40" selection-start-line="0" selection-start-column="40" selection-end-line="0" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -499,11 +599,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-user/src/test/java/com/bearchoke/platform/user/UserCommandHandlerTest.java" />
-        <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-platform-base/src/main/java/com/bearchoke/platform/base/config/CXFConfig.java" />
-        <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-webservices/src/main/java/com/bearchoke/platform/webservices/config/JaxWsConfig.java" />
-        <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-webservices/src/main/java/com/bearchoke/platform/webservices/config/JaxWsBeanPostProcessor.java" />
-        <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-webservices/src/main/java/com/bearchoke/platform/webservices/config/GlobalFeature.java" />
         <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-webservices/src/main/java/com/bearchoke/platform/webservices/config/CXFConfig.java" />
         <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-webservices/src/main/java/com/bearchoke/platform/webservices/impl/HelloWorldWebService.java" />
         <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-webservices/src/main/java/com/bearchoke/platform/webservices/impl/HelloWorldWebServiceImpl.java" />
@@ -511,7 +606,6 @@
         <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-webservices/src/main/java/com/bearchoke/platform/webservice/WebServiceException.java" />
         <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-webservices/src/main/java/com/bearchoke/platform/webservice/config/CXFServletConfig.java" />
         <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-webservices/src/main/java/com/bearchoke/platform/webservice/config/CXFConfig.java" />
-        <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-server/src/main/java/com/bearchoke/platform/server/config/AppConfig.java" />
         <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-webservices/src/main/java/com/bearchoke/platform/webservice/impl/HelloWorldWebServiceImpl.java" />
         <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-webservices/src/main/java/com/bearchoke/platform/webservice/config/GlobalFeature.java" />
         <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-webservices/src/main/java/com/bearchoke/platform/webservice/config/JaxWsBeanPostProcessor.java" />
@@ -535,10 +629,17 @@
         <option value="$PROJECT_DIR$/bearchoke-frontend/config/environments/cloudfoundry.json" />
         <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-platform-base/src/main/java/com/bearchoke/platform/base/config/RabbitMQCloudConfig.java" />
         <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-platform-base/src/main/resources/rabbit-cloud.properties" />
-        <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-server/src/main/java/com/bearchoke/platform/server/config/WebSocketConfig.java" />
         <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-platform-base/src/main/resources/rabbit-local.properties" />
         <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-server/manifest.yml" />
         <option value="$PROJECT_DIR$/bearchoke-frontend/app/templates/home.html" />
+        <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-server/src/main/resources/server-cloud.properties" />
+        <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-server/src/main/java/com/bearchoke/platform/server/config/AppConfig.java" />
+        <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-server/src/main/java/com/bearchoke/platform/server/config/AppLocalConfig.java" />
+        <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-server/src/main/java/com/bearchoke/platform/server/config/AppCloudConfig.java" />
+        <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-server/src/main/java/com/bearchoke/platform/server/config/WebSocketConfig.java" />
+        <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-platform-base/src/main/resources/log4j.xml" />
+        <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-server/src/main/resources/server-local.properties" />
+        <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-api/pom.xml" />
         <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-jpa-core/pom.xml" />
         <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-mongo-core/pom.xml" />
         <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-platform-base/pom.xml" />
@@ -549,7 +650,6 @@
         <option value="$PROJECT_DIR$/bearchoke-backend/pom.xml" />
         <option value="$PROJECT_DIR$/bearchoke-frontend/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/bearchoke-backend/bearchoke-api/pom.xml" />
       </list>
     </option>
   </component>
@@ -599,7 +699,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -617,9 +716,19 @@
               <option name="myItemId" value="bearchoke-server" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewLibrariesNode" />
+              <option name="myItemId" value="bearchoke-tempest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bearchoke-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com.bearchoke.platform.server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -631,42 +740,8 @@
               <option name="myItemId" value="bearchoke-server" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bearchoke-tempest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bearchoke-platform-base" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bearchoke-tempest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bearchoke-platform-base" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.bearchoke.platform.base" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bearchoke-tempest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bearchoke-platform-base" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com.bearchoke.platform.base" />
+              <option name="myItemId" value="com.bearchoke.platform.server" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -724,6 +799,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -746,15 +822,15 @@
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="LayoutCode.rearrangeEntriesJava" value="false" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/bearchoke-backend/bearchoke-webservices/src/main/java/com/bearchoke/platform/webservices" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/bearchoke-backend/bearchoke-server/src/main/resources" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bearchoke-backend/bearchoke-server/src/main/resources" />
       <recent name="$PROJECT_DIR$/bearchoke-backend/bearchoke-platform-base/src/main/resources" />
       <recent name="$PROJECT_DIR$/bearchoke-frontend/vendor/js/webservice" />
       <recent name="$PROJECT_DIR$/bearchoke-frontend/app/js/controllers" />
       <recent name="$PROJECT_DIR$/bearchoke-frontend/app/templates" />
-      <recent name="$PROJECT_DIR$/bearchoke-frontend/app/js/services" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bearchoke-frontend/app/js/factories" />
@@ -766,6 +842,7 @@
       <recent name="com.bearchoke.platform.webservices" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.bearchoke.platform.server.config" />
       <recent name="com.bearchoke.platform.webservice.config" />
       <recent name="com.bearchoke.platform.user" />
       <recent name="com.bearchoke.platform.server.web.controller" />
@@ -876,6 +953,17 @@
       <tasks />
       <arguments />
       <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <module name="" />
       <envs />
       <method />
     </configuration>
@@ -1110,9 +1198,81 @@
       <patterns />
       <method />
     </configuration>
+    <configuration default="false" name="ToDoCommandHandlerTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <extension name="chronon">
+        <include>
+          <pattern>
+            <option name="PATTERN" value="com.bearchoke.platform.todo.**" />
+            <option name="ENABLED" value="true" />
+          </pattern>
+        </include>
+      </extension>
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.bearchoke.platform.todo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="bearchoke-todo" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.bearchoke.platform.todo" />
+      <option name="MAIN_CLASS_NAME" value="com.bearchoke.platform.todo.ToDoCommandHandlerTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="UserCommandHandlerTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <extension name="chronon">
+        <include>
+          <pattern>
+            <option name="PATTERN" value="com.bearchoke.platform.user.**" />
+            <option name="ENABLED" value="true" />
+          </pattern>
+        </include>
+      </extension>
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.bearchoke.platform.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="bearchoke-user" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.bearchoke.platform.user" />
+      <option name="MAIN_CLASS_NAME" value="com.bearchoke.platform.user.UserCommandHandlerTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="false" name="Web" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.15" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="">
       <option name="OPEN_IN_BROWSER" value="false" />
-      <option name="COMMON_VM_ARGUMENTS" value="-Dspring.profiles.active=mongodb-local,redis-local,rabbit-local" />
+      <option name="COMMON_VM_ARGUMENTS" value="-Dspring.profiles.active=mongodb-local,redis-local,rabbit-local,local" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="bearchoke-server:war">
@@ -1204,87 +1364,15 @@
         </option>
       </method>
     </configuration>
-    <configuration default="false" name="ToDoCommandHandlerTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
-      <extension name="chronon">
-        <include>
-          <pattern>
-            <option name="PATTERN" value="com.bearchoke.platform.todo.**" />
-            <option name="ENABLED" value="true" />
-          </pattern>
-        </include>
-      </extension>
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.bearchoke.platform.todo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="bearchoke-todo" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.bearchoke.platform.todo" />
-      <option name="MAIN_CLASS_NAME" value="com.bearchoke.platform.todo.ToDoCommandHandlerTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="UserCommandHandlerTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
-      <extension name="chronon">
-        <include>
-          <pattern>
-            <option name="PATTERN" value="com.bearchoke.platform.user.**" />
-            <option name="ENABLED" value="true" />
-          </pattern>
-        </include>
-      </extension>
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.bearchoke.platform.user.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="bearchoke-user" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.bearchoke.platform.user" />
-      <option name="MAIN_CLASS_NAME" value="com.bearchoke.platform.user.UserCommandHandlerTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
     <list size="8">
       <item index="0" class="java.lang.String" itemvalue="JUnit.UserControllerTest" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.GreetingControllerTest" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.FacebookControllerTest" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.AuthenticationControllerTest" />
       <item index="4" class="java.lang.String" itemvalue="JUnit.IntegrationQuotesWebSocketTest" />
-      <item index="5" class="java.lang.String" itemvalue="Tomcat Server.Web" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.ToDoCommandHandlerTest" />
-      <item index="7" class="java.lang.String" itemvalue="JUnit.UserCommandHandlerTest" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.ToDoCommandHandlerTest" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.UserCommandHandlerTest" />
+      <item index="7" class="java.lang.String" itemvalue="Tomcat Server.Web" />
     </list>
     <configuration name="&lt;template&gt;" type="TestNG" default="true" selected="false">
       <option name="MAIN_CLASS_NAME" />
@@ -1335,46 +1423,48 @@
       <workItem from="1423577884631" duration="18000" />
       <workItem from="1423634724043" duration="893000" />
       <workItem from="1424494396448" duration="2023000" />
+      <workItem from="1424687736495" duration="1294000" />
+      <workItem from="1424689169626" duration="163000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75993000" />
+    <option name="totallyTimeSpent" value="77450000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Grunt" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.54545456" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32694763" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37644047" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Grunt" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964234" sideWeight="0.43167305" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.5006402" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3277849" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32694763" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.56832695" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.54545456" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32694763" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37644047" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1425,55 +1515,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-user/src/test/java/com/bearchoke/platform/user/UserCommandHandlerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7211155" vertical-offset="267" max-vertical-offset="1095">
-          <caret line="68" column="33" selection-start-line="68" selection-start-column="33" selection-end-line="68" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home/src.zip!/javax/xml/ws/WebServiceException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1992032" vertical-offset="0" max-vertical-offset="810">
-          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-server/src/main/java/com/bearchoke/platform/server/config/AppConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
-          <caret line="18" column="61" selection-start-line="18" selection-start-column="61" selection-end-line="18" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-webservices/src/main/java/com/bearchoke/platform/webservice/config/GlobalFeature.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6405229" vertical-offset="216" max-vertical-offset="735">
-          <caret line="34" column="77" selection-start-line="34" selection-start-column="77" selection-end-line="34" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-webservices/src/main/java/com/bearchoke/platform/webservice/WebServiceException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35947713" vertical-offset="0" max-vertical-offset="459">
-          <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-webservices/src/main/java/com/bearchoke/platform/webservice/impl/HelloWorldWebServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="525">
-          <caret line="14" column="42" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-frontend/app/js/controllers/registration_controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67729086" vertical-offset="0" max-vertical-offset="753">
-          <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="42" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bearchoke-frontend/app/js/factories/mailchimp_factory.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1500">
@@ -1632,7 +1673,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.42168674" vertical-offset="0" max-vertical-offset="645">
           <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1640,7 +1680,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
           <caret line="28" column="47" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1665,19 +1704,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-server/src/main/java/com/bearchoke/platform/server/config/WebSocketConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3180">
-          <caret line="75" column="36" selection-start-line="74" selection-start-column="4" selection-end-line="75" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-platform-base/src/main/resources/rabbit-cloud.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
           <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1685,7 +1715,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
           <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1693,71 +1722,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5745554" vertical-offset="165" max-vertical-offset="1440">
           <caret line="39" column="239" selection-start-line="39" selection-start-column="239" selection-end-line="39" selection-end-column="239" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-webservices/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35947713" vertical-offset="225" max-vertical-offset="840">
-          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-user/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35947713" vertical-offset="225" max-vertical-offset="1500">
-          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-todo/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3638344" vertical-offset="223" max-vertical-offset="720">
-          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-platform-base/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35947713" vertical-offset="225" max-vertical-offset="3975">
-          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-backend/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35947713" vertical-offset="225" max-vertical-offset="3165">
-          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-frontend/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19607843" vertical-offset="0" max-vertical-offset="2250">
-          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-jpa-core/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35947713" vertical-offset="225" max-vertical-offset="1845">
-          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-mongo-core/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35947713" vertical-offset="225" max-vertical-offset="1005">
-          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1777,26 +1741,160 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-server/src/main/resources/server-cloud.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="126" max-vertical-offset="4095">
-          <caret line="22" column="37" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="753">
+          <caret line="0" column="40" selection-start-line="0" selection-start-column="40" selection-end-line="0" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-platform-base/src/main/resources/log4j.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1026" max-vertical-offset="1695">
+          <caret line="86" column="27" selection-start-line="86" selection-start-column="27" selection-end-line="86" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-server/src/main/resources/server-local.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+          <caret line="0" column="44" selection-start-line="0" selection-start-column="44" selection-end-line="0" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-platform-base/src/main/java/com/bearchoke/platform/base/config/AxonCQRSCloudConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5562914" vertical-offset="0" max-vertical-offset="755">
+          <caret line="30" column="58" selection-start-line="29" selection-start-column="0" selection-end-line="30" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#1068#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-server/src/main/java/com/bearchoke/platform/server/config/AppLocalConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1986755" vertical-offset="0" max-vertical-offset="755">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-server/src/main/java/com/bearchoke/platform/server/config/AppCloudConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23841059" vertical-offset="0" max-vertical-offset="755">
+          <caret line="12" column="14" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-server/src/main/java/com/bearchoke/platform/server/config/AppConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5562914" vertical-offset="0" max-vertical-offset="755">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-server/src/main/java/com/bearchoke/platform/server/config/WebSocketConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37748346" vertical-offset="150" max-vertical-offset="3195">
+          <caret line="86" column="106" selection-start-line="86" selection-start-column="106" selection-end-line="86" selection-end-column="106" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-api/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="1005">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="1005">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-jpa-core/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="1845">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-mongo-core/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="1005">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-platform-base/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="3975">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-server/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.96015936" vertical-offset="537" max-vertical-offset="4980">
-          <caret line="84" column="4" selection-start-line="84" selection-start-column="4" selection-end-line="84" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="4980">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-todo/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="720">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-user/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="1500">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-backend/bearchoke-webservices/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="840">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-backend/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="3165">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bearchoke-frontend/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2250">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26029217" vertical-offset="164" max-vertical-offset="4095">
+          <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -1855,7 +1953,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Spring|bearchoke-user</last-edited>
+          <last-edited>Spring|bearchoke-webservices</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

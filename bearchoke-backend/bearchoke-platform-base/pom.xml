@@ -19,12 +19,12 @@
 	<parent>
 		<groupId>com.bearchoke</groupId>
         <artifactId>bearchoke-backend</artifactId>
-        <version>1.0.2-SNAPSHOT</version>
+        <version>1.0.2</version>
 	</parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>bearchoke-platform-base</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2</version>
     <name>Bearchoke Platform Base (JAR)</name>
 
     <dependencies>

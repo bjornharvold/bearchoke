@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/main/java/com/bearchoke/platform/webservice/config/CXFConfig.java</file>
+        </fileset>
+      </configuration>
+    </facet>
+  </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
@@ -49,12 +58,12 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: log4j:log4j:1.2.17" level="project" />
     <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.14.4" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-context:4.1.4.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.1.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context:4.1.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.1.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.1.4.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-core:4.1.4.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-expression:4.1.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.1.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-core:4.1.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-expression:4.1.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-spring-service-connector:1.0.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-core:1.0.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-cloudfoundry-connector:1.0.0.RELEASE" level="project" />

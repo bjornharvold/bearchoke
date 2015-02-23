@@ -84,7 +84,8 @@ public class WebSocketConfig<S extends ExpiringSession> extends AbstractSessionW
 
     @Override
     public void configureStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/ws").setHandshakeHandler(new SecureHandshakeHandler(preAuthAuthenticationManager))
+        log.info("WebSocket config: Allowing only origins: " + environment.getProperty("allowed.origin"));
+        registry.addEndpoint("/ws").setAllowedOrigins(environment.getProperty("allowed.origin")).setHandshakeHandler(new SecureHandshakeHandler(preAuthAuthenticationManager))
                 .withSockJS()
                 .setStreamBytesLimit(512 * 1024)
                 .setHttpMessageCacheSize(1000)

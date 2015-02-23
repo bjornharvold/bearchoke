@@ -84,7 +84,7 @@
     </logger>
 
     <logger name="org.springframework.web.socket" additivity="false">
-        <level value="info"/>
+        <level value="debug"/>
         <appender-ref ref="CUSTOMSTDOUT"/>
         <appender-ref ref="CUSTOMSTDERR"/>
     </logger>

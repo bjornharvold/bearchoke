@@ -20,7 +20,7 @@
     <groupId>com.bearchoke</groupId>
     <artifactId>bearchoke-tempest</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2</version>
     <name>Bearchoke Tempest (POM)</name>
     <inceptionYear>2013</inceptionYear>
     <organization>
@@ -258,7 +258,7 @@
 		<spring.security.version>4.0.0.RC1</spring.security.version>
 		<spring.session.version>1.0.0.RELEASE</spring.session.version>
 		<spring.social.version>1.1.0.RELEASE</spring.social.version>
-		<spring.version>4.1.4.RELEASE</spring.version>
+		<spring.version>4.1.5.RELEASE</spring.version>
 		<springockito.annotations-version>1.0.9</springockito.annotations-version>
 		<tomcat.maven.plugin.version>2.2</tomcat.maven.plugin.version>
 		<tomcat.embed.version>8.0.15</tomcat.embed.version>
