@@ -140,12 +140,12 @@ Valid local profiles are: jpa, mongodb-local, redis-local, rabbit-local, jpa-loc
 
 Local:
 
-	$ -Dspring.profiles.active=mongodb-local,redis-local,rabbit-local		
+	$ -Dspring.profiles.active=mongodb-local,redis-local,rabbit-local,local		
 To deploy the server on Cloud Foundry, the active profiles would be. Of course you would have to have mongodb, redis and rabbitmq services bound to your application.
 
 Cloud Foundry:
 
-	$ -Dspring.profiles.active=mongodb-cloud,redis-cloud,rabbit-cloud		
+	$ -Dspring.profiles.active=mongodb-cloud,redis-cloud,rabbit-cloud,cloud		
 Finally, the app has been configured to use a custom domain. Please edit your /etc/hosts file and add dev.bearchoke.com. You can verify that the bearchoke-server web application is running by going to http://dev.bearchoke.com:8080 in your browser.
 
 Next, you have to start the bearchoke-frontend application. Type the following in a new Terminal / Command Prompt window:
