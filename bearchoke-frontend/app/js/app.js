@@ -29,7 +29,7 @@ angular.module("app", [
     "ezfb",
     "oitozero.ngSweetAlert"
 ])
-        .run(function ($rootScope, $state, $stateParams, $modal, $log, $timeout, ApplicationContext, AnalyticsEventService) {
+        .run(function ($rootScope, $state, $stateParams, $modal, $log, $timeout, ApplicationContext, AnalyticsEventService, AuthRestangular) {
 
             $rootScope.alert = function (thing) {
                 alert(thing);
@@ -44,5 +44,11 @@ angular.module("app", [
                 return result;
             };
 
+            // retrieve csrf token if not already exists
+            if (ApplicationContext.getCsrfToken() === undefined) {
+                AuthRestangular.one("csrf").get().then(function(response) {
+                    ApplicationContext.setCsrfToken(response);
+                });
+            }
         }
 );

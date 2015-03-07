@@ -24,6 +24,7 @@ angular.module("app").factory('ApplicationContext', function ($rootScope, $log, 
     var headers = angular.copy(initialHeaders);
     var xAuthToken = null;
     var preLoginState = null;
+    var csrfToken;
 
     var self = {
 
@@ -121,6 +122,14 @@ angular.module("app").factory('ApplicationContext', function ($rootScope, $log, 
 
         getHttpFields: function() {
             return httpFields;
+        },
+
+        getCsrfToken: function() {
+            return csrfToken;
+        },
+
+        setCsrfToken: function(newToken) {
+            csrfToken = newToken;
         },
 
         hasRole: function(role) {

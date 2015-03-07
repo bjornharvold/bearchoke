@@ -83,31 +83,31 @@
         <dependency>
             <groupId>com.bearchoke</groupId>
             <artifactId>bearchoke-todo</artifactId>
-            <version>${bearchoke.version}</version>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.bearchoke</groupId>
             <artifactId>bearchoke-user</artifactId>
-            <version>${bearchoke.version}</version>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.bearchoke</groupId>
             <artifactId>bearchoke-mongo-core</artifactId>
-            <version>${bearchoke.version}</version>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.bearchoke</groupId>
             <artifactId>bearchoke-jpa-core</artifactId>
-            <version>${bearchoke.version}</version>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.bearchoke</groupId>
             <artifactId>bearchoke-webservices</artifactId>
-            <version>${bearchoke.version}</version>
+            <version>${project.version}</version>
         </dependency>
 
         <!-- Spring -->

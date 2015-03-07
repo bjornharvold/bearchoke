@@ -103,7 +103,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         log.info("Configuring springSecurityFilterChain...");
 
         // header details
-        configureHeaders(http.headers());
+        http
+                .headers()
+                    .frameOptions()
+                        .sameOrigin()
+                        .cacheControl()
+                        .and().xssProtection()
+                        .and().contentTypeOptions()
+                        .and().httpStrictTransportSecurity();
 
         http
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -122,10 +129,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .addFilterBefore(sessionRepositoryFilter, ChannelProcessingFilter.class)
                 .addFilterAfter(authFilter(), ApiRequestHeaderAuthenticationFilter.class)
-                .addFilter(preAuthFilter())
-                .csrf().disable();
+                .addFilter(preAuthFilter());
         http
-                .csrf().disable();
+                .csrf();
 
         http
                 .exceptionHandling().authenticationEntryPoint(new UnauthorizedEntryPoint(objectMapper));
@@ -140,15 +146,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     /**
      * HTTP Strict Transport Security
      * http://tools.ietf.org/html/rfc6797
+     *
      * @param headers
      * @throws Exception
      */
     private static void configureHeaders(HeadersConfigurer<?> headers) throws Exception {
-        HstsHeaderWriter writer = new HstsHeaderWriter(false);
-        writer.setRequestMatcher(AnyRequestMatcher.INSTANCE);
-        headers.contentTypeOptions().xssProtection().cacheControl().addHeaderWriter(writer).frameOptions();
 
-        headers.addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN));
     }
 
 

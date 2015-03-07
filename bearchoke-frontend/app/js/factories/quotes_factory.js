@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-angular.module("app").factory("QuoteFactory", function ($q, $log, $timeout, configuration) {
+angular.module("app").factory("QuoteFactory", function ($q, $log, $timeout, configuration, ApplicationContext, SweetAlert) {
     // default service values
     var service = {};
     service.SOCKET_URL = configuration.websocketBaseUrl;
@@ -54,9 +54,24 @@ angular.module("app").factory("QuoteFactory", function ($q, $log, $timeout, conf
     var initialize = function() {
         socket.client = new SockJS(service.SOCKET_URL);
         socket.stomp = Stomp.over(socket.client);
-        socket.stomp.connect({}, startListener);
+
+        socket.stomp.connect(addHeaders(), startListener);
         socket.stomp.onclose = reconnect;
     };
+
+    function addHeaders() {
+        var headers = {};
+        if (ApplicationContext.getCsrfToken() === undefined) {
+            SweetAlert.error("Missing CSRF token", "Make sure a csrf token is available.");
+        } else {
+            var headerName = ApplicationContext.getCsrfToken().headerName;
+            var token = ApplicationContext.getCsrfToken().token;
+            $log.info("CSRF header name: " + headerName + ", token: " + token);
+            headers[headerName] = token;
+        }
+
+        return headers;
+    }
 
     initialize();
 

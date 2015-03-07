@@ -7,14 +7,20 @@
           <element id="module-output" name="bearchoke-server" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: com.bearchoke:bearchoke-todo:0.0.1-SNAPSHOT" />
-          <element id="library" level="project" name="Maven: com.bearchoke:bearchoke-api:0.0.1-SNAPSHOT" />
+          <element id="archive" name="bearchoke-todo-1.0.3-SNAPSHOT.jar">
+            <element id="module-output" name="bearchoke-todo" />
+          </element>
+          <element id="archive" name="bearchoke-api-1.0.3-SNAPSHOT.jar">
+            <element id="module-output" name="bearchoke-api" />
+          </element>
           <element id="library" level="project" name="Maven: org.axonframework:axon-core:2.4" />
           <element id="library" level="project" name="Maven: cglib:cglib-nodep:2.2.2" />
           <element id="library" level="project" name="Maven: com.thoughtworks.xstream:xstream:1.4.6" />
           <element id="library" level="project" name="Maven: xmlpull:xmlpull:1.1.3.1" />
           <element id="library" level="project" name="Maven: xpp3:xpp3_min:1.1.4c" />
-          <element id="library" level="project" name="Maven: com.bearchoke:bearchoke-platform-base:0.0.1-SNAPSHOT" />
+          <element id="archive" name="bearchoke-platform-base-1.0.3-SNAPSHOT.jar">
+            <element id="module-output" name="bearchoke-platform-base" />
+          </element>
           <element id="library" level="project" name="Maven: org.jasypt:jasypt:1.9.2" />
           <element id="library" level="project" name="Maven: org.jasypt:jasypt-springsecurity3:1.9.2" />
           <element id="library" level="project" name="Maven: org.jasypt:jasypt-spring31:1.9.2" />
@@ -53,16 +59,22 @@
           <element id="library" level="project" name="Maven: stax:stax:1.2.0" />
           <element id="library" level="project" name="Maven: stax:stax-api:1.0.1" />
           <element id="library" level="project" name="Maven: com.cenqua.clover:clover:1.3.12" />
-          <element id="library" level="project" name="Maven: com.bearchoke:bearchoke-user:0.0.1-SNAPSHOT" />
+          <element id="archive" name="bearchoke-user-1.0.3-SNAPSHOT.jar">
+            <element id="module-output" name="bearchoke-user" />
+          </element>
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-mongodb:1.7.0.M1" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.1.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons:1.10.0.M1" />
           <element id="library" level="project" name="Maven: org.mongodb:mongo-java-driver:2.12.3" />
           <element id="library" level="project" name="Maven: joda-time:joda-time-hibernate:1.3" />
           <element id="library" level="project" name="Maven: com.fasterxml.uuid:java-uuid-generator:3.1.3" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:4.0.0.RC1" />
-          <element id="library" level="project" name="Maven: com.bearchoke:bearchoke-mongo-core:0.0.1-SNAPSHOT" />
-          <element id="library" level="project" name="Maven: com.bearchoke:bearchoke-jpa-core:0.0.1-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:4.0.0.RC2" />
+          <element id="archive" name="bearchoke-mongo-core-1.0.3-SNAPSHOT.jar">
+            <element id="module-output" name="bearchoke-mongo-core" />
+          </element>
+          <element id="archive" name="bearchoke-jpa-core-1.0.3-SNAPSHOT.jar">
+            <element id="module-output" name="bearchoke-jpa-core" />
+          </element>
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-jpa:1.7.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-orm:4.1.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.1.5.RELEASE" />
@@ -75,7 +87,9 @@
           <element id="library" level="project" name="Maven: com.atomikos:transactions-hibernate3:3.9.2" />
           <element id="library" level="project" name="Maven: org.apache.derby:derby:10.10.1.1" />
           <element id="library" level="project" name="Maven: org.postgresql:postgresql:9.3-1102-jdbc41" />
-          <element id="library" level="project" name="Maven: com.bearchoke:bearchoke-webservices:0.0.1-SNAPSHOT" />
+          <element id="archive" name="bearchoke-webservices-1.0.3-SNAPSHOT.jar">
+            <element id="module-output" name="bearchoke-webservices" />
+          </element>
           <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-frontend-jaxws:3.0.3" />
           <element id="library" level="project" name="Maven: xml-resolver:xml-resolver:1.2" />
           <element id="library" level="project" name="Maven: asm:asm:3.3.1" />
@@ -115,11 +129,11 @@
           <element id="library" level="project" name="Maven: com.goldmansachs:gs-collections-api:5.1.0" />
           <element id="library" level="project" name="Maven: com.lmax:disruptor:3.2.1" />
           <element id="library" level="project" name="Maven: io.gatling:jsr166e:1.0" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:4.0.0.RC1" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:4.0.0.RC2" />
           <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:4.0.0.RC1" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-messaging:4.0.0.RC1" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-test:4.0.0.RC1" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:4.0.0.RC2" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-messaging:4.0.0.RC2" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-test:4.0.0.RC2" />
           <element id="library" level="project" name="Maven: javax.annotation:jsr250-api:1.0" />
           <element id="library" level="project" name="Maven: org.springframework.mobile:spring-mobile-device:1.1.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.hateoas:spring-hateoas:0.15.0.RELEASE" />
