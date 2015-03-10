@@ -4,6 +4,6 @@ applications:
   memory: 2G
   instances: 1
   host: bearchoke-server
-  path: target/bearchoke-server-1.0.2.war
+  path: target/bearchoke-server-1.0.3-SNAPSHOT.war
   env:
     SPRING_PROFILES_ACTIVE: mongodb-cloud,redis-cloud,rabbit-cloud,cloud

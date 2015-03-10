@@ -212,8 +212,8 @@ There are a few things the Bearchoke Tempest gives you out of the box.
 
 ## Limitations
 
-* Cloud Foundry does not yet support HTML5 push. You cannot go straight to a url unless it's the root url. E.g. https://www.bearchoke.com is ok. https://www.bearchoke.com/ui/chat is not ok.
-* Web socket on Cloud Foundry is not working at the moment. Having CORS issues.
+* Cloud Foundry does not yet support HTML5 push. You cannot go straight to a url unless it's the root url. E.g. https://www.bearchoke.com is ok. https://www.bearchoke.com/ui/chat is not ok. We developed a custom buildpack for this reason which you can find here: [cloudgate313](https://github.com/cloudgate313/staticfile-buildpack)
+* If you're working on a Mac, you might run into an EMFILE warning when running LinemanJS. You need to increase the ulimit size. Please see the FAQ here for more information: [grunt-contrib-watch](http://cnpmjs.org/package/grunt-contrib-watch)
 
 
 ## Next release features
