@@ -38,8 +38,10 @@
                         <phase>prepare-package</phase>
                         <goals>
                             <goal>build</goal>
+                            <goal>spec-ci</goal>
                         </goals>
                     </execution>
+
                 </executions>
             </plugin>
 
