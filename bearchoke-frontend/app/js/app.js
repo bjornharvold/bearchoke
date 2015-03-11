@@ -47,8 +47,7 @@ angular.module("app", [
             // retrieve csrf token if not already exists
             if (ApplicationContext.getCsrfToken() === undefined) {
                 AuthRestangular.one("csrf").get().then(function(response) {
-                    //ApplicationContext.setCsrfToken(response);
-                    $log.info("We don't have to do anything here. AuthRestangular will take care of it.");
+                    //$log.info("We don't have to do anything here. AuthRestangular will take care of it.");
                 });
             }
         }
