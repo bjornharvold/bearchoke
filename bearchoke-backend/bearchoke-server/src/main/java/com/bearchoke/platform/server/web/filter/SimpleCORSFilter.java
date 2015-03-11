@@ -56,8 +56,8 @@ public class SimpleCORSFilter extends OncePerRequestFilter {
                                     FilterChain filterChain)
             throws ServletException, IOException {
 
-        if (log.isDebugEnabled()) {
-            log.debug("CORS filter in effect. Adding required header values.");
+        if (log.isTraceEnabled()) {
+            log.trace("CORS filter in effect. Adding required header values.");
         }
 
         // Get the origin of the request... all origins will be allowed
@@ -112,8 +112,8 @@ public class SimpleCORSFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
         }
 
-        if (log.isDebugEnabled()) {
-            log.debug("CORS filter successful!");
+        if (log.isTraceEnabled()) {
+            log.trace("CORS filter successful!");
         }
     }
 

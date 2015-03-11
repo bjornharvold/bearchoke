@@ -156,22 +156,31 @@ public class BearchokeWebApplicationInitializer implements WebApplicationInitial
         SimpleCORSFilter corsFilter = new SimpleCORSFilter();
         corsFilter.setCorsAllowCredentials("true");
         corsFilter.setCorsAllowMethods("GET, POST, PUT, PATCH, DELETE, OPTIONS");
-        corsFilter.setCorsAllowHeaders("content-type, x-requested-with, origin, accept, authorization, username, password, x-app-type, x-app-version, x-auth-token, soapaction");
-        corsFilter.setCorsExposeHeaders("content-type, cookie, x-requested-with, origin, accept, username, password, x-app-type, x-app-version, x-auth-token, soapaction");
+        corsFilter.setCorsAllowHeaders("content-type, x-requested-with, origin, accept, authorization, username, password, x-app-type, x-app-version, x-auth-token, x-csrf-token, soapaction");
+        corsFilter.setCorsExposeHeaders("content-type, cookie, x-requested-with, origin, accept, username, password, x-app-type, x-app-version, x-auth-token, x-csrf-token, soapaction");
         corsFilter.setCorsMaxAge("3600");
+
+        ctx.addFilter("springSessionRepositoryFilter", DelegatingFilterProxy.class).addMappingForUrlPatterns(
+                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
 
         ctx.addFilter("SimpleCorsFilter", corsFilter).addMappingForUrlPatterns(
                 EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
+
         ctx.addFilter("JsonHttpRequestFilter", new JsonHttpRequestFilter()).addMappingForUrlPatterns(
                 EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, "/api/authenticate");
+
         ctx.addFilter("springSecurityFilterChain", DelegatingFilterProxy.class).addMappingForUrlPatterns(
                 EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
+
         ctx.addFilter("CharacterEncodingFilter", characterEncodingFilter).addMappingForUrlPatterns(
                 EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
+
         ctx.addFilter("HiddenHttpMethodFilter", new HiddenHttpMethodFilter()).addMappingForUrlPatterns(
                 EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
+
         ctx.addFilter("HttpPutFormContentFilter", new HttpPutFormContentFilter()).addMappingForUrlPatterns(
                 EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
+
         ctx.addFilter("ShallowEtagHeaderFilter", new ShallowEtagHeaderFilter()).addMappingForUrlPatterns(
                 EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, FILTER_MAPPING);
 

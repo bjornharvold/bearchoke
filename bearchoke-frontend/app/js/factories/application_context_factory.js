@@ -130,6 +130,12 @@ angular.module("app").factory('ApplicationContext', function ($rootScope, $log, 
 
         setCsrfToken: function(newToken) {
             csrfToken = newToken;
+
+            var csrfHeader = {
+                'x-csrf-token': csrfToken.token
+            };
+
+            self.updateHeaders(csrfHeader);
         },
 
         hasRole: function(role) {

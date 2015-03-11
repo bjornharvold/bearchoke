@@ -24,15 +24,11 @@
           <element id="library" level="project" name="Maven: org.jasypt:jasypt:1.9.2" />
           <element id="library" level="project" name="Maven: org.jasypt:jasypt-springsecurity3:1.9.2" />
           <element id="library" level="project" name="Maven: org.jasypt:jasypt-spring31:1.9.2" />
-          <element id="library" level="project" name="Maven: org.springframework.session:spring-session:1.0.0.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-redis:1.4.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.1.5.RELEASE" />
-          <element id="library" level="project" name="Maven: redis.clients:jedis:2.5.2" />
+          <element id="library" level="project" name="Maven: org.springframework.session:spring-session:1.0.1.BUILD-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: redis.clients:jedis:2.4.1" />
           <element id="library" level="project" name="Maven: org.apache.commons:commons-pool2:2.2" />
-          <element id="library" level="project" name="Maven: redis.embedded:embedded-redis:0.2" />
-          <element id="library" level="project" name="Maven: com.google.guava:guava-io:r03" />
-          <element id="library" level="project" name="Maven: com.google.guava:guava-annotations:r03" />
-          <element id="library" level="project" name="Maven: com.google.guava:guava-base:r03" />
           <element id="library" level="project" name="Maven: org.axonframework:axon-springmessaging:2.4" />
           <element id="library" level="project" name="Maven: org.axonframework:axon-amqp:2.4" />
           <element id="library" level="project" name="Maven: com.rabbitmq:amqp-client:3.2.3" />

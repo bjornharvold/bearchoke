@@ -24,7 +24,7 @@ angular.module("app").factory('AuthRestangular', function($state, $rootScope, Re
         //$log.debug("Base URL is: " + configuration.baseUrl);
         RestangularConfigurer.setBaseUrl(configuration.baseUrl);
 
-        // we want to tell restangular what version of the backend rest api we want to use
+        // we want to tell restangular what version of the backend rest api we want to use plus include security tokens
         RestangularConfigurer.setDefaultHeaders(ApplicationContext.getHeaders());
 
         RestangularConfigurer.setDefaultHttpFields(ApplicationContext.getHttpFields());
@@ -41,6 +41,14 @@ angular.module("app").factory('AuthRestangular', function($state, $rootScope, Re
                 // add token to result
                 data.authToken = response.headers('X-Auth-Token');
                 ApplicationContext.setAuthToken(data.authToken);
+
+                // set updated headers on Restangular
+                RestangularConfigurer.setDefaultHeaders(ApplicationContext.getHeaders());
+            }
+            if (data.name = 'X-CSRF-TOKEN') {
+                //$log.info("CSRF token intercepted");
+                // add srf token to ApplicationContext
+                ApplicationContext.setCsrfToken(data);
 
                 // set updated headers on Restangular
                 RestangularConfigurer.setDefaultHeaders(ApplicationContext.getHeaders());

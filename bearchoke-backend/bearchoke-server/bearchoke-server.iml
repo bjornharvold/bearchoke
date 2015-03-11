@@ -47,15 +47,11 @@
     <orderEntry type="library" name="Maven: org.jasypt:jasypt:1.9.2" level="project" />
     <orderEntry type="library" name="Maven: org.jasypt:jasypt-springsecurity3:1.9.2" level="project" />
     <orderEntry type="library" name="Maven: org.jasypt:jasypt-spring31:1.9.2" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.session:spring-session:1.0.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-redis:1.4.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context-support:4.1.5.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: redis.clients:jedis:2.5.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.session:spring-session:1.0.1.BUILD-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: redis.clients:jedis:2.4.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-pool2:2.2" level="project" />
-    <orderEntry type="library" name="Maven: redis.embedded:embedded-redis:0.2" level="project" />
-    <orderEntry type="library" name="Maven: com.google.guava:guava-io:r03" level="project" />
-    <orderEntry type="library" name="Maven: com.google.guava:guava-annotations:r03" level="project" />
-    <orderEntry type="library" name="Maven: com.google.guava:guava-base:r03" level="project" />
     <orderEntry type="library" name="Maven: org.axonframework:axon-springmessaging:2.4" level="project" />
     <orderEntry type="library" name="Maven: org.axonframework:axon-amqp:2.4" level="project" />
     <orderEntry type="library" name="Maven: com.rabbitmq:amqp-client:3.2.3" level="project" />

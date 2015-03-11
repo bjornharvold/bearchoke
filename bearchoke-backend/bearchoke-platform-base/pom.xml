@@ -49,28 +49,14 @@
         <!-- Spring Session -->
         <dependency>
             <groupId>org.springframework.session</groupId>
-            <artifactId>spring-session</artifactId>
+            <artifactId>spring-session-data-redis</artifactId>
             <version>${spring.session.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-redis</artifactId>
-            <version>${spring.data.redis.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>${jedis.version}</version>
+            <type>pom</type>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-pool2</artifactId>
             <version>${commons.pool2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>redis.embedded</groupId>
-            <artifactId>embedded-redis</artifactId>
-            <version>${embedded.redis.version}</version>
         </dependency>
 
         <!-- Axon CQRS Framework -->

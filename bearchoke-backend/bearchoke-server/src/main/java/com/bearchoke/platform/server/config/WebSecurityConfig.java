@@ -33,18 +33,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.header.writers.HstsHeaderWriter;
-import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 import org.springframework.security.web.util.matcher.AndRequestMatcher;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.security.web.util.matcher.AnyRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
-import org.springframework.session.web.http.SessionRepositoryFilter;
 
 import javax.inject.Inject;
 import javax.servlet.Filter;
@@ -88,10 +81,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Inject
     private CustomObjectMapper objectMapper;
 
-    @Inject
-    @Qualifier("springSessionRepositoryFilter")
-    private SessionRepositoryFilter sessionRepositoryFilter;
-
     /**
      * Commons url security strategy
      *
@@ -127,7 +116,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // filter details
         http
-                .addFilterBefore(sessionRepositoryFilter, ChannelProcessingFilter.class)
                 .addFilterAfter(authFilter(), ApiRequestHeaderAuthenticationFilter.class)
                 .addFilter(preAuthFilter());
         http
@@ -142,18 +130,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring()
                 .antMatchers(HttpMethod.GET, "/resources/*");
     }
-
-    /**
-     * HTTP Strict Transport Security
-     * http://tools.ietf.org/html/rfc6797
-     *
-     * @param headers
-     * @throws Exception
-     */
-    private static void configureHeaders(HeadersConfigurer<?> headers) throws Exception {
-
-    }
-
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

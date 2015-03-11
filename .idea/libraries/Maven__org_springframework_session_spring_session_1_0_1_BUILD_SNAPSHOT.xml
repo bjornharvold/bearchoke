@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.springframework.session:spring-session:1.0.1.BUILD-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/session/spring-session/1.0.1.BUILD-SNAPSHOT/spring-session-1.0.1.BUILD-20150311.000031-75.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/session/spring-session/1.0.1.BUILD-SNAPSHOT/spring-session-1.0.1.BUILD-20150311.000031-75-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/session/spring-session/1.0.1.BUILD-SNAPSHOT/spring-session-1.0.1.BUILD-20150311.000031-75-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
