@@ -119,7 +119,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilterAfter(authFilter(), ApiRequestHeaderAuthenticationFilter.class)
                 .addFilter(preAuthFilter());
         http
-                .csrf();
+                .csrf().disable();
 
         http
                 .exceptionHandling().authenticationEntryPoint(new UnauthorizedEntryPoint(objectMapper));

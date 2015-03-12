@@ -62,6 +62,11 @@ angular.module("app").factory('ApplicationContext', function ($rootScope, $log, 
             //$log.debug("Reset to initial headers");
             //$log.debug(initialHeaders);
             headers = angular.copy(initialHeaders);
+
+            // re-add csrf header
+            if (csrfToken !== undefined) {
+                self.setCsrfToken(csrfToken);
+            }
         },
 
         setAuthToken: function(authToken) {
@@ -130,6 +135,7 @@ angular.module("app").factory('ApplicationContext', function ($rootScope, $log, 
 
         setCsrfToken: function(newToken) {
             csrfToken = newToken;
+            $log.info('Setting CSRF Token for user: ' + csrfToken.token);
 
             var csrfHeader = {
                 'x-csrf-token': csrfToken.token

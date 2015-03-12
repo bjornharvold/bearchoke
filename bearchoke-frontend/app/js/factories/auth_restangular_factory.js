@@ -45,7 +45,7 @@ angular.module("app").factory('AuthRestangular', function($state, $rootScope, Re
                 // set updated headers on Restangular
                 RestangularConfigurer.setDefaultHeaders(ApplicationContext.getHeaders());
             }
-            if (data.name = 'X-CSRF-TOKEN') {
+            if (data.headerName === 'X-CSRF-TOKEN' && data.parameterName === '_csrf') {
                 //$log.info("CSRF token intercepted");
                 // add srf token to ApplicationContext
                 ApplicationContext.setCsrfToken(data);

@@ -41,4 +41,9 @@ public class WebSocketSecurityConfig extends AbstractSecurityWebSocketMessageBro
 //                .antMatchers(SimpMessageType.MESSAGE, "/app/user/*").hasRole("USER")
 //                .anyMessage().permitAll();
     }
+
+    @Override
+    protected boolean sameOriginDisabled() {
+        return true;
+    }
 }

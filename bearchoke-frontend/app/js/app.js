@@ -44,11 +44,13 @@ angular.module("app", [
                 return result;
             };
 
-            // retrieve csrf token if not already exists
+            // enable if you have CSRF enabled
+            /*
             if (ApplicationContext.getCsrfToken() === undefined) {
                 AuthRestangular.one("csrf").get().then(function(response) {
                     //$log.info("We don't have to do anything here. AuthRestangular will take care of it.");
                 });
             }
+            */
         }
 );

@@ -55,10 +55,11 @@ angular.module("app").factory("QuoteFactory", function ($q, $log, $timeout, conf
         socket.client = new SockJS(service.SOCKET_URL);
         socket.stomp = Stomp.over(socket.client);
 
-        socket.stomp.connect(addHeaders(), startListener);
+        socket.stomp.connect({}, startListener);
         socket.stomp.onclose = reconnect;
     };
 
+    // If you want CSRF enabled for web sockets
     function addHeaders() {
         var headers = {};
         if (ApplicationContext.getCsrfToken() === undefined) {
