@@ -35,10 +35,12 @@
     <bytecodeTargetLevel>
       <module name="bearchoke-api" target="1.8" />
       <module name="bearchoke-backend" target="1.8" />
+      <module name="bearchoke-frontend" target="1.5" />
       <module name="bearchoke-jpa-core" target="1.8" />
       <module name="bearchoke-mongo-core" target="1.8" />
       <module name="bearchoke-platform-base" target="1.8" />
       <module name="bearchoke-server" target="1.8" />
+      <module name="bearchoke-tempest" target="1.5" />
       <module name="bearchoke-todo" target="1.8" />
       <module name="bearchoke-user" target="1.8" />
       <module name="bearchoke-webservices" target="1.8" />
