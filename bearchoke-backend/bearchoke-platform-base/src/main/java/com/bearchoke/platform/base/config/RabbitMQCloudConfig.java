@@ -30,7 +30,7 @@ import org.springframework.context.annotation.PropertySource;
 @Slf4j
 public class RabbitMQCloudConfig extends AbstractCloudConfig {
 
-    @Bean
+//    @Bean
     public ConnectionFactory rabbitConnectionFactory() {
         if (log.isInfoEnabled()) {
             log.info("Attempting to retrieve RabbitMQ instance from Cloud Foundry...");

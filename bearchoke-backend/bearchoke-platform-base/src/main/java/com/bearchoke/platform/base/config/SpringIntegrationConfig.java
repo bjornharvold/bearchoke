@@ -63,49 +63,49 @@ public class SpringIntegrationConfig {
     @Inject
     private Environment environment;
 
-    @Inject
-    private ConnectionFactory connectionFactory;
+//    @Inject
+//    private ConnectionFactory connectionFactory;
 
-    @Bean
-    public RabbitTemplate rabbitTemplate() {
-        RabbitTemplate template = new RabbitTemplate(connectionFactory);
-        template.setQueue(environment.getProperty("rabbitmq.queue"));
-        return template;
-    }
+//    @Bean
+//    public RabbitTemplate rabbitTemplate() {
+//        RabbitTemplate template = new RabbitTemplate(connectionFactory);
+//        template.setQueue(environment.getProperty("rabbitmq.queue"));
+//        return template;
+//    }
 
     /**
      * Manager
      * @return
      */
-    @Bean(initMethod = "initialize")
-    public RabbitAdmin rabbitAdmin() {
-        RabbitAdmin rabbitAdmin = new RabbitAdmin(connectionFactory);
-        rabbitAdmin.declareExchange(topicExchange());
-        rabbitAdmin.declareQueue(queue());
-        rabbitAdmin.declareBinding(
-                BindingBuilder.bind(queue()).to(topicExchange()).with(environment.getProperty("exchange.routing.key"))
-        );
-
-        return rabbitAdmin;
-    }
+//    @Bean(initMethod = "initialize")
+//    public RabbitAdmin rabbitAdmin() {
+//        RabbitAdmin rabbitAdmin = new RabbitAdmin(connectionFactory);
+//        rabbitAdmin.declareExchange(topicExchange());
+//        rabbitAdmin.declareQueue(queue());
+//        rabbitAdmin.declareBinding(
+//                BindingBuilder.bind(queue()).to(topicExchange()).with(environment.getProperty("exchange.routing.key"))
+//        );
+//
+//        return rabbitAdmin;
+//    }
 
     /**
      * Queue to use to push messages onto
      * @return
      */
-    @Bean
-    public Queue queue() {
-        Queue queue = new Queue(environment.getProperty("rabbitmq.queue"));
+//    @Bean
+//    public Queue queue() {
+//        Queue queue = new Queue(environment.getProperty("rabbitmq.queue"));
+//
+//        return queue;
+//    }
 
-        return queue;
-    }
-
-    @Bean
-    public TopicExchange topicExchange() {
-        TopicExchange exchange = new TopicExchange(environment.getProperty("rabbitmq.exchange"), true, true);
-
-        return exchange;
-    }
+//    @Bean
+//    public TopicExchange topicExchange() {
+//        TopicExchange exchange = new TopicExchange(environment.getProperty("rabbitmq.exchange"), true, true);
+//
+//        return exchange;
+//    }
 
     /**
      * SubscribableChannel for Axon CQRS to use
@@ -134,15 +134,15 @@ public class SpringIntegrationConfig {
         return consumer;
     }
 
-    @Bean(destroyMethod = "destroy")
-    public SimpleMessageListenerContainer simpleMessageListenerContainer() {
-        SimpleMessageListenerContainer container = new SimpleMessageListenerContainer(connectionFactory);
-        container.setQueues(queue());
-        container.setMessageListener(loggingMessageListenerAdapter());
-        container.setAcknowledgeMode(AcknowledgeMode.AUTO);
-
-        return container;
-    }
+//    @Bean(destroyMethod = "destroy")
+//    public SimpleMessageListenerContainer simpleMessageListenerContainer() {
+//        SimpleMessageListenerContainer container = new SimpleMessageListenerContainer(connectionFactory);
+//        container.setQueues(queue());
+//        container.setMessageListener(loggingMessageListenerAdapter());
+//        container.setAcknowledgeMode(AcknowledgeMode.AUTO);
+//
+//        return container;
+//    }
 
     /**
      * Wraps our LoggingHandler in a MessageListenerAdapter to be used by a MessageListenerContainer

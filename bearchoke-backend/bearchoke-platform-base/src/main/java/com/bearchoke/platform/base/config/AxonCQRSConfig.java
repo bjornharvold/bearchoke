@@ -23,6 +23,8 @@ import org.axonframework.commandhandling.SimpleCommandBus;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.commandhandling.gateway.CommandGatewayFactoryBean;
 import org.axonframework.commandhandling.interceptors.BeanValidationInterceptor;
+import org.axonframework.eventhandling.EventBus;
+import org.axonframework.eventhandling.SimpleEventBus;
 import org.axonframework.eventsourcing.Snapshotter;
 import org.axonframework.eventsourcing.SpringAggregateSnapshotter;
 import org.axonframework.eventstore.mongo.MongoEventStore;
