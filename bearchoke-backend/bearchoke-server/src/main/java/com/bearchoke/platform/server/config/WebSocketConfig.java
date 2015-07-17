@@ -121,15 +121,17 @@ public class WebSocketConfig<S extends ExpiringSession> extends AbstractSessionW
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
         config.setApplicationDestinationPrefixes("/app");
+        config.enableSimpleBroker("/queue/", "/topic/");
 
-        StompBrokerRelayRegistration stompBrokerRelayRegistration = config.enableStompBrokerRelay("/queue/", "/topic/");
-
-        stompBrokerRelayRegistration.setRelayHost(environment.getProperty("rabbitmq.host"));
-        stompBrokerRelayRegistration.setVirtualHost(environment.getProperty("rabbitmq.virtualhost"));
-        stompBrokerRelayRegistration.setClientLogin(environment.getProperty("rabbitmq.username"));
-        stompBrokerRelayRegistration.setSystemLogin(environment.getProperty("rabbitmq.username"));
-        stompBrokerRelayRegistration.setClientPasscode(environment.getProperty("rabbitmq.password"));
-        stompBrokerRelayRegistration.setSystemPasscode(environment.getProperty("rabbitmq.password"));
+        // This uses too much data for CF AMPQ service
+//        StompBrokerRelayRegistration stompBrokerRelayRegistration = config.enableStompBrokerRelay("/queue/", "/topic/");
+//
+//        stompBrokerRelayRegistration.setRelayHost(environment.getProperty("rabbitmq.host"));
+//        stompBrokerRelayRegistration.setVirtualHost(environment.getProperty("rabbitmq.virtualhost"));
+//        stompBrokerRelayRegistration.setClientLogin(environment.getProperty("rabbitmq.username"));
+//        stompBrokerRelayRegistration.setSystemLogin(environment.getProperty("rabbitmq.username"));
+//        stompBrokerRelayRegistration.setClientPasscode(environment.getProperty("rabbitmq.password"));
+//        stompBrokerRelayRegistration.setSystemPasscode(environment.getProperty("rabbitmq.password"));
 
         // only if we want to use . instead of / for path separator e.g. /app/user.chat
 //        config.setPathMatcher(new AntPathMatcher("."));

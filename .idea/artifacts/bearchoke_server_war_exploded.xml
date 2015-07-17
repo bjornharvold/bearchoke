@@ -178,7 +178,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/bearchoke-backend/bearchoke-server/target/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/bearchoke-backend/bearchoke-server/target/bearchoke-server-1.0.3-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="bearchoke-server/web/Web" />
     </root>
