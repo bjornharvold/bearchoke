@@ -4,6 +4,10 @@ Welcome to Bearchoke Tempest. This platform aims to be a best practices framewor
 
 If you just want to check out the demo, you can check out the Cloud Foundry hosted instance here: [https://www.bearchoke.com](https://www.bearchoke.com).
 
+## Credits
+* Thank you to [Pivotal](http://www.pivotal.com) for the free space on Cloud Foundry to be able to show case the apps the way they should be show cased.
+* Thank you to [JetBrains](http://www.jetbrains.com) for providing me with an open source license to their flagship product IntelliJ, the best IDE on the market.
+
 Key frameworks that I've leveraged to make this work are:
 
 * Spring
