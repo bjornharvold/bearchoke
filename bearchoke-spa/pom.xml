@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+     <parent>
+         <groupId>com.bearchoke</groupId>
+         <artifactId>bearchoke-parent</artifactId>
+         <version>1.0.3-SNAPSHOT</version>
+     </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>bearchoke-spa</artifactId>
+    <version>1.0.3-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Bearchoke SPA (LinemanJS / AngularJS)</name>
+	
+    <modules>
+		<module>bearchoke-spa-frontend</module>
+	</modules>
+
+    <properties>
+        <lineman.plugin.version>1.7</lineman.plugin.version>
+        <maven.resources.plugin.version>2.7</maven.resources.plugin.version>
+        <maven.clean.version>2.6.1</maven.clean.version>
+        <maven.assembly.plugin.version>2.5.3</maven.assembly.plugin.version>
+        <cloudfoundry.maven.plugin.version>1.1.3</cloudfoundry.maven.plugin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+</project>

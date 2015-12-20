@@ -1,6 +1,4 @@
 #!/bin/bash
 
-echo "RabbitMQ_HOME is $RABBITMQ_HOME"
-echo "Starting RabbitMQ server..."
-cd $RABBITMQ_HOME/sbin
-./rabbitmq-server start
+echo "Starting RabbitMQ server. Make sure you've installed RabbitMQ with Homebrew: https://www.rabbitmq.com/install-homebrew.html"
+rabbitmq-server start

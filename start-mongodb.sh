@@ -1,4 +1,4 @@
 #!/bin/sh
 
 echo "Starting Mongo..."
-mongod --dbpath db/
+mongod --dbpath database/mongodb

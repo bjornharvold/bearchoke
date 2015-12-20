@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="debug">
+    <Appenders>
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %level{length=1} %c{1} - %m%n"/>
+            <!--<PatternLayout pattern="%d{ISO8601} %-5level %logger{36} - %msg%n"/>-->
+        </Console>
+        <!--<File name="TEMP" fileName="traveliko-web.txt">-->
+            <!--<PatternLayout pattern="%d %-5p [%t] %C{2} (%F:%L) - %m%n"/>-->
+        <!--</File>-->
+        <Async name="ASYNC">
+            <!--<AppenderRef ref="TEMP"/>-->
+            <AppenderRef ref="CONSOLE"/>
+        </Async>
+    </Appenders>
+    <Loggers>
+        <Logger name="org.axonframework" additivity="false" level="warn">
+            <AppenderRef ref="ASYNC"/>
+        </Logger>
+
+        <Logger name="org.springframework" additivity="false" level="info">
+            <AppenderRef ref="ASYNC"/>
+        </Logger>
+
+        <Logger name="org.springframework.messaging" additivity="false" level="warn">
+            <AppenderRef ref="ASYNC"/>
+        </Logger>
+
+        <Logger name="org.springframework.web.socket" additivity="false" level="warn">
+            <AppenderRef ref="ASYNC"/>
+        </Logger>
+
+        <Logger name="org.springframework.security" additivity="false" level="warn">
+            <AppenderRef ref="ASYNC"/>
+        </Logger>
+
+        <Logger name="org.apache" additivity="false" level="warn">
+            <AppenderRef ref="ASYNC"/>
+        </Logger>
+
+        <Logger name="org.springframework.data.mongodb.repository.query" additivity="false" level="trace">
+            <AppenderRef ref="ASYNC"/>
+        </Logger>
+
+        <Logger name="org.springframework.data.mongodb" additivity="false" level="warn">
+            <AppenderRef ref="ASYNC"/>
+        </Logger>
+
+        <Logger name="com.traveliko.platform.server.common.security" additivity="false" level="warn">
+            <AppenderRef ref="ASYNC"/>
+        </Logger>
+
+        <Logger name="com.traveliko.domain.cdn" additivity="false" level="warn">
+            <AppenderRef ref="ASYNC"/>
+        </Logger>
+
+        <Logger name="com.traveliko" additivity="false" level="debug">
+            <AppenderRef ref="ASYNC"/>
+        </Logger>
+        
+        <Root level="info">
+            <AppenderRef ref="ASYNC"/>
+        </Root>
+    </Loggers>
+</Configuration>

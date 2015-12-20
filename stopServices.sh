@@ -1,22 +1,26 @@
 #!/usr/bin/env bash
 
 echo "Stopping RabbitMQ and Redis. You might have to configure this script to work with your local environment"
-echo "If you set your environment property RABBITMQ_HOME you should not have to edit these scripts"
 
-echo "RabbitMQ_HOME is $RABBITMQ_HOME"
 echo "Stopping RabbitMQ server..."
-cd $RABBITMQ_HOME/sbin
-./rabbitmqctl stop
+rabbitmqctl stop
 
-sleep 3
+sleep 2
 
-cd ../erts-5.10.3/bin
-./epmd -kill
+echo "Stopping RabbitMQ's erts daemon..."
+kill -9 $(ps aux | grep '[e]rts' | awk '{print $2}')
+
+sleep 2
 
 echo "Stopping Redis server..."
 kill -9 $(ps aux | grep '[r]edis-server' | awk '{print $2}')
 
-sleep 3
+sleep 2
 
 echo "Stopping MongoDb server..."
 kill $(ps aux | grep '[m]ongod' | awk '{print $2}')
+
+sleep 2
+
+echo "Stopping Elasticsearch server..."
+kill -9 $(ps aux | grep '[e]lasticsearch' | awk '{print $2}')

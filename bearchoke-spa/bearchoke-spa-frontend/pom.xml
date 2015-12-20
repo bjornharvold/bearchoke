@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>com.bearchoke</groupId>
+        <artifactId>bearchoke-spa</artifactId>
+        <version>1.0.3-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>bearchoke-spa-frontend</artifactId>
+    <version>1.0.3-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Bearchoke SPA Frontend (POM)</name>
+
+    <profiles>
+        <profile>
+            <id>ci</id>
+            <properties>
+				<organization>jwatters-org</organization>
+                <space>Bjorn Demo Only</space>
+                <url1>bearchoke-frontend.cfapps.io</url1>
+                <url2>www.bearchoke.com</url2>
+                <environment>ci</environment>
+                <appname>bearchoke-frontend</appname>
+                <disallow>/</disallow>
+                <server>https://api.bearchoke.com</server>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <defaultGoal>compile</defaultGoal>
+
+        <!-- include all of lineman's directories and files here -->
+        <resources>
+
+            <!-- This resource element will make sure it filters files over that need to be filtered -->
+            <resource>
+                <directory>${basedir}</directory>
+                <targetPath>${project.build.directory}/distribution</targetPath>
+                <filtering>true</filtering>
+                <includes>
+                    <include>app/pages/</include>
+                    <include>spec/</include>
+                    <include>spec-e2e/</include>
+                </includes>
+            </resource>
+
+            <!-- This resource element will copy over the rest of the app excluding stuff that's not needed -->
+            <resource>
+                <directory>${basedir}</directory>
+                <targetPath>${project.build.directory}/distribution</targetPath>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>generated/</exclude>
+                    <exclude>dist/</exclude>
+                    <exclude>target/</exclude>
+                    <exclude>node_modules/</exclude>
+                    <exclude>src/</exclude>
+                    <exclude>*.iml</exclude>
+                    <exclude>pom.xml</exclude>
+                    <exclude>app/pages/</exclude>
+                    <exclude>spec/</exclude>
+                    <exclude>spec-e2e/</exclude>
+                </excludes>
+            </resource>
+
+            <!-- This resource element will copy over shared files over to the distribution folder -->
+            <resource>
+                <directory>${basedir}/../bearchoke-spa-shared</directory>
+                <targetPath>${project.build.directory}/bearchoke-spa-shared</targetPath>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>app/js/constants/environment_constants.js</exclude>
+                </excludes>
+            </resource>
+
+            <!-- This resource element will take care of using the rights constants for each environment -->
+            <!-- This should be at the bottom because it will overwrite the existing constant -->
+            <resource>
+                <directory>${basedir}/config/environments/${environment}</directory>
+                <targetPath>${project.build.directory}/distribution/app/js/constants</targetPath>
+                <includes>
+                    <include>environment_constants.js</include>
+                </includes>
+            </resource>
+
+        </resources>
+
+        <plugins>
+
+            <!-- This plugin will build our LinemanJS spa app for us -->
+            <plugin>
+                <groupId>com.github.maxxkrakoa.lineman-maven-plugin</groupId>
+                <artifactId>lineman-maven-plugin</artifactId>
+                <version>${lineman.plugin.version}</version>
+                <configuration>
+                    <basedir>.</basedir>
+                    <webappPath>target/distribution</webappPath>
+                </configuration>
+                <executions>
+
+                    <execution>
+                        <id>lineman-build</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>spec-ci</goal>
+                        </goals>
+                    </execution>
+
+                </executions>
+            </plugin>
+
+            <!-- The resource plugin here copies over some extra files after the app has already been built -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven.resources.plugin.version}</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <useDefaultDelimiters>false</useDefaultDelimiters>
+                    <delimiters>
+                        <delimiter>[[mvn:*]]</delimiter>
+                    </delimiters>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>resources</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>resources</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/distribution/dist</outputDirectory>
+                            <resources>
+                                <!-- This is called on the install phase - AFTER lineman has run -->
+                                <!-- This will tell the CF buildpack that it's a static app -->
+                                <!-- This will also add the sitemap.xml for the app -->
+                                <!-- This will also add the robots.txt for the app -->
+                                <resource>
+                                    <directory>${basedir}/src/main/resources</directory>
+                                    <filtering>true</filtering>
+                                    <includes>
+                                        <include>Staticfile</include>
+                                        <include>Staticfile.auth</include>
+                                        <include>sitemap.xml</include>
+                                        <include>robots.txt</include>
+                                    </includes>
+                                </resource>
+                                <resource>
+                                    <directory>${basedir}/../bearchoke-spa-shared/app/img</directory>
+                                    <filtering>false</filtering>
+                                    <includes>
+                                        <include>favicon.ico</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Maven clean plugin that also adds LinemanJS's directories -->
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>${maven.clean.version}</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>generated</directory>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                        <fileset>
+                            <directory>dist</directory>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+
+            <!-- Assembly plugin takes our SPA and makes a zip file out of it so we have an archive file -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>${maven.assembly.plugin.version}</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>${basedir}/src/main/assembly/distribution.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>zip-it</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- CloudFoundry plugin is responsible for deploying the app to the right environment on CF -->
+            <plugin>
+                <groupId>org.cloudfoundry</groupId>
+                <artifactId>cf-maven-plugin</artifactId>
+                <version>${cloudfoundry.maven.plugin.version}</version>
+                <configuration>
+                    <server>cloud-foundry-credentials</server>
+                    <target>http://api.run.pivotal.io</target>
+                    <org>${organization}</org>
+                    <space>${space}</space>
+                    <appname>${appname}</appname>
+                    <memory>64</memory>
+                    <diskQuota>512</diskQuota>
+                    <healthCheckTimeout>120</healthCheckTimeout>
+                    <appStartupTimeout>180</appStartupTimeout>
+                    <mergeEnv>true</mergeEnv>
+                    <urls>
+                        <url>${url1}</url>
+                        <url>${url2}</url>
+                    </urls>
+                    <buildpack>https://github.com/bjornharvold/staticfile-buildpack.git</buildpack>
+                    <path>${project.build.directory}/distribution/dist</path>
+                </configuration>
+            </plugin>
+        </plugins>
+
+    </build>
+</project>

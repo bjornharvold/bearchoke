@@ -18,7 +18,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <groupId>com.bearchoke</groupId>
-        <artifactId>bearchoke-tempest</artifactId>
+        <artifactId>bearchoke-parent</artifactId>
         <version>1.0.3-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -29,12 +29,11 @@
 
     <modules>
         <module>bearchoke-api</module>
-        <module>bearchoke-todo</module>
-        <module>bearchoke-user</module>
+        <module>bearchoke-domain</module>
         <module>bearchoke-server</module>
         <module>bearchoke-platform-base</module>
-        <module>bearchoke-mongo-core</module>
-        <module>bearchoke-jpa-core</module>
+        <module>bearchoke-persistence</module>
+        <module>bearchoke-web</module>
         <module>bearchoke-webservices</module>
     </modules>
 
@@ -199,7 +198,79 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-releasetrain</artifactId>
+                <version>${spring-data-version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
+    <properties>
+        <apache.cxf.version>3.1.4</apache.cxf.version>
+        <atomikos.version>3.9.2</atomikos.version>
+        <axon.version>2.4.3</axon.version>
+        <bouncycastle.version>1.52</bouncycastle.version>
+        <cloudfoundry.maven.plugin.version>1.1.3</cloudfoundry.maven.plugin.version>
+        <commons.beanutils.version>1.9.2</commons.beanutils.version>
+        <commons.fileupload.version>1.3</commons.fileupload.version>
+        <commons.io.version>2.4</commons.io.version>
+        <commons.lang3.version>3.2.1</commons.lang3.version>
+        <commons.lang2.version>2.6</commons.lang2.version>
+        <commons.pool2.version>2.2</commons.pool2.version>
+        <derby.version>10.10.1.1</derby.version>
+        <dom4j.version>20040902.021138</dom4j.version>
+        <embedded.redis.version>0.2</embedded.redis.version>
+        <elasticsearch.version>1.7.2</elasticsearch.version>
+        <hamcrest.version>1.3</hamcrest.version>
+        <hibernate.validator.version>5.1.3.Final</hibernate.validator.version>
+        <hibernate.entitymanager.version>4.3.7.Final</hibernate.entitymanager.version>
+        <hibernate.jpa.api.version>1.0.0.Final</hibernate.jpa.api.version>
+        <httpclient.version>4.4.1</httpclient.version>
+        <httpasyncclient.version>4.1</httpasyncclient.version>
+        <jackson.version>2.6.3</jackson.version>
+        <jackson.datatype.money.version>0.6.0</jackson.datatype.money.version>
+        <java.version>1.8</java.version>
+        <jasypt.version>1.9.2</jasypt.version>
+        <javax.inject.version>1</javax.inject.version>
+        <jsonlib.version>2.4</jsonlib.version>
+        <javax.el.api.version>2.2.5</javax.el.api.version>
+        <javax.glassfish.el>2.2.6</javax.glassfish.el>
+        <javax.servlet.api.version>3.1.0</javax.servlet.api.version>
+        <javax.validation.version>1.1.0.Final</javax.validation.version>
+        <javax.websocket.api.version>1.1</javax.websocket.api.version>
+        <jedis.version>2.5.2</jedis.version>
+        <jest.version>0.1.7</jest.version>
+        <json.path.version>0.9.1</json.path.version>
+        <jsr250.version>1.0</jsr250.version>
+        <jug.version>3.1.3</jug.version>
+        <junit.version>4.11</junit.version>
+        <log4j.version>1.2.17</log4j.version>
+        <lombok.version>1.14.4</lombok.version>
+        <maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
+        <maven.javadoc.plugin.version>2.10.1</maven.javadoc.plugin.version>
+        <maven.resource.plugin.version>2.6</maven.resource.plugin.version>
+        <maven.source.plugin.version>2.4</maven.source.plugin.version>
+        <maven.war.plugin.version>2.4</maven.war.plugin.version>
+        <mockito.version>1.10.19</mockito.version>
+        <postgresql.version>9.3-1102-jdbc41</postgresql.version>
+        <scala.version>2.10.3</scala.version>
+        <slf4j.version>1.7.7</slf4j.version>
+        <reactor.net.version>1.1.4.RELEASE</reactor.net.version>
+        <spring.cloud.connector>1.2.0.RELEASE</spring.cloud.connector>
+        <spring-data-version>Gosling-SR2A</spring-data-version>
+        <spring.hateoas.version>0.17.0.RELEASE</spring.hateoas.version>
+        <spring.integration.version>4.1.1.RELEASE</spring.integration.version>
+        <spring.mobile.version>1.1.2.RELEASE</spring.mobile.version>
+        <spring.security.version>4.0.2.RELEASE</spring.security.version>
+        <spring.session.version>1.0.2.RELEASE</spring.session.version>
+        <spring.social.version>1.1.4.RELEASE</spring.social.version>
+        <spring.version>4.2.4.RELEASE</spring.version>
+        <springockito.annotations-version>1.0.9</springockito.annotations-version>
+        <tomcat.maven.plugin.version>2.2</tomcat.maven.plugin.version>
+        <tomcat.embed.version>8.0.15</tomcat.embed.version>
+        <xom.version>1.2.10</xom.version>
+    </properties>
 </project>

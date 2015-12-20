@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2015. Bearchoke
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+	      <groupId>com.bearchoke</groupId>
+	      <artifactId>bearchoke-web</artifactId>
+	      <version>1.0.3-SNAPSHOT</version>
+	  </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>bearchoke-web-frontend</artifactId>
+    <packaging>war</packaging>
+    <version>1.0.3-SNAPSHOT</version>
+    <name>Bearchoke Web Frontend (WAR)</name>
+
+    <profiles>
+        <profile>
+            <id>demo</id>
+            <properties>
+                <space>Bjorn Demo Only</space>
+                <url1>bearchoke-server.cfapps.io</url1>
+                <url2>api.bearchoke.com</url2>
+                <appname>bearchoke-server</appname>
+                <environment>demo</environment>
+            </properties>
+        </profile>
+		
+		<!--
+        <profile>
+            <id>uat</id>
+            <properties>
+                <space>Bearchoke UAT</space>
+                <url1>bearchoke-uat-server.cfapps.io</url1>
+                <url2>uat-api.bearchoke.com</url2>
+                <appname>bearchoke-uat-server</appname>
+                <environment>uat</environment>
+            </properties>
+        </profile>
+        <profile>
+            <id>prodblue</id>
+            <properties>
+                <space>Bearchoke Production</space>
+                <url1>bearchoke-prod-blue-server.cfapps.io</url1>
+                <url2>blue-api.bearchoke.com</url2>
+                <appname>bearchoke-prod-blue-server</appname>
+                <environment>prod</environment>
+            </properties>
+        </profile>
+        <profile>
+            <id>prodgreen</id>
+            <properties>
+                <space>Bearchoke Production</space>
+                <url1>bearchoke-prod-green-server.cfapps.io</url1>
+                <url2>green-api.bearchoke.com</url2>
+                <appname>bearchoke-prod-green-server</appname>
+                <environment>prod</environment>
+            </properties>
+        </profile>
+		-->
+    </profiles>
+    
+
+    <dependencies>
+
+        <!-- home rolled libraries -->
+        <dependency>
+            <groupId>com.bearchoke</groupId>
+            <artifactId>bearchoke-server-frontend</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+    </dependencies>
+</project>

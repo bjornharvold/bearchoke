@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2015. bearchoke
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>com.bearchoke</groupId>
+        <artifactId>bearchoke-backend</artifactId>
+        <version>1.0.3-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>bearchoke-web</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.3-SNAPSHOT</version>
+    <name>Bearchoke Web (POM)</name>
+
+    <modules>
+        <module>bearchoke-web-frontend</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven.war.plugin.version}</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.cloudfoundry</groupId>
+                <artifactId>cf-maven-plugin</artifactId>
+                <version>${cloudfoundry.maven.plugin.version}</version>
+                <configuration>
+                    <server>cloud-foundry-credentials</server>
+                    <target>http://api.run.pivotal.io</target>
+                    <org>jwatters-org</org>
+                    <space>${space}</space>
+                    <appname>${appname}</appname>
+                    <urls>
+                        <url>${url1}</url>
+                        <url>${url2}</url>
+                    </urls>
+                    <memory>2048</memory>
+                    <diskQuota>1024</diskQuota>
+                    <healthCheckTimeout>120</healthCheckTimeout>
+                    <appStartupTimeout>180</appStartupTimeout>
+                    <buildpack>https://github.com/cloudfoundry/java-buildpack.git</buildpack>
+                    <!--<buildpack>https://github.com/bjornharvold/java-buildpack.git</buildpack>-->
+                    <env>
+                        <SPRING_PROFILES_ACTIVE>mongodb-cloud,redis-cloud,rabbit-cloud,${environment}</SPRING_PROFILES_ACTIVE>
+                        <JBP_CONFIG_OPEN_JDK_JRE>[memory_calculator: {memory_sizes: {metaspace: 256m..}, memory_heuristics: {heap: 85, metaspace: 10, stack: 5, native: 10}}]</JBP_CONFIG_OPEN_JDK_JRE>
+                    </env>
+                    <mergeEnv>true</mergeEnv>
+                    <services>
+                        <service>
+                            <name>bearchoke-redis</name>
+                            <label>rediscloud</label>
+                            <plan>25mb</plan>
+                        </service>
+                        <service>
+                            <name>bearchoke-amqp</name>
+                            <label>cloudamqp</label>
+                            <plan>lemur</plan>
+                        </service>
+                        <service>
+                            <name>bearchoke-mongodb</name>
+                            <label>mongolab</label>
+                            <plan>sandbox</plan>
+                        </service>
+                        <service>
+                            <name>bearchoke-axon</name>
+                            <label>mongolab</label>
+                            <plan>sandbox</plan>
+                        </service>
+                        <service>
+                            <name>bearchoke-elasticsearch</name>
+                            <label>searchly</label>
+                            <plan>small</plan>
+                        </service>
+                    </services>
+                </configuration>
+            </plugin>
+        </plugins>
+
+    </build>
+</project>
