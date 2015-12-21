@@ -35,6 +35,16 @@
         </dependency>
         <dependency>
             <groupId>com.bearchoke</groupId>
+            <artifactId>bearchoke-persistence-mongo</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.bearchoke</groupId>
+            <artifactId>bearchoke-persistence-rabbitmq</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.bearchoke</groupId>
             <artifactId>bearchoke-platform-base</artifactId>
             <version>${project.version}</version>
         </dependency>

@@ -16,12 +16,13 @@
 
 package com.bearchoke.platform.server.frontend.web.controller;
 
-import com.bearchoke.platform.api.todo.CreateToDoItemCommand;
-import com.bearchoke.platform.api.todo.DeleteToDoItemCommand;
-import com.bearchoke.platform.api.todo.MarkToDoItemAsCompleteCommand;
-import com.bearchoke.platform.api.todo.ToDoIdentifier;
+import com.bearchoke.platform.api.todo.command.CreateToDoItemCommand;
+import com.bearchoke.platform.api.todo.command.DeleteToDoItemCommand;
+import com.bearchoke.platform.api.todo.command.MarkToDoItemAsCompleteCommand;
+import com.bearchoke.platform.api.todo.identifier.ToDoIdentifier;
 import com.bearchoke.platform.base.SpringSecurityHelper;
 import com.bearchoke.platform.api.todo.dto.ToDoDto;
+import com.bearchoke.platform.server.common.web.controller.AbstractAuthenticatedController;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.commandhandling.GenericCommandMessage;

@@ -17,8 +17,9 @@
 package com.bearchoke.platform.server.frontend.web.controller;
 
 import com.bearchoke.platform.domain.user.security.PreAuthenticatedTokenCacheService;
-import com.bearchoke.platform.server.frontend.web.ApplicationMediaType;
-import com.bearchoke.platform.api.user.AuthenticationToken;
+import com.bearchoke.platform.server.common.ApplicationMediaType;
+import com.bearchoke.platform.server.common.ServerConstants;
+import com.bearchoke.platform.api.user.dto.AuthenticationToken;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

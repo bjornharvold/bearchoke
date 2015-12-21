@@ -21,7 +21,6 @@ import com.bearchoke.platform.api.user.UserIdentifier;
 import com.bearchoke.platform.api.user.dto.FacebookUserDto;
 import com.bearchoke.platform.server.frontend.config.WebSecurityConfig;
 import com.bearchoke.platform.server.frontend.web.config.MockAppConfig;
-import com.bearchoke.platform.server.frontend.web.config.WebMvcConfig;
 import com.bearchoke.platform.domain.user.UserAggregate;
 import com.bearchoke.platform.domain.user.UserCommandHandler;
 import com.bearchoke.platform.domain.user.repositories.UserRepository;
@@ -149,7 +148,7 @@ public class FacebookControllerTest extends AbstractControllerTest {
 
         this.mockMvc.perform(post("/api/facebook")
                 .content(convertObjectToJsonBytes(dto))
-                .contentType(getBearchokeVersion1MediaType()))
+                .contentType(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());
 

@@ -17,7 +17,6 @@
 package com.bearchoke.platform.server.frontend.web.controller;
 
 import com.bearchoke.platform.server.frontend.web.config.MockAppConfig;
-import com.bearchoke.platform.server.frontend.web.config.WebMvcConfig;
 import com.bearchoke.platform.domain.user.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
@@ -107,17 +106,17 @@ public class UserControllerTest extends AbstractControllerTest {
         given(userRepository.isEmailUnique(EXISTING_EMAIL)).willReturn(false);
 
         log.info("First we expect a unique email");
-        this.mockMvc.perform(get("/api/user/uniqueemail").param("key", UNIQUE_EMAIL).accept(getBearchokeVersion1MediaType()))
+        this.mockMvc.perform(get("/api/user/uniqueemail").param("key", UNIQUE_EMAIL).accept(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(getBearchokeVersion1MediaType()))
+                .andExpect(content().contentType(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON))
                 .andExpect(jsonPath("$.unique").value(true));
 
         log.info("And now we expect email to already exist");
-        this.mockMvc.perform(get("/api/user/uniqueemail").param("key", EXISTING_EMAIL).accept(getBearchokeVersion1MediaType()))
+        this.mockMvc.perform(get("/api/user/uniqueemail").param("key", EXISTING_EMAIL).accept(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(getBearchokeVersion1MediaType()))
+                .andExpect(content().contentType(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON))
                 .andExpect(jsonPath("$.unique").value(false));
 
         log.info("Testing UserController.isEmailUnique SUCCESSFUL");
@@ -132,17 +131,17 @@ public class UserControllerTest extends AbstractControllerTest {
         given(userRepository.isUsernameUnique(EXISTING_USERNAME)).willReturn(false);
 
         log.info("First we expect a unique username");
-        this.mockMvc.perform(get("/api/user/uniqueusername").param("key", UNIQUE_USERNAME).accept(getBearchokeVersion1MediaType()))
+        this.mockMvc.perform(get("/api/user/uniqueusername").param("key", UNIQUE_USERNAME).accept(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(getBearchokeVersion1MediaType()))
+                .andExpect(content().contentType(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON))
                 .andExpect(jsonPath("$.unique").value(true));
 
         log.info("And now we expect username to already exist");
-        this.mockMvc.perform(get("/api/user/uniqueusername").param("key", EXISTING_USERNAME).accept(getBearchokeVersion1MediaType()))
+        this.mockMvc.perform(get("/api/user/uniqueusername").param("key", EXISTING_USERNAME).accept(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(getBearchokeVersion1MediaType()))
+                .andExpect(content().contentType(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON))
                 .andExpect(jsonPath("$.unique").value(false));
 
         log.info("Testing UserController.isUsernameUnique SUCCESSFUL");

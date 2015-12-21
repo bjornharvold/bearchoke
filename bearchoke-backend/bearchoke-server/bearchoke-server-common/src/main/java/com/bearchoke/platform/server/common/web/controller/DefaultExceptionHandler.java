@@ -34,7 +34,7 @@ import java.util.Map;
 @Log4j2
 public class DefaultExceptionHandler {
 
-    @RequestMapping(produces = {ApplicationMediaType.APPLICATION_TRAVELIKO_V1_JSON_VALUE, ApplicationMediaType.APPLICATION_TRAVELIKO_V2_JSON_VALUE})
+    @RequestMapping(produces = {ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE, ApplicationMediaType.APPLICATION_BEARCHOKE_V2_JSON_VALUE})
     @ExceptionHandler({MissingServletRequestParameterException.class,
             UnsatisfiedServletRequestParameterException.class,
             HttpRequestMethodNotSupportedException.class,
@@ -46,7 +46,7 @@ public class DefaultExceptionHandler {
         return new ErrorMessage(new Date(), HttpStatus.BAD_REQUEST.value(), ex.getClass().getName(), ex.getMessage());
     }
 
-    @RequestMapping(produces = {ApplicationMediaType.APPLICATION_TRAVELIKO_V1_JSON_VALUE, ApplicationMediaType.APPLICATION_TRAVELIKO_V2_JSON_VALUE})
+    @RequestMapping(produces = {ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE, ApplicationMediaType.APPLICATION_BEARCHOKE_V2_JSON_VALUE})
     @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
     @ResponseStatus(value = HttpStatus.UNSUPPORTED_MEDIA_TYPE)
     public @ResponseBody Map<String, Object> handleUnsupportedMediaTypeException(HttpMediaTypeNotSupportedException ex) throws IOException {
@@ -58,7 +58,7 @@ public class DefaultExceptionHandler {
         return map;
     }
 
-    @RequestMapping(produces = {ApplicationMediaType.APPLICATION_TRAVELIKO_V1_JSON_VALUE, ApplicationMediaType.APPLICATION_TRAVELIKO_V2_JSON_VALUE})
+    @RequestMapping(produces = {ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE, ApplicationMediaType.APPLICATION_BEARCHOKE_V2_JSON_VALUE})
     @ExceptionHandler(Exception.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     public @ResponseBody Map<String, Object> handleUncaughtException(Exception ex) throws IOException {

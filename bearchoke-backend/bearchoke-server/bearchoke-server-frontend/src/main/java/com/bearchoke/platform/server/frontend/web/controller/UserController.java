@@ -16,13 +16,13 @@
 
 package com.bearchoke.platform.server.frontend.web.controller;
 
-import com.bearchoke.platform.api.user.RegisterUserCommand;
-import com.bearchoke.platform.api.user.UserIdentifier;
+import com.bearchoke.platform.api.user.command.RegisterUserCommand;
+import com.bearchoke.platform.api.user.identifier.UserIdentifier;
 import com.bearchoke.platform.api.user.dto.RegisterUserDto;
 import com.bearchoke.platform.api.user.dto.UniqueResult;
 import com.bearchoke.platform.base.PlatformConstants;
-import com.bearchoke.platform.server.frontend.web.ApplicationMediaType;
 import com.bearchoke.platform.domain.user.repositories.UserRepository;
+import com.bearchoke.platform.server.common.ApplicationMediaType;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.commandhandling.GenericCommandMessage;

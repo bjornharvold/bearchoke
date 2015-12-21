@@ -4,7 +4,7 @@
 package com.bearchoke.platform.server.common.web.websocket;
 
 import com.bearchoke.platform.domain.user.document.ActiveWebSocketUser;
-import com.bearchoke.platform.domain.user.repository.ActiveWebSocketUserRepository;
+import com.bearchoke.platform.domain.user.repositories.ActiveWebSocketUserRepository;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.context.ApplicationListener;

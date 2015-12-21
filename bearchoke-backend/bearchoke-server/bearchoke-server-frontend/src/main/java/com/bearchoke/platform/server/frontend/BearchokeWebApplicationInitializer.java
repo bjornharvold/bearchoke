@@ -18,19 +18,21 @@ package com.bearchoke.platform.server.frontend;
 
 import com.bearchoke.platform.server.common.AbstractWebApplicationInitializer;
 
+import com.bearchoke.platform.server.frontend.config.AppConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.cxf.transport.servlet.CXFServlet;
+import org.springframework.web.WebApplicationInitializer;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
 @Slf4j
-public class BearchokeWebApplicationInitializer extends AbstractWebApplicationInitializer {
+public class BearchokeWebApplicationInitializer extends AbstractWebApplicationInitializer implements WebApplicationInitializer {
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
-        createWebApplicationContext(servletContext);
+        createWebApplicationContext(servletContext, AppConfig.class);
         createSpringServlet(servletContext);
         createCXFServlet(servletContext);
         createFilters(servletContext);

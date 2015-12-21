@@ -21,7 +21,14 @@ package com.bearchoke.platform.base.init;
  */
 public interface DBInit {
 
-    void createItems();
+    /**
+     * @return True if a change was made. False if not.
+     */
+    boolean initEvenIfExist();
 
-    void createItemsIfNoUsersExist();
+    /**
+     * @return True if a change was made. False if not.
+     */
+    boolean initIfNotExist();
+
 }

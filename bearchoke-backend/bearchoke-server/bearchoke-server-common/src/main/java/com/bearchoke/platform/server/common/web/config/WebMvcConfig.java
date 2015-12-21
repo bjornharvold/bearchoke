@@ -83,8 +83,8 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         MappingJackson2HttpMessageConverter jacksonConverter = new MappingJackson2HttpMessageConverter();
         List<MediaType> types = new ArrayList<>(1);
         types.add(ApplicationMediaType.APPLICATION_JSON);
-        types.add(ApplicationMediaType.APPLICATION_TRAVELIKO_V1_JSON);
-        types.add(ApplicationMediaType.APPLICATION_TRAVELIKO_V2_JSON);
+        types.add(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON);
+        types.add(ApplicationMediaType.APPLICATION_BEARCHOKE_V2_JSON);
         jacksonConverter.setSupportedMediaTypes(types);
         jacksonConverter.setObjectMapper(objectMapper);
         converters.add(jacksonConverter);

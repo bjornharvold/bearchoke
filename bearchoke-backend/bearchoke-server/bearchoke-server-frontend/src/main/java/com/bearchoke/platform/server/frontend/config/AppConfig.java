@@ -16,7 +16,7 @@
 
 package com.bearchoke.platform.server.frontend.config;
 
-import com.bearchoke.platform.server.frontend.web.config.WebMvcConfig;
+import com.bearchoke.platform.server.common.web.config.WebMvcConfig;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;

@@ -1,30 +1,20 @@
 /*
- * Copyright 2015 the original author or authors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright (c) 2015. Traveliko
  */
 
 package com.bearchoke.platform.server.frontend.web.controller;
 
-import com.bearchoke.platform.server.frontend.web.ApplicationMediaType;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.http.MediaType;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.test.web.servlet.request.RequestPostProcessor;
 
 import javax.inject.Inject;
 import java.io.IOException;
-
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by Bjorn Harvold
@@ -33,30 +23,55 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
  * Responsibility:
  */
 public abstract class AbstractControllerTest {
-    protected static final String USER = "user";
-    protected static final String ADMIN = "admin";
+    private static final String PASSWORD = "password";
+    private static final List<GrantedAuthority> adminCredentials = Collections.singletonList(new SimpleGrantedAuthority("ROLE_ADMIN"));
+    private static final List<GrantedAuthority> userCredentials = Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
+    private static final List<GrantedAuthority> managerCredentials = Collections.singletonList(new SimpleGrantedAuthority("ROLE_MANAGER"));
+    private static final Principal administrator = new Principal("id1", "id1", "administrator@traveliko.com", "Bjorn Harvold", "Bjorn", "Harvold", "/img/profile/god.png", Gender.Male, PASSWORD, adminCredentials, true, true, true, true);
+    private static final Principal manager = new Principal("id2", "id2", "manager@traveliko.com", "Jack Clayborne", "Jack", "Clayborne", "/img/profile/jack.png", Gender.Male, PASSWORD, managerCredentials, true, true, true, true);
+    private static final Principal user = new Principal("id3", "id3", "user@traveliko.com", "Tom Boy", "Tom", "Boy", "/img/profile/tomboy.png", Gender.Male, PASSWORD, userCredentials, true, true, true, true);
 
     @Inject
-    protected ObjectMapper mapper;
+    private ObjectMapper objectMapper;
 
     protected static RequestPostProcessor regularUser() {
-        return user(USER).password("password").roles("USER");
+        return SecurityMockMvcRequestPostProcessors.user(user);
     }
 
     protected static RequestPostProcessor adminUser() {
-        return user(ADMIN).password("password").roles("ADMIN");
+        return SecurityMockMvcRequestPostProcessors.user(administrator);
     }
 
-    protected MediaType getBearchokeVersion1MediaType() {
-        return MediaType.parseMediaType(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE + ";charset=UTF8");
+    protected static RequestPostProcessor anonymousUser() {
+        return SecurityMockMvcRequestPostProcessors.user("anonymous");
     }
 
-    protected MediaType getBearchokeVersion2MediaType() {
-        return MediaType.parseMediaType(ApplicationMediaType.APPLICATION_BEARCHOKE_V2_JSON_VALUE + ";charset=UTF8");
+    protected static RequestPostProcessor managerUser() {
+        return SecurityMockMvcRequestPostProcessors.user(manager);
     }
+//
+//    protected static RequestPostProcessor regularUserAuthentication() {
+//        return SecurityMockMvcRequestPostProcessors.authentication(new TestingAuthenticationToken(user, PASSWORD, userCredentials));
+//    }
+//
+//    protected static RequestPostProcessor adminUserAuthentication() {
+//        return SecurityMockMvcRequestPostProcessors.authentication(new TestingAuthenticationToken(administrator, PASSWORD, adminCredentials));
+//    }
+//
+//    protected static RequestPostProcessor managerUserAuthentication() {
+//        return SecurityMockMvcRequestPostProcessors.authentication(new TestingAuthenticationToken(manager, PASSWORD, managerCredentials));
+//    }
 
     protected byte[] convertObjectToJsonBytes(Object object) throws IOException {
-        return mapper.writeValueAsBytes(object);
+
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+
+        return objectMapper.writeValueAsBytes(object);
+    }
+
+    protected String convertObjectToJsonString(Object object) throws IOException {
+
+        return objectMapper.writeValueAsString(object);
     }
 
     protected String createStringWithLength(int length) {

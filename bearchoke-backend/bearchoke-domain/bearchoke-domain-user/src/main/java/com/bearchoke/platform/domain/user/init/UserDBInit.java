@@ -16,10 +16,10 @@
 
 package com.bearchoke.platform.domain.user.init;
 
-import com.bearchoke.platform.api.user.CreateRoleCommand;
-import com.bearchoke.platform.api.user.CreateUserCommand;
-import com.bearchoke.platform.api.user.RoleIdentifier;
-import com.bearchoke.platform.api.user.UserIdentifier;
+import com.bearchoke.platform.api.user.command.CreateRoleCommand;
+import com.bearchoke.platform.api.user.command.CreateUserCommand;
+import com.bearchoke.platform.api.user.identifier.RoleIdentifier;
+import com.bearchoke.platform.api.user.identifier.UserIdentifier;
 import com.bearchoke.platform.base.PlatformConstants;
 import com.bearchoke.platform.base.init.DBInit;
 import com.bearchoke.platform.domain.user.document.Role;
@@ -36,6 +36,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -54,6 +55,8 @@ public class UserDBInit implements DBInit {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
 
+    private boolean usersInserted = false;
+
     @Autowired
     public UserDBInit(CommandBus commandBus,
                       UserRepository userRepository,
@@ -71,11 +74,13 @@ public class UserDBInit implements DBInit {
     }
 
     @Override
-    public void createItemsIfNoUsersExist() {
+    public boolean initIfNotExist() {
         if (!mongoTemplate.collectionExists(User.class)) {
-            createItems();
+            initEvenIfExist();
             logger.info("The database has been created and refreshed with some data.");
         }
+
+        return usersInserted;
     }
 
     private void initializeDB() {
@@ -94,16 +99,18 @@ public class UserDBInit implements DBInit {
     }
 
     @Override
-    public void createItems() {
+    public boolean initEvenIfExist() {
         initializeDB();
 
-        RoleIdentifier userRole = createRole(PlatformConstants.DEFAULT_USER_ROLE, Arrays.asList("RIGHT_READ_USER"));
-        RoleIdentifier adminRole = createRole(PlatformConstants.DEFAULT_ADMIN_ROLE, Arrays.asList("RIGHT_ADMIN"));
+        RoleIdentifier userRole = createRole(PlatformConstants.DEFAULT_USER_ROLE, Collections.singletonList("RIGHT_READ_USER"));
+        RoleIdentifier adminRole = createRole(PlatformConstants.DEFAULT_ADMIN_ROLE, Collections.singletonList("RIGHT_ADMIN"));
 
-        UserIdentifier user = createUser("harry@mitchell.com", "harrymitchell", "Harry", "Mitchell", "HarryMitchell5!", Arrays.asList(PlatformConstants.DEFAULT_USER_ROLE));
-        UserIdentifier admin = createUser("admin@admin.com", "admin", "Admin", "Admin", "AdminAdmin%1", Arrays.asList(PlatformConstants.DEFAULT_ADMIN_ROLE));
+        UserIdentifier user = createUser("harry@mitchell.com", "harrymitchell", "Harry", "Mitchell", "HarryMitchell5!", Collections.singletonList(PlatformConstants.DEFAULT_USER_ROLE));
+        UserIdentifier admin = createUser("admin@admin.com", "admin", "Admin", "Admin", "AdminAdmin%1", Collections.singletonList(PlatformConstants.DEFAULT_ADMIN_ROLE));
 
         additionalDBSteps();
+
+        return usersInserted;
     }
 
     private RoleIdentifier createRole(String name, List<String> rights) {
@@ -130,6 +137,8 @@ public class UserDBInit implements DBInit {
         UserIdentifier userId = new UserIdentifier();
         CreateUserCommand command = new CreateUserCommand(userId, email, username, firstName, lastName, password, roles);
         commandBus.dispatch(new GenericCommandMessage<>(command));
+
+        usersInserted = true;
 
         return userId;
     }

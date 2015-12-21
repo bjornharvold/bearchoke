@@ -29,7 +29,7 @@ public class JsonHttpRequestFilter implements Filter {
     private static final String JSON_CONTENT_TYPE = "application/(.*)json(.*)";
 
     public static void main(String[] args) {
-        String s = ApplicationMediaType.APPLICATION_TRAVELIKO_V1_JSON_VALUE + "; charset=UTF-8";
+        String s = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE + "; charset=UTF-8";
         System.out.println(s.matches(JSON_CONTENT_TYPE));
     }
 

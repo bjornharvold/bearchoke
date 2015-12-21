@@ -17,9 +17,10 @@
 package com.bearchoke.platform.server.frontend.web.controller;
 
 
+import com.bearchoke.platform.server.common.ApplicationMediaType;
+import com.bearchoke.platform.server.common.web.config.WebMvcConfig;
 import com.bearchoke.platform.server.frontend.config.WebSecurityConfig;
 import com.bearchoke.platform.server.frontend.web.config.MockAppConfig;
-import com.bearchoke.platform.server.frontend.web.config.WebMvcConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
@@ -97,10 +98,10 @@ public class GreetingControllerTest extends AbstractControllerTest {
     public void testVersionedGreeting() throws Exception {
         log.info("Testing GreetingController.testVersionedGreeting...");
 
-        this.mockMvc.perform(get("/api/greeting").param("name", USER).accept(getBearchokeVersion1MediaType()))
+        this.mockMvc.perform(get("/api/greeting").param("name", USER).accept(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(getBearchokeVersion1MediaType()))
+                .andExpect(content().contentType(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON))
                 .andExpect(jsonPath("$.id").value(1))
                 .andExpect(jsonPath("$.content").value("Hello, " + USER + "!"));
 
@@ -114,10 +115,10 @@ public class GreetingControllerTest extends AbstractControllerTest {
         this.mockMvc.perform(get("/api/secured/greeting")
                 .with(csrf())
                 .with(regularUser())
-                .accept(getBearchokeVersion1MediaType()))
+                .accept(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(getBearchokeVersion1MediaType()))
+                .andExpect(content().contentType(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON))
                 .andExpect(jsonPath("$.id").value(1))
                 .andExpect(jsonPath("$.content").value("Hello, " + USER + ". You have the role of ROLE_USER!"))
                 .andExpect(authenticated().withRoles("USER"))

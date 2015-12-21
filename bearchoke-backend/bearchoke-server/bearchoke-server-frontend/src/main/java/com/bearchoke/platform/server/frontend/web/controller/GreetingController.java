@@ -16,9 +16,9 @@
 
 package com.bearchoke.platform.server.frontend.web.controller;
 
+import com.bearchoke.platform.server.common.ApplicationMediaType;
 import com.bearchoke.platform.server.frontend.service.Greeting;
 import com.bearchoke.platform.server.frontend.service.GreetingService;
-import com.bearchoke.platform.server.frontend.web.ApplicationMediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;

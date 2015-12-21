@@ -16,6 +16,7 @@
 
 package com.bearchoke.platform.server.frontend.security;
 
+import com.bearchoke.platform.server.common.ServerConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter;
 

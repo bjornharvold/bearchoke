@@ -17,6 +17,7 @@
 package com.bearchoke.platform.server.frontend.security;
 
 import com.bearchoke.platform.domain.user.security.PreAuthenticatedTokenCacheService;
+import com.bearchoke.platform.server.common.ServerConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;

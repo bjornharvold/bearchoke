@@ -16,10 +16,10 @@ import java.util.Map;
  * Responsibility:
  */
 public class ApplicationMediaType extends MediaType {
-    public final static String APPLICATION_TRAVELIKO_V1_JSON_VALUE = "application/vnd.traveliko-v1+json;charset=UTF8";
-    public final static MediaType APPLICATION_TRAVELIKO_V1_JSON = MediaType.valueOf(APPLICATION_TRAVELIKO_V1_JSON_VALUE);
-    public final static String APPLICATION_TRAVELIKO_V2_JSON_VALUE = "application/vnd.traveliko-v2+json;charset=UTF8";
-    public final static MediaType APPLICATION_TRAVELIKO_V2_JSON = MediaType.valueOf(APPLICATION_TRAVELIKO_V2_JSON_VALUE);
+    public final static String APPLICATION_BEARCHOKE_V1_JSON_VALUE = "application/vnd.bearchoke-v1+json";
+    public final static MediaType APPLICATION_BEARCHOKE_V1_JSON = valueOf(APPLICATION_BEARCHOKE_V1_JSON_VALUE);
+    public final static String APPLICATION_BEARCHOKE_V2_JSON_VALUE = "application/vnd.bearchoke-v2+json";
+    public final static MediaType APPLICATION_BEARCHOKE_V2_JSON = valueOf(APPLICATION_BEARCHOKE_V2_JSON_VALUE);
 
     public ApplicationMediaType(String type) {
         super(type);

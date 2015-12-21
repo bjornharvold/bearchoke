@@ -17,9 +17,10 @@
 package com.bearchoke.platform.server.frontend.web.controller;
 
 
+import com.bearchoke.platform.server.common.ApplicationMediaType;
+import com.bearchoke.platform.server.common.web.config.WebMvcConfig;
 import com.bearchoke.platform.server.frontend.config.WebSecurityConfig;
 import com.bearchoke.platform.server.frontend.web.config.MockAppConfig;
-import com.bearchoke.platform.server.frontend.web.config.WebMvcConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
@@ -99,12 +100,12 @@ public class AuthenticationControllerTest extends AbstractControllerTest {
 
         this.mockMvc.perform(
                 get("/api/secured/user")
-                        .accept(getBearchokeVersion1MediaType())
+                        .accept(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON)
                         .with(csrf())
                         .with(regularUser()))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(getBearchokeVersion1MediaType()))
+                .andExpect(content().contentType(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON))
                 .andExpect(jsonPath("$.username").value("user"))
                 .andExpect(jsonPath("$.roles").exists())
                 .andExpect(authenticated().withRoles("USER"));
@@ -118,7 +119,7 @@ public class AuthenticationControllerTest extends AbstractControllerTest {
 
         this.mockMvc.perform(
                 get("/api/secured/user")
-                        .accept(getBearchokeVersion1MediaType())
+                        .accept(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON)
                         .with(csrf()))
                 .andDo(print())
                 .andExpect(unauthenticated());

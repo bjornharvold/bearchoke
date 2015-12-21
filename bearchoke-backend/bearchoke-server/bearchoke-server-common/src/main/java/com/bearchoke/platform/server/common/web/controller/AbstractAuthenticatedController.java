@@ -4,7 +4,7 @@
 
 package com.bearchoke.platform.server.common.web.controller;
 
-import com.bearchoke.platform.domain.user.SpringSecurityHelper;
+import com.bearchoke.platform.base.SpringSecurityHelper;
 import com.bearchoke.platform.server.common.ServerConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

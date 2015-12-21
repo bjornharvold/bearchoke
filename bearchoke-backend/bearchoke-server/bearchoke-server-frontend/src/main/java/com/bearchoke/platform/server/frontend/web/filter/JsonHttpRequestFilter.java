@@ -16,7 +16,7 @@
 
 package com.bearchoke.platform.server.frontend.web.filter;
 
-import com.bearchoke.platform.server.frontend.web.ApplicationMediaType;
+import com.bearchoke.platform.server.common.ApplicationMediaType;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.*;

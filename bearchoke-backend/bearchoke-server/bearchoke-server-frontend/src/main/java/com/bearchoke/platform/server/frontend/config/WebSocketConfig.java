@@ -17,6 +17,7 @@
 package com.bearchoke.platform.server.frontend.config;
 
 import com.bearchoke.platform.base.SpringSecurityHelper;
+import com.bearchoke.platform.server.common.ServerConstants;
 import com.bearchoke.platform.server.frontend.web.websocket.WebSocketConnectHandler;
 import com.bearchoke.platform.server.frontend.web.websocket.WebSocketDisconnectHandler;
 import com.bearchoke.platform.domain.user.repositories.ActiveWebSocketUserRepository;
