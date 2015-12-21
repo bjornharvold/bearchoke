@@ -18,8 +18,8 @@ package com.bearchoke.platform.server.frontend.web.controller;
 
 
 import com.bearchoke.platform.server.common.ApplicationMediaType;
+import com.bearchoke.platform.server.common.config.WebSecurityConfig;
 import com.bearchoke.platform.server.common.web.config.WebMvcConfig;
-import com.bearchoke.platform.server.frontend.config.WebSecurityConfig;
 import com.bearchoke.platform.server.frontend.web.config.MockAppConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;

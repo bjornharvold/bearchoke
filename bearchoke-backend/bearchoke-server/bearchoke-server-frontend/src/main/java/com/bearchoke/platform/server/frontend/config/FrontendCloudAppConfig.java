@@ -13,5 +13,5 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @Profile("cloud")
 @PropertySource(value = "classpath:server-cloud.properties")
-public class AppCloudConfig {
+public class FrontendCloudAppConfig {
 }

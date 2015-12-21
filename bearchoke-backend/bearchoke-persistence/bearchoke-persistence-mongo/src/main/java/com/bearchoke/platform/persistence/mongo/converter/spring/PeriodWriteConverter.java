@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015. Traveliko
+ * Copyright (c) 2015. Bearchoke
  */
 
 package com.bearchoke.platform.persistence.mongo.converter.spring;

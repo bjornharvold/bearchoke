@@ -18,9 +18,9 @@ package com.bearchoke.platform.server.frontend.config;
 
 import com.bearchoke.platform.base.SpringSecurityHelper;
 import com.bearchoke.platform.server.common.ServerConstants;
-import com.bearchoke.platform.server.frontend.web.websocket.WebSocketConnectHandler;
-import com.bearchoke.platform.server.frontend.web.websocket.WebSocketDisconnectHandler;
 import com.bearchoke.platform.domain.user.repositories.ActiveWebSocketUserRepository;
+import com.bearchoke.platform.server.common.web.websocket.WebSocketConnectHandler;
+import com.bearchoke.platform.server.common.web.websocket.WebSocketDisconnectHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

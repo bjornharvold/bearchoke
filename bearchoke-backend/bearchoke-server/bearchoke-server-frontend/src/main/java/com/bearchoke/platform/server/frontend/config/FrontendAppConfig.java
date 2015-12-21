@@ -21,6 +21,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 import javax.jws.WebService;
 import javax.xml.ws.WebServiceProvider;
@@ -33,12 +34,13 @@ import javax.xml.ws.WebServiceProvider;
  */
 @Configuration
 @EnableAsync
+@EnableRedisHttpSession
 @ComponentScan(basePackages = {"com.bearchoke.platform"}, includeFilters = {
         @ComponentScan.Filter(WebService.class),
         @ComponentScan.Filter(WebServiceProvider.class)
 }, excludeFilters = {
         @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = WebMvcConfig.class)
 })
-public class AppConfig {
+public class FrontendAppConfig {
 
 }

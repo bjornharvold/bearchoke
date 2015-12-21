@@ -38,7 +38,7 @@ public class IndexController {
 
    @RequestMapping("/")
     public void index(HttpServletResponse response) throws IOException {
-       response.getWriter().println("Bearchoke-Server is live!");
+       response.getWriter().println("Server is live!");
     }
 }
 

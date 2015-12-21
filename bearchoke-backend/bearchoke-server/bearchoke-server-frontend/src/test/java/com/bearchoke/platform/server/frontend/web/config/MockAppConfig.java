@@ -16,9 +16,8 @@
 
 package com.bearchoke.platform.server.frontend.web.config;
 
-
-import com.bearchoke.platform.server.frontend.security.ApiAuthenticationFailureHandler;
-import com.bearchoke.platform.server.frontend.security.ApiAuthenticationSuccessHandler;
+import com.bearchoke.platform.server.common.security.ApiAuthenticationFailureHandler;
+import com.bearchoke.platform.server.common.security.ApiAuthenticationSuccessHandler;
 import com.bearchoke.platform.server.frontend.service.GreetingService;
 import com.bearchoke.platform.server.frontend.service.GreetingServiceImpl;
 import com.bearchoke.platform.domain.user.document.Role;

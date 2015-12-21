@@ -17,8 +17,8 @@
 package com.bearchoke.platform.server.frontend.service;
 
 import com.bearchoke.platform.base.config.EncryptionConfig;
-import com.bearchoke.platform.server.frontend.config.AppConfig;
-import com.bearchoke.platform.server.frontend.config.WebSecurityConfig;
+import com.bearchoke.platform.server.common.config.WebSecurityConfig;
+import com.bearchoke.platform.server.frontend.config.FrontendAppConfig;
 import com.bearchoke.platform.domain.user.config.SecurityConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -49,7 +49,7 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes =
         {
-                AppConfig.class,
+                FrontendAppConfig.class,
                 com.bearchoke.platform.persistence.redis.config.RedisConfig.class,
                 EncryptionConfig.class,
                 SecurityConfig.class,

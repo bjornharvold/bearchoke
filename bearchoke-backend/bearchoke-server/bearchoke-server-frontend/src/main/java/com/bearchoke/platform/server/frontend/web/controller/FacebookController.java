@@ -21,7 +21,7 @@ import com.bearchoke.platform.api.user.identifier.UserIdentifier;
 import com.bearchoke.platform.api.user.dto.FacebookUserDto;
 import com.bearchoke.platform.base.PlatformConstants;
 import com.bearchoke.platform.server.common.ApplicationMediaType;
-import com.bearchoke.platform.server.frontend.security.ApiAuthenticationSuccessHandler;
+import com.bearchoke.platform.server.common.security.ApiAuthenticationSuccessHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.axonframework.commandhandling.CommandBus;

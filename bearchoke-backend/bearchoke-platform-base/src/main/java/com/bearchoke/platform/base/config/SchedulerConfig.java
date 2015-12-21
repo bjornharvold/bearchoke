@@ -18,6 +18,8 @@ package com.bearchoke.platform.base.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -40,13 +42,14 @@ public class SchedulerConfig implements SchedulingConfigurer {
         registrar.setTaskScheduler(taskScheduler());
     }
 
-    @Bean(name = "threadPoolTaskExecutor")
-    public ThreadPoolTaskExecutor threadPoolTaskExecutor() {
+    @Bean(name = "taskExecutor")
+    @Primary
+    public TaskExecutor taskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setMaxPoolSize(5);
         executor.setCorePoolSize(2);
         executor.setQueueCapacity(25);
-        executor.setWaitForTasksToCompleteOnShutdown(true);
+        executor.setWaitForTasksToCompleteOnShutdown(false);
 
         return executor;
     }
@@ -55,7 +58,7 @@ public class SchedulerConfig implements SchedulingConfigurer {
     public ThreadPoolTaskScheduler taskScheduler() {
         ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
         scheduler.setPoolSize(5);
-        scheduler.setWaitForTasksToCompleteOnShutdown(true);
+        scheduler.setWaitForTasksToCompleteOnShutdown(false);
 
         return scheduler;
     }
