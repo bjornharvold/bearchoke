@@ -16,6 +16,7 @@
 
 package com.bearchoke.platform.server.frontend.web.controller;
 
+import com.bearchoke.platform.server.common.ServerConstants;
 import com.bearchoke.platform.server.frontend.BearchokeWebApplicationInitializer;
 import com.bearchoke.platform.server.frontend.web.support.client.StompMessageHandler;
 import com.bearchoke.platform.server.frontend.web.support.client.StompSession;

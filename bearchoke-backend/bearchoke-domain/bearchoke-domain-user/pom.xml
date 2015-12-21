@@ -45,6 +45,12 @@
             <version>${project.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.bearchoke</groupId>
+            <artifactId>bearchoke-persistence-redis</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- Spring Data Mongo -->
         <dependency>
             <groupId>org.springframework.data</groupId>

@@ -2,7 +2,7 @@
  * Copyright (c) 2015. Bearchoke
  */
 
-package com.traveliko.platform.persistence.redis.config;
+package com.bearchoke.platform.persistence.redis.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

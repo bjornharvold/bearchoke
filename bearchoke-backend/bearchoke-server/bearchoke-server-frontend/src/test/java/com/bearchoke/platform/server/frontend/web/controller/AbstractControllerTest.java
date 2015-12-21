@@ -4,6 +4,8 @@
 
 package com.bearchoke.platform.server.frontend.web.controller;
 
+import com.bearchoke.platform.api.user.dto.Principal;
+import com.bearchoke.platform.api.user.enums.Gender;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.core.GrantedAuthority;
@@ -27,9 +29,9 @@ public abstract class AbstractControllerTest {
     private static final List<GrantedAuthority> adminCredentials = Collections.singletonList(new SimpleGrantedAuthority("ROLE_ADMIN"));
     private static final List<GrantedAuthority> userCredentials = Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
     private static final List<GrantedAuthority> managerCredentials = Collections.singletonList(new SimpleGrantedAuthority("ROLE_MANAGER"));
-    private static final Principal administrator = new Principal("id1", "id1", "administrator@traveliko.com", "Bjorn Harvold", "Bjorn", "Harvold", "/img/profile/god.png", Gender.Male, PASSWORD, adminCredentials, true, true, true, true);
-    private static final Principal manager = new Principal("id2", "id2", "manager@traveliko.com", "Jack Clayborne", "Jack", "Clayborne", "/img/profile/jack.png", Gender.Male, PASSWORD, managerCredentials, true, true, true, true);
-    private static final Principal user = new Principal("id3", "id3", "user@traveliko.com", "Tom Boy", "Tom", "Boy", "/img/profile/tomboy.png", Gender.Male, PASSWORD, userCredentials, true, true, true, true);
+    private static final Principal administrator = new Principal("id1", "id1", "administrator@bearchoke.com", "Bjorn Harvold", "Bjorn", "Harvold", "/img/profile/god.png", Gender.Male, PASSWORD, adminCredentials, true, true, true, true);
+    private static final Principal manager = new Principal("id2", "id2", "manager@bearchoke.com", "Jack Clayborne", "Jack", "Clayborne", "/img/profile/jack.png", Gender.Male, PASSWORD, managerCredentials, true, true, true, true);
+    private static final Principal user = new Principal("id3", "id3", "user@bearchoke.com", "Tom Boy", "Tom", "Boy", "/img/profile/tomboy.png", Gender.Male, PASSWORD, userCredentials, true, true, true, true);
 
     @Inject
     private ObjectMapper objectMapper;

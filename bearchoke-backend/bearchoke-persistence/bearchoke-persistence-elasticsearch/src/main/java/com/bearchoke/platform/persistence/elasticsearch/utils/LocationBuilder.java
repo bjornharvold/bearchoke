@@ -2,10 +2,10 @@
  * Copyright (c) 2015. Bearchoke
  */
 
-package com.traveliko.platform.persistence.search.utils;
+package com.bearchoke.platform.persistence.search.utils;
 
-import com.traveliko.platform.persistence.search.dto.Location;
-import com.traveliko.platform.persistence.search.enums.LocationType;
+import com.bearchoke.platform.persistence.search.dto.Location;
+import com.bearchoke.platform.persistence.search.enums.LocationType;
 
 public class LocationBuilder {
 

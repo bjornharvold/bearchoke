@@ -46,7 +46,7 @@
             <AppenderRef ref="ASYNC"/>
         </Logger>
 
-        <Logger name="com.traveliko.platform.server.common.security" additivity="false" level="warn">
+        <Logger name="com.bearchoke.platform.server.common.security" additivity="false" level="warn">
             <AppenderRef ref="ASYNC"/>
         </Logger>
 

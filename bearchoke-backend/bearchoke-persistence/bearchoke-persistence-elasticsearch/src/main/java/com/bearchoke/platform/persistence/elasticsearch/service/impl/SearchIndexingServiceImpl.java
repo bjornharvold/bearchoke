@@ -2,10 +2,10 @@
  * Copyright (c) 2015. Bearchoke
  */
 
-package com.traveliko.platform.persistence.search.service.impl;
+package com.bearchoke.platform.persistence.search.service.impl;
 
-import com.traveliko.platform.persistence.search.dto.Location;
-import com.traveliko.platform.persistence.search.service.SearchIndexingService;
+import com.bearchoke.platform.persistence.search.dto.Location;
+import com.bearchoke.platform.persistence.search.service.SearchIndexingService;
 import io.searchbox.client.JestClient;
 import io.searchbox.client.JestResult;
 import io.searchbox.core.Bulk;

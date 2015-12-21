@@ -16,6 +16,8 @@
 
 package com.bearchoke.platform.server.frontend.web.controller;
 
+import com.bearchoke.platform.server.common.ApplicationMediaType;
+import com.bearchoke.platform.server.common.web.config.WebMvcConfig;
 import com.bearchoke.platform.server.frontend.web.config.MockAppConfig;
 import com.bearchoke.platform.domain.user.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +25,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
@@ -84,6 +87,10 @@ public class UserControllerTest extends AbstractControllerTest {
     private Filter springSecurityFilterChain;
 
     @Autowired
+    @Qualifier("springSessionRepositoryFilter")
+    private Filter springSessionRepositoryFilter;
+
+    @Autowired
     private UserRepository userRepository;
 
     private MockMvc mockMvc;
@@ -93,7 +100,7 @@ public class UserControllerTest extends AbstractControllerTest {
 
         this.mockMvc = MockMvcBuilders
                 .webAppContextSetup(this.wac)
-                .addFilters(springSecurityFilterChain)
+                .addFilters(springSessionRepositoryFilter, springSecurityFilterChain)
                 .build();
     }
 

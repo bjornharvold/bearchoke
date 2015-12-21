@@ -50,7 +50,7 @@ import static org.junit.Assert.assertNotNull;
 @ContextConfiguration(classes =
         {
                 AppConfig.class,
-                RedisConfig.class,
+                com.bearchoke.platform.persistence.redis.config.RedisConfig.class,
                 EncryptionConfig.class,
                 SecurityConfig.class,
                 WebSecurityConfig.class

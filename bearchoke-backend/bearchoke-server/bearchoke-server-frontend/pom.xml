@@ -44,18 +44,6 @@
 
         <dependency>
             <groupId>com.bearchoke</groupId>
-            <artifactId>bearchoke-persistence-mongo</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.bearchoke</groupId>
-            <artifactId>bearchoke-persistence-jpa</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.bearchoke</groupId>
             <artifactId>bearchoke-server-common</artifactId>
             <version>${project.version}</version>
         </dependency>

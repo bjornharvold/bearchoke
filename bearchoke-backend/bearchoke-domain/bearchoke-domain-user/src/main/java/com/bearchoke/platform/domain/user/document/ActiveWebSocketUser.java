@@ -18,6 +18,7 @@ package com.bearchoke.platform.domain.user.document;
 
 import com.bearchoke.platform.persistence.mongo.document.AbstractDocument;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
@@ -31,6 +32,7 @@ import java.util.Calendar;
  */
 @Document
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class ActiveWebSocketUser extends AbstractDocument implements Serializable {
     private static final long serialVersionUID = 4778092168107183668L;
 

@@ -17,12 +17,14 @@
 package com.bearchoke.platform.server.frontend.web.controller;
 
 
-import com.bearchoke.platform.api.user.UserIdentifier;
+import com.bearchoke.platform.api.user.identifier.UserIdentifier;
 import com.bearchoke.platform.api.user.dto.FacebookUserDto;
+import com.bearchoke.platform.server.common.ApplicationMediaType;
+import com.bearchoke.platform.server.common.web.config.WebMvcConfig;
 import com.bearchoke.platform.server.frontend.config.WebSecurityConfig;
 import com.bearchoke.platform.server.frontend.web.config.MockAppConfig;
-import com.bearchoke.platform.domain.user.UserAggregate;
-import com.bearchoke.platform.domain.user.UserCommandHandler;
+import com.bearchoke.platform.domain.user.aggregate.UserAggregate;
+import com.bearchoke.platform.domain.user.handler.UserCommandHandler;
 import com.bearchoke.platform.domain.user.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.CommandBus;
@@ -33,6 +35,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
@@ -95,6 +98,10 @@ public class FacebookControllerTest extends AbstractControllerTest {
     private Filter springSecurityFilterChain;
 
     @Autowired
+    @Qualifier("springSessionRepositoryFilter")
+    private Filter springSessionRepositoryFilter;
+
+    @Autowired
     private CommandBus commandBus;
 
     @Autowired
@@ -112,7 +119,7 @@ public class FacebookControllerTest extends AbstractControllerTest {
 
         this.mockMvc = MockMvcBuilders
                 .webAppContextSetup(this.wac)
-                .addFilters(springSecurityFilterChain)
+                .addFilters(springSessionRepositoryFilter, springSecurityFilterChain)
                 .build();
     }
 

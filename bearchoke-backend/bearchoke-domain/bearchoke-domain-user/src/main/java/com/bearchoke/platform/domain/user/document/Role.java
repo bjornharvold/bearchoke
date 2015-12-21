@@ -21,6 +21,7 @@ package com.bearchoke.platform.domain.user.document;
 import com.bearchoke.platform.api.user.event.RoleCreatedEvent;
 import com.bearchoke.platform.persistence.mongo.document.AbstractDocument;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
@@ -39,6 +40,7 @@ import java.util.List;
  */
 @Data
 @Document
+@EqualsAndHashCode(callSuper = false)
 public class Role extends AbstractDocument implements Serializable {
 
     /** Field description */

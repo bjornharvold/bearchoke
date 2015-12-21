@@ -45,7 +45,7 @@ public class MongoLocalConfig {
     private Environment environment;
 
     @Bean
-    public Mongo mongo() throws UnknownHostException {
+    public MongoClient mongo() throws UnknownHostException {
         // location of db
         ServerAddress sa = new ServerAddress(
                 environment.getProperty("mongodb.host"),

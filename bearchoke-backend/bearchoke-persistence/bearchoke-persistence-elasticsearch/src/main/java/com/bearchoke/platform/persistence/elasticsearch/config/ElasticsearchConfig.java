@@ -2,7 +2,7 @@
  * Copyright (c) 2015. Bearchoke
  */
 
-package com.traveliko.platform.persistence.search.config;
+package com.bearchoke.platform.persistence.search.config;
 
 import io.searchbox.client.JestClient;
 import io.searchbox.client.JestClientFactory;

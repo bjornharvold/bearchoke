@@ -78,6 +78,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         WithSecurityContextTestExecutionListener.class})
 public class GreetingControllerTest extends AbstractControllerTest {
 
+    private static final String USER = "user";
+
     @Autowired
     private WebApplicationContext wac;
 

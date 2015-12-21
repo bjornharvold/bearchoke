@@ -2,9 +2,9 @@
  * Copyright (c) 2015. Bearchoke
  */
 
-package com.traveliko.platform.persistence.search.dto;
+package com.bearchoke.platform.persistence.search.dto;
 
-import com.traveliko.platform.persistence.search.enums.LocationType;
+import com.bearchoke.platform.persistence.search.enums.LocationType;
 import io.searchbox.annotations.JestId;
 import lombok.Data;
 

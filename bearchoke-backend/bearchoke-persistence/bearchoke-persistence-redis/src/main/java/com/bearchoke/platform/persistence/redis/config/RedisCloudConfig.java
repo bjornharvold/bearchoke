@@ -2,7 +2,7 @@
  * Copyright (c) 2015. Bearchoke
  */
 
-package com.traveliko.platform.persistence.redis.config;
+package com.bearchoke.platform.persistence.redis.config;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.cloud.config.java.AbstractCloudConfig;

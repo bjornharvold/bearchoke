@@ -2,7 +2,7 @@
  * Copyright (c) 2015. Bearchoke
  */
 
-package com.traveliko.platform.persistence.search.enums;
+package com.bearchoke.platform.persistence.search.enums;
 
 /**
  * Created by Bjorn Harvold
