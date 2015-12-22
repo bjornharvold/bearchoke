@@ -22,7 +22,7 @@ angular.module("app").factory('AuthRestangular', function($state, $rootScope, Re
 
         // something like www.bearchoke.com:8080/api
         //$log.debug("Base URL is: " + configuration.baseUrl);
-        RestangularConfigurer.setBaseUrl(configuration.baseUrl);
+        RestangularConfigurer.setBaseUrl(configuration.restBaseUrl);
 
         // we want to tell restangular what version of the backend rest api we want to use plus include security tokens
         RestangularConfigurer.setDefaultHeaders(ApplicationContext.getHeaders());

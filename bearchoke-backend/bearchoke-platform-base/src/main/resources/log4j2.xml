@@ -46,15 +46,7 @@
             <AppenderRef ref="ASYNC"/>
         </Logger>
 
-        <Logger name="com.bearchoke.platform.server.common.security" additivity="false" level="warn">
-            <AppenderRef ref="ASYNC"/>
-        </Logger>
-
-        <Logger name="com.traveliko.domain.cdn" additivity="false" level="warn">
-            <AppenderRef ref="ASYNC"/>
-        </Logger>
-
-        <Logger name="com.traveliko" additivity="false" level="debug">
+        <Logger name="com.bearchoke" additivity="false" level="debug">
             <AppenderRef ref="ASYNC"/>
         </Logger>
         

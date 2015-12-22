@@ -20,7 +20,7 @@
  * Date: 11/15/13
  * Time: 2:21 PM
  */
-angular.module("app").config(function ($stateProvider, $locationProvider, $urlRouterProvider, $httpProvider) {
+angular.module("app").config(function ($stateProvider, $locationProvider, $urlRouterProvider, $httpProvider, configuration) {
 
     $locationProvider.html5Mode(true);
 
@@ -52,9 +52,16 @@ angular.module("app").config(function ($stateProvider, $locationProvider, $urlRo
                     auth: false,
                     title: "HOME",
                     meta: {
-                        'description': 'Test description',
-                        'author': 'Bjorn Harvold',
-                        'keywords': 'test,cool,bearchoke'
+                        "description": "Test description",
+                        "author": "Bjorn Harvold",
+                        "keywords": "test,cool,bearchoke",
+                        "og:image": configuration.frontendUrl + "/img/linkimage.png",
+                        "og:title": "Bearchoke.com | Tempest",
+                        "twitter:title": "Bearchoke.com | Tempest",
+                        "og:description": "Developer friendly",
+                        "twitter:description": "Developer friendly",
+                        "twitter:card": "summary",
+                        "twitter:url": configuration.frontendUrl
                     }
                 }
             })
