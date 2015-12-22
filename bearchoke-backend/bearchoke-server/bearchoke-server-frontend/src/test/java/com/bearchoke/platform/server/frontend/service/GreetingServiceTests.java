@@ -17,9 +17,12 @@
 package com.bearchoke.platform.server.frontend.service;
 
 import com.bearchoke.platform.base.config.EncryptionConfig;
+import com.bearchoke.platform.server.common.config.AppLocalConfig;
 import com.bearchoke.platform.server.common.config.WebSecurityConfig;
+import com.bearchoke.platform.server.common.web.config.WebMvcConfig;
 import com.bearchoke.platform.server.frontend.config.FrontendAppConfig;
 import com.bearchoke.platform.domain.user.config.SecurityConfig;
+import com.bearchoke.platform.server.frontend.web.config.MockServerConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,6 +31,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -49,14 +53,12 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes =
         {
-                FrontendAppConfig.class,
-                com.bearchoke.platform.persistence.redis.config.RedisConfig.class,
-                EncryptionConfig.class,
-                SecurityConfig.class,
-                WebSecurityConfig.class
+                MockServerConfig.class,
+                AppLocalConfig.class
         }
 )
-@TestExecutionListeners(listeners={ServletTestExecutionListener.class,
+@ActiveProfiles("local")
+@TestExecutionListeners(listeners={
         DependencyInjectionTestExecutionListener.class,
         DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class,

@@ -35,6 +35,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * Created by Bjorn Harvold
@@ -72,7 +73,7 @@ public class UserCommandHandler {
                 command.getEmail(),
                 command.getFirstName(),
                 command.getLastName(),
-                Arrays.asList(PlatformConstants.DEFAULT_USER_ROLE)
+                Collections.singletonList(PlatformConstants.DEFAULT_USER_ROLE)
         );
 
         // persist user aggregate
@@ -130,7 +131,7 @@ public class UserCommandHandler {
                     command.getEmail(),
                     command.getFirstName(),
                     command.getLastName(),
-                    Arrays.asList(PlatformConstants.DEFAULT_USER_ROLE));
+                    Collections.singletonList(PlatformConstants.DEFAULT_USER_ROLE));
         } else {
             if (log.isDebugEnabled()) {
                 log.debug("Updating Facebook user......");
@@ -147,7 +148,7 @@ public class UserCommandHandler {
                     command.getEmail(),
                     command.getFirstName(),
                     command.getLastName(),
-                    Arrays.asList(PlatformConstants.DEFAULT_USER_ROLE));
+                    Collections.singletonList(PlatformConstants.DEFAULT_USER_ROLE));
 
             id = ua.getId();
         }

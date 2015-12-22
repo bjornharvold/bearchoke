@@ -76,7 +76,7 @@ import static org.mockito.Mockito.mock;
 @Configuration
 @Slf4j
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true, jsr250Enabled = true)
-public class MockAppConfig extends GlobalMethodSecurityConfiguration {
+public class MockServerConfig extends GlobalMethodSecurityConfiguration {
 
     @Bean(name = "customObjectMapper")
     public ObjectMapper customObjectMapper() {

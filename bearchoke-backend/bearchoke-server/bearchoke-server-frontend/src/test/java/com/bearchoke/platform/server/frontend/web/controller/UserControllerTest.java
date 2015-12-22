@@ -18,7 +18,7 @@ package com.bearchoke.platform.server.frontend.web.controller;
 
 import com.bearchoke.platform.server.common.ApplicationMediaType;
 import com.bearchoke.platform.server.common.web.config.WebMvcConfig;
-import com.bearchoke.platform.server.frontend.web.config.MockAppConfig;
+import com.bearchoke.platform.server.frontend.web.config.MockServerConfig;
 import com.bearchoke.platform.domain.user.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
@@ -63,7 +63,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebAppConfiguration
 @ContextConfiguration(classes =
         {
-                MockAppConfig.class,
+                MockServerConfig.class,
                 WebMvcConfig.class
         }
 )
