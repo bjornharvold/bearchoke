@@ -18,7 +18,7 @@ package com.bearchoke.platform.domain.user.aggregate;
 
 import com.bearchoke.platform.api.user.event.RoleCreatedEvent;
 import com.bearchoke.platform.api.user.identifier.RoleIdentifier;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.axonframework.eventhandling.annotation.EventHandler;
 import org.axonframework.eventsourcing.annotation.AbstractAnnotatedAggregateRoot;
 import org.axonframework.eventsourcing.annotation.AggregateIdentifier;
@@ -33,7 +33,7 @@ import java.util.List;
  * Responsibility:
  */
 @Component
-@Slf4j
+@Log4j2
 public class RoleAggregate extends AbstractAnnotatedAggregateRoot {
 
     @AggregateIdentifier

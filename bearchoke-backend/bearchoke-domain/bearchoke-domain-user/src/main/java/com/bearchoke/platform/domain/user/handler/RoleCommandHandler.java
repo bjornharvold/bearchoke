@@ -19,7 +19,7 @@ package com.bearchoke.platform.domain.user.handler;
 import com.bearchoke.platform.api.user.command.CreateRoleCommand;
 import com.bearchoke.platform.api.user.identifier.RoleIdentifier;
 import com.bearchoke.platform.domain.user.aggregate.RoleAggregate;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.axonframework.commandhandling.annotation.CommandHandler;
 import org.axonframework.repository.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ import org.springframework.stereotype.Component;
  * Responsibility:
  */
 @Component
-@Slf4j
+@Log4j2
 public class RoleCommandHandler {
     @Qualifier("roleAggregateRepository")
     private final Repository<RoleAggregate> roleAggregateRepository;

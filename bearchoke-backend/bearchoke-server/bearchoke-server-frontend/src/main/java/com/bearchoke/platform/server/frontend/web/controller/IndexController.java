@@ -16,7 +16,7 @@
 
 package com.bearchoke.platform.server.frontend.web.controller;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -32,7 +32,7 @@ import java.io.IOException;
  * <p/>
  * Responsibility:
  */
-@Slf4j
+@Log4j2
 @Controller
 public class IndexController {
 

@@ -16,8 +16,10 @@
 
 package com.bearchoke.platform.api.user.command;
 
+import com.bearchoke.platform.api.user.enums.Gender;
 import com.bearchoke.platform.api.user.identifier.UserIdentifier;
 import com.bearchoke.platform.api.user.dto.RegisterUserDto;
+import lombok.Getter;
 import org.axonframework.commandhandling.annotation.TargetAggregateIdentifier;
 import org.axonframework.common.Assert;
 
@@ -32,22 +34,34 @@ import javax.validation.constraints.NotNull;
 public class RegisterUserCommand {
 
     @TargetAggregateIdentifier
+    @Getter
     private final UserIdentifier userId;
 
     @NotNull
+    @Getter
     private final String username;
 
     @NotNull
+    @Getter
     private final String email;
 
     @NotNull
+    @Getter
     private final String firstName;
 
     @NotNull
+    @Getter
     private final String lastName;
 
     @NotNull
+    @Getter
     private final String password;
+
+    @Getter
+    private final String profilePictureUrl;
+
+    @Getter
+    private final Gender gender;
 
     public RegisterUserCommand(UserIdentifier userId, RegisterUserDto user) {
 
@@ -65,29 +79,7 @@ public class RegisterUserCommand {
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.password = user.getPassword();
-    }
-
-    public UserIdentifier getUserId() {
-        return userId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getPassword() {
-        return password;
+        this.profilePictureUrl = user.getProfilePictureUrl();
+        this.gender = user.getGender();
     }
 }

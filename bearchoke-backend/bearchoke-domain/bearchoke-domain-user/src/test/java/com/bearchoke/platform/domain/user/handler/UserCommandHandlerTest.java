@@ -17,14 +17,19 @@
 package com.bearchoke.platform.domain.user.handler;
 
 import com.bearchoke.platform.api.user.command.CreateUserCommand;
+import com.bearchoke.platform.api.user.enums.Gender;
+import com.bearchoke.platform.api.user.event.UserCreatedEvent;
 import com.bearchoke.platform.api.user.identifier.UserIdentifier;
+import com.bearchoke.platform.domain.user.UserConstants;
 import com.bearchoke.platform.domain.user.aggregate.UserAggregate;
 import com.bearchoke.platform.domain.user.repositories.UserRepository;
-import lombok.extern.slf4j.Slf4j;
+import com.bearchoke.platform.domain.user.test.TestPasswordEncryptor;
+import lombok.extern.log4j.Log4j2;
 import org.axonframework.test.FixtureConfiguration;
 import org.axonframework.test.Fixtures;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
+import org.jasypt.util.password.PasswordEncryptor;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -32,7 +37,10 @@ import org.mockito.Mock;
 
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+
+import static org.mockito.Mockito.mock;
 
 /**
  * Created by Bjorn Harvold
@@ -40,41 +48,55 @@ import java.util.List;
  * Time: 5:09 PM
  * Responsibility:
  */
-@Slf4j
+@Log4j2
 public class UserCommandHandlerTest {
     private FixtureConfiguration fixture;
 
-    @Mock
-    private UserRepository userRepository;
-    
     @Before
     public void setUp() throws Exception {
+        // set up the encryptor here
+        PasswordEncryptor passwordEncryptor = new TestPasswordEncryptor();
+
         fixture = Fixtures.newGivenWhenThenFixture(UserAggregate.class);
-        UserCommandHandler commandHandler = new UserCommandHandler(fixture.getRepository(), userRepository);
+        UserCommandHandler commandHandler = new UserCommandHandler(fixture.getRepository(), mock(UserRepository.class), passwordEncryptor);
         fixture.registerAnnotatedCommandHandler(commandHandler);
         fixture.setReportIllegalStateChange(false);
     }
 
     @Test
-    public void testCreateUser() throws Exception {
+    public void testSaveOrUpdateUserCommand() throws Exception {
         UserIdentifier id = new UserIdentifier("user1");
-        String password = "password";
+
         String firstName = "Gavin";
         String lastName = "King";
-        String username = "User";
-        String email = "User@User.com";
-        List<String> roles = Arrays.asList("ROLE_USER");
-
-        // useless test right now
-        Matcher matcher = Matchers.anything();
-
-//        fixture.given()
-//                .when(new CreateUserCommand(id, email, username, firstName, lastName, password, roles))
-//                .expectEvents(new UserCreatedEvent(id, UserConstants.SITE_SOURCE, username.toLowerCase(), password, email.toLowerCase(), firstName, lastName, roles));
-
+        String username = "gaving.king@gmail.comr";
+        String password = "password";
+        String profilePictureUrl = "http://lorempixel.com/50/50/people";
+        Gender gender = Gender.Male;
+        List<String> roles = Collections.singletonList("ROLE_USER");
 
         fixture.given()
-                .when(new CreateUserCommand(id, email, username, firstName, lastName, password, roles))
-                .expectEventsMatching(matcher);
+                .when(new CreateUserCommand(
+                        id,
+                        username,
+                        username,
+                        firstName,
+                        lastName,
+                        profilePictureUrl,
+                        gender,
+                        password,
+                        roles))
+                .expectEvents(new UserCreatedEvent(
+                        id,
+                        UserConstants.SITE_SOURCE,
+                        username.toLowerCase(),
+                        username.toLowerCase(),
+                        password,
+                        firstName,
+                        lastName,
+                        profilePictureUrl,
+                        gender,
+                        roles));
+
     }
 }

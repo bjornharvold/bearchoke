@@ -17,7 +17,7 @@ package com.bearchoke.platform.server.frontend.web.websocket.service.impl;
 
 import com.bearchoke.platform.server.frontend.web.websocket.service.Quote;
 import com.bearchoke.platform.server.frontend.web.websocket.service.QuoteService;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.messaging.core.MessageSendingOperations;
@@ -36,7 +36,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * Services that push data to web socket channels need to be under the 'web' package as that is where the web socket configuration
  * is located. If it is below 'web', it won't find the messagingTemplate.
  */
-@Slf4j
+@Log4j2
 @Service
 public class QuoteServiceImpl implements ApplicationListener<BrokerAvailabilityEvent>, QuoteService {
 

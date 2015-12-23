@@ -2,10 +2,10 @@
  * Copyright (c) 2015. Bearchoke
  */
 
-package com.bearchoke.platform.persistence.search.repository.impl;
+package com.bearchoke.platform.domain.search.repository.impl;
 
-import com.bearchoke.platform.persistence.search.dto.Location;
-import com.bearchoke.platform.persistence.search.repository.LocationRepository;
+import com.bearchoke.platform.domain.search.dto.Location;
+import com.bearchoke.platform.domain.search.repository.LocationRepository;
 import io.searchbox.client.JestClient;
 import io.searchbox.client.JestResult;
 import io.searchbox.core.Search;

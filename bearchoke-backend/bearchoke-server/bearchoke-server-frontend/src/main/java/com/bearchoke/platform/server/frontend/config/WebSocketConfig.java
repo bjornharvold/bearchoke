@@ -22,7 +22,7 @@ import com.bearchoke.platform.domain.user.repositories.ActiveWebSocketUserReposi
 import com.bearchoke.platform.server.common.web.websocket.WebSocketConnectHandler;
 import com.bearchoke.platform.server.common.web.websocket.WebSocketDisconnectHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -68,7 +68,7 @@ import java.util.Map;
  */
 @Configuration
 @EnableWebSocketMessageBroker
-@Slf4j
+@Log4j2
 public class WebSocketConfig<S extends ExpiringSession> extends AbstractSessionWebSocketMessageBrokerConfigurer<S> {
 
     @Inject

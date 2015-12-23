@@ -20,7 +20,7 @@ import com.bearchoke.platform.api.todo.event.ToDoItemCompletedEvent;
 import com.bearchoke.platform.api.todo.event.ToDoItemCreatedEvent;
 import com.bearchoke.platform.api.todo.event.ToDoItemRemovedEvent;
 import com.bearchoke.platform.api.todo.dto.ToDoDto;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.axonframework.eventhandling.annotation.EventHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -32,7 +32,7 @@ import org.springframework.stereotype.Component;
  * Time: 5:27 PM
  * Responsibility:
  */
-@Slf4j
+@Log4j2
 @Component
 public class ToDoEventListener {
 

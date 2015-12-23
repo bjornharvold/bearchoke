@@ -2,9 +2,9 @@
  * Copyright (c) 2015. Bearchoke
  */
 
-package com.bearchoke.platform.persistence.search.repository;
+package com.bearchoke.platform.domain.search.repository;
 
-import com.bearchoke.platform.persistence.search.dto.Location;
+import com.bearchoke.platform.domain.search.dto.Location;
 
 import java.util.List;
 

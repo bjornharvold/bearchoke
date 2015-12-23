@@ -1,6 +1,6 @@
 package com.bearchoke.platform.webservice.impl;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
 import javax.jws.WebService;
 
@@ -16,7 +16,7 @@ import javax.jws.WebService;
         targetNamespace = "com.bearchoke.platform.webservice",
         endpointInterface = "com.bearchoke.platform.webservice.HelloWorldWebService"
 )
-@Slf4j
+@Log4j2
 public class HelloWorldWebServiceImpl implements com.bearchoke.platform.webservice.HelloWorldWebService {
 
     public HelloWorldWebServiceImpl() {

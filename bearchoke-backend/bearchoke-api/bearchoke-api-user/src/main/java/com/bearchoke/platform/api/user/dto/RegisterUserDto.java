@@ -16,6 +16,7 @@
 
 package com.bearchoke.platform.api.user.dto;
 
+import com.bearchoke.platform.api.user.enums.Gender;
 import lombok.Data;
 
 /**
@@ -33,4 +34,6 @@ public class RegisterUserDto {
     private String password;
     private String verifypassword;
     private String[] roles;
+    private String profilePictureUrl;
+    private Gender gender;
 }

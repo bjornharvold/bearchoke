@@ -16,9 +16,10 @@
 
 package com.bearchoke.platform.domain.user.security;
 
+import com.bearchoke.platform.api.user.UserDetailsExtended;
 import com.bearchoke.platform.api.user.command.AuthenticateUserCommand;
 import com.bearchoke.platform.api.user.UserAccount;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.commandhandling.GenericCommandMessage;
 import org.axonframework.commandhandling.StructuralCommandValidationFailedException;
@@ -41,7 +42,7 @@ import java.util.concurrent.ExecutionException;
  *
  * @author Bjorn Harvold
  */
-@Slf4j
+@Log4j2
 public class UserAuthenticationProvider implements AuthenticationProvider {
 
     private final CommandBus commandBus;
@@ -63,7 +64,7 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
         UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) authentication;
         String username = token.getName();
         String password = String.valueOf(token.getCredentials());
-        FutureCallback<UserAccount> accountCallback = new FutureCallback<>();
+        FutureCallback<UserDetailsExtended> accountCallback = new FutureCallback<>();
         AuthenticateUserCommand command = new AuthenticateUserCommand(username, password);
 
         try {
@@ -75,7 +76,7 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
             return null;
         }
 
-        UserAccount account;
+        UserDetailsExtended account;
 
         try {
             account = accountCallback.get();
@@ -88,10 +89,7 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
                 throw new UsernameNotFoundException(error);
             }
 
-        } catch (InterruptedException e) {
-            log.error(e.getMessage(), e);
-            throw new AuthenticationServiceException("Credentials could not be verified", e);
-        } catch (ExecutionException e) {
+        } catch (InterruptedException | ExecutionException e) {
             log.error(e.getMessage(), e);
             throw new AuthenticationServiceException("Credentials could not be verified", e);
         }

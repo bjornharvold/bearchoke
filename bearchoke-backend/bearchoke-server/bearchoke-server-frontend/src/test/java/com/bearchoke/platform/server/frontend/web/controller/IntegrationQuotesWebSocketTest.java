@@ -22,7 +22,7 @@ import com.bearchoke.platform.server.frontend.web.support.client.StompMessageHan
 import com.bearchoke.platform.server.frontend.web.support.client.StompSession;
 import com.bearchoke.platform.server.frontend.web.support.client.WebSocketStompClient;
 import com.bearchoke.platform.server.frontend.web.support.server.TomcatWebSocketTestServer;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -38,6 +38,7 @@ import org.springframework.test.util.JsonPathExpectationsHelper;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.util.SocketUtils;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.socket.WebSocketHttpHeaders;
 import org.springframework.web.socket.client.standard.StandardWebSocketClient;
@@ -56,7 +57,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import static org.junit.Assert.fail;
 
-@Slf4j
+@Log4j2
 public class IntegrationQuotesWebSocketTest {
 
 	private static int port;
@@ -85,6 +86,7 @@ public class IntegrationQuotesWebSocketTest {
 		transports.add(xhrTransport);
 
 		sockJsClient = new SockJsClient(transports);
+        sockJsClient.setHttpHeaderNames("X-Auth-Token");
 		log.info("Setup complete!");
 	}
 
@@ -93,23 +95,27 @@ public class IntegrationQuotesWebSocketTest {
 
 		log.info("Authenticating user before subscribing to web socket");
 
-		String url = "http://localhost:" + port + "/api/authenticate";
+		String url = "http://dev.bearchoke.com:" + port + "/api/authenticate";
 
-		new RestTemplate().execute(url, HttpMethod.POST,
+		try {
+			new RestTemplate().execute(url, HttpMethod.POST,
 
-				request -> {
-                    MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
-                    map.add("username", user);
-                    map.add("password", password);
-                    new FormHttpMessageConverter().write(map, MediaType.APPLICATION_FORM_URLENCODED, request);
-                },
+					request -> {
+						MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
+						map.add("username", user);
+						map.add("password", password);
+						new FormHttpMessageConverter().write(map, MediaType.APPLICATION_FORM_URLENCODED, request);
+					},
 
-				response -> {
-					String xAuthToken = response.getHeaders().getFirst(ServerConstants.X_AUTH_TOKEN);
-					log.info("Retrieved x-auth-token: " + xAuthToken);
-                    headersToUpdate.add(ServerConstants.X_AUTH_TOKEN, xAuthToken);
-                    return null;
-                });
+					response -> {
+						String xAuthToken = response.getHeaders().getFirst(ServerConstants.X_AUTH_TOKEN);
+						log.info("Retrieved x-auth-token: " + xAuthToken);
+						headersToUpdate.add(ServerConstants.X_AUTH_TOKEN, xAuthToken);
+						return null;
+					});
+		} catch (Exception ex) {
+			log.error(ex.getMessage(), ex);
+		}
 	}
 
 	@AfterClass
@@ -140,7 +146,7 @@ public class IntegrationQuotesWebSocketTest {
 		final CountDownLatch latch = new CountDownLatch(1);
 		final AtomicReference<Throwable> failure = new AtomicReference<Throwable>();
 
-		URI uri = new URI("ws://localhost:" + port + "/ws");
+		URI uri = new URI("ws://dev.bearchoke.com:" + port + "/ws");
 		WebSocketStompClient stompClient = new WebSocketStompClient(uri, this.headers, sockJsClient);
 		stompClient.setMessageConverter(new MappingJackson2MessageConverter());
 

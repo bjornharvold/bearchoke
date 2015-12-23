@@ -22,7 +22,7 @@ import com.bearchoke.platform.domain.user.document.Role;
 import com.bearchoke.platform.domain.user.document.User;
 import com.bearchoke.platform.domain.user.repositories.RoleRepository;
 import com.bearchoke.platform.domain.user.repositories.UserRepository;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.axonframework.eventhandling.annotation.EventHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -33,7 +33,7 @@ import org.springframework.stereotype.Component;
  * Time: 5:27 PM
  * Responsibility:
  */
-@Slf4j
+@Log4j2
 @Component
 public class UserEventListener {
 

@@ -30,7 +30,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.axonframework.commandhandling.CommandBus;
 import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Bean;
@@ -74,7 +74,7 @@ import static org.mockito.Mockito.mock;
  */
 
 @Configuration
-@Slf4j
+@Log4j2
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true, jsr250Enabled = true)
 public class MockServerConfig extends GlobalMethodSecurityConfiguration {
 

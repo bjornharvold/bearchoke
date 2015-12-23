@@ -16,7 +16,7 @@
 
 package com.bearchoke.platform.domain.user.security;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.core.env.Environment;
@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-@Slf4j
+@Log4j2
 @Service("preAuthenticatedTokenCacheService")
 public class PreAuthenticatedTokenCacheService {
 

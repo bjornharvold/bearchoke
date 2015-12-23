@@ -16,9 +16,10 @@
 
 package com.bearchoke.platform.domain.user.security;
 
+import com.bearchoke.platform.api.user.dto.Principal;
+import com.bearchoke.platform.domain.user.document.User;
 import com.bearchoke.platform.domain.user.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -42,12 +43,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserDetails ud = userRepository.findUserByUsername(username);
+        User user = userRepository.findByUsername(username);
 
-        if (ud == null) {
+        if (user == null) {
             throw new UsernameNotFoundException("Could not locate user record for username: " + username);
         }
 
-        return ud;
+        return new Principal(user.getId(), user.getUserIdentifier(), user.getUsername(), user.getName(),
+                user.getFirstName(), user.getLastName(), user.getProfilePictureUrl(), user.getGender(),
+                user.getPassword(), user.getAuthorities(), user.getNonExpired(), user.getNonLocked(), user.getCredentialsNonExpired(),
+                user.getEnabled());
     }
 }

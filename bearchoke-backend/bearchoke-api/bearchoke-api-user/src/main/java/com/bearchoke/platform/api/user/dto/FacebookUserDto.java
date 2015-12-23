@@ -38,4 +38,5 @@ public class FacebookUserDto {
     private String link;
     private String[] roles;
     private String password;
+    private FacebookProfilePicture picture;
 }

@@ -16,10 +16,6 @@
 
 package com.bearchoke.platform.domain.user.repositories;
 
-import com.bearchoke.platform.domain.user.document.User;
-import org.springframework.data.mongodb.repository.Query;
-import org.springframework.data.repository.PagingAndSortingRepository;
-
 /**
  * Created by Bjorn Harvold
  * Date: 1/9/14
@@ -27,13 +23,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * Responsibility:
  */
 public interface UserRepositoryCustom {
-    User findUserByUsername(String username);
-
-    User findUserByEmail(String email);
-
     boolean isUsernameUnique(String username);
-
     boolean isEmailUnique(String email);
-
-    User findUserByUserIdentifier(String userIdentifier);
 }

@@ -16,10 +16,11 @@
 
 package com.bearchoke.platform.domain.user.aggregate;
 
+import com.bearchoke.platform.api.user.enums.Gender;
 import com.bearchoke.platform.api.user.event.UserAuthenticatedEvent;
 import com.bearchoke.platform.api.user.event.UserCreatedEvent;
 import com.bearchoke.platform.api.user.identifier.UserIdentifier;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.axonframework.eventhandling.annotation.EventHandler;
 import org.axonframework.eventsourcing.annotation.AbstractAnnotatedAggregateRoot;
 import org.axonframework.eventsourcing.annotation.AggregateIdentifier;
@@ -36,46 +37,38 @@ import java.util.List;
  * Responsibility:
  */
 @Component
-@Slf4j
+@Log4j2
 public class UserAggregate extends AbstractAnnotatedAggregateRoot {
-    private final PasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
 
     @AggregateIdentifier
     private UserIdentifier id;
+
     private String username;
     private String password;
     private String email;
     private String firstName;
     private String lastName;
+    private String profilePictureUrl;
+    private Gender gender;
     private Integer source;
     private List<String> roles;
 
     public UserAggregate() {
     }
 
-    public UserAggregate(UserIdentifier id, Integer source, String username, String password, String email, String firstName, String lastName, List<String> roles) {
+    public UserAggregate(UserIdentifier id, Integer source, String username, String password, String email, String firstName, String lastName, String profilePictureUrl, Gender gender, List<String> roles) {
         apply(new UserCreatedEvent(
                 id,
                 source,
                 username.toLowerCase(),
-                passwordEncryptor.encryptPassword(password),
+                password,
                 email.toLowerCase(),
                 firstName,
                 lastName,
+                profilePictureUrl,
+                gender,
                 roles
         ));
-    }
-
-    public boolean authenticate(String password) {
-        boolean success = passwordEncryptor.checkPassword(password, this.password);
-        if (success) {
-            apply(new UserAuthenticatedEvent(this.id));
-        } else {
-            if (log.isDebugEnabled()) {
-                log.debug("Passwords did not match");
-            }
-        }
-        return success;
     }
 
     @EventHandler
@@ -91,6 +84,8 @@ public class UserAggregate extends AbstractAnnotatedAggregateRoot {
         this.email = event.getEmail();
         this.firstName = event.getFirstName();
         this.lastName = event.getLastName();
+        this.profilePictureUrl = event.getProfilePictureUrl();
+        this.gender = event.getGender();
         this.roles = event.getRoles();
     }
 

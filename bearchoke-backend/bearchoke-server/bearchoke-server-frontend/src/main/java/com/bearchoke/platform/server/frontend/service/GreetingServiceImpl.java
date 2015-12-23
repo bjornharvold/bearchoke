@@ -16,7 +16,7 @@
 
 package com.bearchoke.platform.server.frontend.service;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,7 +28,7 @@ import org.springframework.stereotype.Service;
  * Time: 6:13 PM
  * Responsibility:
  */
-@Slf4j
+@Log4j2
 @Service
 public class GreetingServiceImpl implements GreetingService {
     private static final String template = "Hello, %s!";

@@ -23,7 +23,7 @@ import com.bearchoke.platform.api.user.dto.UniqueResult;
 import com.bearchoke.platform.base.PlatformConstants;
 import com.bearchoke.platform.domain.user.repositories.UserRepository;
 import com.bearchoke.platform.server.common.ApplicationMediaType;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.commandhandling.GenericCommandMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +36,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@Slf4j
+@Log4j2
 public class UserController {
     private final CommandBus commandBus;
     private final UserRepository userRepository;

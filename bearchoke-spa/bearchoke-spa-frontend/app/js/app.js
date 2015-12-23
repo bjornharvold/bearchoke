@@ -27,6 +27,7 @@ angular.module("app", [
     "ngStorage",
     "pascalprecht.translate",
     "ezfb",
+    "angucomplete-alt",
     "oitozero.ngSweetAlert"
 ])
         .run(function ($rootScope, $state, $stateParams, $modal, $log, $timeout, ApplicationContext, AnalyticsEventService, AuthRestangular) {

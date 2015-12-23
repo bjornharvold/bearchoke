@@ -2,10 +2,10 @@
  * Copyright (c) 2015. Bearchoke
  */
 
-package com.bearchoke.platform.persistence.search.service.impl;
+package com.bearchoke.platform.domain.search.service.impl;
 
-import com.bearchoke.platform.persistence.search.dto.Location;
-import com.bearchoke.platform.persistence.search.service.SearchIndexingService;
+import com.bearchoke.platform.domain.search.dto.Location;
+import com.bearchoke.platform.domain.search.service.SearchIndexingService;
 import io.searchbox.client.JestClient;
 import io.searchbox.client.JestResult;
 import io.searchbox.core.Bulk;
@@ -34,7 +34,7 @@ public class SearchIndexingServiceImpl implements SearchIndexingService {
     private final JestClient jestClient;
 
     @Autowired
-    public SearchIndexingServiceImpl(JestClient jestClient){
+    public SearchIndexingServiceImpl(JestClient jestClient) {
         this.jestClient = jestClient;
     }
 
@@ -73,10 +73,8 @@ public class SearchIndexingServiceImpl implements SearchIndexingService {
 
             Bulk.Builder builder = new Bulk.Builder();
 
-            if (locations != null && !locations.isEmpty()) {
-                for (Location location : locations) {
-                    builder.addAction(new Index.Builder(location).index(LOCATION_INDEX_NAME).type(LOCATION_INDEX_TYPE).build());
-                }
+            for (Location location : locations) {
+                builder.addAction(new Index.Builder(location).index(LOCATION_INDEX_NAME).type(LOCATION_INDEX_TYPE).build());
             }
 
             Bulk bulk = builder.build();

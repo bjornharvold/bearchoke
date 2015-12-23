@@ -22,7 +22,7 @@ import com.bearchoke.platform.server.common.config.AppLocalConfig;
 import com.bearchoke.platform.server.common.config.WebSecurityConfig;
 import com.bearchoke.platform.server.common.web.config.WebMvcConfig;
 import com.bearchoke.platform.server.frontend.web.config.MockServerConfig;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -64,7 +64,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * <p/>
  * Responsibility:
  */
-@Slf4j
+@Log4j2
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes =

@@ -22,7 +22,7 @@ import com.bearchoke.platform.api.user.dto.FacebookUserDto;
 import com.bearchoke.platform.base.PlatformConstants;
 import com.bearchoke.platform.server.common.ApplicationMediaType;
 import com.bearchoke.platform.server.common.security.ApiAuthenticationSuccessHandler;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.commandhandling.GenericCommandMessage;
@@ -48,7 +48,7 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 @RestController
-@Slf4j
+@Log4j2
 public class FacebookController {
     private final CommandBus commandBus;
 

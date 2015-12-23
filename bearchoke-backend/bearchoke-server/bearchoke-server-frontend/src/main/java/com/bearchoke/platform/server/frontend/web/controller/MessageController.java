@@ -18,7 +18,7 @@ package com.bearchoke.platform.server.frontend.web.controller;
 
 import com.bearchoke.platform.server.frontend.service.chat.Message;
 import com.bearchoke.platform.server.frontend.service.chat.OutputMessage;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.messaging.handler.annotation.MessageExceptionHandler;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -38,7 +38,7 @@ import java.util.Date;
  */
 
 @Controller
-@Slf4j
+@Log4j2
 public class MessageController {
 
     /**

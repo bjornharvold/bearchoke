@@ -16,7 +16,9 @@
 
 package com.bearchoke.platform.api.user.event;
 
+import com.bearchoke.platform.api.user.enums.Gender;
 import com.bearchoke.platform.api.user.identifier.UserIdentifier;
+import lombok.Getter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.List;
@@ -28,16 +30,37 @@ import java.util.List;
  * Responsibility:
  */
 public class UserCreatedEvent {
-    private UserIdentifier userId;
-    private String username;
-    private String password;
-    private String email;
-    private String firstName;
-    private String lastName;
+    @Getter
+    private final UserIdentifier userId;
+
+    @Getter
+    private final String username;
+
+    @Getter
+    private final String password;
+
+    @Getter
+    private final String email;
+
+    @Getter
+    private final String firstName;
+
+    @Getter
+    private final String lastName;
+
+    @Getter
+    private final String profilePictureUrl;
+
+    @Getter
+    private final Gender gender;
+
+    @Getter
     private Integer source;
+
+    @Getter
     private List<String> roles;
 
-    public UserCreatedEvent(UserIdentifier userId, Integer source, String username, String password, String email, String firstName, String lastName, List<String> roles) {
+    public UserCreatedEvent(UserIdentifier userId, Integer source, String username, String password, String email, String firstName, String lastName, String profilePictureUrl, Gender gender, List<String> roles) {
         this.userId = userId;
         this.source = source;
         this.username = username;
@@ -46,51 +69,7 @@ public class UserCreatedEvent {
         this.firstName = firstName;
         this.lastName = lastName;
         this.roles = roles;
-    }
-
-    public UserIdentifier getUserId() {
-        return userId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public List<String> getRoles() {
-        return roles;
-    }
-
-    public Integer getSource() {
-        return source;
-    }
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this)
-                .append("userId", userId)
-                .append("source", source)
-                .append("username", username)
-                .append("password", password)
-                .append("email", email)
-                .append("firstName", firstName)
-                .append("lastName", lastName)
-                .append("roles", roles)
-                .toString();
+        this.profilePictureUrl = profilePictureUrl;
+        this.gender = gender;
     }
 }

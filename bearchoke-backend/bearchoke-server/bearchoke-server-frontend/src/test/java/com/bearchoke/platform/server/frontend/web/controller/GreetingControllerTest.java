@@ -18,15 +18,17 @@ package com.bearchoke.platform.server.frontend.web.controller;
 
 
 import com.bearchoke.platform.server.common.ApplicationMediaType;
+import com.bearchoke.platform.server.common.config.AppLocalConfig;
 import com.bearchoke.platform.server.common.config.WebSecurityConfig;
 import com.bearchoke.platform.server.common.web.config.WebMvcConfig;
 import com.bearchoke.platform.server.frontend.web.config.MockServerConfig;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -61,16 +63,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * <p/>
  * Responsibility:
  */
-@Slf4j
+@Log4j2
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes =
         {
                 MockServerConfig.class,
                 WebSecurityConfig.class,
-                WebMvcConfig.class
+                WebMvcConfig.class,
+                AppLocalConfig.class
         }
 )
+@ActiveProfiles("local")
 @TestExecutionListeners(listeners={ServletTestExecutionListener.class,
         DependencyInjectionTestExecutionListener.class,
         DirtiesContextTestExecutionListener.class,
@@ -122,7 +126,7 @@ public class GreetingControllerTest extends AbstractControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON))
                 .andExpect(jsonPath("$.id").value(1))
-                .andExpect(jsonPath("$.content").value("Hello, " + USER + ". You have the role of ROLE_USER!"))
+                .andExpect(jsonPath("$.content").value("Hello, " + user.getUsername() + ". You have the role of ROLE_USER!"))
                 .andExpect(authenticated().withRoles("USER"))
         ;
 

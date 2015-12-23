@@ -16,25 +16,27 @@
 
 package com.bearchoke.platform.domain.user.handler;
 
+import com.bearchoke.platform.api.user.UserDetailsExtended;
 import com.bearchoke.platform.api.user.command.AuthenticateUserCommand;
 import com.bearchoke.platform.api.user.command.CreateFacebookUserCommand;
 import com.bearchoke.platform.api.user.command.CreateUserCommand;
 import com.bearchoke.platform.api.user.command.RegisterUserCommand;
 import com.bearchoke.platform.api.user.UserAccount;
+import com.bearchoke.platform.api.user.dto.Principal;
 import com.bearchoke.platform.api.user.identifier.UserIdentifier;
 import com.bearchoke.platform.base.PlatformConstants;
 import com.bearchoke.platform.domain.user.UserConstants;
 import com.bearchoke.platform.domain.user.aggregate.UserAggregate;
 import com.bearchoke.platform.domain.user.document.User;
 import com.bearchoke.platform.domain.user.repositories.UserRepository;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.axonframework.commandhandling.annotation.CommandHandler;
 import org.axonframework.repository.Repository;
+import org.jasypt.util.password.PasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
 import java.util.Collections;
 
 /**
@@ -44,7 +46,7 @@ import java.util.Collections;
  * Responsibility:
  */
 @Component
-@Slf4j
+@Log4j2
 public class UserCommandHandler {
     @Qualifier("userAggregateRepository")
     private final Repository<UserAggregate> userAggregateRepository;
@@ -52,10 +54,15 @@ public class UserCommandHandler {
     @Qualifier("userRepository")
     private final UserRepository userRepository;
 
+    private final PasswordEncryptor passwordEncryptor;
+
     @Autowired
-    public UserCommandHandler(Repository<UserAggregate> userAggregateRepository, UserRepository userRepository) {
+    public UserCommandHandler(Repository<UserAggregate> userAggregateRepository,
+                              UserRepository userRepository,
+                              PasswordEncryptor passwordEncryptor) {
         this.userAggregateRepository = userAggregateRepository;
         this.userRepository = userRepository;
+        this.passwordEncryptor = passwordEncryptor;
     }
 
     @CommandHandler
@@ -69,10 +76,12 @@ public class UserCommandHandler {
                 id,
                 UserConstants.SITE_SOURCE,
                 command.getUsername(),
-                command.getPassword(),
+                passwordEncryptor.encryptPassword(command.getPassword()),
                 command.getEmail(),
                 command.getFirstName(),
                 command.getLastName(),
+                command.getProfilePictureUrl(),
+                command.getGender(),
                 Collections.singletonList(PlatformConstants.DEFAULT_USER_ROLE)
         );
 
@@ -93,10 +102,12 @@ public class UserCommandHandler {
                 id,
                 UserConstants.SITE_SOURCE,
                 command.getUsername(),
-                command.getPassword(),
+                passwordEncryptor.encryptPassword(command.getPassword()),
                 command.getEmail(),
                 command.getFirstName(),
                 command.getLastName(),
+                command.getProfilePictureUrl(),
+                command.getGender(),
                 command.getRoles()
         );
 
@@ -116,7 +127,7 @@ public class UserCommandHandler {
         }
 
         // first see if we can retrieve an existing user
-        User user = userRepository.findUserByUserIdentifier(command.getUserId().toString());
+        User user = userRepository.findByUserIdentifier(command.getUserId().toString());
 
         if (user == null) {
             // user does not yet exist - go ahead and create it
@@ -127,10 +138,12 @@ public class UserCommandHandler {
                     id,
                     UserConstants.FACEBOOK_SOURCE,
                     command.getEmail(),
-                    command.getPassword(),
+                    passwordEncryptor.encryptPassword(command.getPassword()),
                     command.getEmail(),
                     command.getFirstName(),
                     command.getLastName(),
+                    command.getProfilePictureUrl(),
+                    command.getGender(),
                     Collections.singletonList(PlatformConstants.DEFAULT_USER_ROLE));
         } else {
             if (log.isDebugEnabled()) {
@@ -144,10 +157,12 @@ public class UserCommandHandler {
                     ua.getId(),
                     UserConstants.FACEBOOK_SOURCE,
                     command.getEmail(),
-                    command.getPassword(),
+                    passwordEncryptor.encryptPassword(command.getPassword()),
                     command.getEmail(),
                     command.getFirstName(),
                     command.getLastName(),
+                    command.getProfilePictureUrl(),
+                    command.getGender(),
                     Collections.singletonList(PlatformConstants.DEFAULT_USER_ROLE));
 
             id = ua.getId();
@@ -160,23 +175,32 @@ public class UserCommandHandler {
     }
 
     @CommandHandler
-    public UserAccount handleAuthenticateUser(AuthenticateUserCommand command) {
+    public UserDetailsExtended handleAuthenticateUser(AuthenticateUserCommand command) {
         if (log.isDebugEnabled()) {
             log.debug("Handling: " + command.getClass().getSimpleName());
         }
-        User user = userRepository.findUserByUsername(command.getUsername());
+        User user = userRepository.findByUsername(command.getUsername());
 
         if (user == null) {
             return null;
         }
 
-        boolean success = onUser(user.getUserIdentifier()).authenticate(command.getPassword());
+        boolean success = passwordEncryptor.checkPassword(command.getPassword(), user.getPassword());
 
         if (log.isDebugEnabled()) {
             log.debug("Authentication successful: " + success);
         }
 
-        return success ? user : null;
+        // if we wanted other event listeners to know that the user was authenticated, we could mark it like so
+        // A UserAuthenticatedEvent would get dispatched
+//        if (success) {
+//            onUser(user.getUserIdentifier()).userAuthenticated();
+//        }
+
+        return success ? new Principal(user.getId(), user.getUserIdentifier(), user.getUsername(), user.getName(),
+                user.getFirstName(), user.getLastName(), user.getProfilePictureUrl(), user.getGender(),
+                user.getPassword(), user.getAuthorities(), user.getNonExpired(), user.getNonLocked(), user.getCredentialsNonExpired(),
+                user.getEnabled()) : null;
     }
 
     private UserAggregate onUser(String userId) {

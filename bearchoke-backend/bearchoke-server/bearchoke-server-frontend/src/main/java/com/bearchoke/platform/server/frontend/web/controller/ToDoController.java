@@ -23,7 +23,7 @@ import com.bearchoke.platform.api.todo.identifier.ToDoIdentifier;
 import com.bearchoke.platform.base.SpringSecurityHelper;
 import com.bearchoke.platform.api.todo.dto.ToDoDto;
 import com.bearchoke.platform.server.common.web.controller.AbstractAuthenticatedController;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.commandhandling.GenericCommandMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +43,7 @@ import org.springframework.stereotype.Controller;
  */
 
 @Controller
-@Slf4j
+@Log4j2
 public class ToDoController extends AbstractAuthenticatedController {
 
     private final CommandBus commandBus;

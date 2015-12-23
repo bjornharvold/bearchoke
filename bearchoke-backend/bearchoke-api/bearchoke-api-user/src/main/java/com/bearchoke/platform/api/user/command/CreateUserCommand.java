@@ -16,7 +16,9 @@
 
 package com.bearchoke.platform.api.user.command;
 
+import com.bearchoke.platform.api.user.enums.Gender;
 import com.bearchoke.platform.api.user.identifier.UserIdentifier;
+import lombok.Getter;
 import org.axonframework.commandhandling.annotation.TargetAggregateIdentifier;
 import org.axonframework.common.Assert;
 
@@ -51,10 +53,16 @@ public class CreateUserCommand {
     @NotNull
     private final String password;
 
+    @Getter
+    private final String profilePictureUrl;
+
+    @Getter
+    private final Gender gender;
+
     @NotNull
     private final List<String> roles;
 
-    public CreateUserCommand(UserIdentifier userId, String email, String username, String firstName, String lastName, String password, List<String> roles) {
+    public CreateUserCommand(UserIdentifier userId, String email, String username, String firstName, String lastName, String profilePictureUrl, Gender gender, String password, List<String> roles) {
 
         Assert.notNull(userId, "Identifier cannot be null");
         Assert.notNull(email, "Email cannot be null");
@@ -69,6 +77,8 @@ public class CreateUserCommand {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.profilePictureUrl = profilePictureUrl;
+        this.gender = gender;
         this.password = password;
         this.roles = roles;
     }

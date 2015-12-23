@@ -2,7 +2,7 @@
  * Copyright (c) 2015. Bearchoke
  */
 
-package com.bearchoke.platform.persistence.search.enums;
+package com.bearchoke.platform.domain.search.enums;
 
 /**
  * Created by Bjorn Harvold

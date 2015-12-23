@@ -16,26 +16,23 @@
 
 package com.bearchoke.platform.domain.user.init;
 
-import com.bearchoke.platform.api.user.command.CreateRoleCommand;
 import com.bearchoke.platform.api.user.command.CreateUserCommand;
-import com.bearchoke.platform.api.user.identifier.RoleIdentifier;
+import com.bearchoke.platform.api.user.enums.Gender;
 import com.bearchoke.platform.api.user.identifier.UserIdentifier;
 import com.bearchoke.platform.base.PlatformConstants;
 import com.bearchoke.platform.base.init.DBInit;
-import com.bearchoke.platform.domain.user.document.Role;
+import com.bearchoke.platform.domain.user.RoleConstants;
 import com.bearchoke.platform.domain.user.document.User;
 import com.bearchoke.platform.domain.user.repositories.RoleRepository;
 import com.bearchoke.platform.domain.user.repositories.UserRepository;
+import lombok.extern.log4j.Log4j2;
 import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.commandhandling.GenericCommandMessage;
-import org.axonframework.eventstore.mongo.MongoEventStore;
-import org.axonframework.saga.repository.mongo.MongoTemplate;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -44,102 +41,63 @@ import java.util.List;
  */
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Component
+@Log4j2
+@Order(3)
 public class UserDBInit implements DBInit {
-    private final static Logger logger = LoggerFactory.getLogger(UserDBInit.class);
-
-    private final org.axonframework.eventstore.mongo.MongoTemplate systemAxonMongo;
-    private final MongoEventStore eventStore;
-    private final org.springframework.data.mongodb.core.MongoTemplate mongoTemplate;
-    private final MongoTemplate systemAxonSagaMongo;
+    private final MongoTemplate mongoTemplate;
     private final CommandBus commandBus;
     private final UserRepository userRepository;
-    private final RoleRepository roleRepository;
 
     private boolean usersInserted = false;
 
     @Autowired
     public UserDBInit(CommandBus commandBus,
                       UserRepository userRepository,
-                      org.axonframework.eventstore.mongo.MongoTemplate systemMongo,
-                      MongoEventStore eventStore,
-                      org.springframework.data.mongodb.core.MongoTemplate mongoTemplate,
-                      MongoTemplate systemAxonSagaMongo, RoleRepository roleRepository) {
+                      MongoTemplate mongoTemplate) {
         this.commandBus = commandBus;
         this.userRepository = userRepository;
-        this.systemAxonMongo = systemMongo;
-        this.eventStore = eventStore;
         this.mongoTemplate = mongoTemplate;
-        this.systemAxonSagaMongo = systemAxonSagaMongo;
-        this.roleRepository = roleRepository;
+    }
+
+    @Override
+    public boolean initEvenIfExist() {
+        // overwrite everything
+        if (mongoTemplate.collectionExists(User.class)) {
+            initializeDB();
+        }
+
+        return initIfNotExist();
     }
 
     @Override
     public boolean initIfNotExist() {
-        if (!mongoTemplate.collectionExists(User.class)) {
-            initEvenIfExist();
-            logger.info("The database has been created and refreshed with some data.");
-        }
+        log.info("Creating reference users...");
+
+        createUser("harry", "harry@mitchell.com", "harrymitchell", "Harry", "Mitchell", "/img/profile/god.png", Gender.Male, "HarryMitchell5!", Collections.singletonList(PlatformConstants.DEFAULT_USER_ROLE));
+        createUser("superman", "admin@admin.com", "admin", "Admin", "Admin", "/img/profile/god.png", Gender.Male, "AdminAdmin%1", Collections.singletonList(PlatformConstants.DEFAULT_ADMIN_ROLE));
 
         return usersInserted;
     }
 
     private void initializeDB() {
-        // clear all of Axon's collections
-        systemAxonMongo.domainEventCollection().drop();
-        systemAxonMongo.snapshotEventCollection().drop();
-        systemAxonSagaMongo.sagaCollection().drop();
-
+        log.info("Dropping User collections from MongoDb");
         // clear our own collections
         mongoTemplate.dropCollection(User.class);
-        mongoTemplate.dropCollection(Role.class);
     }
 
-    private void additionalDBSteps() {
-        eventStore.ensureIndexes();
-    }
+    private void createUser(String userIdentifier, String email, String username, String firstName, String lastName, String profilePictureUrl, Gender gender, String password, List<String> roles) {
+        User user = userRepository.findByUsername(username);
 
-    @Override
-    public boolean initEvenIfExist() {
-        initializeDB();
+        if (user == null) {
+            usersInserted = true;
 
-        RoleIdentifier userRole = createRole(PlatformConstants.DEFAULT_USER_ROLE, Collections.singletonList("RIGHT_READ_USER"));
-        RoleIdentifier adminRole = createRole(PlatformConstants.DEFAULT_ADMIN_ROLE, Collections.singletonList("RIGHT_ADMIN"));
+            UserIdentifier userId = new UserIdentifier(userIdentifier);
+            CreateUserCommand command = new CreateUserCommand(userId, email, username, firstName, lastName, profilePictureUrl, gender, password, roles);
+            commandBus.dispatch(new GenericCommandMessage<>(command));
 
-        UserIdentifier user = createUser("harry@mitchell.com", "harrymitchell", "Harry", "Mitchell", "HarryMitchell5!", Collections.singletonList(PlatformConstants.DEFAULT_USER_ROLE));
-        UserIdentifier admin = createUser("admin@admin.com", "admin", "Admin", "Admin", "AdminAdmin%1", Collections.singletonList(PlatformConstants.DEFAULT_ADMIN_ROLE));
-
-        additionalDBSteps();
-
-        return usersInserted;
-    }
-
-    private RoleIdentifier createRole(String name, List<String> rights) {
-        Role role = roleRepository.findByName(name);
-
-        if (role != null) {
-            roleRepository.delete(role);
+            log.info("Created system user: " + username);
         }
 
-        RoleIdentifier roleId = new RoleIdentifier(name);
-        CreateRoleCommand command = new CreateRoleCommand(roleId, name, rights);
-        commandBus.dispatch(new GenericCommandMessage<>(command));
 
-        return roleId;
-    }
-
-    UserIdentifier createUser(String email, String username, String firstName, String lastName, String password, List<String> roles) {
-        User user = userRepository.findUserByUsername(username);
-
-        if (user != null) {
-            userRepository.delete(user);
-        }
-
-        UserIdentifier userId = new UserIdentifier();
-        CreateUserCommand command = new CreateUserCommand(userId, email, username, firstName, lastName, password, roles);
-        commandBus.dispatch(new GenericCommandMessage<>(command));
-
-        usersInserted = true;
-
-        return userId;
     }
 }

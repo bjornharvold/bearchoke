@@ -185,6 +185,21 @@ angular.module("app").config(function ($stateProvider, $locationProvider, $urlRo
                     }
                 }
             })
+            .state('search', {
+                parent: "static-content-layout",
+                url: "/ui/search",
+                templateUrl: "search.html",
+                controller: 'SearchController',
+                data: {
+                    auth: false,
+                    title: "SEARCH",
+                    meta: {
+                        'description': 'Search test',
+                        'author': 'Bjorn Harvold',
+                        'keywords': 'webservices,soap,bearchoke'
+                    }
+                }
+            })
             .state('faq', {
                 parent: "static-content-layout",
                 url: '/ui/faq',

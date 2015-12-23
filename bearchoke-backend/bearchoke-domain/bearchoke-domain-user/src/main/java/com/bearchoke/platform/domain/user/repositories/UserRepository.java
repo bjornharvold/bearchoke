@@ -26,5 +26,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * Responsibility:
  */
 public interface UserRepository extends PagingAndSortingRepository<User, String>, UserRepositoryCustom {
-
+    User findByUsername(String username);
+    User findByEmail(String email);
+    User findByUserIdentifier(String userIdentifier);
 }

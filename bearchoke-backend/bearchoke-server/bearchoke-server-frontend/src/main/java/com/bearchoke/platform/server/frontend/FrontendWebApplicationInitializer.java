@@ -19,7 +19,7 @@ package com.bearchoke.platform.server.frontend;
 import com.bearchoke.platform.server.common.AbstractWebApplicationInitializer;
 
 import com.bearchoke.platform.server.frontend.config.FrontendAppConfig;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.apache.cxf.transport.servlet.CXFServlet;
 import org.springframework.web.WebApplicationInitializer;
 
@@ -27,7 +27,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
-@Slf4j
+@Log4j2
 public class FrontendWebApplicationInitializer extends AbstractWebApplicationInitializer implements WebApplicationInitializer {
 
     @Override

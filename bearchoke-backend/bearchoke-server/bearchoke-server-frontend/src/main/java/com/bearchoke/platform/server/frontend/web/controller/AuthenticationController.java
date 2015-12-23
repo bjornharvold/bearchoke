@@ -16,11 +16,12 @@
 
 package com.bearchoke.platform.server.frontend.web.controller;
 
+import com.bearchoke.platform.api.user.UserDetailsExtended;
 import com.bearchoke.platform.domain.user.security.PreAuthenticatedTokenCacheService;
 import com.bearchoke.platform.server.common.ApplicationMediaType;
 import com.bearchoke.platform.server.common.ServerConstants;
 import com.bearchoke.platform.api.user.dto.AuthenticationToken;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
@@ -47,7 +48,7 @@ import java.util.Map;
  *
  */
 @RestController
-@Slf4j
+@Log4j2
 public class AuthenticationController {
 
     private final PreAuthenticatedTokenCacheService preAuthenticatedTokenCacheService;
@@ -64,16 +65,25 @@ public class AuthenticationController {
      */
     @RequestMapping(value = "/api/secured/user", method = { RequestMethod.GET }, produces = ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON_VALUE)
 	public AuthenticationToken getUser(Authentication authentication) {
-        UserDetails user = (UserDetails) authentication.getPrincipal();
+        UserDetails principal = (UserDetails) authentication.getPrincipal();
         Collection<GrantedAuthority> credentials = (Collection<GrantedAuthority>) authentication.getAuthorities();
 
-		final Map<String, Boolean> roles = new HashMap<>();
+        final Map<String, Boolean> roles = new HashMap<>();
 
         for (GrantedAuthority authority : credentials) {
             roles.put(authority.getAuthority(), true);
         }
 
-		return new AuthenticationToken(user.getUsername(), roles);
+        AuthenticationToken at;
+
+        if (principal instanceof UserDetailsExtended) {
+            UserDetailsExtended ude = (UserDetailsExtended) principal;
+            at = new AuthenticationToken(ude.getUsername(), ude.getName(), ude.getFirstName(), ude.getLastName(), ude.getProfilePictureUrl(), roles);
+        } else {
+            at = new AuthenticationToken(principal.getUsername(), roles);
+        }
+
+        return at;
 	}
 
     /**

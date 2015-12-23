@@ -44,6 +44,12 @@
 
         <dependency>
             <groupId>com.bearchoke</groupId>
+            <artifactId>bearchoke-domain-search</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.bearchoke</groupId>
             <artifactId>bearchoke-server-common</artifactId>
             <version>${project.version}</version>
         </dependency>

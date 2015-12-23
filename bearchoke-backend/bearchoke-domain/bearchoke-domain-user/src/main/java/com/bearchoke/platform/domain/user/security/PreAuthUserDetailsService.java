@@ -16,7 +16,7 @@
 
 package com.bearchoke.platform.domain.user.security;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.userdetails.AuthenticationUserDetailsService;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,7 +27,7 @@ import org.springframework.stereotype.Service;
 import javax.inject.Inject;
 
 @Service("preAuthUserDetailsService")
-@Slf4j
+@Log4j2
 public class PreAuthUserDetailsService implements AuthenticationUserDetailsService<PreAuthenticatedAuthenticationToken> {
 
 	@Inject

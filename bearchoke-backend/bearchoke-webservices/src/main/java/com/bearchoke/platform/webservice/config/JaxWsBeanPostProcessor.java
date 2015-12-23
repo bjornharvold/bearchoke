@@ -1,6 +1,6 @@
 package com.bearchoke.platform.webservice.config;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.cxf.Bus;
 import org.apache.cxf.feature.AbstractFeature;
@@ -22,7 +22,7 @@ import java.util.Map;
  * Responsibility:
  */
 @Named
-@Slf4j
+@Log4j2
 public class JaxWsBeanPostProcessor implements BeanPostProcessor {
     @Inject
     ListableBeanFactory beanFactory;

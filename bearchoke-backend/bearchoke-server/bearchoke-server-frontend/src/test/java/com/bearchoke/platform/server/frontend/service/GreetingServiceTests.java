@@ -23,7 +23,7 @@ import com.bearchoke.platform.server.common.web.config.WebMvcConfig;
 import com.bearchoke.platform.server.frontend.config.FrontendAppConfig;
 import com.bearchoke.platform.domain.user.config.SecurityConfig;
 import com.bearchoke.platform.server.frontend.web.config.MockServerConfig;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
@@ -63,7 +63,7 @@ import static org.junit.Assert.assertNotNull;
         DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class,
         WithSecurityContextTestExecutionListener.class})
-@Slf4j
+@Log4j2
 public class GreetingServiceTests {
 
     @Inject

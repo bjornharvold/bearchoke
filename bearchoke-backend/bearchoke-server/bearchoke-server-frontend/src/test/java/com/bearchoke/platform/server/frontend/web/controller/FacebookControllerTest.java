@@ -27,11 +27,12 @@ import com.bearchoke.platform.server.frontend.web.config.MockServerConfig;
 import com.bearchoke.platform.domain.user.aggregate.UserAggregate;
 import com.bearchoke.platform.domain.user.handler.UserCommandHandler;
 import com.bearchoke.platform.domain.user.repositories.UserRepository;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.commandhandling.callbacks.FutureCallback;
 import org.axonframework.test.FixtureConfiguration;
 import org.axonframework.test.Fixtures;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -74,7 +75,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * <p>
  * Responsibility:
  */
-@Slf4j
+@Log4j2
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes =
@@ -118,7 +119,7 @@ public class FacebookControllerTest extends AbstractControllerTest {
 
         fixture = Fixtures.newGivenWhenThenFixture(UserAggregate.class);
 
-        UserCommandHandler commandHandler = new UserCommandHandler(fixture.getRepository(), userQueryRepository);
+        UserCommandHandler commandHandler = new UserCommandHandler(fixture.getRepository(), userQueryRepository, new StrongPasswordEncryptor());
         fixture.registerAnnotatedCommandHandler(commandHandler);
 
         this.mockMvc = MockMvcBuilders

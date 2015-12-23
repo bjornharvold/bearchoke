@@ -18,6 +18,7 @@
     <modules>
         <module>bearchoke-domain-todo</module>
         <module>bearchoke-domain-user</module>
+        <module>bearchoke-domain-search</module>
     </modules>
 
     <dependencies>

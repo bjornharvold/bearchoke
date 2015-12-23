@@ -16,7 +16,7 @@
 
 package com.bearchoke.platform.server.frontend.config;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.messaging.MessageSecurityMetadataSourceRegistry;
 import org.springframework.security.config.annotation.web.socket.AbstractSecurityWebSocketMessageBrokerConfigurer;
@@ -28,7 +28,7 @@ import org.springframework.security.config.annotation.web.socket.AbstractSecurit
  * Responsibility:
  */
 @Configuration
-@Slf4j
+@Log4j2
 public class WebSocketSecurityConfig extends AbstractSecurityWebSocketMessageBrokerConfigurer {
 
     @Override

@@ -16,8 +16,11 @@
 
 package com.bearchoke.platform.api.user.command;
 
+import com.bearchoke.platform.api.user.enums.Gender;
 import com.bearchoke.platform.api.user.identifier.UserIdentifier;
 import com.bearchoke.platform.api.user.dto.FacebookUserDto;
+import lombok.Getter;
+import org.apache.commons.lang.StringUtils;
 import org.axonframework.commandhandling.annotation.TargetAggregateIdentifier;
 import org.axonframework.common.Assert;
 
@@ -32,19 +35,31 @@ import javax.validation.constraints.NotNull;
 public class CreateFacebookUserCommand {
 
     @TargetAggregateIdentifier
+    @Getter
     private final UserIdentifier userId;
 
     @NotNull
+    @Getter
     private final String email;
 
     @NotNull
+    @Getter
     private final String firstName;
 
     @NotNull
+    @Getter
     private final String lastName;
 
     @NotNull
+    @Getter
     private final String password;
+
+    @Getter
+    private final String profilePictureUrl;
+
+    @Getter
+    @NotNull
+    private final Gender gender;
 
     public CreateFacebookUserCommand(UserIdentifier userId, FacebookUserDto dto) {
 
@@ -53,31 +68,25 @@ public class CreateFacebookUserCommand {
         Assert.notNull(dto.getFirst_name(), "First name cannot be null");
         Assert.notNull(dto.getLast_name(), "Last name cannot be null");
         Assert.notNull(dto.getPassword(), "Password cannot be null");
+        Assert.notNull(dto.getGender(), "Gender cannot be null");
 
         this.userId = userId;
         this.email = dto.getEmail();
         this.firstName = dto.getFirst_name();
         this.lastName = dto.getLast_name();
+        this.profilePictureUrl = dto.getPicture().getData().getUrl();
+        this.gender = Gender.valueOf(StringUtils.capitalize(dto.getGender()));
         this.password = dto.getPassword();
     }
 
-    public UserIdentifier getUserId() {
-        return userId;
-    }
+    public static void main(String[] args) {
+        String gender = "male";
+        String genderCapitalized = StringUtils.capitalize(gender);
 
-    public String getEmail() {
-        return email;
-    }
+        System.out.println(genderCapitalized);
 
-    public String getFirstName() {
-        return firstName;
-    }
+        Gender genderEnum = Gender.valueOf(genderCapitalized);
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getPassword() {
-        return password;
+        System.out.println(genderEnum);
     }
 }

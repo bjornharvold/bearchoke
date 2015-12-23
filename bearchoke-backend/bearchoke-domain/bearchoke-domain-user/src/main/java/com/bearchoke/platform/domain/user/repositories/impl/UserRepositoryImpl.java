@@ -18,7 +18,7 @@ package com.bearchoke.platform.domain.user.repositories.impl;
 
 import com.bearchoke.platform.domain.user.document.User;
 import com.bearchoke.platform.domain.user.repositories.UserRepositoryCustom;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Query;
@@ -34,7 +34,7 @@ import static org.springframework.data.mongodb.core.query.Query.query;
  * Time: 8:05 PM
  * Responsibility:
  */
-@Slf4j
+@Log4j2
 public class UserRepositoryImpl implements UserRepositoryCustom {
 
     private final MongoOperations mongoOperations;
@@ -44,6 +44,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         this.mongoOperations = mongoOperations;
     }
 
+    @Override
     public boolean isEmailUnique(String email) {
         Query q = query(where("email").is(email));
 
@@ -56,6 +57,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         return result;
     }
 
+    @Override
     public boolean isUsernameUnique(String username) {
 
         Query q = query(where("username").is(username));
@@ -69,45 +71,4 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
         return result;
     }
 
-    public User findUserByUsername(String username) {
-        User result = null;
-
-        Query q = query(where("username").is(username));
-
-        List<User> list = mongoOperations.find(q, User.class);
-
-        if (list != null && !list.isEmpty()) {
-            result = list.get(0);
-        }
-
-        return result;
-    }
-
-    public User findUserByEmail(String email) {
-        User result = null;
-
-        Query q = query(where("email").is(email));
-
-        List<User> list = mongoOperations.find(q, User.class);
-
-        if (list != null && !list.isEmpty()) {
-            result = list.get(0);
-        }
-
-        return result;
-    }
-
-    public User findUserByUserIdentifier(String userIdentifier) {
-        User result = null;
-
-        Query q = query(where("userIdentifier").is(userIdentifier));
-
-        List<User> list = mongoOperations.find(q, User.class);
-
-        if (list != null && !list.isEmpty()) {
-            result = list.get(0);
-        }
-
-        return result;
-    }
 }

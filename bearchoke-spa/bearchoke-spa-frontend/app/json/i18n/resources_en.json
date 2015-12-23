@@ -14,5 +14,6 @@
     "TITLE": "Hello",
     "FOO": "This is a paragraph",
     "BAR": "FOOBAR",
-    "HELLO": "Hi"
+    "HELLO": "Hi",
+    "SEARCH": "Search"
 }

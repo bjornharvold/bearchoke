@@ -2,9 +2,8 @@
  * Copyright (c) 2015. Bearchoke
  */
 
-package com.bearchoke.platform.persistence.search.dto;
+package com.bearchoke.platform.domain.search.dto;
 
-import com.bearchoke.platform.persistence.search.enums.LocationType;
 import io.searchbox.annotations.JestId;
 import lombok.Data;
 
@@ -19,24 +18,19 @@ public class Location {
 
     @JestId
     private String id;
-    private LocationType type;
     private String name;
     private String code;
-    private String description;
 
     public Location() {
     }
 
-    public Location(String id, LocationType type) {
+    public Location(String id) {
         this.id = id;
-        this.type = type;
     }
 
-    public Location(String id, LocationType type, String code, String name, String description) {
+    public Location(String id, String code, String name) {
         this.id = id;
-        this.type = type;
         this.code = code;
         this.name = name;
-        this.description =  description;
     }
 }

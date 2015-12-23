@@ -17,16 +17,19 @@
 package com.bearchoke.platform.server.frontend.web.controller;
 
 import com.bearchoke.platform.server.common.ApplicationMediaType;
+import com.bearchoke.platform.server.common.config.AppLocalConfig;
+import com.bearchoke.platform.server.common.config.WebSecurityConfig;
 import com.bearchoke.platform.server.common.web.config.WebMvcConfig;
 import com.bearchoke.platform.server.frontend.web.config.MockServerConfig;
 import com.bearchoke.platform.domain.user.repositories.UserRepository;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -58,15 +61,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * <p/>
  * Responsibility:
  */
-@Slf4j
+@Log4j2
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes =
         {
                 MockServerConfig.class,
-                WebMvcConfig.class
+                WebSecurityConfig.class,
+                WebMvcConfig.class,
+                AppLocalConfig.class
         }
 )
+@ActiveProfiles("local")
 @TestExecutionListeners(listeners={ServletTestExecutionListener.class,
         DependencyInjectionTestExecutionListener.class,
         DirtiesContextTestExecutionListener.class,

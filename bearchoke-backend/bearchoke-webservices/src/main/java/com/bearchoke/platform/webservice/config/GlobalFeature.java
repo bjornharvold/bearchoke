@@ -1,6 +1,6 @@
 package com.bearchoke.platform.webservice.config;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.apache.cxf.Bus;
 import org.apache.cxf.feature.AbstractFeature;
 import org.apache.cxf.interceptor.InterceptorProvider;
@@ -16,7 +16,7 @@ import javax.inject.Named;
  * Responsibility:
  */
 @Named
-@Slf4j
+@Log4j2
 public class GlobalFeature extends AbstractFeature {
 
     private final LoggingInInterceptor loggingInInterceptor;

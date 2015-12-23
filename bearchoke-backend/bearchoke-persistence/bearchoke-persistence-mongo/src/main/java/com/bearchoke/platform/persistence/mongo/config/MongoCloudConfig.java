@@ -16,7 +16,7 @@
 
 package com.bearchoke.platform.persistence.mongo.config;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.cloud.config.java.AbstractCloudConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,7 +36,7 @@ import javax.inject.Inject;
 @Configuration
 @Profile("mongodb-cloud")
 @PropertySource(value = "classpath:mongodb-cloud.properties")
-@Slf4j
+@Log4j2
 public class MongoCloudConfig extends AbstractCloudConfig {
 
     @Inject

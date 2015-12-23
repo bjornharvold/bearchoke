@@ -156,7 +156,7 @@ angular.module("app").factory('AuthenticationFactory', function ($rootScope, $st
      * Retrieve facebook user's object and sync it with the server
      */
     function updateApiMe(success, error) {
-        ezfb.api('/me', function (res) {
+        ezfb.api('/me?fields=id,email,name,first_name,last_name,picture{url},gender,link,locale,timezone,verified', function (res) {
             // authenticate with the server
             AuthRestangular.one('facebook').customPOST(res).then(function(data) {
 

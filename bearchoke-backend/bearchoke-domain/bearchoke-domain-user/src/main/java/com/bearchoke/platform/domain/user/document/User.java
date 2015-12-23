@@ -19,6 +19,7 @@ package com.bearchoke.platform.domain.user.document;
 //~--- non-JDK imports --------------------------------------------------------
 
 import com.bearchoke.platform.api.user.UserAccount;
+import com.bearchoke.platform.api.user.enums.Gender;
 import com.bearchoke.platform.api.user.event.UserCreatedEvent;
 import com.bearchoke.platform.persistence.mongo.document.AbstractDocument;
 import com.fasterxml.uuid.EthernetAddress;
@@ -120,6 +121,10 @@ public class User extends AbstractDocument implements UserDetails, UserAccount, 
     /** Last name */
     private String lastName;
 
+    private Gender gender;
+
+    private String profilePictureUrl;
+
     /**
      * Static method to generate a User Code value
      * @return
@@ -161,6 +166,8 @@ public class User extends AbstractDocument implements UserDetails, UserAccount, 
         this.lastName = event.getLastName();
         this.password = event.getPassword();
         this.userIdentifier = event.getUserId().toString();
+        this.profilePictureUrl = event.getProfilePictureUrl();
+        this.gender = event.getGender();
     }
 
     //~--- methods ------------------------------------------------------------
