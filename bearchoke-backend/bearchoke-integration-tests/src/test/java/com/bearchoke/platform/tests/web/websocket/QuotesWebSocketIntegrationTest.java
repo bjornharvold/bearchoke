@@ -14,17 +14,18 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.server.frontend.web.controller;
+package com.bearchoke.platform.tests.web.websocket;
 
 import com.bearchoke.platform.server.common.ServerConstants;
 import com.bearchoke.platform.server.frontend.FrontendWebApplicationInitializer;
-import com.bearchoke.platform.server.frontend.web.support.client.StompMessageHandler;
-import com.bearchoke.platform.server.frontend.web.support.client.StompSession;
-import com.bearchoke.platform.server.frontend.web.support.client.WebSocketStompClient;
-import com.bearchoke.platform.server.frontend.web.support.server.TomcatWebSocketTestServer;
+import com.bearchoke.platform.tests.web.websocket.support.client.StompMessageHandler;
+import com.bearchoke.platform.tests.web.websocket.support.client.StompSession;
+import com.bearchoke.platform.tests.web.websocket.support.client.WebSocketStompClient;
+import com.bearchoke.platform.tests.web.websocket.support.server.TomcatWebSocketTestServer;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.http.HttpHeaders;
@@ -38,7 +39,6 @@ import org.springframework.test.util.JsonPathExpectationsHelper;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.util.SocketUtils;
-import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.socket.WebSocketHttpHeaders;
 import org.springframework.web.socket.client.standard.StandardWebSocketClient;
@@ -58,7 +58,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import static org.junit.Assert.fail;
 
 @Log4j2
-public class IntegrationQuotesWebSocketTest {
+public class QuotesWebSocketIntegrationTest {
 
 	private static int port;
 
@@ -157,7 +157,7 @@ public class IntegrationQuotesWebSocketTest {
 			@Override
 			public void afterConnected(StompSession stompSession, StompHeaderAccessor headers) {
 				String channel = "/topic/price.stock.*";
-				log.info("Subscribing to channel: " + channel);
+				QuotesWebSocketIntegrationTest.log.info("Subscribing to channel: " + channel);
 				stompSession.subscribe(channel, RandomStringUtils.randomAlphabetic(10));
 				this.stompSession = stompSession;
 			}
@@ -169,7 +169,7 @@ public class IntegrationQuotesWebSocketTest {
 					 failure.set(new IllegalStateException("Unexpected message: " + message));
 				}
 
-				log.debug("Got \n" + new String(message.getPayload()));
+				QuotesWebSocketIntegrationTest.log.debug("Got \n" + new String(message.getPayload()));
 				try {
 					String json = new String(message.getPayload(), Charset.forName("UTF-8"));
 					new JsonPathExpectationsHelper("$.company").assertValue(json, "Citrix Systems, Inc.");
@@ -194,7 +194,7 @@ public class IntegrationQuotesWebSocketTest {
 
 			@Override
 			public void afterDisconnected() {
-				log.info("Successfully disconnected from Web Socket channel");
+				QuotesWebSocketIntegrationTest.log.info("Successfully disconnected from Web Socket channel");
 			}
 		});
 
@@ -203,7 +203,7 @@ public class IntegrationQuotesWebSocketTest {
 		}
 
 		if (!latch.await(5, TimeUnit.SECONDS)) {
-			fail("Quotes not received");
+			Assert.fail("Quotes not received");
 		}
 	}
 

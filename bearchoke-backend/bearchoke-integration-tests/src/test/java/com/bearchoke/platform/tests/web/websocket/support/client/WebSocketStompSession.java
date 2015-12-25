@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.server.frontend.web.support.client;
+package com.bearchoke.platform.tests.web.websocket.support.client;
 
 
 import org.springframework.messaging.Message;

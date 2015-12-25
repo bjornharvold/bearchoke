@@ -14,23 +14,15 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.server.frontend.web.support.client;
+package com.bearchoke.platform.tests.web.websocket.support.client;
 
 
-import org.springframework.messaging.Message;
-import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
+public interface StompSession {
 
+	void subscribe(String destination, String receiptId);
 
-public interface StompMessageHandler {
+	void send(String destination, Object payload);
 
-	void afterConnected(StompSession session, StompHeaderAccessor headers);
-
-	void handleMessage(Message<byte[]> message);
-
-	void handleReceipt(String receiptId);
-
-	void handleError(Message<byte[]> message);
-
-	void afterDisconnected();
+	void disconnect();
 
 }

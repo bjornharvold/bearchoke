@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2015. Bearchoke
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+	      <groupId>com.bearchoke</groupId>
+	      <artifactId>bearchoke-backend</artifactId>
+	      <version>1.0.3-SNAPSHOT</version>
+	  </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>bearchoke-integration-tests</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0.3-SNAPSHOT</version>
+    <name>Bearchoke Integration Tests (JAR)</name>
+	<description>Bearchoke integration tests</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.bearchoke</groupId>
+            <artifactId>bearchoke-server-frontend</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+		
+        <!-- Servlet -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet.api.version}</version>
+        </dependency>
+
+        <!-- Embedded Tomcat for testing -->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>${tomcat.embed.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-websocket</artifactId>
+            <version>${tomcat.embed.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-logging-log4j</artifactId>
+            <version>${tomcat.embed.version}</version>
+            <scope>test</scope>
+        </dependency>
+	</dependencies>
+</project>

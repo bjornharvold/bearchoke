@@ -14,25 +14,23 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.server.frontend.web.support;
-
-import java.security.Principal;
-
-/**
- * A simple simple implementation of {@link java.security.Principal}.
- */
-public class TestPrincipal  implements Principal {
-
-	private final String name;
+package com.bearchoke.platform.tests.web.websocket.support.client;
 
 
-	public TestPrincipal(String name) {
-		this.name = name;
-	}
+import org.springframework.messaging.Message;
+import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 
-	@Override
-	public String getName() {
-		return this.name;
-	}
+
+public interface StompMessageHandler {
+
+	void afterConnected(StompSession session, StompHeaderAccessor headers);
+
+	void handleMessage(Message<byte[]> message);
+
+	void handleReceipt(String receiptId);
+
+	void handleError(Message<byte[]> message);
+
+	void afterDisconnected();
 
 }

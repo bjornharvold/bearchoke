@@ -30,6 +30,7 @@
     <modules>
         <module>bearchoke-api</module>
         <module>bearchoke-domain</module>
+        <module>bearchoke-integration-tests</module>
         <module>bearchoke-server</module>
         <module>bearchoke-platform-base</module>
         <module>bearchoke-persistence</module>

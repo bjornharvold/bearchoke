@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.bearchoke.platform.server.frontend.web.support.server;
+package com.bearchoke.platform.tests.web.websocket.support.server;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.Wrapper;
