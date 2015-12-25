@@ -19,12 +19,12 @@
     <parent>
         <groupId>com.bearchoke</groupId>
         <artifactId>bearchoke-parent</artifactId>
-        <version>1.0.3</version>
+        <version>1.0.3-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>bearchoke-backend</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.3</version>
+    <version>1.0.3-SNAPSHOT</version>
     <name>Bearchoke Backend (POM)</name>
 
     <modules>
@@ -63,6 +63,35 @@
                 </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                    </excludes>
+                </configuration>
+                <!--
+                <executions>
+                    <execution>
+                        <id>integration-test</id>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <phase>integration-test</phase>
+                        <configuration>
+                            <excludes>
+                                <exclude>none</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*IntegrationTest.java</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                </executions>
+                -->
+            </plugin>
         </plugins>
 
     </build>
