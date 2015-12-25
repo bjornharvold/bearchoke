@@ -16,6 +16,7 @@
 
 package com.bearchoke.platform.server.frontend.web.config;
 
+import com.bearchoke.platform.domain.search.repository.LocationRepository;
 import com.bearchoke.platform.server.common.security.ApiAuthenticationFailureHandler;
 import com.bearchoke.platform.server.common.security.ApiAuthenticationSuccessHandler;
 import com.bearchoke.platform.server.frontend.service.GreetingService;
@@ -167,6 +168,11 @@ public class MockServerConfig extends GlobalMethodSecurityConfiguration {
     @Bean(name = "userRepository")
     public UserRepository userRepository() {
         return mock(UserRepository.class);
+    }
+
+    @Bean(name = "locationRepository")
+    public LocationRepository locationRepository() {
+        return mock(LocationRepository.class);
     }
 
     @Bean(name = "messageSendingOperations")

@@ -17,24 +17,14 @@
 package com.bearchoke.platform.server.frontend.web.controller;
 
 
-import com.bearchoke.platform.api.user.dto.FacebookProfilePicture;
-import com.bearchoke.platform.api.user.dto.FacebookProfilePictureData;
-import com.bearchoke.platform.api.user.identifier.UserIdentifier;
-import com.bearchoke.platform.api.user.dto.FacebookUserDto;
+import com.bearchoke.platform.domain.search.dto.Location;
+import com.bearchoke.platform.domain.search.repository.LocationRepository;
 import com.bearchoke.platform.server.common.ApplicationMediaType;
 import com.bearchoke.platform.server.common.config.AppLocalConfig;
 import com.bearchoke.platform.server.common.config.WebSecurityConfig;
 import com.bearchoke.platform.server.common.web.config.WebMvcConfig;
 import com.bearchoke.platform.server.frontend.web.config.MockServerConfig;
-import com.bearchoke.platform.domain.user.aggregate.UserAggregate;
-import com.bearchoke.platform.domain.user.handler.UserCommandHandler;
-import com.bearchoke.platform.domain.user.repositories.UserRepository;
 import lombok.extern.log4j.Log4j2;
-import org.axonframework.commandhandling.CommandBus;
-import org.axonframework.commandhandling.callbacks.FutureCallback;
-import org.axonframework.test.FixtureConfiguration;
-import org.axonframework.test.Fixtures;
-import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -56,25 +46,27 @@ import org.springframework.web.context.WebApplicationContext;
 
 import javax.servlet.Filter;
 
-import static org.junit.Assert.assertNotNull;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyObject;
-import static org.mockito.Mockito.doAnswer;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
+import java.util.Collections;
+import java.util.List;
+
+import static org.mockito.BDDMockito.given;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
+import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.unauthenticated;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 /**
  * Created by Bjorn Harvold
- * <p>
+ * <p/>
  * Date: 7/28/14
- * <p>
+ * <p/>
  * Time: 3:26 PM
- * <p>
+ * <p/>
  * Responsibility:
  */
 @Log4j2
@@ -89,14 +81,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         }
 )
 @ActiveProfiles("local")
-@TestExecutionListeners(listeners = {ServletTestExecutionListener.class,
+@TestExecutionListeners(listeners={ServletTestExecutionListener.class,
         DependencyInjectionTestExecutionListener.class,
         DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class,
         WithSecurityContextTestExecutionListener.class})
-public class FacebookControllerTest extends AbstractControllerTest {
-
-    private FixtureConfiguration fixture;
+public class SearchControllerTest extends AbstractControllerTest {
 
     @Autowired
     private WebApplicationContext wac;
@@ -109,21 +99,12 @@ public class FacebookControllerTest extends AbstractControllerTest {
     private Filter springSessionRepositoryFilter;
 
     @Autowired
-    private CommandBus commandBus;
-
-    @Autowired
-    private UserRepository userQueryRepository;
+    private LocationRepository locationRepository;
 
     private MockMvc mockMvc;
 
     @Before
     public void setup() {
-
-        fixture = Fixtures.newGivenWhenThenFixture(UserAggregate.class);
-
-        UserCommandHandler commandHandler = new UserCommandHandler(fixture.getRepository(), userQueryRepository, new StrongPasswordEncryptor());
-        fixture.registerAnnotatedCommandHandler(commandHandler);
-
         this.mockMvc = MockMvcBuilders
                 .webAppContextSetup(this.wac)
                 .addFilters(springSessionRepositoryFilter, springSecurityFilterChain)
@@ -131,47 +112,21 @@ public class FacebookControllerTest extends AbstractControllerTest {
     }
 
     @Test
-    public void testUpdateFacebookUser() throws Exception {
-        log.info("Testing FacebookController.updateFacebookUser...");
+    public void testSearch() throws Exception {
+        log.info("Testing SearchController.citySearch...");
+        final String s = "New Y";
 
-        // yes fb email is username now. api doesn't give us user's username any longer
-        final String emailAndUsername = "facebook@user.com";
-        final String id = "1111111111111111";
+        List<Location> list = Collections.singletonList(new Location("NYC", "NYC", "New York City"));
 
-        FutureCallback<UserIdentifier> callback = new FutureCallback<>();
-        callback.onSuccess(new UserIdentifier(id));
+        given(locationRepository.locationSearch(s)).willReturn(list);
 
-        assertNotNull("Future result cannot be null", callback.get());
-
-        // try to handle the asynchronous commandBus callback with Mockito
-        doAnswer(invocationOnMock ->
-        {
-            ((FutureCallback<UserIdentifier>) invocationOnMock.getArguments()[1]).onSuccess(new UserIdentifier(id));
-            return null;
-        }).when(commandBus).dispatch(anyObject(), anyObject());
-
-        FacebookUserDto dto = new FacebookUserDto();
-        dto.setEmail(emailAndUsername);
-        dto.setFirst_name("Facebook");
-        dto.setGender("Male");
-        dto.setId(id);
-        dto.setLast_name("User");
-        dto.setName("Facebook User");
-        dto.setVerified(true);
-        dto.setLocale("US");
-        FacebookProfilePicture fpp = new FacebookProfilePicture();
-        FacebookProfilePictureData fppd = new FacebookProfilePictureData();
-        fppd.setUrl("image/url");
-        fpp.setData(fppd);
-        dto.setPicture(fpp);
-
-        this.mockMvc.perform(post("/api/facebook")
-                .content(convertObjectToJsonBytes(dto))
-                .contentType(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON))
+        this.mockMvc.perform(get("/api/search").param("s", s).accept(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON))
                 .andDo(print())
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(ApplicationMediaType.APPLICATION_BEARCHOKE_V1_JSON))
+                .andExpect(jsonPath("$.list[0].code").value("NYC"));
 
-        log.info("Testing FacebookController.updateFacebookUser SUCCESSFUL");
+        log.info("Testing SearchController.citySearch SUCCESSFUL");
     }
 
 }

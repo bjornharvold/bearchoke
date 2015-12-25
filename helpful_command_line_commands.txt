@@ -13,3 +13,7 @@ mvn cf:push-only -Pcloud
 
 cd bearchoke-backend/bearchoke-web/bearchoke-web-frontend
 mvn cf:push-only -Pcloud
+
+# Perform a release
+mvn release:prepare
+mvn release:perform

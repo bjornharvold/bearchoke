@@ -46,7 +46,7 @@ public class SearchController {
             method = RequestMethod.GET
     )
     @ResponseStatus(HttpStatus.OK)
-    public Locations hotelSearch(@RequestParam(value = "s", required = true) String search) {
+    public Locations citySearch(@RequestParam(value = "s", required = true) String search) {
         if (log.isDebugEnabled()) {
             log.debug(String.format("Location search: %s", search));
         }

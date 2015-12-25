@@ -27,6 +27,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
@@ -90,13 +91,17 @@ public class GreetingControllerTest extends AbstractControllerTest {
     @Autowired
     private Filter springSecurityFilterChain;
 
+    @Autowired
+    @Qualifier("springSessionRepositoryFilter")
+    private Filter springSessionRepositoryFilter;
+
     private MockMvc mockMvc;
 
     @Before
     public void setup() {
         this.mockMvc = MockMvcBuilders
                 .webAppContextSetup(this.wac)
-                .addFilters(springSecurityFilterChain)
+                .addFilters(springSessionRepositoryFilter, springSecurityFilterChain)
                 .build();
     }
 
