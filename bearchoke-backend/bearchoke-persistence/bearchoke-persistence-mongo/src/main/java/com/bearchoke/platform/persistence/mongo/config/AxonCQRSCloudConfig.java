@@ -15,7 +15,7 @@ import org.springframework.context.annotation.PropertySource;
  * Responsibility:
  */
 @Configuration
-@Profile("mongodb-cloud")
+@Profile("cloud")
 @PropertySource(value = "classpath:cqrs-cloud.properties")
 public class AxonCQRSCloudConfig {
 

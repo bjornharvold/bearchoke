@@ -15,7 +15,7 @@ import org.springframework.context.annotation.PropertySource;
  * Responsibility:
  */
 @Configuration
-@Profile("mongodb-local")
+@Profile("local")
 @PropertySource(value = "classpath:cqrs-local.properties")
 public class AxonCQRSLocalConfig {
 

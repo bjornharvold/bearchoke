@@ -34,7 +34,7 @@ import java.util.Properties;
  * Responsibility:
  */
 @Configuration
-@Profile("jpa-local")
+@Profile("local")
 @PropertySource(value = "classpath:jpa-local.properties")
 public class JpaLocalConfig {
 

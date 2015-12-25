@@ -5,3 +5,5 @@ cf push bearchoke-server -n bearchoke-server
 cf logs bearchoke-server
 
 cf login -a https://api.run.pivotal.io
+
+cf marketplace

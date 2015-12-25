@@ -49,9 +49,8 @@
                     <healthCheckTimeout>120</healthCheckTimeout>
                     <appStartupTimeout>180</appStartupTimeout>
                     <buildpack>https://github.com/cloudfoundry/java-buildpack.git</buildpack>
-                    <!--<buildpack>https://github.com/bjornharvold/java-buildpack.git</buildpack>-->
                     <env>
-                        <SPRING_PROFILES_ACTIVE>mongodb-cloud,redis-cloud,rabbit-cloud,${environment}</SPRING_PROFILES_ACTIVE>
+                        <SPRING_PROFILES_ACTIVE>${environment}</SPRING_PROFILES_ACTIVE>
                         <JBP_CONFIG_OPEN_JDK_JRE>[memory_calculator: {memory_sizes: {metaspace: 256m..}, memory_heuristics: {heap: 85, metaspace: 10, stack: 5, native: 10}}]</JBP_CONFIG_OPEN_JDK_JRE>
                     </env>
                     <mergeEnv>true</mergeEnv>
@@ -59,7 +58,7 @@
                         <service>
                             <name>bearchoke-redis</name>
                             <label>rediscloud</label>
-                            <plan>25mb</plan>
+                            <plan>30mb</plan>
                         </service>
                         <service>
                             <name>bearchoke-amqp</name>

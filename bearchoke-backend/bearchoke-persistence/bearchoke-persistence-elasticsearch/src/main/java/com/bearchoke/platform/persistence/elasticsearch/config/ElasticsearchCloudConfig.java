@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@Profile("ci")
+@Profile("cloud")
 @PropertySource(value = "classpath:elasticsearch-ci.properties")
 public class ElasticsearchCloudConfig {
 }

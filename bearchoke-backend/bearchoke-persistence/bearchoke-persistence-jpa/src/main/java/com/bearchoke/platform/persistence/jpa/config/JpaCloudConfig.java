@@ -31,7 +31,7 @@ import javax.sql.DataSource;
  * Responsibility:
  */
 @Configuration
-@Profile("jpa-cloud")
+@Profile("cloud")
 @PropertySource(value = "classpath:jpa-cloud.properties")
 public class JpaCloudConfig extends AbstractCloudConfig {
 

@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@Profile("rabbit-cloud")
+@Profile("cloud")
 @PropertySource(value = "classpath:rabbit-cloud.properties")
 @Log4j2
 public class RabbitMQCloudConfig extends AbstractCloudConfig {

@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 
 @Configuration
-@Profile("redis-cloud")
+@Profile("cloud")
 @Log4j2
 public class RedisCloudConfig extends AbstractCloudConfig {
 

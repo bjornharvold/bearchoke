@@ -16,7 +16,6 @@
 
 package com.bearchoke.platform.persistence.mongo.config;
 
-import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
 import com.mongodb.ServerAddress;
@@ -37,7 +36,7 @@ import java.net.UnknownHostException;
  * Responsibility:
  */
 @Configuration
-@Profile("mongodb-local")
+@Profile("local")
 @PropertySource(value = "classpath:mongodb-local.properties")
 public class MongoLocalConfig {
 

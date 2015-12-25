@@ -17,13 +17,13 @@
 
     <profiles>
         <profile>
-            <id>demo</id>
+            <id>cloud</id>
             <properties>
                 <space>Bjorn Demo Only</space>
-                <url1>bearchoke-server.cfapps.io</url1>
+                <url1>bearchoke-web-frontend.cfapps.io</url1>
                 <url2>api.bearchoke.com</url2>
-                <appname>bearchoke-server</appname>
-                <environment>demo</environment>
+                <appname>bearchoke-web-frontend</appname>
+                <environment>cloud</environment>
             </properties>
         </profile>
 		

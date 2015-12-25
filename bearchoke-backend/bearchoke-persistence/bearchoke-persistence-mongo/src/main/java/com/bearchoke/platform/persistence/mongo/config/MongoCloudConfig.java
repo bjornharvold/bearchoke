@@ -34,7 +34,7 @@ import javax.inject.Inject;
  * Responsibility:
  */
 @Configuration
-@Profile("mongodb-cloud")
+@Profile("cloud")
 @PropertySource(value = "classpath:mongodb-cloud.properties")
 @Log4j2
 public class MongoCloudConfig extends AbstractCloudConfig {

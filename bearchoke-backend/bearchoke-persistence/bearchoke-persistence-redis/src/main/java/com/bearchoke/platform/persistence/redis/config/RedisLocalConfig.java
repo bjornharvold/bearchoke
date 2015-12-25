@@ -21,7 +21,7 @@ import javax.inject.Inject;
  * Responsibility:
  */
 @Configuration
-@Profile("redis-local")
+@Profile("local")
 @PropertySource("classpath:redis-local.properties")
 public class RedisLocalConfig {
 

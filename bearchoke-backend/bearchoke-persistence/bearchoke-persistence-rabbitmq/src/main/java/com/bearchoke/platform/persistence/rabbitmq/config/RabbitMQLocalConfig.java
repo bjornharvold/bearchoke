@@ -21,7 +21,7 @@ import javax.inject.Inject;
  * Responsibility:
  */
 @Configuration
-@Profile("rabbit-local")
+@Profile("local")
 @PropertySource(value = "classpath:rabbit-local.properties")
 public class RabbitMQLocalConfig {
 

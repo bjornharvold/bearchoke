@@ -14,14 +14,14 @@
 
     <profiles>
         <profile>
-            <id>ci</id>
+            <id>cloud</id>
             <properties>
-				<organization>jwatters-org</organization>
-                <space>Bjorn Demo Only</space>
-                <url1>bearchoke-frontend.cfapps.io</url1>
-                <url2>www.bearchoke.com</url2>
-                <environment>ci</environment>
-                <appname>bearchoke-frontend</appname>
+				<cf.organization>jwatters-org</cf.organization>
+                <cf.space>Bjorn Demo Only</cf.space>
+                <cf.url1>bearchoke-spa-frontend.cfapps.io</cf.url1>
+                <cf.url2>www.bearchoke.com</cf.url2>
+                <environment>cloud</environment>
+                <cf.appname>bearchoke-spa-frontend</cf.appname>
                 <disallow>/</disallow>
                 <server>https://api.bearchoke.com</server>
             </properties>
@@ -62,6 +62,7 @@
                     <exclude>app/pages/</exclude>
                     <exclude>spec/</exclude>
                     <exclude>spec-e2e/</exclude>
+                    <exclude>app/js/constants/environment_constants.js</exclude>
                 </excludes>
             </resource>
 
@@ -70,9 +71,6 @@
                 <directory>${basedir}/../bearchoke-spa-shared</directory>
                 <targetPath>${project.build.directory}/bearchoke-spa-shared</targetPath>
                 <filtering>false</filtering>
-                <excludes>
-                    <exclude>app/js/constants/environment_constants.js</exclude>
-                </excludes>
             </resource>
 
             <!-- This resource element will take care of using the rights constants for each environment -->
@@ -215,17 +213,17 @@
                 <configuration>
                     <server>cloud-foundry-credentials</server>
                     <target>http://api.run.pivotal.io</target>
-                    <org>${organization}</org>
-                    <space>${space}</space>
-                    <appname>${appname}</appname>
+                    <org>${cf.organization}</org>
+                    <space>${cf.space}</space>
+                    <appname>${cf.appname}</appname>
                     <memory>64</memory>
                     <diskQuota>512</diskQuota>
                     <healthCheckTimeout>120</healthCheckTimeout>
                     <appStartupTimeout>180</appStartupTimeout>
                     <mergeEnv>true</mergeEnv>
                     <urls>
-                        <url>${url1}</url>
-                        <url>${url2}</url>
+                        <url>${cf.url1}</url>
+                        <url>${cf.url2}</url>
                     </urls>
                     <buildpack>https://github.com/bjornharvold/staticfile-buildpack.git</buildpack>
                     <path>${project.build.directory}/distribution/dist</path>

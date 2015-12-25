@@ -1,3 +1,6 @@
+/*
+ * Copyright (c) 2015. Bearchoke
+ */
 angular.module('app').constant('configuration', {
     siteName: 'Bearchoke Tempest',
     facebookApiToken: '1406544132926146',
