@@ -54,11 +54,10 @@
     </modules>
 
     <scm>
-        <connection>scm:git:git://git@github.org:bjornharvold/bearchoke.git</connection>
-        <developerConnection>scm:git:git://git@github.org:bjornharvold/bearchoke.git</developerConnection>
+        <connection>scm:git:ssh://git@github.org:bjornharvold/bearchoke.git</connection>
+        <developerConnection>scm:git:ssh://git@github.org:bjornharvold/bearchoke.git</developerConnection>
         <url>https://github.com/bjornharvold/bearchoke</url>
-      <tag>bearchoke-parent-1.0.3</tag>
-  </scm>
+    </scm>
 	
     <issueManagement>
         <system>Github Issues</system>
