@@ -20,7 +20,7 @@
     <groupId>com.bearchoke</groupId>
     <artifactId>bearchoke-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.3</version>
     <name>Bearchoke Tempest (POM)</name>
     <inceptionYear>2013</inceptionYear>
     <organization>
@@ -57,7 +57,8 @@
         <connection>scm:git:ssh://git@github.org:bjornharvold/bearchoke.git</connection>
         <developerConnection>scm:git:ssh://git@github.org:bjornharvold/bearchoke.git</developerConnection>
         <url>https://github.com/bjornharvold/bearchoke</url>
-    </scm>
+      <tag>bearchoke-parent-1.0.3</tag>
+  </scm>
 	
     <issueManagement>
         <system>Github Issues</system>

@@ -1,0 +1,15 @@
+Cloud Foundry commands (Tells you all available services to subscribe to and bind to)
+cf marketplace
+
+# Compile project
+mvn clean install
+
+# Compile SPA for cloud deployment
+mvn clean install -Pcloud
+
+# Deploy to Cloud Foundry 
+cd bearchoke-spa/bearchoke-spa-frontend
+mvn cf:push-only -Pcloud
+
+cd bearchoke-backend/bearchoke-web/bearchoke-web-frontend
+mvn cf:push-only -Pcloud

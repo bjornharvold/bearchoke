@@ -19,12 +19,12 @@
 	<parent>
 		<groupId>com.bearchoke</groupId>
         <artifactId>bearchoke-domain</artifactId>
-        <version>1.0.3-SNAPSHOT</version>
+        <version>1.0.3</version>
 	</parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>bearchoke-domain-todo</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.3</version>
     <name>Bearchoke Domain ToDo (JAR)</name>
 
     <dependencies>
