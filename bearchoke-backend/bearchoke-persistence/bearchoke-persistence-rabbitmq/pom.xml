@@ -7,12 +7,12 @@
 	<parent>
 	      <groupId>com.bearchoke</groupId>
 	      <artifactId>bearchoke-persistence</artifactId>
-	      <version>1.0.3</version>
+	      <version>2.0.0</version>
 	  </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>bearchoke-persistence-rabbitmq</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.3</version>
+    <version>2.0.0</version>
     <name>Bearchoke Persistence RabbitMQ (JAR)</name>
 
     <dependencies>
