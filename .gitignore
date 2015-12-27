@@ -105,7 +105,8 @@ crashlytics.properties
 crashlytics-build.properties
 
 # bearchoke customs
-database/
+database/mongodb
+database/redis/var/db/redis/dump.rdb
 bearchoke-backend/bearchoke-integration-tests/data
 bearchoke-spa/bearchoke-spa-frontend/dist/
 bearchoke-spa/bearchoke-spa-frontend/generated/

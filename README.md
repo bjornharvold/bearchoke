@@ -107,9 +107,9 @@ Install [Brew](http://brew.sh/) before you do anything else.
 Install Redis using Brew: 
 
 	$ brew install redis
-	$ redis-server /usr/local/etc/redis.conf
+	$ redis-server database/redis/redis.conf
 	
-You can start it later as well by using the start script located in the root of bearchoke-tempest called: startService.sh.
+You can start it later as well by using the start script located in the root of bearchoke-tempest called: startServices.sh.
 	
 ## RabbitMQ (required for every type of spring profile)
 [RabbitMQ](http://www.rabbitmq.com) is the AMQP implementation used by Spring Integration to broker messages. RabbitMQ is a message broker. The principal idea is pretty simple: it accepts and forwards messages. You can think about it as a post office: when you send mail to the post box you're pretty sure that Mr. Postman will eventually deliver the mail to your recipient. Using this metaphor RabbitMQ is a post box, a post office and a postman. The major difference between RabbitMQ and the post office is the fact that it doesn't deal with paper, instead it accepts, stores and forwards binary blobs of data ‒ messages. RabbitMQ helps in making the architecture event driven.
@@ -126,7 +126,7 @@ Then you can start RabbitMQ by typing:
 
 	$ rabbitmq-server start	
 
-You can start it later as well by using the start script located in the root of bearchoke-tempest called: startService.sh.
+You can start it later as well by using the start script located in the root of bearchoke-tempest called: startServices.sh.
 
 ## MongoDb (required for every type of spring profile)
 [MongoDb](http://www.mongodb.org) is a NoSQL database, more specifically known as a "document store". 
@@ -135,11 +135,11 @@ Install MongoDb using Brew:
 
 	$ brew install mongodb
 
-I suggest creating a 'database' directory in the root directory of bearchoke-tempest and then starting MongoDb by typing:
+Create a 'database/mongodb' directory in the root directory of bearchoke-tempest and then starting MongoDb by typing:
 
-	$ mongod --dbpath data/ &
+	$ mongod --dbpath database/mongodb &
 
-You can start it later as well by using the start script located in the root of bearchoke-tempest called: startService.sh.
+You can start it later as well by using the start script located in the root of bearchoke-tempest called: startServices.sh.
 
 ## Jpa (required for 'jpa' spring profile)
 Jpa is the standard Java Persistence API. To showcase the framework's Jpa support, we're using an in-memory version of [DerbyDb](http://db.apache.org/derby/). There is no installation necessary. Jpa is currently not leveraged in the showcase but the configuration to connect to a local or cloud based db is available to you.
@@ -158,7 +158,7 @@ Once Node.JS is installed, you can install Lineman by typing this in your Termin
 The last requirement for Lineman is that you have [PhantomJS](http://phantomjs.org/download.html) installed and on your PATH.
 
 ## Grunt
-Once you have installed Lineman, Grunt is next. This one is simple. Just type this in your Terminal / Command Prompt:
+Once you have installed Lineman, Grunt is next. Type this in your Terminal / Command Prompt:
 
 	$ npm install -g grunt-cli	
 
@@ -179,7 +179,7 @@ Cloud Foundry:
 	
 Finally, the app has been configured to use a custom domain. Please edit your /etc/hosts file and add dev.bearchoke.com. You can verify that the bearchoke-web-frontend web application is running by going to http://dev.bearchoke.com:8080 in your browser.
 
-Next, you have to start the bearchoke-frontend application. Type the following in a new Terminal / Command Prompt window:
+Next, you have to start the bearchoke-spa-frontend application. Type the following in a new Terminal / Command Prompt window:
 
 	$ cd bearchoke-spa/bearchoke-spa-frontend
 	$ npm install (will install all dependencies located in package.json)
@@ -248,7 +248,7 @@ This was a major version bump! A lot of updated code and better way of organizin
 
 ## Limitations
 
-* Cloud Foundry does not yet support HTML5 push. You cannot go straight to a url unless it's the root url. E.g. https://www.bearchoke.com is ok. https://www.bearchoke.com/ui/chat is not ok. We developed a custom buildpack for this reason which you can find here: [cloudgate313](https://github.com/cloudgate313/staticfile-buildpack)
+* Cloud Foundry does not yet support HTML5 push. You cannot go straight to a url unless it's the root url. E.g. https://www.bearchoke.com is ok. https://www.bearchoke.com/ui/chat is not ok. We developed a custom buildpack for this reason which you can find here: [Custom Static buildpack to support SPAs](https://github.com/bjornharvold/staticfile-buildpack.git)
 * Cloud Foundry has a limitation when using your custom domain while using SSL over Cloudflare. If you enable CSRF, it will fail because you will have to use the cfapps.io domain name to reach your web socket services.
 * If you're working on a Mac, you might run into an EMFILE warning when running LinemanJS. You need to increase the ulimit size. Please see the FAQ here for more information: [grunt-contrib-watch](http://cnpmjs.org/package/grunt-contrib-watch)
 
