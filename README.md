@@ -32,7 +32,7 @@ Below, I will cover what is required to get up and running using all the goodies
 * [Spring Data Jpa](http://projects.spring.io/spring-data-jpa) (Persistence layer to Jpa)
 * [Spring Data Redis](http://projects.spring.io/spring-data-redis) (Persistence layer to Redis)
 * [Spring Session](https://github.com/spring-projects/spring-session) (for easier persisting session for REST / Web Socket based clients)
-* [Axon Framework](http://www.axonframework.org) (Command Query Responsibility Segmentation CQRS)
+* [Axon Framework](http://www.axonframework.org) (Command Query Responsibility Segregation CQRS)
 * [Jasypt](http://jasypt.org/) (Encryption)
 * [Jackson](https://github.com/FasterXML/jackson) (JSON transformation)
 * [Apache CXF](http://cxf.apache.org) (JAXWS Web Service) 
